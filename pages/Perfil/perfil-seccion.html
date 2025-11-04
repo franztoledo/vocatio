@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil y Ayuda - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="perfil-seccion.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas de Planificación</span>
+        </a>
+        <a href="perfil-seccion.html" class="nav-link active">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../inicio.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Mi Perfil y Ayuda</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile Header -->
+  <section class="profile-hero">
+    <div class="profile-hero-container">
+      <a href="../inicio.html" class="back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver al Inicio</span>
+      </a>
+
+      <div class="profile-hero-header">
+        <div class="profile-avatar">MG</div>
+        <div class="profile-info">
+          <h1 class="profile-title">Mi Perfil y Ayuda</h1>
+          <p class="profile-name">Bienvenida, María González</p>
+        </div>
+      </div>
+
+      <div class="profile-stats">
+        <div class="profile-stat">
+          <div class="profile-stat-value">85%</div>
+          <div class="profile-stat-label">Perfil completado</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-value">3</div>
+          <div class="profile-stat-label">Tests realizados</div>
+        </div>
+        <div class="profile-stat">
+          <div class="profile-stat-value">12</div>
+          <div class="profile-stat-label">Carreras exploradas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Account Management -->
+  <section class="account-management">
+    <div class="container">
+      <h2 class="section-title">Gestión de cuenta</h2>
+
+      <div class="management-cards">
+        <!-- Mi Perfil -->
+        <div class="management-card">
+          <div class="management-bar blue"></div>
+          <div class="management-content">
+            <div class="management-icon blue">
+              <i data-lucide="user"></i>
+            </div>
+            <h3 class="management-title">Mi Perfil</h3>
+            <p class="management-desc">Gestiona tu información personal, educativa y preferencias vocacionales</p>
+            <a href="#" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Recursos Recomendados -->
+        <div class="management-card">
+          <div class="management-bar green"></div>
+          <div class="management-content">
+            <div class="management-header-row">
+              <div class="management-icon green">
+                <i data-lucide="book-open"></i>
+              </div>
+              <div class="management-badge">24 recursos</div>
+            </div>
+            <h3 class="management-title">Recursos Recomendados</h3>
+            <p class="management-desc">Accede a materiales educativos personalizados según tu perfil</p>
+            <a href="#" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Configuración -->
+        <div class="management-card">
+          <div class="management-bar gray"></div>
+          <div class="management-content">
+            <div class="management-icon gray">
+              <i data-lucide="settings"></i>
+            </div>
+            <h3 class="management-title">Configuración</h3>
+            <p class="management-desc">Personaliza la aplicación, privacidad y preferencias de notificaciones</p>
+            <a href="#" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Info -->
+  <section class="dashboard-info">
+    <div class="container">
+      <div class="dashboard-box">
+        <h2 class="dashboard-title">Dashboard Principal</h2>
+        <p class="dashboard-subtitle">Tu información está protegida y puedes controlar qué datos compartes</p>
+
+        <div class="dashboard-grid">
+          <div class="dashboard-card">
+            <h4 class="dashboard-card-title">Dashboard Personal</h4>
+            <p class="dashboard-card-desc">Toda tu información personal está articulada con encriptación</p>
+          </div>
+
+          <div class="dashboard-card">
+            <h4 class="dashboard-card-title">Progreso Académico</h4>
+            <p class="dashboard-card-desc">Decide qué información es visible para otros usuarios</p>
+          </div>
+
+          <div class="dashboard-card">
+            <h4 class="dashboard-card-title">Recomendaciones Personalizadas</h4>
+            <p class="dashboard-card-desc">Todos los chats y mensajes son privados y seguros</p>
+          </div>
+
+          <div class="dashboard-card">
+            <h4 class="dashboard-card-title">Actividad Reciente</h4>
+            <p class="dashboard-card-desc">Ajusta tus preferencias en cualquier momento</p>
+          </div>
+        </div>
+
+        <a href="#" class="btn-configure">
+          Configurar privacidad <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Report Section -->
+  <section class="report-section">
+    <div class="container">
+      <div class="report-box">
+        <h2 class="report-title">GENERA TU REPORTE VOCACIONAL CON TODA LA INFORMACIÓN QUE NECESITAS</h2>
+        <a href="#" class="btn-report">Generar Reporte</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="perfil-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

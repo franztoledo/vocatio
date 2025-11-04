@@ -1,0 +1,443 @@
+/* ============================================
+   TOOLS HERO SECTION
+   ============================================ */
+.tools-hero {
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+  padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xxl);
+  color: var(--white);
+}
+
+.tools-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: var(--font-size-small);
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.9;
+  transition: all var(--transition-fast);
+}
+
+.back-link:hover {
+  opacity: 1;
+  gap: 10px;
+}
+
+.back-link i {
+  width: 16px;
+  height: 16px;
+}
+
+.tools-hero-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.tools-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tools-icon i {
+  width: 32px;
+  height: 32px;
+}
+
+.tools-title {
+  font-size: 36px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xs);
+}
+
+.tools-subtitle {
+  font-size: var(--font-size-base);
+  opacity: 0.95;
+}
+
+.tools-stats-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tools-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  backdrop-filter: blur(10px);
+}
+
+.tools-stat-item i {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.tools-stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tools-stat-number {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+}
+
+.tools-stat-label {
+  font-size: var(--font-size-small);
+  opacity: 0.95;
+}
+
+/* ============================================
+   BENEFITS SECTION
+   ============================================ */
+.benefits-section {
+  background: var(--neutral-50);
+  padding: var(--spacing-xxl) var(--spacing-sm);
+}
+
+.benefits-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--white);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-xl);
+  border: 2px solid var(--primary-200);
+  box-shadow: var(--shadow-card);
+}
+
+.benefits-title {
+  font-size: 24px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-900);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-md);
+}
+
+.benefit-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefit-icon i {
+  width: 28px;
+  height: 28px;
+  color: var(--primary-600);
+}
+
+.benefit-name {
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-900);
+}
+
+.benefit-text {
+  font-size: var(--font-size-text);
+  color: var(--neutral-600);
+}
+
+/* ============================================
+   TOOLS MAIN SECTION
+   ============================================ */
+.tools-main-section {
+  background: var(--white);
+  padding: var(--spacing-xxl) var(--spacing-sm);
+}
+
+.tools-section-title {
+  font-size: 28px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-900);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.tools-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.tool-card {
+  background: var(--white);
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.tool-header-bar {
+  height: 4px;
+  width: 100%;
+}
+
+.tool-header-bar.purple {
+  background: linear-gradient(90deg, var(--purple-500) 0%, var(--purple-400) 100%);
+}
+
+.tool-header-bar.blue {
+  background: linear-gradient(90deg, var(--info-color) 0%, var(--blue-400) 100%);
+}
+
+.tool-header-bar.green {
+  background: linear-gradient(90deg, var(--success-color) 0%, var(--green-300) 100%);
+}
+
+.tool-card-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* ICON Y TAG EN LA MISMA FILA */
+.tool-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.tool-icon-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tool-icon-circle i {
+  width: 28px;
+  height: 28px;
+}
+
+.tool-icon-circle.purple {
+  background: var(--purple-50);
+}
+
+.tool-icon-circle.purple i {
+  color: var(--purple-500);
+}
+
+.tool-icon-circle.blue {
+  background: var(--info-light);
+}
+
+.tool-icon-circle.blue i {
+  color: var(--info-color);
+}
+
+.tool-icon-circle.green {
+  background: var(--success-light);
+}
+
+.tool-icon-circle.green i {
+  color: var(--success-color);
+}
+
+.tool-tag {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: var(--border-radius-round);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  white-space: nowrap;
+}
+
+.tool-tag.popular {
+  background: var(--warning-light);
+  color: var(--warning-color);
+}
+
+.tool-tag.nuevo {
+  background: var(--success-light);
+  color: var(--success-color);
+}
+
+.tool-card-title {
+  font-size: 18px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-sm);
+}
+
+.tool-card-desc {
+  font-size: var(--font-size-text);
+  color: var(--neutral-600);
+  line-height: 1.5;
+  margin-bottom: var(--spacing-lg);
+  flex-grow: 1;
+}
+
+.tool-includes {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--neutral-50);
+  border-radius: var(--border-radius-lg);
+}
+
+.include-label {
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-700);
+  margin-bottom: var(--spacing-sm);
+}
+
+.tool-includes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tool-includes-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-small);
+  color: var(--neutral-700);
+  padding: 4px 0;
+}
+
+.tool-includes-list i {
+  width: 14px;
+  height: 14px;
+  color: var(--success-color);
+  flex-shrink: 0;
+}
+
+.tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  width: fit-content;
+}
+
+.tool-btn.purple {
+  background: var(--purple-100);
+  color: var(--purple-600);
+}
+
+.tool-btn.purple:hover {
+  background: var(--purple-200);
+}
+
+.tool-btn.blue {
+  background: var(--info-light);
+  color: var(--info-color);
+}
+
+.tool-btn.blue:hover {
+  background: var(--blue-200);
+}
+
+.tool-btn.green {
+  background: var(--success-light);
+  color: var(--success-color);
+}
+
+.tool-btn.green:hover {
+  background: var(--green-200);
+}
+
+.tool-btn i {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (min-width: 768px) {
+  .tools-title {
+    font-size: 44px;
+  }
+
+  .tools-stats-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .tools-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .tools-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tools-title {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tools-title {
+    font-size: 48px;
+  }
+
+  .tools-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

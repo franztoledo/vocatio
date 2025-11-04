@@ -1,0 +1,284 @@
+:root {
+  /* ============================================
+     COLORES PRINCIPALES
+     ============================================ */
+  --primary-color: #3394b3;
+  --primary-hover: #127793;
+  --secondary-color: #262626;
+  --white: #ffffff;
+  --black: #000000;
+  
+  /* ============================================
+     PALETA PRIMARY (Azul Cyan)
+     ============================================ */
+  --primary-50: #d8fdff;
+  --primary-100: #afe5f9;
+  --primary-200: #88c9e2;
+  --primary-300: #60aeca;
+  --primary-400: #3394b3;
+  --primary-500: #3394b3;
+  --primary-600: #127793;
+  --primary-700: #005b75;
+  --primary-800: #004053;
+  --primary-900: #002739;
+  --primary-950: #00121d;
+  
+  /* ============================================
+     PALETA NEUTRAL (Grises)
+     ============================================ */
+  --neutral-50: #fafafa;
+  --neutral-100: #f5f5f5;
+  --neutral-200: #e5e5e5;
+  --neutral-300: #d4d4d4;
+  --neutral-400: #a3a3a3;
+  --neutral-500: #737373;
+  --neutral-600: #525252;
+  --neutral-700: #404040;
+  --neutral-800: #262626;
+  --neutral-900: #171717;
+  --neutral-950: #0a0a0a;
+  
+  /* Aliases grises (compatibilidad) */
+  --gray-lightest: #fafafa;
+  --gray-lighter: #f5f5f5;
+  --gray-light: #e5e5e5;
+  --gray-medium: #d4d4d4;
+  --gray: #a3a3a3;
+  --gray-dark: #737373;
+  --gray-darker: #525252;
+  --gray-darkest: #404040;
+  --border-color: #e5e5e5;
+  --border-color-light: #d4d4d4;
+  --border-color-medium: #a3a3a3;
+  
+  /* ============================================
+     PALETA RED (Rojo)
+     ============================================ */
+  --red-50: #ffddda;
+  --red-100: #ffc9c4;
+  --red-200: #ffa29c;
+  --red-300: #fa7471;
+  --red-400: #ef464b;
+  --red-500: #ef464b;
+  --red-600: #a95450;
+  --red-700: #943d3b;
+  --red-800: #790b17;
+  --red-900: #550002;
+  --red-950: #350004;
+  
+  /* Aliases error */
+  --error-color: #ef464b;
+  --error-hover: #a95450;
+  --error-light: #ffddda;
+  --error-bg: #ffc9c4;
+  
+  /* ============================================
+     PALETA ORANGE (Naranja)
+     ============================================ */
+  --orange-50: #fff7ed;
+  --orange-100: #ffedd5;
+  --orange-200: #fed7aa;
+  --orange-300: #fdba74;
+  --orange-400: #fb923c;
+  --orange-500: #f97316;
+  --orange-600: #ea580c;
+  --orange-700: #c2410c;
+  --orange-800: #9a3412;
+  --orange-900: #7c2d12;
+  --orange-950: #431407;
+  
+  /* Aliases advertencia */
+  --warning-color: #f97316;
+  --warning-hover: #ea580c;
+  --warning-light: #fff7ed;
+  --warning-bg: #ffedd5;
+  
+  /* ============================================
+     PALETA YELLOW 
+     ============================================ */
+  --yellow-50: #fff0c2;
+  --yellow-100: #ffdd99;
+  --yellow-200: #f3c66e;
+  --yellow-300: #e4ae3a;
+  --yellow-400: #e4ae3a;
+  --yellow-500: #c08e11;
+  --yellow-600: #99762c;
+  --yellow-700: #795100;
+  --yellow-800: #553700;
+  --yellow-900: #351f00;
+  --yellow-950: #160800;
+
+  /* Aliases oferta */
+  --offer-color: #e4ae3a;
+  --offer-hover: #c08e11;
+  --offer-light: #fff0c2;
+  --offer-bg: #ffdd99;
+  
+  /* ============================================
+     PALETA GREEN (Verde)
+     ============================================ */
+  --green-50: #d6ffe8;
+  --green-100: #b8e8ce;
+  --green-200: #89d5ae;
+  --green-300: #62bc91;
+  --green-400: #33a474;
+  --green-500: #33a474;
+  --green-600: #17855a;
+  --green-700: #00663f;
+  --green-800: #004927;
+  --green-900: #002a19;
+  --green-950: #001607;
+  
+  /* Aliases éxito */
+  --success-color: #33a474;
+  --success-hover: #17855a;
+  --success-light: #d6ffe8;
+  --success-bg: #b8e8ce;
+  
+  /* ============================================
+     PALETA BLUE (Azul)
+     ============================================ */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+  
+  /* Aliases información */
+  --info-color: #3b82f6;
+  --info-hover: #2563eb;
+  --info-light: #eff6ff;
+  --info-bg: #dbeafe;
+  
+  /* ============================================
+     PALETA PURPLE (Púrpura)
+     ============================================ */
+  --purple-50: #fcf0ff;
+  --purple-100: #ead1f6;
+  --purple-200: #d1b4e0;
+  --purple-300: #b898c8;
+  --purple-400: #a07cb1;
+  --purple-500: #88619a;
+  --purple-600: #88619a;
+  --purple-700: #694679;
+  --purple-800: #4b2c59;
+  --purple-900: #2f1b38;
+  --purple-950: #16001f;
+  
+  /* ============================================
+     PALETA ROSE (Rosa)
+     ============================================ */
+  --rose-50: #fff1f2;
+  --rose-100: #ffe4e6;
+  --rose-200: #fecdd3;
+  --rose-300: #fda4af;
+  --rose-400: #fb7185;
+  --rose-500: #f43f5e;
+  --rose-600: #e11d48;
+  --rose-700: #be123c;
+  --rose-800: #9f1239;
+  --rose-900: #881337;
+  --rose-950: #4c0519;
+  
+  /* ============================================
+     ALPHA/TRANSPARENCIAS
+     ============================================ */
+  --alpha-light-50: rgba(26, 26, 26, 0.06);
+  --alpha-light-100: rgba(26, 26, 26, 0.09);
+  --alpha-light-200: rgba(26, 26, 26, 0.2);
+  --alpha-light-300: rgba(26, 26, 26, 0.28);
+  --alpha-light-400: rgba(26, 26, 26, 0.36);
+  --alpha-light-500: rgba(26, 26, 26, 0.48);
+  --alpha-light-600: rgba(26, 26, 26, 0.6);
+  --alpha-light-700: rgba(26, 26, 26, 0.7);
+  --alpha-light-800: rgba(26, 26, 26, 0.75);
+  --alpha-light-900: rgba(26, 26, 26, 0.8);
+  --alpha-light-1000: #1a1a1a;
+  --alpha-light-00: #ffffff;
+  
+  /* Aliases accent */
+  --accent-color: #3394b3;
+  --accent-hover: #127793;
+  --accent-light: #d8fdff;
+  --accent-bg: #afe5f9;
+  
+  /* ============================================
+     FUENTES
+     ============================================ */
+  --font-family: Inter, system-ui, -apple-system, sans-serif;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  /* Tamaños de fuente */
+  --font-size-small: 0.9rem;
+  --font-size-tiny: 12px;
+  --font-size-base: 1rem;
+  --font-size-medium: 1.5rem;
+  --font-size-large: 2rem;
+  --font-size-xlarge: 2.5rem;
+  --font-size-title: 28px;
+  --font-size-text: 14px;
+  
+  /* ============================================
+     ESPACIADO
+     ============================================ */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-xxl: 4rem;
+  --spacing-form: 15px;
+  --spacing-panel: 40px;
+  --spacing-icon: 10px;
+
+  /* ============================================
+     BORDES
+     ============================================ */
+  --border-radius-sm: 5px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 10px;
+  --border-radius-xl: 12px;
+  --border-radius-round: 25px;
+  --border-radius-hero: 1rem;
+  
+  /* ============================================
+     SOMBRAS
+     ============================================ */
+  --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-subtle: 0 1px 4px rgba(0, 0, 0, 0.05);
+  
+  /* ============================================
+     TRANSICIONES
+     ============================================ */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.3s ease;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--gray-lighter);
+  min-height: 100vh;
+  padding-bottom: 70px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
+}

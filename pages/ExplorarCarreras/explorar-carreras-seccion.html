@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorar Carreras - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="explorar-carreras-seccion.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="explorar-carreras-seccion.html" class="nav-link active">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas de Planificación</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../inicio.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Explorar Carreras</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="explore-hero">
+    <div class="explore-hero-container">
+      <a href="../inicio.html" class="back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver al Inicio</span>
+      </a>
+
+      <div class="explore-hero-header">
+        <div class="explore-icon">
+          <i data-lucide="search"></i>
+        </div>
+        <h1 class="explore-title">Exploración de Carreras</h1>
+        <p class="explore-subtitle">Descubre, compara y elige tu carrera ideal</p>
+      </div>
+
+      <div class="explore-stats">
+        <div class="explore-stat">
+          <div class="explore-stat-number">100+</div>
+          <div class="explore-stat-label">Carreras disponibles</div>
+        </div>
+        <div class="explore-stat">
+          <div class="explore-stat-number">12</div>
+          <div class="explore-stat-label">Áreas de estudio</div>
+        </div>
+        <div class="explore-stat">
+          <div class="explore-stat-number">25+</div>
+          <div class="explore-stat-label">Universidades aliadas</div>
+        </div>
+        <div class="explore-stat">
+          <div class="explore-stat-number">150+</div>
+          <div class="explore-stat-label">Proyectos estudiantiles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compatibilidades Section -->
+  <section class="compatibility-section">
+    <div class="container">
+      <div class="compatibility-wrapper">
+        <div class="compatibility-header">
+          <h2 class="section-title-main">Tus mejores compatibilidades</h2>
+          <p class="section-subtitle-main">Basado en tu test vocacional</p>
+        </div>
+        <div class="compatibility-icon-badge">
+          <i data-lucide="trending-up"></i>
+        </div>
+      </div>
+
+      <div class="compatibility-grid">
+        <!-- Opción #1 -->
+        <div class="compatibility-card">
+          <div class="compatibility-badge">#1 Mejor opción</div>
+          <div class="compatibility-emoji">💻</div>
+          <h3 class="compatibility-name">Ingeniería de Software</h3>
+          <div class="compatibility-percentage">
+            <span class="percentage-number">92%</span>
+            <i data-lucide="arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Opción #2 -->
+        <div class="compatibility-card">
+          <div class="compatibility-badge">#2 Mejor opción</div>
+          <div class="compatibility-emoji">🎨</div>
+          <h3 class="compatibility-name">Diseño Gráfico</h3>
+          <div class="compatibility-percentage">
+            <span class="percentage-number">85%</span>
+            <i data-lucide="arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Opción #3 -->
+        <div class="compatibility-card">
+          <div class="compatibility-badge">#3 Mejor opción</div>
+          <div class="compatibility-emoji">⚕️</div>
+          <h3 class="compatibility-name">Medicina</h3>
+          <div class="compatibility-percentage">
+            <span class="percentage-number">78%</span>
+            <i data-lucide="arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Herramientas de Exploración -->
+  <section class="tools-explore-section">
+    <div class="container">
+      <h2 class="section-title-dark">Herramientas de exploración</h2>
+
+      <div class="tools-explore-grid">
+        <!-- Buscador de Carreras -->
+        <div class="tool-explore-card">
+          <div class="tool-explore-bar orange"></div>
+          <div class="tool-explore-content">
+            <div class="tool-explore-icon-box orange">
+              <i data-lucide="search"></i>
+            </div>
+            <h3 class="tool-explore-title">Buscador de Carreras</h3>
+            <p class="tool-explore-desc">Explora más de 100 carreras con filtros avanzados por área, duración y modalidad</p>
+            <div class="tool-explore-meta">
+              <i data-lucide="layers"></i>
+              <span>100+ carreras</span>
+            </div>
+            <a href="#" class="tool-explore-link">Explorar <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Mis Carreras Favoritas -->
+        <div class="tool-explore-card">
+          <div class="tool-explore-bar pink"></div>
+          <div class="tool-explore-content">
+            <div class="tool-explore-tag">Actualizado</div>
+            <div class="tool-explore-icon-box pink">
+              <i data-lucide="heart"></i>
+            </div>
+            <h3 class="tool-explore-title">Mis Carreras Favoritas</h3>
+            <p class="tool-explore-desc">Organiza y gestiona las carreras que más te interesan en listas personalizadas</p>
+            <div class="tool-explore-meta">
+              <i data-lucide="bookmark"></i>
+              <span>3 favoritas</span>
+            </div>
+            <a href="#" class="tool-explore-link">Explorar <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Comparador de Carreras -->
+        <div class="tool-explore-card">
+          <div class="tool-explore-bar blue"></div>
+          <div class="tool-explore-content">
+            <div class="tool-explore-icon-box blue">
+              <i data-lucide="scale"></i>
+            </div>
+            <h3 class="tool-explore-title">Comparador de Carreras</h3>
+            <p class="tool-explore-desc">Compara hasta 3 carreras lado a lado con criterios detallados</p>
+            <div class="tool-explore-meta">
+              <i data-lucide="check-circle"></i>
+              <span>Análisis completo</span>
+            </div>
+            <a href="#" class="tool-explore-link">Explorar <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Galería de Proyectos -->
+        <div class="tool-explore-card">
+          <div class="tool-explore-bar purple"></div>
+          <div class="tool-explore-content">
+            <div class="tool-explore-icon-box purple">
+              <i data-lucide="image"></i>
+            </div>
+            <h3 class="tool-explore-title">Galería de Proyectos</h3>
+            <p class="tool-explore-desc">Conoce proyectos reales desarrollados por estudiantes universitarios</p>
+            <div class="tool-explore-meta">
+              <i data-lucide="folder"></i>
+              <span>150+ proyectos</span>
+            </div>
+            <a href="#" class="tool-explore-link">Explorar <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Lista de Universidades -->
+        <div class="tool-explore-card">
+          <div class="tool-explore-bar green"></div>
+          <div class="tool-explore-content">
+            <div class="tool-explore-icon-box green">
+              <i data-lucide="building"></i>
+            </div>
+            <h3 class="tool-explore-title">Lista de Universidades</h3>
+            <p class="tool-explore-desc">Encuentra universidades que ofrecen la carrera que te interesa</p>
+            <div class="tool-explore-meta">
+              <i data-lucide="map-pin"></i>
+              <span>25+ universidades</span>
+            </div>
+            <a href="#" class="tool-explore-link">Explorar <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Palabras Clave -->
+  <section class="keywords-cta">
+    <div class="keywords-container">
+      <div class="keywords-box">
+        <h2 class="keywords-title">¿Tienes palabras clave en mente?</h2>
+        <p class="keywords-text">Explora y descubre las carreras que se acercan más a tus intereses con solo unas palabras</p>
+        <a href="#" class="btn-keywords">Palabras Clave</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="explorar-carreras-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
