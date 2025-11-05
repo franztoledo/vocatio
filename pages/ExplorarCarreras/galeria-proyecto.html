@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Proyectos Estudiantiles - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/galeria-proyectos.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link active">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link ">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="breadcrumb-container">
+      <a href="../index.html" class="breadcrumb-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="herramientas-seccion.html" class="breadcrumb-link">
+        <i data-lucide="clipboard-list"></i>
+        <span>Herramientas</span>
+      </a>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current">Galería de Proyectos</span>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="gallery-hero">
+    <div class="gallery-hero-content">
+      <a href="explorar-carreras-seccion.html" class="gallery-back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver al inicio</span>
+      </a>
+
+      <div class="gallery-header">
+        <i data-lucide="folder-open" class="gallery-header-icon"></i>
+        <h1 class="gallery-title">Galería de Proyectos Estudiantiles</h1>
+        <p class="gallery-subtitle">Descubre qué tipo de trabajo realizarás en tus estudios</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="gallery-stats">
+        <div class="stat-card">
+          <div class="stat-number">10</div>
+          <div class="stat-label">Proyectos disponibles</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Carreras con proyectos</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4.5</div>
+          <div class="stat-label">Rating promedio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="gallery-content">
+    <div class="container">
+      <!-- Info Banner -->
+      <div class="info-banner">
+        <i data-lucide="lightbulb"></i>
+        <div>
+          <strong>Viendo proyectos de: Ingeniería de Software</strong>
+          <p>Proyectos reales que hacen estudiantes de esta carrera</p>
+        </div>
+      </div>
+
+      <!-- Filter Section -->
+      <div class="gallery-filters">
+        <div class="filter-left">
+          <span class="filter-label">Cambiar a otra carrera:</span>
+        </div>
+      </div>
+
+      <!-- Career Filter Tabs -->
+      <div class="career-tabs">
+        <button class="career-tab active">
+          Ingeniería de Software (6)
+        </button>
+        <button class="career-tab">
+          Medicina (0)
+        </button>
+        <button class="career-tab">
+          Diseño Gráfico (4)
+        </button>
+        <button class="career-tab">
+          Arquitectura (3)
+        </button>
+      </div>
+
+      <!-- Academic Level Filter -->
+      <div class="academic-level-filter">
+        <button class="level-filter-btn active">
+          <i data-lucide="filter"></i>
+          Filtrar por Nivel Académico
+        </button>
+        <div class="academic-level-results">
+          <span>6 proyectos encontrados</span>
+        </div>
+      </div>
+
+      <!-- Level Filter Buttons -->
+      <div class="level-buttons">
+        <button class="level-btn active">Todos los niveles</button>
+        <button class="level-btn">1er año</button>
+        <button class="level-btn">3er año</button>
+        <button class="level-btn">6to ciclo</button>
+        <button class="level-btn">8vo ciclo</button>
+        <button class="level-btn">Tesis</button>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="projects-grid">
+        <!-- Project Card 1 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop" alt="EcoTrack">
+            <div class="project-level-badge">8vo ciclo</div>
+            <div class="project-views">
+              <i data-lucide="eye"></i>
+              <span>1252</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-rating">
+              <i data-lucide="star"></i>
+              <span>4.8</span>
+            </div>
+            <h3 class="project-title">EcoTrack - App de Sostenibilidad</h3>
+            <div class="project-meta">
+              <span>Por <strong>Ana Cristina L.</strong> • Universidad Nacional</span>
+            </div>
+            <p class="project-description">
+              Aplicación móvil que ayuda a usuarios a tracking su huella de carbono y sugiere actividades sostenibles personalizadas.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">React Native</span>
+              <span class="project-tag">Firebase</span>
+              <span class="project-tag">+2</span>
+            </div>
+            <a href="detalle-proyecto.html" class="project-button">
+              Ver Detalles del Proyecto <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop" alt="Sistema Hospitalario">
+            <div class="project-level-badge tesis">Tesis</div>
+            <div class="project-views">
+              <i data-lucide="eye"></i>
+              <span>980</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-rating">
+              <i data-lucide="star"></i>
+              <span>4.6</span>
+            </div>
+            <h3 class="project-title">Sistema de Gestión Hospitalaria</h3>
+            <div class="project-meta">
+              <span>Por <strong>Carlos M.</strong> • UTEC</span>
+            </div>
+            <p class="project-description">
+              Sistema integral para administración de pacientes, citas y historias clínicas en tiempo real.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Angular</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">+1</span>
+            </div>
+            <a href="detalle-proyecto.html" class="project-button">
+              Ver Detalles del Proyecto <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Calculadora Web">
+            <div class="project-level-badge primer-ano">1er año</div>
+            <div class="project-views">
+              <i data-lucide="eye"></i>
+              <span>450</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-rating">
+              <i data-lucide="star"></i>
+              <span>4.3</span>
+            </div>
+            <h3 class="project-title">Calculadora Básica Web</h3>
+            <div class="project-meta">
+              <span>Por <strong>Luis P.</strong> • UPC</span>
+            </div>
+            <p class="project-description">
+              Calculadora web interactiva con operaciones básicas. Primer proyecto del curso de Desarrollo Web.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+              <span class="project-tag">+1</span>
+            </div>
+            <a href="detalle-proyecto.html" class="project-button">
+              Ver Detalles del Proyecto <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 4 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=250&fit=crop" alt="Lista de Tareas">
+            <div class="project-level-badge tercer-ano">3er año</div>
+            <div class="project-views">
+              <i data-lucide="eye"></i>
+              <span>720</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-rating">
+              <i data-lucide="star"></i>
+              <span>4.5</span>
+            </div>
+            <h3 class="project-title">Lista de Tareas React</h3>
+            <div class="project-meta">
+              <span>Por <strong>María G.</strong> • Universidad Nacional</span>
+            </div>
+            <p class="project-description">
+              Aplicación de gestión de tareas con CRUD completo. Proyecto del curso de Ingeniería Web.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">LocalStorage</span>
+              <span class="project-tag">+1</span>
+            </div>
+            <a href="detalle-proyecto.html" class="project-button">
+              Ver Detalles del Proyecto <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 5 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop" alt="E-Learning">
+            <div class="project-level-badge">6to ciclo</div>
+            <div class="project-views">
+              <i data-lucide="eye"></i>
+              <span>1380</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-rating">
+              <i data-lucide="star"></i>
+              <span>4.9</span>
+            </div>
+            <h3 class="project-title">Plataforma E-Learning Interactiva</h3>
+            <div class="project-meta">
+              <span>Por <strong>José M.</strong> • UPC</span>
+            </div>
+            <p class="project-description">
+              Sistema de aprendizaje en línea con gamificación y tracking de progreso para instituciones educativas.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Vue.js</span>
+              <span class="project-tag">Laravel</span>
+              <span class="project-tag">+1</span>
+            </div>
+            <a href="detalle-proyecto.html" class="project-button">
+              Ver Detalles del Proyecto <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 6 -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop" alt="Sitio Personal">
+            <div class="project-level-badge primer-ano">1er año</div>
+            <div class="project-views">
+              <i data-lucide="eye"></i>
+              <span>320</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-rating">
+              <i data-lucide="star"></i>
+              <span>4.1</span>
+            </div>
+            <h3 class="project-title">Mi Primer Sitio Web</h3>
+            <div class="project-meta">
+              <span>Por <strong>Pedro R.</strong> • PUCP</span>
+            </div>
+            <p class="project-description">
+              Sitio web personal con página de inicio, sobre mí y contacto. Introducción a HTML y CSS.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML</span>
+              <span class="project-tag">CSS</span>
+            </div>
+            <a href="detalle-proyecto.html" class="project-button">
+              Ver Detalles del Proyecto <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras.html" class="bottom-nav-item active">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item ">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
