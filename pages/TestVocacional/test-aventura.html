@@ -10,6 +10,8 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
+  <!-- Modal Checkbox (hidden) -->
+  <input type="checkbox" id="exitModal" class="modal-checkbox" hidden>
 
   <!-- Mobile Header -->
   <header class="mobile-header">
@@ -76,10 +78,10 @@
       
       <!-- Header Section -->
       <div class="adventure-header">
-        <button class="btn-back" onclick="window.location.href='test-vocacional-seccion.html'">
+        <label for="exitModal" class="btn-back">
           <i data-lucide="x"></i>
           <span>Salir</span>
-        </button>
+        </label>
         
         <button class="btn-test-info">
           <i data-lucide="sparkles"></i>
@@ -245,6 +247,18 @@
         </div>
       </div>
 
+    </div>
+    <!-- Exit Modal -->
+    <div class="modal-overlay">
+      <div class="modal-content">
+        <h3 class="modal-title">¿Seguro que desea salir?</h3>
+        <p class="modal-text">Su progreso se perderá si decide salir sin guardar</p>
+        <div class="modal-actions">
+          <label for="exitModal" class="btn-modal-cancel">Cancelar</label>
+          <label for="exitModal" class="btn-modal-secondary">Guardar progreso</label>
+          <a href="test-vocacional-seccion.html" class="btn-modal-exit">Salir sin guardar</a>
+        </div>
+      </div>
     </div>
   </main>
 

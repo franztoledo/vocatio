@@ -10,6 +10,8 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
+  <!-- Modal Checkbox (hidden) -->
+  <input type="checkbox" id="exitModalForm" class="modal-checkbox" hidden>
 
   <!-- Mobile Header -->
   <header class="mobile-header">
@@ -219,9 +221,9 @@
 
         <!-- Form Actions -->
         <div class="form-actions">
-          <button type="button" class="btn-salir" onclick="window.location.href='test-vocacional-tradicional.html'">
+          <label for="exitModalForm" class="btn-salir">
             Salir
-          </button>
+          </label>
 
           <button type="button" class="btn-siguiente" onclick="window.location.href='resultados-test.html'">
             Siguiente
@@ -231,6 +233,18 @@
 
       </form>
 
+    </div>
+    <!-- Exit Modal -->
+    <div class="modal-overlay">
+      <div class="modal-content">
+        <h3 class="modal-title">¿Seguro que desea salir?</h3>
+        <p class="modal-text">Su progreso se perderá si decide salir sin guardar</p>
+        <div class="modal-actions">
+          <label for="exitModalForm" class="btn-modal-cancel">Cancelar</label>
+          <label for="exitModalForm" class="btn-modal-secondary">Guardar progreso</label>
+          <a href="test-vocacional-tradicional.html" class="btn-modal-exit">Salir sin guardar</a>
+        </div>
+      </div>
     </div>
   </main>
 
