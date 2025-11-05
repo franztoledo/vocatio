@@ -118,9 +118,9 @@
 
 .management-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-lg);
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -154,6 +154,10 @@
   background: linear-gradient(90deg, var(--neutral-500) 0%, var(--neutral-400) 100%);
 }
 
+.management-bar.purple {
+  background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 100%);
+}
+
 .management-content {
   padding: var(--spacing-lg);
   position: relative;
@@ -175,6 +179,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  margin-bottom: var(--spacing-md);
 }
 
 .management-icon i {
@@ -204,6 +209,14 @@
 
 .management-icon.gray i {
   color: var(--neutral-600);
+}
+
+.management-icon.purple {
+  background: #f3e8ff;
+}
+
+.management-icon.purple i {
+  color: #8b5cf6;
 }
 
 .management-badge {
@@ -252,134 +265,6 @@
 }
 
 /* ============================================
-   DASHBOARD INFO
-   ============================================ */
-.dashboard-info {
-  background: var(--white);
-  padding: var(--spacing-xxl) var(--spacing-sm);
-}
-
-.dashboard-box {
-  max-width: 1100px;
-  margin: 0 auto;
-  background: var(--primary-600);
-  padding: var(--spacing-xxl);
-  border-radius: var(--border-radius-xl);
-  color: var(--white);
-  text-align: center;
-}
-
-.dashboard-title {
-  font-size: 24px;
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-sm);
-}
-
-.dashboard-subtitle {
-  font-size: var(--font-size-text);
-  opacity: 0.95;
-  margin-bottom: var(--spacing-lg);
-  line-height: 1.6;
-}
-
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
-}
-
-.dashboard-card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: var(--spacing-lg);
-  border-radius: var(--border-radius-lg);
-  text-align: left;
-}
-
-.dashboard-card-title {
-  font-size: 16px;
-  font-weight: var(--font-weight-semibold);
-  margin-bottom: var(--spacing-sm);
-}
-
-.dashboard-card-desc {
-  font-size: var(--font-size-small);
-  opacity: 0.9;
-  line-height: 1.5;
-}
-
-.btn-configure {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--white);
-  color: var(--primary-600);
-  padding: 12px 28px;
-  border-radius: var(--border-radius-lg);
-  font-size: var(--font-size-text);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
-  transition: all var(--transition-fast);
-}
-
-.btn-configure:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-}
-
-.btn-configure i {
-  width: 16px;
-  height: 16px;
-}
-
-/* ============================================
-   REPORT SECTION
-   ============================================ */
-.report-section {
-  background: var(--neutral-50);
-  padding: var(--spacing-xxl) var(--spacing-sm);
-}
-
-.report-box {
-  max-width: 1000px;
-  margin: 0 auto;
-  background: var(--white);
-  padding: var(--spacing-xxl);
-  border-radius: var(--border-radius-xl);
-  border: 2px solid var(--primary-200);
-  text-align: center;
-}
-
-.report-title {
-  font-size: 20px;
-  font-weight: var(--font-weight-bold);
-  color: var(--neutral-900);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: var(--spacing-lg);
-}
-
-.btn-report {
-  display: inline-block;
-  background: var(--primary-700);
-  color: var(--white);
-  padding: 12px 32px;
-  border-radius: var(--border-radius-lg);
-  font-size: var(--font-size-text);
-  font-weight: var(--font-weight-semibold);
-  text-decoration: none;
-  transition: all var(--transition-fast);
-  box-shadow: 0 4px 12px rgba(0, 91, 117, 0.3);
-}
-
-.btn-report:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 91, 117, 0.4);
-}
-
-/* ============================================
    RESPONSIVE
    ============================================ */
 @media (min-width: 768px) {
@@ -388,13 +273,9 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .management-cards {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .dashboard-grid {
-    grid-template-columns: 1fr;
   }
 }
 
@@ -416,13 +297,5 @@
 
   .management-cards {
     grid-template-columns: 1fr;
-  }
-
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .report-title {
-    font-size: 18px;
   }
 }
