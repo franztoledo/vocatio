@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar por Palabras Clave - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/search-bar.css">
+  <link rel="stylesheet" href="components/career-card.css">
+  <link rel="stylesheet" href="components/buscador-palabras-clave.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">OV</div>
+      <span class="logo-text-small">OrientaVocacional</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">OV</div>
+        <span class="logo-text">OrientaVocacional</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../../index.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="#" class="nav-link active">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="breadcrumb-container">
+      <a href="../../index.html" class="breadcrumb-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="explorar-carreras-seccion.html" class="breadcrumb-link">
+        <i data-lucide="search"></i>
+        <span>Explorar Carreras</span>
+      </a>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current">Buscar por Palabras Clave</span>
+    </div>
+  </div>
+
+  <!-- Hero Section - Search Bar Component -->
+  <section class="search-hero">
+    <div class="search-hero-content">
+      <a href="explorar-carreras-seccion.html" class="search-back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver</span>
+      </a>
+
+      <div class="search-header">
+        <i data-lucide="search" class="search-header-icon"></i>
+        <h1 class="search-header-title">Buscar por Palabras Clave</h1>
+        <p class="search-header-subtitle">Encuentra carreras relacionadas con tus intereses y habilidades</p>
+      </div>
+
+      <!-- Search Form -->
+      <form class="search-form" id="searchForm">
+        <input 
+          type="text" 
+          class="search-form-input" 
+          placeholder="creatividad"
+          id="searchKeyword"
+          required
+        >
+        <button type="submit" class="search-form-button">Buscar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="search-results-section">
+    <div class="container">
+      <!-- Results Info -->
+      <div class="search-results-info">
+        <div class="results-info-left">
+          <i data-lucide="check-circle"></i>
+          <span class="results-count">Encontramos 4 carreras</span>
+        </div>
+        <div class="results-info-right">
+          <span class="results-keyword">Relacionadas con: <strong>"creatividad"</strong></span>
+        </div>
+      </div>
+
+      <!-- Results Grid usando Career Card Component -->
+      <div class="careers-results-grid">
+        <!-- Career Card 1 -->
+        <div class="career-card">
+          <div class="career-card-image">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop" alt="Ingeniería de Software">
+          </div>
+          <div class="career-card-body">
+            <div class="career-card-header">
+              <h3 class="career-card-title">Ingeniería de Software</h3>
+              <span class="career-match-badge">1 coincidencia</span>
+            </div>
+
+            <div class="career-card-category">
+              <span class="category-badge">Tecnología</span>
+            </div>
+
+            <div class="career-card-keywords">
+              <p class="keywords-label">Palabras relacionadas:</p>
+              <div class="keywords-container">
+                <span class="keyword-tag">programación</span>
+                <span class="keyword-tag">tecnología</span>
+                <span class="keyword-tag">computadoras</span>
+                <span class="keyword-tag">lógica</span>
+              </div>
+            </div>
+
+            <a href="#" class="career-card-button">Ver Detalles <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Career Card 2 -->
+        <div class="career-card">
+          <div class="career-card-image">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Diseño Gráfico">
+          </div>
+          <div class="career-card-body">
+            <div class="career-card-header">
+              <h3 class="career-card-title">Diseño Gráfico</h3>
+              <span class="career-match-badge">1 coincidencia</span>
+            </div>
+
+            <div class="career-card-category">
+              <span class="category-badge">Arte y Diseño</span>
+            </div>
+
+            <div class="career-card-keywords">
+              <p class="keywords-label">Palabras relacionadas:</p>
+              <div class="keywords-container">
+                <span class="keyword-tag">creatividad</span>
+                <span class="keyword-tag">arte</span>
+                <span class="keyword-tag">visual</span>
+                <span class="keyword-tag">dibujo</span>
+              </div>
+            </div>
+
+            <a href="#" class="career-card-button">Ver Detalles <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Career Card 3 -->
+        <div class="career-card">
+          <div class="career-card-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Marketing Digital">
+          </div>
+          <div class="career-card-body">
+            <div class="career-card-header">
+              <h3 class="career-card-title">Marketing Digital</h3>
+              <span class="career-match-badge">1 coincidencia</span>
+            </div>
+
+            <div class="career-card-category">
+              <span class="category-badge">Negocios</span>
+            </div>
+
+            <div class="career-card-keywords">
+              <p class="keywords-label">Palabras relacionadas:</p>
+              <div class="keywords-container">
+                <span class="keyword-tag">creatividad</span>
+                <span class="keyword-tag">comunicación</span>
+                <span class="keyword-tag">redes sociales</span>
+                <span class="keyword-tag">tecnología</span>
+              </div>
+            </div>
+
+            <a href="#" class="career-card-button">Ver Detalles <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Career Card 4 -->
+        <div class="career-card">
+          <div class="career-card-image">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="Arquitectura">
+          </div>
+          <div class="career-card-body">
+            <div class="career-card-header">
+              <h3 class="career-card-title">Arquitectura</h3>
+              <span class="career-match-badge">1 coincidencia</span>
+            </div>
+
+            <div class="career-card-category">
+              <span class="category-badge">Arte y Diseño</span>
+            </div>
+
+            <div class="career-card-keywords">
+              <p class="keywords-label">Palabras relacionadas:</p>
+              <div class="keywords-container">
+                <span class="keyword-tag">diseño</span>
+                <span class="keyword-tag">creatividad</span>
+                <span class="keyword-tag">matemáticas</span>
+                <span class="keyword-tag">espacios</span>
+              </div>
+            </div>
+
+            <a href="#" class="career-card-button">Ver Detalles <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../../index.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="#" class="bottom-nav-item active">
+      <i data-lucide="bookmark"></i>
+    </a>
+    <a href="#" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="#" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="#" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+    
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const keyword = document.getElementById('searchKeyword').value;
+      console.log('Buscando:', keyword);
+    });
+  </script>
+
+</body>
+</html>
