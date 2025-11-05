@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-card wide">
+            <div class="header-banner">
+                <h1 class="banner-title">Último paso a completar!</h1>
+                <p class="banner-subtitle">Rellena el perfil de usuario y listo!</p>
+            </div>
+            
+            <h2 class="form-title">Perfil de usuario</h2>
+            
+            <form class="form" action="success.html">
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Nombre completo" value="María Alejandra">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="date" class="form-input" placeholder="Fecha de nacimiento" value="2005-02-14">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Apellidos" value="María G.">
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Nivel de estudios">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Email" value="mjguiterrez@yahoo.es" readonly>
+                </div>
+                
+                <div class="upload-section">
+                    <label class="upload-label">
+                        <span class="upload-text">Subir foto de perfil (opcional)</span>
+                        <input type="file" class="upload-input" accept="image/*">
+                        <span class="upload-icon">📷</span>
+                    </label>
+                </div>
+                
+                <div class="form-actions space-between">
+                    <a href="login.html" class="btn btn-secondary">← Volver</a>
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
