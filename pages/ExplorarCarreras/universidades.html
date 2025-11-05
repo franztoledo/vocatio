@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universidades - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/universidades.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link active">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link ">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <div class="breadcrumb-container">
+      <a href="../../index.html" class="breadcrumb-link">
+        <i data-lucide="home"></i>
+        <span>Inicio</span>
+      </a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="explorar-carreras-seccion.html" class="breadcrumb-link">
+        <i data-lucide="search"></i>
+        <span>Explorar Carreras</span>
+      </a>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current">Universidades</span>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="uni-hero">
+    <div class="uni-hero-content">
+      <a href="explorar-carreras-seccion.html" class="uni-back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver al inicio</span>
+      </a>
+
+      <div class="uni-header">
+        <i data-lucide="building-2" class="uni-header-icon"></i>
+        <h1 class="uni-title">Universidades</h1>
+        <p class="uni-subtitle">6 universidades ofrecen esta carrera</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="uni-stats">
+        <div class="uni-stat-card">
+          <div class="stat-value">6</div>
+          <div class="stat-label">Universidades totales</div>
+        </div>
+        <div class="uni-stat-card">
+          <div class="stat-value">6</div>
+          <div class="stat-label">Resultados filtrados</div>
+        </div>
+        <div class="uni-stat-card">
+          <div class="stat-value">-</div>
+          <div class="stat-label">Acreditadas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="uni-content">
+    <div class="container">
+      <!-- Info Banner -->
+      <div class="info-banner">
+        <i data-lucide="lightbulb"></i>
+        <div>
+          <strong>Selecciona la carrera de tu interés</strong>
+          <p>Encuentra las mejores universidades que ofrecen la carrera que buscas</p>
+        </div>
+      </div>
+
+      <!-- Career Filter Dropdown -->
+      <div class="filter-section">
+        <label for="career-select" class="filter-label">Cambiar a otra carrera:</label>
+        <div class="filter-controls">
+          <select id="career-select" class="career-select">
+            <option value="ingenieria-software">Ingeniería de Software (7)</option>
+            <option value="medicina">Medicina (3)</option>
+            <option value="diseno-grafico">Diseño Gráfico (3)</option>
+            <option value="arquitectura">Arquitectura (5)</option>
+            <option value="administracion">Administración de Empresas (6)</option>
+            <option value="derecho">Derecho (4)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Additional Filters -->
+      <div class="additional-filters">
+        <div class="filters-row">
+          <div class="filter-group">
+            <label for="region-select">
+              <i data-lucide="map-pin"></i>
+              Región
+            </label>
+            <select id="region-select" class="filter-select">
+              <option value="">Seleccione</option>
+              <option value="lima">Lima</option>
+              <option value="arequipa">Arequipa</option>
+              <option value="trujillo">Trujillo</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="type-select">
+              <i data-lucide="filter"></i>
+              Tipo
+            </label>
+            <select id="type-select" class="filter-select">
+              <option value="">Seleccione</option>
+              <option value="privada">Privada</option>
+              <option value="publica">Pública</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="budget-select">
+              <i data-lucide="dollar-sign"></i>
+              Presupuesto
+            </label>
+            <select id="budget-select" class="filter-select">
+              <option value="">Seleccione</option>
+              <option value="0-500">$0 - $500</option>
+              <option value="500-1000">$500 - $1000</option>
+              <option value="1000">$1000+</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Universities List -->
+      <div class="universities-list">
+        <!-- University Card 1 -->
+        <div class="university-card">
+          <div class="uni-card-image">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=250&fit=crop" alt="UPC">
+          </div>
+          <div class="uni-card-content">
+            <div class="uni-card-header">
+              <div>
+                <h3 class="uni-card-title">Universidad Peruana de Ciencias Aplicadas (UPC)</h3>
+                <div class="uni-accreditation">
+                  <span class="accredit-badge">
+                    <i data-lucide="check-circle"></i>
+                    Acreditada SUNEDU
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="uni-details">
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="tag"></i>
+                  Tipo
+                </span>
+                <span class="detail-value">
+                  <span class="type-badge privada">Privada</span>
+                  <span class="location-badge">
+                    <i data-lucide="map-pin"></i>
+                    Villa / San Isidro
+                  </span>
+                </span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="dollar-sign"></i>
+                  Costo mensual
+                </span>
+                <span class="detail-value">$800/mes</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="clock"></i>
+                  Duración
+                </span>
+                <span class="detail-value">5 años</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="star"></i>
+                  Rating
+                </span>
+                <span class="detail-value">4.7/5</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="trending-up"></i>
+                  Empleabilidad
+                </span>
+                <span class="detail-value">92% empleabilidad</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="laptop"></i>
+                  Modalidades
+                </span>
+                <span class="detail-value">Presencial, Semipresencial, Virtual</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="calendar"></i>
+                  Próximo examen
+                </span>
+                <span class="detail-value">Nov 2024</span>
+              </div>
+            </div>
+
+            <div class="uni-actions">
+              <a href="detalle-universidad.html" class="btn-secondary">Ver Detalles</a>
+              <a href="#" class="btn-outline">Contactar</a>
+              <a href="#" class="btn-outline">
+                <i data-lucide="map-pin"></i>
+                Ubicación
+              </a>
+              <a href="#" class="btn-outline">
+                <i data-lucide="external-link"></i>
+                Web oficial
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- University Card 2 -->
+        <div class="university-card">
+          <div class="uni-card-image">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop" alt="UNMSM">
+          </div>
+          <div class="uni-card-content">
+            <div class="uni-card-header">
+              <div>
+                <h3 class="uni-card-title">Universidad Nacional Mayor de San Marcos (UNMSM)</h3>
+                <div class="uni-accreditation">
+                  <span class="accredit-badge">
+                    <i data-lucide="check-circle"></i>
+                    Acreditada SUNEDU
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="uni-details">
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="tag"></i>
+                  Tipo
+                </span>
+                <span class="detail-value">
+                  <span class="type-badge nacional">Nacional</span>
+                  <span class="location-badge">
+                    <i data-lucide="map-pin"></i>
+                    Ciudad Universitaria
+                  </span>
+                </span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="dollar-sign"></i>
+                  Costo mensual
+                </span>
+                <span class="detail-value">$50/mes</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="clock"></i>
+                  Duración
+                </span>
+                <span class="detail-value">5 años</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="star"></i>
+                  Rating
+                </span>
+                <span class="detail-value">4.5/5</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="trending-up"></i>
+                  Empleabilidad
+                </span>
+                <span class="detail-value">88% empleabilidad</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="laptop"></i>
+                  Modalidades
+                </span>
+                <span class="detail-value">Presencial</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="calendar"></i>
+                  Próximo examen
+                </span>
+                <span class="detail-value">Nov 2024</span>
+              </div>
+            </div>
+
+            <div class="uni-actions">
+              <a href="detalle-universidad.html" class="btn-secondary">Ver Detalles</a>
+              <a href="#" class="btn-outline">Contactar</a>
+              <a href="#" class="btn-outline">
+                <i data-lucide="map-pin"></i>
+                Ubicación
+              </a>
+              <a href="#" class="btn-outline">
+                <i data-lucide="external-link"></i>
+                Web oficial
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- University Card 3 -->
+        <div class="university-card">
+          <div class="uni-card-image">
+            <img src="https://images.unsplash.com/photo-1541339907198-e06367411e42?w=400&h=250&fit=crop" alt="UTP">
+          </div>
+          <div class="uni-card-content">
+            <div class="uni-card-header">
+              <div>
+                <h3 class="uni-card-title">Universidad Tecnológica del Perú (UTP)</h3>
+                <div class="uni-accreditation">
+                  <span class="accredit-badge">
+                    <i data-lucide="check-circle"></i>
+                    Acreditada SUNEDU
+                  </span>
+                  <span class="accredit-badge warning">
+                    <i data-lucide="alert-circle"></i>
+                    Información parcial
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="uni-details">
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="tag"></i>
+                  Tipo
+                </span>
+                <span class="detail-value">
+                  <span class="type-badge privada">Privada</span>
+                  <span class="location-badge">
+                    <i data-lucide="map-pin"></i>
+                    Lima Centro
+                  </span>
+                </span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="dollar-sign"></i>
+                  Costo mensual
+                </span>
+                <span class="detail-value">$650/mes</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="clock"></i>
+                  Duración
+                </span>
+                <span class="detail-value">5 años</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="star"></i>
+                  Rating
+                </span>
+                <span class="detail-value">4.2/5</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="trending-up"></i>
+                  Empleabilidad
+                </span>
+                <span class="detail-value">85% empleabilidad</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="laptop"></i>
+                  Modalidades
+                </span>
+                <span class="detail-value">Presencial, Virtual</span>
+              </div>
+
+              <div class="detail-row">
+                <span class="detail-label">
+                  <i data-lucide="calendar"></i>
+                  Próximo examen
+                </span>
+                <span class="detail-value">Nov 2024</span>
+              </div>
+            </div>
+
+            <div class="uni-actions">
+              <a href="detalle-universidad.html" class="btn-secondary">Ver Detalles</a>
+              <a href="#" class="btn-outline">Contactar</a>
+              <a href="#" class="btn-outline">
+                <i data-lucide="map-pin"></i>
+                Ubicación
+              </a>
+              <a href="#" class="btn-outline">
+                <i data-lucide="external-link"></i>
+                Web oficial
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras.html" class="bottom-nav-item active">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item ">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
