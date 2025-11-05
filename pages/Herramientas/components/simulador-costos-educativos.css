@@ -1,0 +1,954 @@
+/* ============================================
+   PAGE LAYOUT
+   ============================================ */
+.page-container {
+  background: var(--neutral-50);
+  padding: var(--spacing-xxl) var(--spacing-sm);
+  min-height: calc(100vh - 300px);
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.page-title {
+  font-size: 36px;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-700);
+  margin: 0 0 var(--spacing-sm) 0;
+  line-height: 1.2;
+}
+
+.page-subtitle {
+  font-size: var(--font-size-base);
+  color: var(--primary-400);
+  margin: 0;
+}
+
+/* ============================================
+   BACK BUTTON
+   ============================================ */
+.back-button-wrapper {
+  margin-bottom: var(--spacing-lg);
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-600);
+  text-decoration: none;
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-semibold);
+  transition: all var(--transition-fast);
+}
+
+.back-button:hover {
+  gap: 10px;
+  color: var(--primary-700);
+}
+
+.back-button i {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+   CONFIG FORM - PAGE 1
+   ============================================ */
+.config-form-wrapper {
+  background: var(--white);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xxl);
+  box-shadow: var(--shadow-card);
+  max-width: 1100px;
+  margin: 0 auto var(--spacing-lg);
+}
+
+.config-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.column-title {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-700);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--primary-300);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-900);
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-input {
+  padding: 12px 16px;
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-text);
+  font-family: inherit;
+  background: var(--white);
+  color: var(--neutral-900);
+  transition: all var(--transition-fast);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-600);
+  box-shadow: 0 0 0 3px rgba(51, 148, 179, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--neutral-400);
+}
+
+/* Expenses Box */
+.expenses-box {
+  background: linear-gradient(135deg, var(--primary-50), #E0F7FF);
+  border: 2px solid var(--primary-300);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-lg);
+}
+
+.expenses-title {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-700);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+/* Info Banner */
+.info-banner {
+  background: linear-gradient(135deg, var(--primary-50), #E0F7FF);
+  border-left: 4px solid var(--primary-600);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.info-banner i {
+  width: 20px;
+  height: 20px;
+  color: var(--primary-600);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.info-title {
+  font-size: 14px;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-700);
+  margin: 0 0 var(--spacing-sm) 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-title i {
+  width: 16px;
+  height: 16px;
+}
+
+.info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.info-list li {
+  font-size: var(--font-size-small);
+  color: var(--primary-700);
+  margin: 0;
+  padding: 0;
+}
+
+.info-list li::before {
+  content: '•';
+  margin-right: 8px;
+  color: var(--primary-600);
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border: none;
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary-600);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(51, 148, 179, 0.3);
+}
+
+.btn-secondary {
+  background: var(--neutral-100);
+  color: var(--neutral-700);
+  border: 1px solid var(--neutral-300);
+}
+
+.btn-secondary:hover {
+  background: var(--neutral-200);
+}
+
+.btn-primary i,
+.btn-secondary i {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+   RESULTS GRID - PAGE 2
+   ============================================ */
+.results-grid {
+  background: var(--white);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xxl);
+  box-shadow: var(--shadow-card);
+  max-width: 1100px;
+  margin: 0 auto var(--spacing-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+}
+
+.results-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.config-column .column-title {
+  border-bottom: 2px solid var(--neutral-200);
+}
+
+.breakdown-column .column-title {
+  background: linear-gradient(135deg, var(--primary-50), #E0F7FF);
+  color: var(--primary-700);
+  padding: var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+}
+
+/* Param Items */
+.param-item {
+  background: var(--neutral-50);
+  border-left: 4px solid var(--primary-600);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.param-label {
+  font-size: var(--font-size-small);
+  color: var(--primary-600);
+  font-weight: var(--font-weight-bold);
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.param-value {
+  font-size: var(--font-size-base);
+  color: var(--neutral-900);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+}
+
+/* Cost Rows */
+.cost-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.cost-row:last-of-type {
+  border-bottom: none;
+}
+
+.cost-label {
+  font-size: var(--font-size-text);
+  color: var(--neutral-700);
+  font-weight: var(--font-weight-semibold);
+}
+
+.cost-value {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-600);
+}
+
+/* Total Cost Box */
+.total-cost-box {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
+  color: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-md);
+}
+
+.total-label {
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-semibold);
+}
+
+.total-value {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+}
+
+/* Results Actions */
+.results-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   FINANCING PAGE - PAGE 3
+   ============================================ */
+
+/* Cost Banner */
+.cost-banner {
+  background: linear-gradient(135deg, var(--primary-50), #E0F7FF);
+  border: 2px solid var(--primary-300);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-lg);
+  max-width: 1100px;
+  margin: 0 auto var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.cost-banner i {
+  width: 32px;
+  height: 32px;
+  color: var(--primary-600);
+  flex-shrink: 0;
+}
+
+.cost-banner-amount {
+  font-size: var(--font-size-base);
+  color: var(--neutral-900);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.cost-banner-desc {
+  font-size: var(--font-size-small);
+  color: var(--primary-700);
+  margin: 0;
+}
+
+/* Financing Grid */
+.financing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+  max-width: 1100px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.financing-column {
+  background: var(--white);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.financing-column .column-title {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-700);
+  margin: 0 0 var(--spacing-md) 0;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--primary-300);
+}
+
+/* Scholarship Cards */
+.scholarship-card {
+  background: linear-gradient(135deg, var(--primary-50), #E0F7FF);
+  border: 2px solid var(--primary-300);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  transition: all var(--transition-fast);
+}
+
+.scholarship-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(51, 148, 179, 0.2);
+}
+
+.scholarship-name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-700);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.scholarship-requirement {
+  font-size: var(--font-size-small);
+  color: var(--primary-600);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.scholarship-discount {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.percentage {
+  background: var(--primary-600);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: var(--border-radius-lg);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-small);
+}
+
+.scholarship-savings {
+  font-size: var(--font-size-text);
+  color: var(--neutral-800);
+  margin: 0;
+}
+
+/* Credit Cards */
+.credit-card {
+  background: var(--white);
+  border: 2px solid var(--neutral-300);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  transition: all var(--transition-fast);
+}
+
+.credit-card:hover {
+  border-color: var(--primary-600);
+  box-shadow: 0 4px 12px rgba(51, 148, 179, 0.1);
+}
+
+.credit-name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-700);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.credit-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.credit-info p {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  font-size: var(--font-size-text);
+}
+
+.info-label {
+  color: var(--neutral-600);
+  font-weight: var(--font-weight-semibold);
+}
+
+.info-value {
+  color: var(--primary-700);
+  font-weight: var(--font-weight-bold);
+}
+
+/* ============================================
+   MIXED PLAN SECTION
+   ============================================ */
+.mixed-plan-section {
+  background: var(--white);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-card);
+  max-width: 1100px;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-700);
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+.mixed-plan-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.mixed-card {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-500));
+  color: var(--white);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+.mixed-amount {
+  font-size: 24px;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.mixed-desc {
+  font-size: var(--font-size-text);
+  opacity: 0.9;
+  margin: 0;
+}
+
+.mixed-plan-details {
+  background: linear-gradient(135deg, var(--primary-50), #E0F7FF);
+  border-left: 4px solid var(--primary-600);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.mixed-plan-details > p {
+  font-size: var(--font-size-base);
+  color: var(--neutral-900);
+  margin: 0 0 var(--spacing-md) 0;
+  font-weight: var(--font-weight-semibold);
+}
+
+.mixed-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.mixed-list li {
+  font-size: var(--font-size-text);
+  color: var(--neutral-700);
+  margin: 0;
+  padding-left: 24px;
+  position: relative;
+}
+
+.mixed-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--primary-600);
+  font-weight: bold;
+}
+
+/* Financing Actions */
+.financing-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET
+   ============================================ */
+@media (max-width: 1024px) {
+  .config-form {
+    grid-template-columns: 1fr;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .financing-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mixed-plan-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  .page-container {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .config-form-wrapper,
+  .results-grid,
+  .mixed-plan-section {
+    padding: var(--spacing-lg);
+  }
+
+  .column-title {
+    font-size: 14px;
+  }
+
+  .form-label {
+    font-size: var(--font-size-small);
+  }
+
+  .form-input {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .expenses-box {
+    padding: var(--spacing-md);
+  }
+
+  .info-banner {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .cost-row {
+    padding: 10px 0;
+  }
+
+  .total-cost-box {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+
+  .scholarship-card,
+  .credit-card {
+    padding: var(--spacing-sm);
+  }
+
+  .scholarship-name,
+  .credit-name {
+    font-size: var(--font-size-text);
+  }
+
+  .mixed-plan-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .mixed-amount {
+    font-size: 18px;
+  }
+
+  .section-title {
+    font-size: 16px;
+  }
+
+  .financing-actions {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - SMALL MOBILE
+   ============================================ */
+@media (max-width: 480px) {
+  .page-container {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  .page-subtitle {
+    font-size: var(--font-size-small);
+  }
+
+  .config-form-wrapper,
+  .results-grid,
+  .mixed-plan-section {
+    padding: var(--spacing-md);
+  }
+
+  .config-form {
+    gap: var(--spacing-md);
+  }
+
+  .column-title {
+    font-size: 12px;
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .form-label {
+    font-size: 12px;
+  }
+
+  .form-input {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .param-item {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .param-label {
+    font-size: 10px;
+  }
+
+  .param-value {
+    font-size: var(--font-size-text);
+  }
+
+  .cost-label,
+  .cost-value {
+    font-size: var(--font-size-small);
+  }
+
+  .total-cost-box {
+    padding: var(--spacing-md);
+  }
+
+  .total-label {
+    font-size: var(--font-size-small);
+  }
+
+  .total-value {
+    font-size: 18px;
+  }
+
+  .cost-banner {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+  }
+
+  .cost-banner i {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cost-banner-amount {
+    font-size: var(--font-size-small);
+  }
+
+  .cost-banner-desc {
+    font-size: 10px;
+  }
+
+  .scholarship-card,
+  .credit-card {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .scholarship-name,
+  .credit-name {
+    font-size: var(--font-size-small);
+  }
+
+  .scholarship-requirement,
+  .info-label {
+    font-size: 10px;
+  }
+
+  .credit-info p {
+    font-size: var(--font-size-small);
+  }
+
+  .mixed-amount {
+    font-size: 16px;
+  }
+
+  .mixed-desc {
+    font-size: 12px;
+  }
+
+  .section-title {
+    font-size: 14px;
+  }
+
+  .mixed-plan-details {
+    padding: var(--spacing-md);
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+
+/* ============================================
+   EXPENSES SECTION - NUEVA
+   ============================================ */
+.expenses-section {
+  border-top: 2px solid var(--neutral-200);
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: var(--font-weight-bold);
+  color: var(--neutral-900);
+  margin: 0 0 var(--spacing-lg) 0;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--primary-300);
+}
+
+.expenses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Form Select */
+.form-select {
+  padding: 12px 16px;
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-text);
+  font-family: inherit;
+  background: var(--white);
+  color: var(--neutral-900);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 40px;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: var(--primary-600);
+  box-shadow: 0 0 0 3px rgba(51, 148, 179, 0.1);
+}
+
+.form-select option {
+  background: var(--white);
+  color: var(--neutral-900);
+  padding: 10px;
+}
+
+.form-select option:checked {
+  background: linear-gradient(135deg, var(--primary-600), var(--primary-500));
+  color: var(--white);
+}
+
+/* ============================================
+   RESPONSIVE - EXPENSES GRID
+   ============================================ */
+@media (max-width: 1024px) {
+  .expenses-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .expenses-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .section-title {
+    font-size: 14px;
+  }
+
+  .form-select {
+    padding: 10px 12px;
+    padding-right: 35px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .expenses-section {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+  }
+
+  .section-title {
+    font-size: 12px;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .expenses-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .form-select {
+    padding: 8px 10px;
+    padding-right: 30px;
+    font-size: 12px;
+    background-size: 16px;
+  }
+}
