@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Perfil y Ayuda - OrientaVocacional</title>
+  <title>Mi Perfil - OrientaVocacional</title>
   <link rel="stylesheet" href="../../styles/global.css">
   <link rel="stylesheet" href="../../styles/style.css">
   <link rel="stylesheet" href="perfil-seccion.css">
@@ -42,9 +42,9 @@
         </a>
         <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
           <i data-lucide="clipboard-list"></i>
-          <span>Herramientas de Planificación</span>
+          <span>Herramientas</span>
         </a>
-        <a href="perfil-seccion.html" class="nav-link active">
+        <a href="../Perfil/perfil-seccion.html" class="nav-link active">
           <i data-lucide="user"></i>
           <span>Mi Perfil</span>
         </a>
@@ -105,16 +105,16 @@
       <h2 class="section-title">Gestión de cuenta</h2>
 
       <div class="management-cards">
-        <!-- Mi Perfil -->
+        <!-- Dashboard Personal -->
         <div class="management-card">
           <div class="management-bar blue"></div>
           <div class="management-content">
             <div class="management-icon blue">
-              <i data-lucide="user"></i>
+              <i data-lucide="layout-dashboard"></i>
             </div>
-            <h3 class="management-title">Mi Perfil</h3>
-            <p class="management-desc">Gestiona tu información personal, educativa y preferencias vocacionales</p>
-            <a href="#" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
+            <h3 class="management-title">Dashboard Personal</h3>
+            <p class="management-desc">Toda tu información personal está articulada con encriptación</p>
+            <a href="dashboard-personal.html" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
           </div>
         </div>
 
@@ -130,7 +130,7 @@
             </div>
             <h3 class="management-title">Recursos Recomendados</h3>
             <p class="management-desc">Accede a materiales educativos personalizados según tu perfil</p>
-            <a href="#" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
+            <a href="recursos-recomendados.html" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
           </div>
         </div>
 
@@ -141,57 +141,24 @@
             <div class="management-icon gray">
               <i data-lucide="settings"></i>
             </div>
-            <h3 class="management-title">Configuración</h3>
-            <p class="management-desc">Personaliza la aplicación, privacidad y preferencias de notificaciones</p>
-            <a href="#" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Dashboard Info -->
-  <section class="dashboard-info">
-    <div class="container">
-      <div class="dashboard-box">
-        <h2 class="dashboard-title">Dashboard Principal</h2>
-        <p class="dashboard-subtitle">Tu información está protegida y puedes controlar qué datos compartes</p>
-
-        <div class="dashboard-grid">
-          <div class="dashboard-card">
-            <h4 class="dashboard-card-title">Dashboard Personal</h4>
-            <p class="dashboard-card-desc">Toda tu información personal está articulada con encriptación</p>
-          </div>
-
-          <div class="dashboard-card">
-            <h4 class="dashboard-card-title">Progreso Académico</h4>
-            <p class="dashboard-card-desc">Decide qué información es visible para otros usuarios</p>
-          </div>
-
-          <div class="dashboard-card">
-            <h4 class="dashboard-card-title">Recomendaciones Personalizadas</h4>
-            <p class="dashboard-card-desc">Todos los chats y mensajes son privados y seguros</p>
-          </div>
-
-          <div class="dashboard-card">
-            <h4 class="dashboard-card-title">Actividad Reciente</h4>
-            <p class="dashboard-card-desc">Ajusta tus preferencias en cualquier momento</p>
+            <h3 class="management-title">Configuración de Perfil</h3>
+            <p class="management-desc">Personaliza tu información personal, educativa y preferencias vocacionales</p>
+            <a href="configuracion-perfil.html" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
           </div>
         </div>
 
-        <a href="#" class="btn-configure">
-          Configurar privacidad <i data-lucide="arrow-right"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Report Section -->
-  <section class="report-section">
-    <div class="container">
-      <div class="report-box">
-        <h2 class="report-title">GENERA TU REPORTE VOCACIONAL CON TODA LA INFORMACIÓN QUE NECESITAS</h2>
-        <a href="#" class="btn-report">Generar Reporte</a>
+        <!-- Generar Reporte (NUEVA) -->
+        <div class="management-card">
+          <div class="management-bar purple"></div>
+          <div class="management-content">
+            <div class="management-icon purple">
+              <i data-lucide="file-text"></i>
+            </div>
+            <h3 class="management-title">Generar Reporte</h3>
+            <p class="management-desc">Genera tu reporte vocacional con toda la información que necesitas</p>
+            <a href="generar-reporte.html" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -254,7 +221,7 @@
     </div>
   </footer>
 
-  <!-- Mobile Bottom Nav -->
+  <!-- Mobile Bottom Navigation -->
   <nav class="bottom-nav">
     <a href="../inicio.html" class="bottom-nav-item">
       <i data-lucide="home"></i>
@@ -268,7 +235,7 @@
     <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
       <i data-lucide="clipboard-list"></i>
     </a>
-    <a href="perfil-seccion.html" class="bottom-nav-item active">
+    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item active">
       <i data-lucide="user"></i>
     </a>
   </nav>
