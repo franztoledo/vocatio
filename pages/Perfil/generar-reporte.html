@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Perfil - OrientaVocacional</title>
+  <title>Configurar Reporte Vocacional - OrientaVocacional</title>
   <link rel="stylesheet" href="../../styles/global.css">
   <link rel="stylesheet" href="../../styles/style.css">
-  <link rel="stylesheet" href="perfil-seccion.css">
+  <link rel="stylesheet" href="components/generar-reporte.css">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
@@ -61,105 +61,135 @@
           <span>Inicio</span>
         </a>
         <span class="breadcrumb-separator">/</span>
-        <span class="breadcrumb-current">Mi Perfil y Ayuda</span>
+        <a href="perfil-seccion.html" class="breadcrumb-link">
+          <span>Mi Perfil</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Generar Reporte</span>
       </div>
     </div>
   </nav>
 
-  <!-- Profile Header -->
-  <section class="profile-hero">
-    <div class="profile-hero-container">
-      <a href="../inicio.html" class="back-link">
+  <!-- Report Config Header -->
+  <section class="report-header">
+    <div class="container">
+      <a href="perfil-seccion.html" class="back-link">
         <i data-lucide="arrow-left"></i>
-        <span>Volver al Inicio</span>
+        <span>Volver al inicio</span>
       </a>
-
-      <div class="profile-hero-header">
-        <div class="profile-avatar">MG</div>
-        <div class="profile-info">
-          <h1 class="profile-title">Mi Perfil y Ayuda</h1>
-          <p class="profile-name">Bienvenida, María González</p>
-        </div>
-      </div>
-
-      <div class="profile-stats">
-        <div class="profile-stat">
-          <div class="profile-stat-value">85%</div>
-          <div class="profile-stat-label">Perfil completado</div>
-        </div>
-        <div class="profile-stat">
-          <div class="profile-stat-value">3</div>
-          <div class="profile-stat-label">Tests realizados</div>
-        </div>
-        <div class="profile-stat">
-          <div class="profile-stat-value">12</div>
-          <div class="profile-stat-label">Carreras exploradas</div>
-        </div>
-      </div>
+      
+      <h1 class="report-main-title">Configurar Reporte Vocacional</h1>
+      <p class="report-subtitle">Personaliza tu reporte con tus resultados y recomendaciones</p>
     </div>
   </section>
 
-  <!-- Account Management -->
-  <section class="account-management">
+  <!-- Report Content -->
+  <section class="report-content">
     <div class="container">
-      <h2 class="section-title">Gestión de cuenta</h2>
-
-      <div class="management-cards">
-        <!-- Dashboard Personal -->
-        <div class="management-card">
-          <div class="management-bar blue"></div>
-          <div class="management-content">
-            <div class="management-icon blue">
-              <i data-lucide="layout-dashboard"></i>
-            </div>
-            <h3 class="management-title">Dashboard Personal</h3>
-            <p class="management-desc">Toda tu información personal está articulada con encriptación</p>
-            <a href="dashboard-personal.html" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
-          </div>
+      
+      <!-- What's Included Box -->
+      <div class="info-box">
+        <div class="info-icon">
+          <i data-lucide="paperclip"></i>
         </div>
-
-        <!-- Recursos Recomendados -->
-        <div class="management-card">
-          <div class="management-bar green"></div>
-          <div class="management-content">
-            <div class="management-header-row">
-              <div class="management-icon green">
-                <i data-lucide="book-open"></i>
-              </div>
-              <div class="management-badge">24 recursos</div>
-            </div>
-            <h3 class="management-title">Recursos Recomendados</h3>
-            <p class="management-desc">Accede a materiales educativos personalizados según tu perfil</p>
-            <a href="recursos-recomendados.html" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Configuración -->
-        <div class="management-card">
-          <div class="management-bar gray"></div>
-          <div class="management-content">
-            <div class="management-icon gray">
-              <i data-lucide="settings"></i>
-            </div>
-            <h3 class="management-title">Configuración de Perfil</h3>
-            <p class="management-desc">Personaliza tu información personal, educativa y preferencias vocacionales</p>
-            <a href="configuracion-perfil.html" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Generar Reporte (NUEVA) -->
-        <div class="management-card">
-          <div class="management-bar purple"></div>
-          <div class="management-content">
-            <div class="management-icon purple">
-              <i data-lucide="file-text"></i>
-            </div>
-            <h3 class="management-title">Generar Reporte</h3>
-            <p class="management-desc">Genera tu reporte vocacional con toda la información que necesitas</p>
-            <a href="generar-reporte.html" class="management-link">Acceder <i data-lucide="arrow-right"></i></a>
-          </div>
+        <div class="info-content">
+          <h3 class="info-title">¿Qué incluye tu reporte?</h3>
+          <ul class="info-list">
+            <li>Resultados detallados de tu test vocacional</li>
+            <li>Lista personalizada de carreras recomendadas</li>
+            <li>Análisis de compatibilidad por áreas</li>
+            <li>Universidades sugeridas para cada carrera</li>
+            <li>Plan de acción personalizado</li>
+          </ul>
         </div>
       </div>
+
+      <!-- Configuration Form -->
+      <form class="report-form">
+        
+        <!-- Report Title -->
+        <div class="form-row">
+          <div class="form-column">
+            <label class="form-label">Título del reporte</label>
+            <input type="text" class="form-input" value="Mi Reporte Vocacional Personal">
+          </div>
+          
+          <div class="form-column">
+            <label class="form-label">Incluir logo/marca personal</label>
+            <select class="form-select">
+              <option selected>Sin logo</option>
+              <option>Logo personal</option>
+              <option>Logo institucional</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Personal Message -->
+        <div class="form-group">
+          <label class="form-label">Mensaje personalizado (opcional)</label>
+          <textarea class="form-textarea" rows="3">Este reporte representa mi proceso de autoconocimiento vocacional y será una guía importante para mis decisiones académicas futuras.</textarea>
+        </div>
+
+        <!-- Sections to Include -->
+        <div class="sections-box">
+          <h3 class="sections-title">Secciones a incluir</h3>
+          
+          <div class="sections-grid">
+            <!-- Column 1 -->
+            <div class="sections-column">
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Portada personalizada</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Resultados del test</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Análisis de personalidad</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Plan de acción</span>
+              </label>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="sections-column">
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Resumen ejecutivo</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Carreras recomendadas</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span class="checkbox-label">Universidades sugeridas</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span class="checkbox-label">Recursos adicionales</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <a href="vista-previa-reporte.html" class="btn-generate">Generar Vista Previa</a>
+        </div>
+
+      </form>
+
     </div>
   </section>
 
@@ -235,7 +265,7 @@
     <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
       <i data-lucide="clipboard-list"></i>
     </a>
-    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item active">
+    <a href="perfil-seccion.html" class="bottom-nav-item active">
       <i data-lucide="user"></i>
     </a>
   </nav>

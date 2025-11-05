@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opción de Descarga - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../../styles/global.css">
+  <link rel="stylesheet" href="../../../styles/style.css">
+  <link rel="stylesheet" href="components/generar-reporte.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../../Perfil/perfil-seccion.html" class="nav-link active">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../inicio.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../perfil-seccion.html" class="breadcrumb-link">
+          <span>Mi Perfil</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Descarga</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Download Header -->
+  <section class="download-header">
+    <div class="container">
+      <a href="vista-previa-reporte.html" class="back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver</span>
+      </a>
+      
+      <h1 class="download-main-title">Opción de Descarga</h1>
+      <p class="download-subtitle">Elige el formato y contenido de tu reporte</p>
+    </div>
+  </section>
+
+  <!-- Download Options -->
+  <section class="download-content">
+    <div class="container">
+      
+      <div class="download-options-grid">
+        
+        <!-- Format Selection -->
+        <div class="options-card">
+          <h3 class="options-title">Formato del Reporte</h3>
+          
+          <div class="format-options">
+            <label class="radio-option">
+              <input type="radio" name="format" value="pdf" checked>
+              <span class="radio-label">
+                <span class="radio-text">PDF (Recomendado)</span>
+              </span>
+            </label>
+            
+            <label class="radio-option">
+              <input type="radio" name="format" value="word">
+              <span class="radio-label">
+                <span class="radio-text">Word Document</span>
+              </span>
+            </label>
+            
+            <label class="radio-option">
+              <input type="radio" name="format" value="powerpoint">
+              <span class="radio-label">
+                <span class="radio-text">Presentación PowerPoint</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Content Selection -->
+        <div class="options-card">
+          <h3 class="options-title">Contenido a Incluir</h3>
+          
+          <div class="content-options">
+            <label class="checkbox-download">
+              <input type="checkbox" checked>
+              <span class="checkbox-label-download">Resultados del test vocacional</span>
+            </label>
+            
+            <label class="checkbox-download">
+              <input type="checkbox" checked>
+              <span class="checkbox-label-download">Carreras recomendadas</span>
+            </label>
+            
+            <label class="checkbox-download">
+              <input type="checkbox" checked>
+              <span class="checkbox-label-download">Análisis de compatibilidad</span>
+            </label>
+            
+            <label class="checkbox-download">
+              <input type="checkbox">
+              <span class="checkbox-label-download">Lista de universidades</span>
+            </label>
+            
+            <label class="checkbox-download">
+              <input type="checkbox">
+              <span class="checkbox-label-download">Plan de estudios detallado</span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Preview Summary -->
+      <div class="preview-summary-box">
+        <h3 class="summary-title">Vista Previa del Reporte</h3>
+        
+        <div class="summary-content">
+          <p class="summary-item"><strong>Reporte Vocacional - María González</strong></p>
+          <p class="summary-item">Fecha: 15 de Octubre, 2024</p>
+          <p class="summary-item">Compatibilidad máxima: 92% (Ingeniería de Software)</p>
+          <p class="summary-item">Carreras evaluadas: 6</p>
+          <p class="summary-item">Páginas: 12</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Download Actions -->
+  <section class="download-actions">
+    <div class="container">
+      <div class="actions-wrapper">
+        <a href="vista-previa-reporte.html" class="btn-secondary-action">
+          Vista Previa
+        </a>
+        <a href="#" class="btn-primary-action">
+          Descargar Reporte
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="../../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../perfil-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

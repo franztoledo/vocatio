@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configuración de Perfil - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/configuracion-perfil.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../inicio.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="perfil-seccion.html" class="breadcrumb-link">
+          <span>Mi Perfil</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Configuración</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Config Header -->
+  <section class="config-header">
+    <div class="container">
+      <a href="perfil-seccion.html" class="back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver a Mi Perfil</span>
+      </a>
+      
+      <div class="config-header-content">
+        <div class="config-icon">
+          <i data-lucide="settings"></i>
+        </div>
+        <div>
+          <h1 class="config-title">Configuración de Perfil</h1>
+          <p class="config-subtitle">Personaliza tu información personal, educativa y preferencias vocacionales</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hidden Radio Inputs for Tabs -->
+  <input type="radio" name="tabs" id="tab-personal" class="tab-input" checked>
+  <input type="radio" name="tabs" id="tab-educativa" class="tab-input">
+  <input type="radio" name="tabs" id="tab-preferencias" class="tab-input">
+  <input type="radio" name="tabs" id="tab-privacidad" class="tab-input">
+  <input type="radio" name="tabs" id="tab-notificaciones" class="tab-input">
+
+  <!-- Tabs Navigation -->
+  <section class="config-tabs">
+    <div class="container">
+      <div class="tabs-nav">
+        <label for="tab-personal" class="tab-btn">
+          <i data-lucide="user"></i>
+          <span>Información Personal</span>
+        </label>
+        <label for="tab-educativa" class="tab-btn">
+          <i data-lucide="graduation-cap"></i>
+          <span>Información Educativa</span>
+        </label>
+        <label for="tab-preferencias" class="tab-btn">
+          <i data-lucide="heart"></i>
+          <span>Preferencias Vocacionales</span>
+        </label>
+        <label for="tab-privacidad" class="tab-btn">
+          <i data-lucide="shield"></i>
+          <span>Privacidad y Cuenta</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tab Content: Información Personal -->
+  <section class="config-content">
+    <div class="container">
+      <div class="tab-content" data-tab="personal">
+        <div class="content-header">
+          <h2 class="content-title">Información Personal</h2>
+          <p class="content-desc">Actualiza tu información básica y de contacto</p>
+        </div>
+
+        <form class="config-form">
+          <!-- Profile Photo -->
+          <div class="form-section">
+            <h3 class="section-title">Foto de Perfil</h3>
+            <div class="profile-photo-upload">
+              <div class="current-photo">MG</div>
+              <div class="photo-actions">
+                <label class="btn-upload">
+                  <i data-lucide="camera"></i>
+                  Cambiar foto
+                  <input type="file" accept="image/*" hidden>
+                </label>
+                <button type="button" class="btn-remove">
+                  <i data-lucide="trash-2"></i>
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Basic Info -->
+          <div class="form-section">
+            <h3 class="section-title">Información Básica</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nombre" class="form-label">Nombre completo *</label>
+                <input type="text" id="nombre" class="form-input" value="María González" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Correo electrónico *</label>
+                <input type="email" id="email" class="form-input" value="maria.gonzalez@email.com" required>
+              </div>
+
+              <div class="form-group">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="tel" id="telefono" class="form-input" value="+51 987 654 321">
+              </div>
+
+              <div class="form-group">
+                <label for="fecha-nacimiento" class="form-label">Fecha de nacimiento</label>
+                <input type="date" id="fecha-nacimiento" class="form-input" value="2005-03-15">
+              </div>
+
+              <div class="form-group">
+                <label for="genero" class="form-label">Género</label>
+                <select id="genero" class="form-select">
+                  <option value="">Seleccionar</option>
+                  <option value="femenino" selected>Femenino</option>
+                  <option value="masculino">Masculino</option>
+                  <option value="otro">Otro</option>
+                  <option value="prefiero-no-decir">Prefiero no decir</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="ubicacion" class="form-label">Ubicación</label>
+                <input type="text" id="ubicacion" class="form-input" value="Lima, Perú">
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio -->
+          <div class="form-section">
+            <h3 class="section-title">Biografía</h3>
+            <div class="form-group">
+              <label for="bio" class="form-label">Cuéntanos un poco sobre ti</label>
+              <textarea id="bio" class="form-textarea" rows="4" placeholder="Escribe una breve descripción sobre tus intereses, metas y aspiraciones...">Estudiante apasionada por la tecnología y el diseño. Me encanta resolver problemas y crear soluciones innovadoras.</textarea>
+              <span class="form-hint">Máximo 300 caracteres</span>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar Cambios</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab Content: Información Educativa -->
+      <div class="tab-content" data-tab="educativa">
+        <div class="content-header">
+          <h2 class="content-title">Información Educativa</h2>
+          <p class="content-desc">Gestiona tu historial académico y logros</p>
+        </div>
+
+        <form class="config-form">
+          <!-- Current Education -->
+          <div class="form-section">
+            <h3 class="section-title">Educación Actual</h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="nivel-educativo" class="form-label">Nivel educativo *</label>
+                <select id="nivel-educativo" class="form-select" required>
+                  <option value="">Seleccionar</option>
+                  <option value="secundaria" selected>Secundaria</option>
+                  <option value="tecnico">Educación Técnica</option>
+                  <option value="universitario">Universitario</option>
+                  <option value="postgrado">Postgrado</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="grado-actual" class="form-label">Grado/Año actual</label>
+                <select id="grado-actual" class="form-select">
+                  <option value="">Seleccionar</option>
+                  <option value="3">3er año</option>
+                  <option value="4">4to año</option>
+                  <option value="5" selected>5to año</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="institucion" class="form-label">Institución educativa *</label>
+                <input type="text" id="institucion" class="form-input" value="Colegio San Agustín" required>
+              </div>
+
+              <div class="form-group">
+                <label for="promedio" class="form-label">Promedio general</label>
+                <input type="text" id="promedio" class="form-input" value="17.5" placeholder="0.00 - 20.00">
+              </div>
+
+              <div class="form-group">
+                <label for="ano-graduacion" class="form-label">Año de graduación (esperado)</label>
+                <input type="number" id="ano-graduacion" class="form-input" value="2024" min="2024" max="2030">
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic Interests -->
+          <div class="form-section">
+            <h3 class="section-title">Áreas de Interés Académico</h3>
+            <div class="interests-grid">
+              <label class="interest-checkbox">
+                <input type="checkbox" checked>
+                <span class="interest-label">
+                  <i data-lucide="cpu"></i>
+                  Tecnología
+                </span>
+              </label>
+              <label class="interest-checkbox">
+                <input type="checkbox" checked>
+                <span class="interest-label">
+                  <i data-lucide="palette"></i>
+                  Arte y Diseño
+                </span>
+              </label>
+              <label class="interest-checkbox">
+                <input type="checkbox">
+                <span class="interest-label">
+                  <i data-lucide="activity"></i>
+                  Salud
+                </span>
+              </label>
+              <label class="interest-checkbox">
+                <input type="checkbox">
+                <span class="interest-label">
+                  <i data-lucide="trending-up"></i>
+                  Negocios
+                </span>
+              </label>
+              <label class="interest-checkbox">
+                <input type="checkbox" checked>
+                <span class="interest-label">
+                  <i data-lucide="beaker"></i>
+                  Ciencias
+                </span>
+              </label>
+              <label class="interest-checkbox">
+                <input type="checkbox">
+                <span class="interest-label">
+                  <i data-lucide="scale"></i>
+                  Derecho
+                </span>
+              </label>
+              <label class="interest-checkbox">
+                <input type="checkbox">
+                <span class="interest-label">
+                  <i data-lucide="book-open"></i>
+                  Humanidades
+                </span>
+              </label>
+              <label class="interest-checkbox">
+                <input type="checkbox">
+                <span class="interest-label">
+                  <i data-lucide="users"></i>
+                  Ciencias Sociales
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Achievements -->
+          <div class="form-section">
+            <h3 class="section-title">Logros y Certificaciones</h3>
+            <div class="achievement-list">
+              <div class="achievement-item">
+                <i data-lucide="award"></i>
+                <span>Premio Nacional de Matemáticas 2023</span>
+                <button type="button" class="btn-icon-remove">
+                  <i data-lucide="x"></i>
+                </button>
+              </div>
+              <div class="achievement-item">
+                <i data-lucide="award"></i>
+                <span>Certificación en Programación Python</span>
+                <button type="button" class="btn-icon-remove">
+                  <i data-lucide="x"></i>
+                </button>
+              </div>
+            </div>
+            <button type="button" class="btn-add">
+              <i data-lucide="plus"></i>
+              Agregar logro o certificación
+            </button>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar Cambios</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab Content: Preferencias Vocacionales -->
+      <div class="tab-content" data-tab="preferencias">
+        <div class="content-header">
+          <h2 class="content-title">Preferencias Vocacionales</h2>
+          <p class="content-desc">Define tus preferencias para obtener recomendaciones personalizadas</p>
+        </div>
+
+        <form class="config-form">
+          <!-- Career Preferences -->
+          <div class="form-section">
+            <h3 class="section-title">Preferencias de Carrera</h3>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="modalidad-estudio" class="form-label">Modalidad de estudio preferida</label>
+                <select id="modalidad-estudio" class="form-select">
+                  <option value="">Seleccionar</option>
+                  <option value="presencial" selected>Presencial</option>
+                  <option value="virtual">Virtual</option>
+                  <option value="hibrida">Híbrida</option>
+                  <option value="sin-preferencia">Sin preferencia</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="duracion-preferida" class="form-label">Duración preferida de estudios</label>
+                <select id="duracion-preferida" class="form-select">
+                  <option value="">Seleccionar</option>
+                  <option value="2-3">2-3 años (Técnico)</option>
+                  <option value="4-5" selected>4-5 años (Profesional)</option>
+                  <option value="5+">5+ años (Especialización)</option>
+                  <option value="sin-preferencia">Sin preferencia</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="presupuesto" class="form-label">Presupuesto mensual (opcional)</label>
+                <select id="presupuesto" class="form-select">
+                  <option value="">Seleccionar</option>
+                  <option value="bajo">Menos de S/500</option>
+                  <option value="medio" selected>S/500 - S/1500</option>
+                  <option value="alto">S/1500 - S/3000</option>
+                  <option value="muy-alto">Más de S/3000</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Work Environment -->
+          <div class="form-section">
+            <h3 class="section-title">Ambiente de Trabajo Ideal</h3>
+            <div class="preference-cards">
+              <label class="preference-card">
+                <input type="radio" name="ambiente" value="oficina" checked>
+                <div class="card-content">
+                  <i data-lucide="building-2"></i>
+                  <span>Oficina tradicional</span>
+                </div>
+              </label>
+              <label class="preference-card">
+                <input type="radio" name="ambiente" value="remoto">
+                <div class="card-content">
+                  <i data-lucide="home"></i>
+                  <span>Remoto</span>
+                </div>
+              </label>
+              <label class="preference-card">
+                <input type="radio" name="ambiente" value="hibrido">
+                <div class="card-content">
+                  <i data-lucide="laptop"></i>
+                  <span>Híbrido</span>
+                </div>
+              </label>
+              <label class="preference-card">
+                <input type="radio" name="ambiente" value="campo">
+                <div class="card-content">
+                  <i data-lucide="map-pin"></i>
+                  <span>Trabajo de campo</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="form-section">
+            <h3 class="section-title">Habilidades que te Gustaría Desarrollar</h3>
+            <div class="skills-tags">
+              <label class="skill-tag">
+                <input type="checkbox" checked>
+                <span>Programación</span>
+              </label>
+              <label class="skill-tag">
+                <input type="checkbox" checked>
+                <span>Diseño Gráfico</span>
+              </label>
+              <label class="skill-tag">
+                <input type="checkbox">
+                <span>Liderazgo</span>
+              </label>
+              <label class="skill-tag">
+                <input type="checkbox">
+                <span>Comunicación</span>
+              </label>
+              <label class="skill-tag">
+                <input type="checkbox" checked>
+                <span>Análisis de Datos</span>
+              </label>
+              <label class="skill-tag">
+                <input type="checkbox">
+                <span>Marketing Digital</span>
+              </label>
+              <label class="skill-tag">
+                <input type="checkbox">
+                <span>Gestión de Proyectos</span>
+              </label>
+              <label class="skill-tag">
+                <input type="checkbox">
+                <span>Idiomas</span>
+              </label>
+            </div>
+            <button type="button" class="btn-add">
+              <i data-lucide="plus"></i>
+              Agregar habilidad personalizada
+            </button>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar Cambios</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab Content: Privacidad y Cuenta -->
+      <div class="tab-content" data-tab="privacidad">
+        <div class="content-header">
+          <h2 class="content-title">Privacidad y Cuenta</h2>
+          <p class="content-desc">Gestiona tu privacidad y seguridad de la cuenta</p>
+        </div>
+
+        <form class="config-form">
+          <!-- Password -->
+          <div class="form-section">
+            <h3 class="section-title">Cambiar Contraseña</h3>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label for="password-actual" class="form-label">Contraseña actual</label>
+                <input type="password" id="password-actual" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="password-nueva" class="form-label">Nueva contraseña</label>
+                <input type="password" id="password-nueva" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="password-confirmar" class="form-label">Confirmar nueva contraseña</label>
+                <input type="password" id="password-confirmar" class="form-input">
+              </div>
+            </div>
+          </div>
+
+          <!-- Privacy Settings -->
+          <div class="form-section">
+            <h3 class="section-title">Configuración de Privacidad</h3>
+            <div class="privacy-options">
+              <div class="privacy-item">
+                <div class="privacy-info">
+                  <h4>Perfil público</h4>
+                  <p>Permite que otros usuarios vean tu perfil y actividad</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="privacy-item">
+                <div class="privacy-info">
+                  <h4>Mostrar carreras favoritas</h4>
+                  <p>Muestra tus carreras favoritas en tu perfil público</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="privacy-item">
+                <div class="privacy-info">
+                  <h4>Mostrar resultados de tests</h4>
+                  <p>Permite que otros vean tus resultados de tests vocacionales</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox">
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+
+              <div class="privacy-item">
+                <div class="privacy-info">
+                  <h4>Permitir mensajes directos</h4>
+                  <p>Permite que otros usuarios te envíen mensajes</p>
+                </div>
+                <label class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="form-section danger-zone">
+            <h3 class="section-title">Zona de Peligro</h3>
+            <div class="danger-actions">
+              <div class="danger-item">
+                <div class="danger-info">
+                  <h4>Descargar mis datos</h4>
+                  <p>Descarga una copia de toda tu información</p>
+                </div>
+                <button type="button" class="btn-danger-secondary">
+                  <i data-lucide="download"></i>
+                  Descargar
+                </button>
+              </div>
+
+              <div class="danger-item">
+                <div class="danger-info">
+                  <h4>Eliminar cuenta</h4>
+                  <p>Elimina permanentemente tu cuenta y todos tus datos</p>
+                </div>
+                <button type="button" class="btn-danger">
+                  <i data-lucide="trash-2"></i>
+                  Eliminar cuenta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar Cambios</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="perfil-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

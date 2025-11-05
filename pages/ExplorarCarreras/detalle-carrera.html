@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingeniería de Software - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../../styles/global.css">
+  <link rel="stylesheet" href="../../../styles/style.css">
+  <link rel="stylesheet" href="components/detalle-carrera.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocaiio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link active">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../../index.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="../explorar-carreras-seccion.html" class="breadcrumb-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Ingeniería de Software</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Career Hero -->
+  <section class="career-hero">
+    <div class="career-hero-container">
+      <a href="buscar-carreras.html" class="back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver</span>
+      </a>
+
+      <div class="career-hero-content">
+        <h1 class="career-hero-title">Ingeniería de Software</h1>
+        <p class="career-hero-desc">Desarrollo de aplicaciones y sistemas informáticos modernos</p>
+        <div class="career-hero-badges">
+          <span class="career-badge primary">Tecnología</span>
+          <span class="career-badge success">92% Compatible</span>
+        </div>
+      </div>
+
+      <div class="career-hero-actions">
+        <button class="career-action-btn favorite" title="Agregar a favoritos">
+          <i data-lucide="heart"></i>
+        </button>
+        <button class="career-action-btn share" title="Compartir">
+          <i data-lucide="share-2"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Info Cards -->
+  <section class="career-info-section">
+    <div class="container">
+      <div class="career-info-grid">
+        <div class="career-info-card">
+          <div class="career-info-icon">
+            <i data-lucide="clock"></i>
+          </div>
+          <div class="career-info-content">
+            <div class="career-info-value">5 años</div>
+            <div class="career-info-label">Duración</div>
+          </div>
+        </div>
+
+        <div class="career-info-card">
+          <div class="career-info-icon salary">
+            <i data-lucide="dollar-sign"></i>
+          </div>
+          <div class="career-info-content">
+            <div class="career-info-value">$4,500</div>
+            <div class="career-info-label">Salario inicial</div>
+          </div>
+        </div>
+
+        <div class="career-info-card">
+          <div class="career-info-icon demand">
+            <i data-lucide="trending-up"></i>
+          </div>
+          <div class="career-info-content">
+            <div class="career-info-value">Muy Alta</div>
+            <div class="career-info-label">Demanda</div>
+          </div>
+        </div>
+
+        <div class="career-info-card">
+          <div class="career-info-icon universities">
+            <i data-lucide="map-pin"></i>
+          </div>
+          <div class="career-info-content">
+            <div class="career-info-value">12</div>
+            <div class="career-info-label">Universidades</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabs Section - NO JAVASCRIPT -->
+  <section class="career-tabs-section">
+    <div class="container">
+      
+      <!-- Hidden Radio Inputs for Tab Control -->
+      <input type="radio" name="career-tab" id="tab-general" class="tab-radio" checked>
+      <input type="radio" name="career-tab" id="tab-curriculum" class="tab-radio">
+      <input type="radio" name="career-tab" id="tab-labor" class="tab-radio">
+      <input type="radio" name="career-tab" id="tab-testimonials" class="tab-radio">
+
+      <!-- Tab Buttons -->
+      <div class="career-tabs">
+        <label for="tab-general" class="career-tab">
+          <i data-lucide="info"></i>
+          <span>Información General</span>
+        </label>
+        <label for="tab-curriculum" class="career-tab">
+          <i data-lucide="book-open"></i>
+          <span>Malla Curricular</span>
+        </label>
+        <label for="tab-labor" class="career-tab">
+          <i data-lucide="briefcase"></i>
+          <span>Campo Laboral</span>
+        </label>
+        <label for="tab-testimonials" class="career-tab">
+          <i data-lucide="message-circle"></i>
+          <span>Testimonios</span>
+        </label>
+      </div>
+
+      <!-- Tab Content: Información General -->
+      <div class="career-tab-content" id="general">
+        <div class="career-description">
+          <h2 class="section-title">Descripción de la Carrera</h2>
+          <p>La Ingeniería de Software es una disciplina que combina principios de ciencias de la computación, matemáticas y gestión de proyectos para diseñar, desarrollar y mantener sistemas de software de alta calidad. Los estudiantes aprenden a crear soluciones tecnológicas innovadoras utilizando las mejores prácticas de la industria.</p>
+        </div>
+
+        <div class="career-profiles">
+          <div class="profile-card ideal">
+            <h3 class="profile-title">
+              <i data-lucide="user-check"></i>
+              Perfil del Estudiante Ideal
+            </h3>
+            <ul class="profile-list">
+              <li>Pensamiento lógico y analítico desarrollado</li>
+              <li>Creatividad para resolver problemas complejos</li>
+              <li>Capacidad de trabajo en equipo</li>
+              <li>Pasión por la tecnología y la innovación</li>
+              <li>Habilidades de comunicación efectiva</li>
+            </ul>
+          </div>
+
+          <div class="profile-card competencies">
+            <h3 class="profile-title">
+              <i data-lucide="target"></i>
+              Competencias a Desarrollar
+            </h3>
+            <ul class="profile-list">
+              <li>Programación en múltiples lenguajes</li>
+              <li>Diseño de arquitecturas de software</li>
+              <li>Gestión de bases de datos</li>
+              <li>Metodologías ágiles de desarrollo</li>
+              <li>Seguridad informática y testing</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="career-actions">
+          <a href="#" class="btn-career primary">
+            <i data-lucide="building"></i>
+            Ver Universidades que la Ofrecen
+          </a>
+          <a href="#" class="btn-career secondary">
+            <i data-lucide="scale"></i>
+            Comparar con Otras Carreras
+          </a>
+          <a href="#" class="btn-career secondary">
+            <i data-lucide="folder"></i>
+            Ver Proyectos Estudiantiles
+          </a>
+        </div>
+      </div>
+
+      <!-- Tab Content: Malla Curricular -->
+      <div class="career-tab-content" id="curriculum">
+        <h2 class="section-title">Malla Curricular</h2>
+        
+        <div class="curriculum-container">
+          <!-- Año 1 -->
+          <div class="curriculum-year">
+            <div class="year-header">
+              <div class="year-badge">1</div>
+              <h3 class="year-title">Año 1</h3>
+            </div>
+
+            <div class="curriculum-grid">
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Programación I</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">5 créditos</div>
+              </div>
+
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Matemáticas para Computación I</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">4 créditos</div>
+              </div>
+
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Fundamentos de Algoritmos</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">5 créditos</div>
+              </div>
+
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Inglés I</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">3 créditos</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Año 2 -->
+          <div class="curriculum-year">
+            <div class="year-header">
+              <div class="year-badge">2</div>
+              <h3 class="year-title">Año 2</h3>
+            </div>
+
+            <div class="curriculum-grid">
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Programación II</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">5 créditos</div>
+              </div>
+
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Matemáticas para Computación II</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">4 créditos</div>
+              </div>
+
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Estructuras de Datos</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">5 créditos</div>
+              </div>
+
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Inglés II</h4>
+                  <span class="course-type">Electivo</span>
+                </div>
+                <div class="course-credits">3 créditos</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Año 3 -->
+          <div class="curriculum-year">
+            <div class="year-header">
+              <div class="year-badge">3</div>
+              <h3 class="year-title">Año 3</h3>
+            </div>
+
+            <div class="curriculum-grid">
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Ingeniería de Software</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">5 créditos</div>
+              </div>
+
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Bases de Datos</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">5 créditos</div>
+              </div>
+
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Desarrollo Web</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">5 créditos</div>
+              </div>
+
+              <div class="course-card">
+                <div class="course-header">
+                  <h4 class="course-title">Seguridad Informática</h4>
+                  <span class="course-type">Obligatorio</span>
+                </div>
+                <div class="course-credits">4 créditos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content: Campo Laboral -->
+      <div class="career-tab-content" id="labor">
+        <h2 class="section-title">Campo Laboral</h2>
+
+        <div class="labor-grid">
+          <div class="labor-card work-areas">
+            <h3 class="labor-title">
+              <i data-lucide="briefcase"></i>
+              Áreas de Trabajo
+            </h3>
+            <ul class="labor-list">
+              <li>Empresas de tecnología y startups</li>
+              <li>Consultoras de software</li>
+              <li>Bancos y sector financiero</li>
+              <li>Retail y e-commerce</li>
+              <li>Freelance y emprendimiento</li>
+              <li>Empresas multinacionales</li>
+            </ul>
+          </div>
+
+          <div class="labor-card positions">
+            <h3 class="labor-title">
+              <i data-lucide="target"></i>
+              Puestos Comunes
+            </h3>
+            <div class="positions-list">
+              <div class="position-item">
+                <span class="position-name">Junior Developer</span>
+                <span class="position-salary">$2,500 - $3,500</span>
+              </div>
+              <div class="position-item">
+                <span class="position-name">Full Stack Developer</span>
+                <span class="position-salary">$4,000 - $6,000</span>
+              </div>
+              <div class="position-item">
+                <span class="position-name">Senior Developer</span>
+                <span class="position-salary">$6,500 - $9,000</span>
+              </div>
+              <div class="position-item">
+                <span class="position-name">Tech Lead</span>
+                <span class="position-salary">$8,000 - $12,000</span>
+              </div>
+              <div class="position-item">
+                <span class="position-name">Software Architect</span>
+                <span class="position-salary">$10,000 - $15,000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="growth-section">
+          <h3 class="growth-title">
+            <i data-lucide="trending-up"></i>
+            Proyección de Crecimiento
+          </h3>
+          <p class="growth-text">La demanda de ingenieros de software ha crecido 35% en los últimos 3 años y se proyecta un crecimiento sostenido del 25% anual hasta 2030.</p>
+          <div class="growth-stats">
+            <div class="growth-stat">
+              <div class="growth-value">95%</div>
+              <div class="growth-label">Empleabilidad</div>
+            </div>
+            <div class="growth-stat">
+              <div class="growth-value">6 meses</div>
+              <div class="growth-label">Tiempo promedio de inserción</div>
+            </div>
+            <div class="growth-stat">
+              <div class="growth-value">85%</div>
+              <div class="growth-label">Trabaja en su área</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab Content: Testimonios -->
+        <div class="career-tab-content" id="testimonials">
+        <h2 class="section-title">Testimonios de Estudiantes</h2>
+
+        <div class="testimonials-list">
+            <div class="testimonial-card">
+            <div class="testimonial-avatar">DR</div>
+            <div class="testimonial-content">
+                <h4 class="testimonial-name">Diego Ramírez</h4>
+                <p class="testimonial-info">Estudiante de 7mo ciclo • UTEC</p>
+                <p class="testimonial-text">"La carrera es exigente pero muy gratificante. Los proyectos que desarrollamos son super interesantes y aplicables al mundo real."</p>
+            </div>
+            <div class="testimonial-rating">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+            </div>
+            </div>
+
+            <div class="testimonial-card">
+            <div class="testimonial-avatar">AT</div>
+            <div class="testimonial-content">
+                <h4 class="testimonial-name">Ana Torres</h4>
+                <p class="testimonial-info">Egresada 2022 • UPC</p>
+                <p class="testimonial-text">"Conseguí trabajo 2 meses antes de graduarme. Las prácticas pre-profesionales son clave para ganar experiencia."</p>
+            </div>
+            <div class="testimonial-rating">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+            </div>
+            </div>
+
+            <div class="testimonial-card">
+            <div class="testimonial-avatar">CM</div>
+            <div class="testimonial-content">
+                <h4 class="testimonial-name">Carlos Mendoza</h4>
+                <p class="testimonial-info">Estudiante de 5to ciclo • PUCP</p>
+                <p class="testimonial-text">"Lo mejor es la comunidad de estudiantes. Siempre hay alguien dispuesto a ayudarte con proyectos o dudas."</p>
+            </div>
+            <div class="testimonial-rating">
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+                <i data-lucide="star"></i>
+            </div>
+            </div>
+        </div>
+        </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../../../index.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test de Aventura - Vocatio</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/test-aventura.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+  <!-- Modal Checkbox (hidden) -->
+  <input type="checkbox" id="exitModal" class="modal-checkbox" hidden>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link active">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link ">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link ">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../index.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="test-vocacional-seccion.html" class="breadcrumb-link">
+          <span>Test Vocacionales</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Aventura de Descubrimiento</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="adventure-main">
+    <div class="adventure-container">
+      
+      <!-- Header Section -->
+      <div class="adventure-header">
+        <label for="exitModal" class="btn-back">
+          <i data-lucide="x"></i>
+          <span>Salir</span>
+        </label>
+        
+        <button class="btn-test-info">
+          <i data-lucide="sparkles"></i>
+          <span>Test Vocacional</span>
+        </button>
+      </div>
+
+      <!-- Progress Section -->
+      <div class="progress-section">
+        <div class="level-badge">
+          <span style="font-size: 20px;">🎨</span>
+          <span>Nivel 3: Tu Creatividad</span>
+        </div>
+        
+        <div class="progress-bar-container">
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: 52%;"></div>
+          </div>
+          <span class="progress-text">12/23</span>
+        </div>
+      </div>
+
+      <!-- Cards Stack Container -->
+      <div class="cards-stack">
+        
+        <!-- Card 1 - Active -->
+        <div class="swipe-card active">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop" alt="Naturaleza">
+          </div>
+          
+          <div class="card-content">
+            <h2 class="card-title">¿Te ves aquí?</h2>
+            <p class="card-description">Naturaleza y actividades al aire libre</p>
+            
+            <div class="card-actions">
+              <button class="btn-action btn-no">
+                <i data-lucide="thumbs-down"></i>
+                <span>No</span>
+              </button>
+              
+              <button class="btn-action btn-si" onclick="window.location.href='resultados-test.html'">
+                <i data-lucide="thumbs-up"></i>
+                <span>Sí</span>
+              </button>
+            </div>
+            
+            <button class="btn-swipe">
+              <span>👆</span>
+              <span>Desliza</span>
+              <span>👇</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2 - Background -->
+        <div class="swipe-card background">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=600&fit=crop" alt="Presentación">
+          </div>
+          
+          <div class="card-content">
+            <h2 class="card-title">¿Esto va contigo?</h2>
+            <p class="card-description">Hablar en público y convencer a otros</p>
+            
+            <div class="card-actions">
+              <button class="btn-action btn-no">
+                <i data-lucide="thumbs-down"></i>
+                <span>No</span>
+              </button>
+              
+              <button class="btn-action btn-si">
+                <i data-lucide="thumbs-up"></i>
+                <span>Sí</span>
+              </button>
+            </div>
+            
+            <button class="btn-swipe">
+              <span>👆</span>
+              <span>Desliza</span>
+              <span>👇</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3 - Background -->
+        <div class="swipe-card background">
+          <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=800&h=600&fit=crop" alt="Diseño">
+          </div>
+          
+          <div class="card-content">
+            <h2 class="card-title">¿Esto te llama?</h2>
+            <p class="card-description">Diseño gráfico y creatividad visual</p>
+            
+            <div class="card-actions">
+              <button class="btn-action btn-no">
+                <i data-lucide="thumbs-down"></i>
+                <span>No</span>
+              </button>
+              
+              <button class="btn-action btn-si" >
+                <i data-lucide="thumbs-up"></i>
+                <span>Sí</span>
+              </button>
+            </div>
+            
+            <button class="btn-swipe">
+              <span>👆</span>
+              <span>Desliza</span>
+              <span>👇</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Feedback Overlay (hidden by default) -->
+      <div class="feedback-overlay" id="feedbackOverlay">
+        <div class="feedback-card">
+          <i data-lucide="check-circle"></i>
+          <h3>¡ME IDENTIFICA!</h3>
+        </div>
+      </div>
+
+      <!-- Level Complete Screen (hidden by default) -->
+      <div class="level-complete-screen" id="levelCompleteScreen" style="display: none;">
+        <div class="complete-content">
+          <div class="complete-icon">
+            <i data-lucide="search"></i>
+          </div>
+          
+          <h2 class="complete-title">¡Nivel 1 Completado!</h2>
+          
+          <div class="complete-badge">
+            <i data-lucide="target"></i>
+            <div class="badge-content">
+              <h3>"Explorador Curioso"</h3>
+              <p>¡Has empezado a descubrir tus intereses únicos!</p>
+            </div>
+          </div>
+          
+          <div class="complete-progress">
+            <p>Progreso total: 4/23 preguntas</p>
+            <div class="complete-progress-bar">
+              <div class="complete-progress-fill" style="width: 17.4%;"></div>
+            </div>
+          </div>
+          
+          <button class="btn-continue">
+            Continuar al Siguiente Nivel ✨
+          </button>
+        </div>
+      </div>
+
+      <!-- Inspiration Moment Screen (hidden by default) -->
+      <div class="inspiration-screen" id="inspirationScreen" style="display: none;">
+        <div class="inspiration-content">
+          <div class="inspiration-star">⭐</div>
+          <h2 class="inspiration-title">¡Momento de Inspiración!</h2>
+          <p class="inspiration-text">¿Sabías que los diseñadores gráficos también trabajan en videojuegos? 🎮</p>
+          <button class="btn-inspiration">Toca para continuar 👆</button>
+        </div>
+      </div>
+
+    </div>
+    <!-- Exit Modal -->
+    <div class="modal-overlay">
+      <div class="modal-content">
+        <h3 class="modal-title">¿Seguro que desea salir?</h3>
+        <p class="modal-text">Su progreso se perderá si decide salir sin guardar</p>
+        <div class="modal-actions">
+          <label for="exitModal" class="btn-modal-cancel">Cancelar</label>
+          <label for="exitModal" class="btn-modal-secondary">Guardar progreso</label>
+          <a href="test-vocacional-seccion.html" class="btn-modal-exit">Salir sin guardar</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras.html" class="bottom-nav-item ">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item ">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos Recomendados - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/recursos-recomendados.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../inicio.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="perfil-seccion.html" class="breadcrumb-link">
+          <span>Mi Perfil</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Recursos Recomendados</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Resources Header -->
+  <section class="resources-header">
+    <div class="container">
+      <a href="perfil-seccion.html" class="back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver</span>
+      </a>
+      
+      <div class="header-content">
+        <div class="header-icon">
+          <i data-lucide="book-open"></i>
+        </div>
+        <div>
+          <h1 class="header-title">Materiales Recomendados</h1>
+          <p class="header-subtitle">Recursos educativos personalizados según tu perfil vocacional</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Cards -->
+  <section class="resources-stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">8</div>
+          <div class="stat-label">Recursos disponibles</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">2</div>
+          <div class="stat-label">Guardados</div>
+        </div>
+
+        <div class="stat-card highlighted">
+          <div class="stat-value">92%</div>
+          <div class="stat-label">Match con tu perfil</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-value">5</div>
+          <div class="stat-label">Categorías</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hidden Radio Inputs for Category Filters -->
+  <input type="radio" name="category" id="cat-all" class="category-input" checked>
+  <input type="radio" name="category" id="cat-tech" class="category-input">
+  <input type="radio" name="category" id="cat-health" class="category-input">
+  <input type="radio" name="category" id="cat-art" class="category-input">
+  <input type="radio" name="category" id="cat-business" class="category-input">
+
+  <!-- Category Filters -->
+  <section class="category-filters">
+    <div class="container">
+      <div class="filters-wrapper">
+        <label for="cat-all" class="filter-btn">
+          Todos (24)
+        </label>
+        <label for="cat-tech" class="filter-btn">
+          Tecnología (8)
+        </label>
+        <label for="cat-health" class="filter-btn">
+          Ciencias de la Salud (6)
+        </label>
+        <label for="cat-art" class="filter-btn">
+          Arte y Diseño (5)
+        </label>
+        <label for="cat-business" class="filter-btn">
+          Negocios (5)
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommended Message -->
+  <section class="recommended-message">
+    <div class="container">
+      <div class="message-box">
+        <i data-lucide="star"></i>
+        <div class="message-content">
+          <strong>Recomendados para ti</strong>
+          <p>Basado en tu compatibilidad con Tecnología (92%), hemos seleccionado estos recursos especialmente para ti</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Grid -->
+  <section class="resources-content">
+    <div class="container">
+      <div class="resources-grid">
+        
+        <!-- Resource Card 1 -->
+        <div class="resource-card" data-category="tech">
+          <div class="resource-header">
+            <div class="resource-type video">
+              <i data-lucide="play-circle"></i>
+              <span>Video</span>
+            </div>
+            <div class="resource-meta">
+              <span class="resource-match">92% Match</span>
+              <button class="btn-bookmark" aria-label="Guardar">
+                <i data-lucide="bookmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="resource-duration">
+            <i data-lucide="clock"></i>
+            <span>2h 30min</span>
+          </div>
+          <h3 class="resource-title">Introducción a la Programación - Curso Completo</h3>
+          <p class="resource-desc">Aprende los fundamentos de la programación desde cero con ejemplos prácticos</p>
+          <a href="#" class="btn-resource">Ver Recurso <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <!-- Resource Card 2 -->
+        <div class="resource-card" data-category="tech">
+          <div class="resource-header">
+            <div class="resource-type pdf">
+              <i data-lucide="file-text"></i>
+              <span>PDF</span>
+            </div>
+            <div class="resource-meta">
+              <span class="resource-match success">88% Match</span>
+              <button class="btn-bookmark active" aria-label="Guardado">
+                <i data-lucide="bookmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="resource-duration">
+            <i data-lucide="file"></i>
+            <span>45 páginas</span>
+          </div>
+          <h3 class="resource-title">Matemáticas para Programadores</h3>
+          <p class="resource-desc">Guía completa de matemáticas esenciales para desarrolladores de software</p>
+          <a href="#" class="btn-resource">Ver Recurso <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <!-- Resource Card 3 -->
+        <div class="resource-card" data-category="tech">
+          <div class="resource-header">
+            <div class="resource-type article">
+              <i data-lucide="book-open"></i>
+              <span>Artículo</span>
+            </div>
+            <div class="resource-meta">
+              <span class="resource-match success">85% Match</span>
+              <button class="btn-bookmark" aria-label="Guardar">
+                <i data-lucide="bookmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="resource-duration">
+            <i data-lucide="book-open"></i>
+            <span>8 min lectura</span>
+          </div>
+          <h3 class="resource-title">Carreras del Futuro en Tecnología</h3>
+          <p class="resource-desc">Análisis de las carreras tecnológicas con mayor demanda laboral</p>
+          <a href="#" class="btn-resource">Ver Recurso <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <!-- Resource Card 4 -->
+        <div class="resource-card" data-category="tech">
+          <div class="resource-header">
+            <div class="resource-type video">
+              <i data-lucide="play-circle"></i>
+              <span>Video</span>
+            </div>
+            <div class="resource-meta">
+              <span class="resource-match warning">83% Match</span>
+              <button class="btn-bookmark" aria-label="Guardar">
+                <i data-lucide="bookmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="resource-duration">
+            <i data-lucide="clock"></i>
+            <span>15 min</span>
+          </div>
+          <h3 class="resource-title">Un Día en la Vida de un Developer</h3>
+          <p class="resource-desc">Testimonial real de un ingeniero de software trabajando en startups</p>
+          <a href="#" class="btn-resource">Ver Recurso <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <!-- Resource Card 5 -->
+        <div class="resource-card" data-category="health">
+          <div class="resource-header">
+            <div class="resource-type podcast">
+              <i data-lucide="mic"></i>
+              <span>Podcast</span>
+            </div>
+            <div class="resource-meta">
+              <span class="resource-match warning">75% Match</span>
+              <button class="btn-bookmark" aria-label="Guardar">
+                <i data-lucide="bookmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="resource-duration">
+            <i data-lucide="headphones"></i>
+            <span>35 min</span>
+          </div>
+          <h3 class="resource-title">Podcast: Innovación en Medicina</h3>
+          <p class="resource-desc">Entrevistas con médicos sobre los avances tecnológicos en salud</p>
+          <a href="#" class="btn-resource">Ver Recurso <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <!-- Resource Card 6 -->
+        <div class="resource-card" data-category="art">
+          <div class="resource-header">
+            <div class="resource-type video">
+              <i data-lucide="play-circle"></i>
+              <span>Video</span>
+            </div>
+            <div class="resource-meta">
+              <span class="resource-match warning">72% Match</span>
+              <button class="btn-bookmark" aria-label="Guardar">
+                <i data-lucide="bookmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="resource-duration">
+            <i data-lucide="clock"></i>
+            <span>1h 45min</span>
+          </div>
+          <h3 class="resource-title">Fundamentos del Diseño Visual</h3>
+          <p class="resource-desc">Curso sobre teoría del color, composición y tipografía</p>
+          <a href="#" class="btn-resource">Ver Recurso <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <!-- Resource Card 7 -->
+        <div class="resource-card" data-category="business">
+          <div class="resource-header">
+            <div class="resource-type article">
+              <i data-lucide="book-open"></i>
+              <span>Artículo</span>
+            </div>
+            <div class="resource-meta">
+              <span class="resource-match warning">68% Match</span>
+              <button class="btn-bookmark" aria-label="Guardar">
+                <i data-lucide="bookmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="resource-duration">
+            <i data-lucide="book-open"></i>
+            <span>12 min lectura</span>
+          </div>
+          <h3 class="resource-title">Emprendimiento Digital para Principiantes</h3>
+          <p class="resource-desc">Guía paso a paso para iniciar un negocio online</p>
+          <a href="#" class="btn-resource">Ver Recurso <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <!-- Resource Card 8 -->
+        <div class="resource-card" data-category="tech">
+          <div class="resource-header">
+            <div class="resource-type pdf">
+              <i data-lucide="file-text"></i>
+              <span>PDF</span>
+            </div>
+            <div class="resource-meta">
+              <span class="resource-match warning">65% Match</span>
+              <button class="btn-bookmark" aria-label="Guardar">
+                <i data-lucide="bookmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="resource-duration">
+            <i data-lucide="file"></i>
+            <span>28 min</span>
+          </div>
+          <h3 class="resource-title">Test de Lógica de Programación</h3>
+          <p class="resource-desc">Evaluación interactiva de habilidades lógicas para desarrolladores</p>
+          <a href="#" class="btn-resource">Ver Recurso <i data-lucide="arrow-right"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Saved Resources Section -->
+  <section class="saved-resources">
+    <div class="container">
+      <div class="saved-header">
+        <h2 class="saved-title">
+          <i data-lucide="bookmark"></i>
+          Mis Recursos Guardados (2)
+        </h2>
+      </div>
+
+      <div class="saved-grid">
+        <!-- Saved Resource 1 -->
+        <div class="saved-card">
+          <button class="btn-remove-saved" aria-label="Eliminar de guardados">
+            <i data-lucide="x"></i>
+          </button>
+          <div class="saved-icon video">
+            <i data-lucide="play-circle"></i>
+          </div>
+          <div class="saved-info">
+            <span class="saved-type">Video • 2h 30min</span>
+            <h4 class="saved-card-title">Introducción a la Programación - Curso Completo</h4>
+          </div>
+        </div>
+
+        <!-- Saved Resource 2 -->
+        <div class="saved-card">
+          <button class="btn-remove-saved" aria-label="Eliminar de guardados">
+            <i data-lucide="x"></i>
+          </button>
+          <div class="saved-icon pdf">
+            <i data-lucide="file-text"></i>
+          </div>
+          <div class="saved-info">
+            <span class="saved-type">PDF • 45 páginas</span>
+            <h4 class="saved-card-title">Matemáticas para Programadores</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="perfil-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

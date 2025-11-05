@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Nueva Lista de Favoritas - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/crear-lista.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link active">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../index.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="explorar-carreras-seccion.html" class="breadcrumb-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Crear Nueva Lista</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="create-list-section">
+    <div class="create-list-container">
+      <!-- Header con Volver y Título -->
+      <div class="create-list-header-top">
+        <a href="gestionar-listas.html" class="create-list-back">
+          <i data-lucide="arrow-left"></i>
+          <span>Volver</span>
+        </a>
+        
+        <div class="create-list-header-text">
+          <h1 class="create-list-title">Crear Nueva Lista de Favoritas</h1>
+          <p class="create-list-subtitle">Organiza tus carreras favoritas en listas personalizadas</p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form class="create-list-form">
+        <!-- List Name -->
+        <div class="form-group">
+          <label class="form-label">Nombre de la lista</label>
+          <input 
+            type="text" 
+            class="form-input" 
+            placeholder="Mis Opciones Principales"
+            required
+          >
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+          <label class="form-label">Descripción (opcional)</label>
+          <textarea 
+            class="form-textarea" 
+            placeholder="Lista de las carreras que más me interesan después del test vocacional"
+            rows="4"
+          ></textarea>
+        </div>
+
+        <!-- Select Careers -->
+        <div class="form-group">
+          <label class="form-label">Seleccionar carreras para incluir</label>
+          
+          <div class="careers-list">
+            <!-- Career Item 1 -->
+            <label class="career-item">
+              <input type="checkbox" class="career-checkbox" checked>
+              <div class="career-item-content">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=80&h=80&fit=crop" alt="Ingeniería de Software" class="career-item-image">
+                <div class="career-item-info">
+                  <span class="career-item-title">Ingeniería de Software</span>
+                  <span class="career-item-meta">Tecnología • 92% compatibilidad</span>
+                </div>
+              </div>
+            </label>
+
+            <!-- Career Item 2 -->
+            <label class="career-item">
+              <input type="checkbox" class="career-checkbox" checked>
+              <div class="career-item-content">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=80&h=80&fit=crop" alt="Medicina" class="career-item-image">
+                <div class="career-item-info">
+                  <span class="career-item-title">Medicina</span>
+                  <span class="career-item-meta">Ciencias de la Salud • 78% compatibilidad</span>
+                </div>
+              </div>
+            </label>
+
+            <!-- Career Item 3 -->
+            <label class="career-item">
+              <input type="checkbox" class="career-checkbox" checked>
+              <div class="career-item-content">
+                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=80&h=80&fit=crop" alt="Diseño Gráfico" class="career-item-image">
+                <div class="career-item-info">
+                  <span class="career-item-title">Diseño Gráfico</span>
+                  <span class="career-item-meta">Arte y Diseño • 85% compatibilidad</span>
+                </div>
+              </div>
+            </label>
+
+            <!-- Career Item 4 -->
+            <label class="career-item">
+              <input type="checkbox" class="career-checkbox">
+              <div class="career-item-content">
+                <img src="https://images.unsplash.com/photo-1576091160575-2173dba999ef?w=80&h=80&fit=crop" alt="Administración" class="career-item-image">
+                <div class="career-item-info">
+                  <span class="career-item-title">Administración de Empresas</span>
+                  <span class="career-item-meta">Negocios • 65% compatibilidad</span>
+                </div>
+              </div>
+            </label>
+
+            <!-- Career Item 5 -->
+            <label class="career-item">
+              <input type="checkbox" class="career-checkbox">
+              <div class="career-item-content">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=80&h=80&fit=crop" alt="Psicología" class="career-item-image">
+                <div class="career-item-info">
+                  <span class="career-item-title">Psicología</span>
+                  <span class="career-item-meta">Salud Mental • 72% compatibilidad</span>
+                </div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="button" class="btn-cancel">Cancelar</button>
+          <button type="submit" class="btn-submit">Crear Lista</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

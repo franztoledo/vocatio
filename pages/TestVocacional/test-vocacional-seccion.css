@@ -138,7 +138,141 @@
   font-size: var(--font-size-small);
   color: var(--neutral-600);
 }
+/* ============================================
+   AVENTURA DE DESCUBRIMIENTO
+   ============================================ */
+.adventure-section {
+  background: var(--white);
+  padding: 40px 20px;
+  margin: 60px 0;
+}
 
+.adventure-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.adventure-card {
+  background: var(--white);
+  border: 3px solid #9C27B0;
+  border-radius: 20px;
+  padding: 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.adventure-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.adventure-icon-wrapper {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #E91E63, #9C27B0);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.adventure-content {
+  flex: 1;
+}
+
+.adventure-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+
+.adventure-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.adventure-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #E91E63, #9C27B0);
+  color: var(--white);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.adventure-badge i {
+  width: 14px;
+  height: 14px;
+}
+
+.adventure-description {
+  font-size: 14px;
+  color: #4B5563;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.adventure-features {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.feature-item i {
+  width: 18px;
+  height: 18px;
+  color: #E91E63;
+}
+
+.btn-start-adventure {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #E91E63, #9C27B0);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-start-adventure:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+}
+
+.btn-start-adventure i {
+  width: 16px;
+  height: 16px;
+}
 /* ============================================
    ACTIONS SECTION
    ============================================ */
@@ -430,6 +564,125 @@
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+/* MOBILE STYLES - Por defecto (0px - 767px) */
+@media (max-width: 768px) {
+  /* AVENTURA DE DESCUBRIMIENTO - MOBILE */
+  .adventure-section {
+    padding: 24px 16px;
+    margin: 40px 0;
+  }
+
+  .adventure-card {
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .adventure-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+
+  .adventure-title {
+    font-size: 18px;
+  }
+
+  .adventure-badge {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .adventure-description {
+    font-size: 13px;
+  }
+
+  .adventure-features {
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  .feature-item {
+    font-size: 12px;
+  }
+
+  .btn-start-adventure {
+    width: 100%;
+    padding: 12px 24px;
+  }
+
+  .adventure-header {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 8px;
+  }
+}
+
+/* SMALL MOBILE - 480px y menor */
+@media (max-width: 480px) {
+  /* AVENTURA DE DESCUBRIMIENTO - MOBILE PEQUEÑO */
+  .adventure-section {
+    padding: 16px 12px;
+    margin: 30px 0;
+  }
+
+  .adventure-card {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .adventure-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    font-size: 32px;
+  }
+
+  .adventure-title {
+    font-size: 16px;
+  }
+
+  .adventure-badge {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
+  .adventure-description {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .adventure-features {
+    gap: 12px;
+  }
+
+  .feature-item {
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .feature-item i {
+    width: 16px;
+    height: 16px;
+  }
+
+  .btn-start-adventure {
+    width: 100%;
+    padding: 11px 16px;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .btn-start-adventure i {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* TABLET Y ARRIBA - 768px+ */
 @media (min-width: 768px) {
   .test-main-title {
     font-size: 44px;
@@ -453,6 +706,7 @@
   }
 }
 
+/* DESKTOP - 1024px+ */
 @media (min-width: 1024px) {
   .test-main-title {
     font-size: 48px;

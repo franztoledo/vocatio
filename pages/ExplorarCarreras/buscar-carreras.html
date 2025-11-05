@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de Carreras - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/filters.css">
+  <link rel="stylesheet" href="components/career-card.css">
+  <link rel="stylesheet" href="components/buscar-carreras.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link active">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../index.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="explorar-carreras-seccion.html" class="breadcrumb-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Buscar Carreras</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="search-hero">
+    <div class="search-hero-container">
+      <a href="explorar-carreras-seccion.html" class="back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver</span>
+      </a>
+
+      <div class="search-hero-content">
+        <div class="search-icon-large">
+          <i data-lucide="search"></i>
+        </div>
+        <h1 class="search-hero-title">Buscar carreras</h1>
+        <p class="search-hero-subtitle">Encuentra la carrera perfecta para tu futuro profesional</p>
+      </div>
+
+      <div class="search-stats">
+        <div class="search-stat">
+          <div class="search-stat-value">15</div>
+          <div class="search-stat-label">Carreras disponibles</div>
+        </div>
+        <div class="search-stat">
+          <div class="search-stat-value">15</div>
+          <div class="search-stat-label">Resultados filtrados</div>
+        </div>
+        <div class="search-stat">
+          <div class="search-stat-value">3</div>
+          <div class="search-stat-label">En favoritas</div>
+        </div>
+        <div class="search-stat">
+          <div class="search-stat-value">12+</div>
+          <div class="search-stat-label">Áreas de estudio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="results-section">
+    <div class="container">
+      <div class="search-layout">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+          <div class="filters-container">
+            <div class="filters-header">
+              <h3 class="filters-title">
+                <i data-lucide="sliders"></i>
+                Filtros
+              </h3>
+              <a href="#" class="filters-clear">× Limpiar</a>
+            </div>
+
+            <div class="filter-group">
+              <label class="filter-label">Buscar por nombre</label>
+              <input type="text" class="filter-input" placeholder="Medicina">
+            </div>
+
+            <div class="filter-group">
+              <label class="filter-label">Área de Interés</label>
+              <input type="text" class="filter-input" placeholder="Ciencias de la Salud">
+            </div>
+
+            <div class="filter-group">
+              <label class="filter-label">Duración</label>
+              <select class="filter-select">
+                <option>Cualquier duración</option>
+                <option>3 años</option>
+                <option>4 años</option>
+                <option>5 años</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label class="filter-label">Modalidad</label>
+              <select class="filter-select">
+                <option>Cualquier modalidad</option>
+                <option>Presencial</option>
+                <option>Virtual</option>
+                <option>Híbrida</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label class="filter-label">Nivel de Dificultad</label>
+              <select class="filter-select">
+                <option>Cualquier nivel</option>
+                <option>Bajo</option>
+                <option>Medio</option>
+                <option>Alto</option>
+                <option>Muy Alto</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label class="filter-label">Demanda Laboral</label>
+              <select class="filter-select">
+                <option>Cualquier demanda</option>
+                <option>Baja</option>
+                <option>Media</option>
+                <option>Alta</option>
+                <option>Muy Alta</option>
+              </select>
+            </div>
+
+            <button class="filter-btn">Comparar</button>
+          </div>
+        </aside>
+
+        <!-- Career Results -->
+        <main class="career-results">
+          <div class="results-header">
+            <h2 class="results-title">15 carreras encontradas</h2>
+            <div class="results-sort">
+              <label for="sort-select">Mejor compatibilidad</label>
+              <select id="sort-select" class="sort-select">
+                <option>Mejor compatibilidad</option>
+                <option>Más reciente</option>
+                <option>Demanda más alta</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Career Card 1 -->
+          <div class="career-card">
+            <div class="career-card-image">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop" alt="Ingeniería de Software">
+              <div class="career-card-overlay"></div>
+              <div class="career-card-badges">
+                <span class="career-badge compatibility">92% Compatible</span>
+              </div>
+              <button class="career-favorite-btn" title="Agregar a favoritos">
+                <i data-lucide="heart"></i>
+              </button>
+            </div>
+            <div class="career-card-content">
+              <span class="career-card-category">Tecnología</span>
+              <h3 class="career-card-title">Ingeniería de Software</h3>
+              <p class="career-card-desc">Desarrollo de aplicaciones y sistemas</p>
+              <div class="career-card-meta">
+                <div class="career-meta-item">
+                  <i data-lucide="clock"></i>
+                  <span>5 años</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="users"></i>
+                  <span>Universitaria</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="trending-up"></i>
+                  <span>Demanda Muy Alta</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="building"></i>
+                  <span>12 universidades</span>
+                </div>
+              </div>
+              <div class="career-card-actions">
+                <a href="detalle-carrera.html" class="career-card-btn primary">Ver Detalles</a>
+                <a href="#" class="career-card-btn secondary">Comparar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Card 2 -->
+          <div class="career-card">
+            <div class="career-card-image">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="Desarrollo de Aplicaciones">
+              <div class="career-card-overlay"></div>
+              <div class="career-card-badges">
+                <span class="career-badge compatibility">90% Compatible</span>
+              </div>
+              <button class="career-favorite-btn" title="Agregar a favoritos">
+                <i data-lucide="heart"></i>
+              </button>
+            </div>
+            <div class="career-card-content">
+              <span class="career-card-category">Tecnología</span>
+              <h3 class="career-card-title">Desarrollo de Aplicaciones</h3>
+              <p class="career-card-desc">Programación de aplicaciones móviles y web</p>
+              <div class="career-card-meta">
+                <div class="career-meta-item">
+                  <i data-lucide="clock"></i>
+                  <span>3 años</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="users"></i>
+                  <span>Técnica</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="trending-up"></i>
+                  <span>Demanda Muy Alta</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="building"></i>
+                  <span>7 universidades</span>
+                </div>
+              </div>
+              <div class="career-card-actions">
+                <a href="components/detalle-carrera.html" class="career-card-btn primary">Ver Detalles</a>
+                <a href="#" class="career-card-btn secondary">Comparar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Card 3 -->
+          <div class="career-card">
+            <div class="career-card-image">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop" alt="Ingeniería de Software">
+              <div class="career-card-overlay"></div>
+              <div class="career-card-badges">
+                <span class="career-badge compatibility">92% Compatible</span>
+              </div>
+              <button class="career-favorite-btn" title="Agregar a favoritos">
+                <i data-lucide="heart"></i>
+              </button>
+            </div>
+            <div class="career-card-content">
+              <span class="career-card-category">Tecnología</span>
+              <h3 class="career-card-title">Ingeniería de Software</h3>
+              <p class="career-card-desc">Desarrollo de aplicaciones y sistemas</p>
+              <div class="career-card-meta">
+                <div class="career-meta-item">
+                  <i data-lucide="clock"></i>
+                  <span>5 años</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="users"></i>
+                  <span>Universitaria</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="trending-up"></i>
+                  <span>Demanda Muy Alta</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="building"></i>
+                  <span>12 universidades</span>
+                </div>
+              </div>
+              <div class="career-card-actions">
+                <a href="components/detalle-carrera.html" class="career-card-btn primary">Ver Detalles</a>
+                <a href="#" class="career-card-btn secondary">Comparar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Card 4 -->
+          <div class="career-card">
+            <div class="career-card-image">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="Desarrollo de Aplicaciones">
+              <div class="career-card-overlay"></div>
+              <div class="career-card-badges">
+                <span class="career-badge compatibility">90% Compatible</span>
+              </div>
+              <button class="career-favorite-btn" title="Agregar a favoritos">
+                <i data-lucide="heart"></i>
+              </button>
+            </div>
+            <div class="career-card-content">
+              <span class="career-card-category">Tecnología</span>
+              <h3 class="career-card-title">Desarrollo de Aplicaciones</h3>
+              <p class="career-card-desc">Programación de aplicaciones móviles y web</p>
+              <div class="career-card-meta">
+                <div class="career-meta-item">
+                  <i data-lucide="clock"></i>
+                  <span>3 años</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="users"></i>
+                  <span>Técnica</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="trending-up"></i>
+                  <span>Demanda Muy Alta</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="building"></i>
+                  <span>7 universidades</span>
+                </div>
+              </div>
+              <div class="career-card-actions">
+                <a href="components/detalle-carrera.html" class="career-card-btn primary">Ver Detalles</a>
+                <a href="#" class="career-card-btn secondary">Comparar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Card 5 -->
+          <div class="career-card">
+            <div class="career-card-image">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="Desarrollo de Aplicaciones">
+              <div class="career-card-overlay"></div>
+              <div class="career-card-badges">
+                <span class="career-badge compatibility">90% Compatible</span>
+              </div>
+              <button class="career-favorite-btn" title="Agregar a favoritos">
+                <i data-lucide="heart"></i>
+              </button>
+            </div>
+            <div class="career-card-content">
+              <span class="career-card-category">Tecnología</span>
+              <h3 class="career-card-title">Desarrollo de Aplicaciones</h3>
+              <p class="career-card-desc">Programación de aplicaciones móviles y web</p>
+              <div class="career-card-meta">
+                <div class="career-meta-item">
+                  <i data-lucide="clock"></i>
+                  <span>3 años</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="users"></i>
+                  <span>Técnica</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="trending-up"></i>
+                  <span>Demanda Muy Alta</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="building"></i>
+                  <span>7 universidades</span>
+                </div>
+              </div>
+              <div class="career-card-actions">
+                <a href="components/detalle-carrera.html" class="career-card-btn primary">Ver Detalles</a>
+                <a href="#" class="career-card-btn secondary">Comparar</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Career Card 6 -->
+          <div class="career-card">
+            <div class="career-card-image">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" alt="Desarrollo de Aplicaciones">
+              <div class="career-card-overlay"></div>
+              <div class="career-card-badges">
+                <span class="career-badge compatibility">90% Compatible</span>
+              </div>
+              <button class="career-favorite-btn" title="Agregar a favoritos">
+                <i data-lucide="heart"></i>
+              </button>
+            </div>
+            <div class="career-card-content">
+              <span class="career-card-category">Tecnología</span>
+              <h3 class="career-card-title">Desarrollo de Aplicaciones</h3>
+              <p class="career-card-desc">Programación de aplicaciones móviles y web</p>
+              <div class="career-card-meta">
+                <div class="career-meta-item">
+                  <i data-lucide="clock"></i>
+                  <span>3 años</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="users"></i>
+                  <span>Técnica</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="trending-up"></i>
+                  <span>Demanda Muy Alta</span>
+                </div>
+                <div class="career-meta-item">
+                  <i data-lucide="building"></i>
+                  <span>7 universidades</span>
+                </div>
+              </div>
+              <div class="career-card-actions">
+                <a href="components/detalle-carrera.html" class="career-card-btn primary">Ver Detalles</a>
+                <a href="#" class="career-card-btn secondary">Comparar</a>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

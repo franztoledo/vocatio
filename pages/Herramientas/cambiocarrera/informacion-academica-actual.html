@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Información Académica Actual - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../../styles/global.css">
+  <link rel="stylesheet" href="../../../styles/style.css">
+  <link rel="stylesheet" href="../components/calculadora-cambio-carrera.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../../Herramientas/herramientas-seccion.html" class="nav-link active">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas de Planificación</span>
+        </a>
+        <a href="../../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../index.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="herramientas-seccion.html" class="breadcrumb-link">
+          <span>Información Académica Actual</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="page-container">
+    <div class="container">
+      <div class="back-button-wrapper">
+        <a href="../herramientas-seccion.html" class="back-button">
+          <i data-lucide="arrow-left"></i>
+          <span>Volver a herramientas</span>
+        </a>
+      </div>
+
+      <div class="page-header">
+        <h1 class="page-title">Información Académica Actual</h1>
+        <p class="page-subtitle">Cuéntanos sobre tu situación académica para calcular el cambio</p>
+      </div>
+
+      <div class="form-container">
+        <form class="academic-form">
+          <div class="form-grid">
+            <!-- Carrera actual -->
+            <div class="form-group">
+              <label for="carrera-actual" class="form-label">Carrera actual</label>
+              <input type="email" id="carrera-actual" class="form-input" placeholder="Ingresa tu carrera">
+            </div>
+
+            <!-- Universidad Actual -->
+            <div class="form-group">
+              <label for="universidad-actual" class="form-label">Universidad Actual</label>
+              <input type="email" id="universidad-actual" class="form-input" placeholder="Ingresa tu universidad">
+            </div>
+
+            <!-- Ciclo/Semestre actual -->
+            <div class="form-group">
+              <label for="ciclo-actual" class="form-label">Ciclo/Semestre actual</label>
+              <input type="email" id="ciclo-actual" class="form-input" placeholder="Ej: 4to ciclo">
+            </div>
+
+            <!-- Promedio actual -->
+            <div class="form-group">
+              <label for="promedio-actual" class="form-label">Promedio actual</label>
+              <input type="email" id="promedio-actual" class="form-input" placeholder="Ej: 16.5">
+            </div>
+          </div>
+
+          <!-- Motivo del cambio -->
+          <div class="form-group full-width">
+            <label for="motivo-cambio" class="form-label">¿Por qué quieres cambiar de carrera?</label>
+            <textarea id="motivo-cambio" class="form-textarea" placeholder="Me di cuenta que mi verdadera pasión esta en la tecnología después de tomar algunos cursos electivos de programación" rows="4"></textarea>
+          </div>
+
+          <!-- Documentos requeridos -->
+          <div class="documents-box">
+            <div class="documents-header">
+              <i data-lucide="file-check"></i>
+              <span>Documentos que necesitarás</span>
+            </div>
+            <ul class="documents-list">
+              <li>Récord académico actualizado</li>
+              <li>Sílabos de las materias cursadas</li>
+              <li>Certificado de notas oficial</li>
+              <li>Carta de motivos para el cambio</li>
+            </ul>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn-secondary">Cancelar</button>
+            <a type="submit" class="btn-primary" href="seleccionar-carrera-destino.html">
+              <span>Continuar al siguiente paso</span>
+              <i data-lucide="arrow-right"></i>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../../Herramientas/herramientas-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

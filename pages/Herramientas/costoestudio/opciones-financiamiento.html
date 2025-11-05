@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opciones de Financiamiento - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../../styles/global.css">
+  <link rel="stylesheet" href="../../../styles/style.css">
+  <link rel="stylesheet" href="../components/simulador-costos-educativos.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../../Herramientas/herramientas-seccion.html" class="nav-link active">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas de Planificación</span>
+        </a>
+        <a href="../../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../index.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="herramientas-seccion.html" class="breadcrumb-link">
+          <span>Opciones de Financiamiento</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="page-container">
+    <div class="container">
+      <div class="back-button-wrapper">
+        <a href="costos-educativos-resultado.html" class="back-button">
+          <i data-lucide="arrow-left"></i>
+          <span>Volver</span>
+        </a>
+      </div>
+
+      <div class="page-header">
+        <h1 class="page-title">Opciones de Financiamiento</h1>
+        <p class="page-subtitle">Explora diferentes formas de financiar tu educacion</p>
+      </div>
+
+      <!-- Cost Banner -->
+      <div class="cost-banner">
+        <i data-lucide="alert-circle"></i>
+        <div>
+          <p class="cost-banner-amount">💰 Costo total estimado: <strong>$65,000</strong></p>
+          <p class="cost-banner-desc">Para Ingeniería de Software en UPC (5 años)</p>
+        </div>
+      </div>
+
+      <!-- Scholarships & Credits Grid -->
+      <div class="financing-grid">
+        <!-- Scholarships Column -->
+        <div class="financing-column">
+          <h2 class="column-title">Becas Disponibles</h2>
+
+          <div class="scholarship-card">
+            <h3 class="scholarship-name">Beca Excelencia Académica</h3>
+            <p class="scholarship-requirement">Promedio 17+</p>
+            <p class="scholarship-discount">
+              <span class="percentage">30%</span>
+            </p>
+            <p class="scholarship-savings">Ahorro: <strong>$19,500</strong></p>
+          </div>
+
+          <div class="scholarship-card">
+            <h3 class="scholarship-name">Beca Talento Deportivo</h3>
+            <p class="scholarship-requirement">Representar universidad</p>
+            <p class="scholarship-discount">
+              <span class="percentage">25%</span>
+            </p>
+            <p class="scholarship-savings">Ahorro: <strong>$16,250</strong></p>
+          </div>
+
+          <div class="scholarship-card">
+            <h3 class="scholarship-name">Beca Socioeconómica</h3>
+            <p class="scholarship-requirement">Evaluación familiar</p>
+            <p class="scholarship-discount">
+              <span class="percentage">50%</span>
+            </p>
+            <p class="scholarship-savings">Ahorro: <strong>$32,500</strong></p>
+          </div>
+
+          <div class="scholarship-card">
+            <h3 class="scholarship-name">Beca Programación</h3>
+            <p class="scholarship-requirement">Examen técnico</p>
+            <p class="scholarship-discount">
+              <span class="percentage">20%</span>
+            </p>
+            <p class="scholarship-savings">Ahorro: <strong>$13,000</strong></p>
+          </div>
+        </div>
+
+        <!-- Education Credits Column -->
+        <div class="financing-column">
+          <h2 class="column-title">Créditos Educativos</h2>
+
+          <div class="credit-card">
+            <h3 class="credit-name">BCP Crédito Estudios</h3>
+            <div class="credit-info">
+              <p>
+                <span class="info-label">Tasa:</span>
+                <span class="info-value">8.5% anual</span>
+              </p>
+              <p>
+                <span class="info-label">Plazo:</span>
+                <span class="info-value">10 años</span>
+              </p>
+              <p>
+                <span class="info-label">Cuota mensual:</span>
+                <span class="info-value">$890</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="credit-card">
+            <h3 class="credit-name">BBVA Educativo</h3>
+            <div class="credit-info">
+              <p>
+                <span class="info-label">Tasa:</span>
+                <span class="info-value">9.2% anual</span>
+              </p>
+              <p>
+                <span class="info-label">Plazo:</span>
+                <span class="info-value">8 años</span>
+              </p>
+              <p>
+                <span class="info-label">Cuota mensual:</span>
+                <span class="info-value">$980</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="credit-card">
+            <h3 class="credit-name">Scotiabank Futuro</h3>
+            <div class="credit-info">
+              <p>
+                <span class="info-label">Tasa:</span>
+                <span class="info-value">8.8% anual</span>
+              </p>
+              <p>
+                <span class="info-label">Plazo:</span>
+                <span class="info-value">10 años</span>
+              </p>
+              <p>
+                <span class="info-label">Cuota mensual:</span>
+                <span class="info-value">$915</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="credit-card">
+            <h3 class="credit-name">Interbank Estudiante</h3>
+            <div class="credit-info">
+              <p>
+                <span class="info-label">Tasa:</span>
+                <span class="info-value">9.0% anual</span>
+              </p>
+              <p>
+                <span class="info-label">Plazo:</span>
+                <span class="info-value">9 años</span>
+              </p>
+              <p>
+                <span class="info-label">Cuota mensual:</span>
+                <span class="info-value">$945</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mixed Plan Section -->
+      <div class="mixed-plan-section">
+        <h2 class="section-title">Plan de Financiamiento Mixto</h2>
+
+        <div class="mixed-plan-cards">
+          <div class="mixed-card">
+            <p class="mixed-amount">$19,500</p>
+            <p class="mixed-desc">Beca (30%)</p>
+          </div>
+          <div class="mixed-card">
+            <p class="mixed-amount">$30,000</p>
+            <p class="mixed-desc">Crédito educativo</p>
+          </div>
+          <div class="mixed-card">
+            <p class="mixed-amount">$15,500</p>
+            <p class="mixed-desc">Aporte familiar</p>
+          </div>
+        </div>
+
+        <div class="mixed-plan-details">
+          <p><strong>Cuota mensual estimada:</strong> $650</p>
+          <ul class="mixed-list">
+            <li>Crédito BCP: $450/mes por 10 años</li>
+            <li>Aporte familiar: $200/mes durante los estudios</li>
+            <li>Total ahorro por beca: $19,500</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="financing-actions">
+        <a href="configurar-simulacion-costos.html" class="btn-secondary">
+          <i data-lucide="shuffle"></i>
+          Simular Otros Escenarios
+        </a>
+        <button type="button" class="btn-primary">
+          <i data-lucide="phone"></i>
+          Solicitar Asesoría Financiera
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../../Herramientas/herramientas-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

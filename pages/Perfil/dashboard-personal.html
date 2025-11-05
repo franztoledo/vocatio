@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Personal - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/dashboard-personal.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../inicio.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="perfil-seccion.html" class="breadcrumb-link">
+          <span>Mi Perfil</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Dashboard Personal</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Header -->
+  <section class="dashboard-header">
+    <div class="container">
+      <a href="perfil-seccion.html" class="back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver a Mi Perfil</span>
+      </a>
+      
+      <div class="dashboard-header-content">
+        <h1 class="dashboard-main-title">Dashboard Personal</h1>
+        <p class="dashboard-subtitle">Resumen de tu progreso en OrientaVocacional</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Cards -->
+  <section class="dashboard-stats">
+    <div class="container">
+      <div class="stats-grid">
+        <!-- Compatibilidad -->
+        <div class="stat-card blue">
+          <div class="stat-value">92%</div>
+          <div class="stat-label">Compatibilidad máxima</div>
+          <div class="stat-icon">
+            <i data-lucide="trending-up"></i>
+          </div>
+        </div>
+
+        <!-- Carreras Favoritas -->
+        <div class="stat-card green">
+          <div class="stat-value">3</div>
+          <div class="stat-label">Carreras favoritas</div>
+          <div class="stat-icon">
+            <i data-lucide="heart"></i>
+          </div>
+        </div>
+
+        <!-- Perfil Completado -->
+        <div class="stat-card purple">
+          <div class="stat-value">85%</div>
+          <div class="stat-label">Perfil completado</div>
+          <div class="stat-icon">
+            <i data-lucide="user-check"></i>
+          </div>
+        </div>
+
+        <!-- Días Activo -->
+        <div class="stat-card yellow">
+          <div class="stat-value">7</div>
+          <div class="stat-label">Días activo</div>
+          <div class="stat-icon">
+            <i data-lucide="calendar"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="dashboard-content">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Tus Carreras Favoritas -->
+        <div class="content-card">
+          <div class="card-header">
+            <h3 class="card-title">Tus Carreras Favoritas</h3>
+          </div>
+          
+          <div class="careers-list">
+            <div class="career-item">
+              <div class="career-info">
+                <span class="career-name">Ingeniería de Software</span>
+                <div class="career-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 92%"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="career-percentage">92%</span>
+            </div>
+
+            <div class="career-item">
+              <div class="career-info">
+                <span class="career-name">Diseño Gráfico</span>
+                <div class="career-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="career-percentage">85%</span>
+            </div>
+
+            <div class="career-item">
+              <div class="career-info">
+                <span class="career-name">Medicina</span>
+                <div class="career-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 78%"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="career-percentage">78%</span>
+            </div>
+          </div>
+
+          <a href="#" class="card-action-btn">Ver todas</a>
+        </div>
+
+        <!-- Actividad Reciente -->
+        <div class="content-card">
+          <div class="card-header">
+            <h3 class="card-title">Actividad Reciente</h3>
+          </div>
+          
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-icon completed">
+                <i data-lucide="check-circle"></i>
+              </div>
+              <div class="activity-details">
+                <p class="activity-title">Test vocacional completado</p>
+                <p class="activity-time">Hace 2 horas</p>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon chat">
+                <i data-lucide="message-circle"></i>
+              </div>
+              <div class="activity-details">
+                <p class="activity-title">Chat con estudiante</p>
+                <p class="activity-time">Hace 1 día</p>
+              </div>
+            </div>
+
+            <div class="activity-item">
+              <div class="activity-icon favorite">
+                <i data-lucide="heart"></i>
+              </div>
+              <div class="activity-details">
+                <p class="activity-title">Carrera agregada a favoritas</p>
+                <p class="activity-time">Hace 2 días</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="card-action-btn">Ver más actividad</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Próximos Pasos -->
+  <section class="next-steps">
+    <div class="container">
+      <h2 class="section-title">Próximos Pasos Recomendados</h2>
+      
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">
+            <i data-lucide="clipboard-list"></i>
+          </div>
+          <h4 class="step-title">Completa tu perfil</h4>
+          <p class="step-desc">Aún te falta un 15% para completar tu perfil al 100%</p>
+          <a href="#" class="step-link">Completar ahora <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">
+            <i data-lucide="compass"></i>
+          </div>
+          <h4 class="step-title">Explora más carreras</h4>
+          <p class="step-desc">Descubre 15+ carreras que coinciden con tu perfil</p>
+          <a href="#" class="step-link">Explorar <i data-lucide="arrow-right"></i></a>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon">
+            <i data-lucide="file-text"></i>
+          </div>
+          <h4 class="step-title">Genera tu reporte</h4>
+          <p class="step-desc">Descarga un análisis completo de tus resultados</p>
+          <a href="#" class="step-link">Generar reporte <i data-lucide="arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="perfil-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
