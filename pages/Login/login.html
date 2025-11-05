@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="components/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-card">
+            <h1 class="form-title">Iniciar Sesión</h1>
+            
+            <form class="form" action="../inicio.html">
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Email" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" class="form-input" placeholder="Contraseña" required>
+                </div>
+                
+                <div class="form-links">
+                    <div class="link-item">
+                        <span class="link-text">¿No tienes una cuenta?</span>
+                        <a href="register.html" class="link">Registrarse</a>
+                    </div>
+                    
+                    <div class="link-item">
+                        <span class="link-text">¿Olvidaste tu contraseña?</span>
+                        <a href="reset-password.html" class="link">Restablecer Contraseña</a>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <a href="../../index.html" class="btn btn-secondary small">Volver</a>
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
