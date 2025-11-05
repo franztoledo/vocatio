@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Vocacional Tradicional - Vocatio</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/test-vocacional-tradicional.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link active">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link ">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../index.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="test-vocacional-seccion.html" class="breadcrumb-link">
+          <span>Test Vocacionales</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Test Vocacional</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="test-hero-banner">
+    <div class="hero-banner-content">
+      <a href="test-vocacional-seccion.html" class="back-link-hero">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver</span>
+      </a>
+      
+      <div class="hero-banner-icon">
+        <i data-lucide="target"></i>
+      </div>
+      
+      <h1 class="hero-banner-title">Realiza tu test vocacional</h1>
+      <p class="hero-banner-subtitle">Descubre tu vocación con herramientas científicas</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="tradicional-main">
+    <div class="tradicional-container">
+      
+      <!-- Left Content -->
+      <div class="tradicional-content">
+        <h2 class="content-title">Orienta Vocacinal</h2>
+        <h3 class="content-highlight">Realiza tu test vocacional en tan solo 15 minutos!</h3>
+        
+        <p class="content-description">
+          Elegir una carrera universitaria es una de las decisiones más importantes y determinantes en tu vida. 
+          En OrientaVocacional hemos creado una herramienta precisa que te permite descubrir tus verdaderas 
+          pasiones, talentos naturales y el camino profesional que mejor se alinea con tu personalidad.
+        </p>
+
+        <div class="content-section">
+          <h4 class="section-subtitle">¿Por qué confiar en nuestro test vocacional?</h4>
+          <ul class="benefits-list">
+            <li>Desarrollado por psicólogos educativos y expertos en orientación profesional</li>
+            <li>Metodología validada y actualizada con las demandas del mercado laboral actual</li>
+            <li>Resultados inmediatos con recomendaciones de carreras específicas</li>
+            <li>Completamente gratuito y disponible 24/7</li>
+          </ul>
+        </div>
+
+        <div class="content-section warning-section">
+          <h4 class="section-subtitle-warning">Elegir a ciegas tiene consecuencias reales</h4>
+          <p class="warning-intro">Muchos estudiantes eligen su carrera basándose en presiones familiares, mitos sociales o información incompleta, lo que genera:</p>
+          <ul class="warning-list">
+            <li>Hasta 70% de arrepentimiento en la elección de carrera</li>
+            <li>Pérdida de 1-2 años académicos por cambios de programa</li>
+            <li>Frustración y desmotivación que afectan el rendimiento</li>
+            <li>Inversión económica en estudios que no satisfacen</li>
+          </ul>
+        </div>
+
+        <div class="content-section cta-section">
+          <h4 class="section-subtitle-cta">¡Tu futuro profesional merece una decisión informada!</h4>
+          <p class="cta-description">
+            No dejes una de las decisiones más importantes de tu vida al azar. 
+            Descubre las carreras que realmente se alinean con quién eres.
+          </p>
+          
+          <button class="btn-start-test" onclick="window.location.href='formulario-test.html'">
+            HAZ CLICK AQUÍ PARA INICIAR!
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <aside class="tradicional-sidebar">
+        <div class="sidebar-card">
+          <h3 class="sidebar-title">Descubre</h3>
+          
+          <div class="sidebar-options">
+            <button class="sidebar-option">
+              Área de Ciencias & Tecnología
+            </button>
+            <button class="sidebar-option">
+              Áreas Creativas & Artísticas
+            </button>
+            <button class="sidebar-option">
+              Área Empresarial & Directiva
+            </button>
+            <button class="sidebar-option">
+              Área Social & Humanitaria
+            </button>
+          </div>
+          
+          <button class="btn-explore">
+            Explorar más carreras
+          </button>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras.html" class="bottom-nav-item ">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item ">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
