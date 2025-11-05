@@ -1,0 +1,388 @@
+/* ============================================
+   ESTILOS DE AUTENTICACIÓN
+   ============================================ */
+
+/* Estilos base para páginas de login */
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+/* Contenedor principal */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Tarjeta del formulario */
+.form-card {
+    background: var(--white);
+    border-radius: var(--border-radius-xl);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    width: 100%;
+    max-width: 500px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-card.wide {
+    max-width: 800px;
+}
+
+.form-card.small {
+    max-width: 400px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(var(--spacing-md));
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Banner superior */
+.header-banner {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+    color: var(--white);
+    padding: var(--spacing-lg);
+    text-align: left;
+}
+
+.banner-title {
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-xs);
+}
+
+.banner-subtitle {
+    font-size: var(--font-size-text);
+    opacity: 0.95;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Títulos del formulario */
+.form-title {
+    color: var(--primary-600);
+    font-size: 32px;
+    font-weight: var(--font-weight-semibold);
+    padding: var(--spacing-panel) var(--spacing-panel) var(--spacing-lg);
+    margin: 0;
+}
+
+.form-title.success {
+    color: var(--primary-600);
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-panel);
+}
+
+/* Formulario */
+.form {
+    padding: 0 var(--spacing-panel) var(--spacing-panel);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+    flex: 1;
+}
+
+.form-row {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.form-row .form-group {
+    margin-bottom: 0;
+}
+
+/* Inputs */
+.form-input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-text);
+    font-family: var(--font-family);
+    transition: all var(--transition-smooth);
+    outline: none;
+    background: var(--white);
+    color: var(--neutral-900);
+}
+
+.form-input:focus {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.form-input::placeholder {
+    color: var(--neutral-400);
+}
+
+.form-input[readonly] {
+    background-color: var(--neutral-100);
+    cursor: not-allowed;
+}
+
+/* Enlaces */
+.form-links {
+    margin: var(--spacing-lg) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-text);
+}
+
+.link-text {
+    color: var(--neutral-600);
+}
+
+.link {
+    color: var(--primary-600);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: color var(--transition-fast);
+}
+
+.link:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+.link-inline {
+    color: var(--primary-600);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+}
+
+.link-inline:hover {
+    text-decoration: underline;
+}
+
+/* Sección de subida de archivos */
+.upload-section {
+    margin: var(--spacing-lg) 0;
+}
+
+.upload-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-sm);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+}
+
+.upload-label:hover {
+    border-color: var(--primary-500);
+    background: var(--primary-50);
+}
+
+.upload-text {
+    color: var(--primary-600);
+    font-size: var(--font-size-text);
+    font-weight: var(--font-weight-medium);
+}
+
+.upload-icon {
+    font-size: 24px;
+}
+
+.upload-input {
+    display: none;
+}
+
+/* Botones */
+.btn {
+    padding: 14px 32px;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+    color: var(--white);
+    border: 2px solid transparent;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px var(--alpha-light-300);
+    background: var(--primary-hover);
+}
+
+.btn-secondary {
+    background: var(--neutral-200);
+    color: var(--neutral-900);
+    border: 2px solid var(--neutral-300);
+}
+
+.btn-secondary:hover {
+    background: var(--neutral-300);
+    border-color: var(--neutral-400);
+}
+
+.btn.small {
+    padding: 10px 24px;
+    font-size: var(--font-size-text);
+}
+
+/* Acciones del formulario */
+.form-actions {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.form-actions.right {
+    justify-content: flex-end;
+}
+
+.form-actions.space-between {
+    justify-content: space-between;
+}
+
+.form-actions.center {
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Mensajes */
+.message-box {
+    padding: var(--spacing-md) var(--spacing-panel);
+    text-align: center;
+}
+
+.message-text {
+    font-size: var(--font-size-text);
+    color: var(--neutral-800);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.message-subtext {
+    font-size: var(--font-size-text);
+    color: var(--neutral-600);
+    line-height: 1.6;
+}
+
+/* Icono de éxito */
+.success-icon {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+    color: var(--white);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    margin: var(--spacing-panel) auto var(--spacing-md);
+    box-shadow: 0 8px 20px var(--alpha-light-300);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-card {
+        border-radius: var(--border-radius-lg);
+    }
+    
+    .form-title {
+        font-size: 26px;
+        text-align: center;
+        padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .banner-title {
+        font-size: 24px;
+    }
+    
+    .banner-subtitle {
+        font-size: var(--font-size-text);
+    }
+    
+    .form {
+        padding: 0 var(--spacing-lg) var(--spacing-lg);
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .form-row .form-group {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .message-box {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .form-actions.space-between {
+        flex-direction: column;
+    }
+    
+    .form-actions.center {
+        
+        margin-left: var(--spacing-lg);
+        margin-right: var(--spacing-lg);
+    }
+        .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: var(--spacing-xs);
+    }
+    
+    .header-banner {
+        padding: var(--spacing-md);
+    }
+    
+    .form-title {
+        font-size: 22px;
+        padding: var(--spacing-md) var(--spacing-md) var(--spacing-form);
+    }
+    
+    .form {
+        padding: 0 var(--spacing-md) var(--spacing-md);
+    }
+    
+    .message-box {
+        padding: var(--spacing-form) var(--spacing-md);
+    }
+    
+    .form-input {
+        padding: 12px 16px;
+        font-size: var(--font-size-text);
+    }
+}
