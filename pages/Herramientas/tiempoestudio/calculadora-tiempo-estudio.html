@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Tiempo de Estudio - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../../styles/global.css">
+  <link rel="stylesheet" href="../../../styles/style.css">
+  <link rel="stylesheet" href="../components/calculadora-tiempo-estudio.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../../Herramientas/herramientas-seccion.html" class="nav-link active">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas de Planificación</span>
+        </a>
+        <a href="../../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../index.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="herramientas-seccion.html" class="breadcrumb-link">
+          <span>Calculadora de Tiempo de Estudio</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="page-container">
+    <div class="container">
+      <div class="back-button-wrapper">
+        <a href="../herramientas-seccion.html" class="back-button">
+          <i data-lucide="arrow-left"></i>
+          <span>Volver al inicio</span>
+        </a>
+      </div>
+
+      <div class="page-header">
+        <h1 class="page-title">Calculadora de Tiempo de Estudio</h1>
+        <p class="page-subtitle">Calcula el tiempo total necesario para completar su formacion profesional</p>
+      </div>
+
+      <!-- Main Calculator Container -->
+      <div class="calculator-wrapper">
+        <!-- Left Column: Input Form -->
+        <div class="calculator-column config-column">
+          <h2 class="column-title">Configuración de Estudio</h2>
+
+          <div class="form-group">
+            <label for="carrera" class="form-label">Carrera seleccionada</label>
+            <select id="carrera" class="form-select">
+              <option value="">-- Selecciona una carrera --</option>
+              <option value="ingenieria-software" selected>Ingeniería de Software</option>
+              <option value="ingenieria-industrial">Ingeniería Industrial</option>
+              <option value="marketing-digital">Marketing Digital</option>
+              <option value="psicologia">Psicología</option>
+              <option value="contabilidad">Contabilidad</option>
+              <option value="comunicaciones">Comunicaciones</option>
+              <option value="administracion">Administración de Empresas</option>
+              <option value="ingenieria-civil">Ingeniería Civil</option>
+              <option value="ingenieria-electrica">Ingeniería Eléctrica</option>
+              <option value="derecho">Derecho</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="modalidad" class="form-label">Modalidad de estudio</label>
+            <select id="modalidad" class="form-select">
+              <option value="presencial" selected>Presencial</option>
+              <option value="virtual">Virtual</option>
+              <option value="hibrida">Híbrida</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="especializacion" class="form-label">¿Piensas hacer especialización?</label>
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="especializacion" value="no" checked>
+                <span>No</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="especializacion" value="si">
+                <span>Sí, Maestría (2 años)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Results -->
+        <div class="calculator-column results-column">
+          <h2 class="column-title highlight">Resultados del Cálculo</h2>
+
+          <div class="result-item">
+            <span class="result-label">Pregrado:</span>
+            <span class="result-value">5 años</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Maestría:</span>
+            <span class="result-value">2 años</span>
+          </div>
+
+          <div class="result-item">
+            <span class="result-label">Prácticas profesionales:</span>
+            <span class="result-value">6 meses</span>
+          </div>
+
+          <!-- Timeline -->
+          <div class="timeline-box">
+            <h3 class="timeline-box-title">Línea de Tiempo</h3>
+            <ul class="timeline-list">
+              <li>
+                <span class="timeline-year">2024-2029:</span>
+                <span class="timeline-text">Pregrado en Ingeniería de Software</span>
+              </li>
+              <li>
+                <span class="timeline-year">2029-2031:</span>
+                <span class="timeline-text">Maestría en Desarrollo de Software</span>
+              </li>
+              <li>
+                <span class="timeline-year">2031:</span>
+                <span class="timeline-text">Ingreso al mercado laboral especializado</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Total Time -->
+          <div class="total-time-box">
+            <span class="total-time-label">Tiempo total estimado:</span>
+            <span class="total-time-value">7.5 años</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="calculator-actions">
+        <button class="btn-secondary" onclick="resetCalculator()">
+          <i data-lucide="rotate-ccw"></i>
+          Reiniciar
+        </button>
+        <button class="btn-primary" onclick="generateReport()">
+          <i data-lucide="download"></i>
+          Descargar Reporte
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="bottom-nav">
+    <a href="../../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../../Herramientas/herramientas-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+
+  </script>
+
+</body>
+</html>
