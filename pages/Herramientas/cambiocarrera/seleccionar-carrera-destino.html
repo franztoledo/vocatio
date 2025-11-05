@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seleccionar Carrera de Destino - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../../styles/global.css">
+  <link rel="stylesheet" href="../../../styles/style.css">
+  <link rel="stylesheet" href="../components/calculadora-cambio-carrera.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../../Herramientas/herramientas-seccion.html" class="nav-link active">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas de Planificación</span>
+        </a>
+        <a href="../../Perfil/perfil-seccion.html" class="nav-link">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../../index.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="herramientas-seccion.html" class="breadcrumb-link">
+          <span>Seleccionar Carrera de Destino</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <section class="page-container">
+    <div class="container">
+      <div class="back-button-wrapper">
+        <a href="informacion-academica-actual.html" class="back-button">
+          <i data-lucide="arrow-left"></i>
+          <span>Volver</span>
+        </a>
+      </div>
+
+      <div class="page-header">
+        <h1 class="page-title">Seleccionar Carrera de Destino</h1>
+        <p class="page-subtitle">¿A qué carrera te gustaría cambiar?</p>
+      </div>
+
+      <!-- Carrera Actual Info -->
+      <div class="current-career-box">
+        <p class="current-career-label">Tu carrera actual: <strong>Administración de Empresas</strong></p>
+        <p class="current-career-detail">4to ciclo completado • Promedio: 16.5/20</p>
+      </div>
+
+      <!-- Career Selection Grid -->
+      <div class="careers-grid">
+        <!-- Card 1 -->
+        <div class="career-card">
+          <div class="career-image">
+            <img src="https://via.placeholder.com/300x200" alt="Ingeniería de Software">
+          </div>
+          <div class="career-content">
+            <h3 class="career-name">Ingeniería de Software</h3>
+            <div class="career-stats">
+              <div class="stat">
+                <span class="stat-label">compatibilidad:</span>
+                <span class="stat-value">78%</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Materias convalidables:</span>
+                <span class="stat-value">8</span>
+              </div>
+            </div>
+            <a class="btn-analyze" href="analisis-convalidacion.html">Analizar cambio</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="career-card">
+          <div class="career-image">
+            <img src="https://via.placeholder.com/300x200" alt="Ingeniería Industrial">
+          </div>
+          <div class="career-content">
+            <h3 class="career-name">Ingeniería Industrial</h3>
+            <div class="career-stats">
+              <div class="stat">
+                <span class="stat-label">compatibilidad:</span>
+                <span class="stat-value">85%</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Materias convalidables:</span>
+                <span class="stat-value">12</span>
+              </div>
+            </div>
+            <button class="btn-analyze">Analizar cambio</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="career-card">
+          <div class="career-image">
+            <img src="https://via.placeholder.com/300x200" alt="Marketing Digital">
+          </div>
+          <div class="career-content">
+            <h3 class="career-name">Marketing Digital</h3>
+            <div class="career-stats">
+              <div class="stat">
+                <span class="stat-label">compatibilidad:</span>
+                <span class="stat-value">92%</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Materias convalidables:</span>
+                <span class="stat-value">15</span>
+              </div>
+            </div>
+            <button class="btn-analyze">Analizar cambio</button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="career-card">
+          <div class="career-image">
+            <img src="https://via.placeholder.com/300x200" alt="Psicología">
+          </div>
+          <div class="career-content">
+            <h3 class="career-name">Psicología</h3>
+            <div class="career-stats">
+              <div class="stat">
+                <span class="stat-label">compatibilidad:</span>
+                <span class="stat-value">65%</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Materias convalidables:</span>
+                <span class="stat-value">6</span>
+              </div>
+            </div>
+            <button class="btn-analyze">Analizar cambio</button>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="career-card">
+          <div class="career-image">
+            <img src="https://via.placeholder.com/300x200" alt="Contabilidad">
+          </div>
+          <div class="career-content">
+            <h3 class="career-name">Contabilidad</h3>
+            <div class="career-stats">
+              <div class="stat">
+                <span class="stat-label">compatibilidad:</span>
+                <span class="stat-value">88%</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Materias convalidables:</span>
+                <span class="stat-value">18</span>
+              </div>
+            </div>
+            <button class="btn-analyze">Analizar cambio</button>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="career-card">
+          <div class="career-image">
+            <img src="https://via.placeholder.com/300x200" alt="Comunicaciones">
+          </div>
+          <div class="career-content">
+            <h3 class="career-name">Comunicaciones</h3>
+            <div class="career-stats">
+              <div class="stat">
+                <span class="stat-label">compatibilidad:</span>
+                <span class="stat-value">72%</span>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Materias convalidables:</span>
+                <span class="stat-value">10</span>
+              </div>
+            </div>
+            <button class="btn-analyze">Analizar cambio</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="../../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../../Herramientas/herramientas-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="../../Perfil/perfil-seccion.html" class="bottom-nav-item">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
