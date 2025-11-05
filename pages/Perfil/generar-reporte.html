@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurar Reporte Vocacional - OrientaVocacional</title>
+  <link rel="stylesheet" href="../../styles/global.css">
+  <link rel="stylesheet" href="../../styles/style.css">
+  <link rel="stylesheet" href="components/generar-reporte.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="mobile-header-content">
+      <div class="logo-icon-small">V</div>
+      <span class="logo-text-small">Vocatio</span>
+    </div>
+  </header>
+
+  <!-- Desktop Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="logo">
+        <div class="logo-icon">V</div>
+        <span class="logo-text">Vocatio</span>
+      </div>
+
+      <div class="nav-items">
+        <a href="../inicio.html" class="nav-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <a href="../TestVocacional/test-vocacional-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-check"></i>
+          <span>Test Vocacional</span>
+        </a>
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="nav-link">
+          <i data-lucide="search"></i>
+          <span>Explorar Carreras</span>
+        </a>
+        <a href="../Herramientas/herramientas-seccion.html" class="nav-link">
+          <i data-lucide="clipboard-list"></i>
+          <span>Herramientas</span>
+        </a>
+        <a href="../Perfil/perfil-seccion.html" class="nav-link active">
+          <i data-lucide="user"></i>
+          <span>Mi Perfil</span>
+        </a>
+      </div>
+
+      <a href="#login" class="btn-primary-nav">Iniciar Sesión</a>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <div class="breadcrumb-container">
+        <a href="../inicio.html" class="breadcrumb-link">
+          <i data-lucide="home"></i>
+          <span>Inicio</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="perfil-seccion.html" class="breadcrumb-link">
+          <span>Mi Perfil</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Generar Reporte</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Report Config Header -->
+  <section class="report-header">
+    <div class="container">
+      <a href="perfil-seccion.html" class="back-link">
+        <i data-lucide="arrow-left"></i>
+        <span>Volver al inicio</span>
+      </a>
+      
+      <h1 class="report-main-title">Configurar Reporte Vocacional</h1>
+      <p class="report-subtitle">Personaliza tu reporte con tus resultados y recomendaciones</p>
+    </div>
+  </section>
+
+  <!-- Report Content -->
+  <section class="report-content">
+    <div class="container">
+      
+      <!-- What's Included Box -->
+      <div class="info-box">
+        <div class="info-icon">
+          <i data-lucide="paperclip"></i>
+        </div>
+        <div class="info-content">
+          <h3 class="info-title">¿Qué incluye tu reporte?</h3>
+          <ul class="info-list">
+            <li>Resultados detallados de tu test vocacional</li>
+            <li>Lista personalizada de carreras recomendadas</li>
+            <li>Análisis de compatibilidad por áreas</li>
+            <li>Universidades sugeridas para cada carrera</li>
+            <li>Plan de acción personalizado</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Configuration Form -->
+      <form class="report-form">
+        
+        <!-- Report Title -->
+        <div class="form-row">
+          <div class="form-column">
+            <label class="form-label">Título del reporte</label>
+            <input type="text" class="form-input" value="Mi Reporte Vocacional Personal">
+          </div>
+          
+          <div class="form-column">
+            <label class="form-label">Incluir logo/marca personal</label>
+            <select class="form-select">
+              <option selected>Sin logo</option>
+              <option>Logo personal</option>
+              <option>Logo institucional</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Personal Message -->
+        <div class="form-group">
+          <label class="form-label">Mensaje personalizado (opcional)</label>
+          <textarea class="form-textarea" rows="3">Este reporte representa mi proceso de autoconocimiento vocacional y será una guía importante para mis decisiones académicas futuras.</textarea>
+        </div>
+
+        <!-- Sections to Include -->
+        <div class="sections-box">
+          <h3 class="sections-title">Secciones a incluir</h3>
+          
+          <div class="sections-grid">
+            <!-- Column 1 -->
+            <div class="sections-column">
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Portada personalizada</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Resultados del test</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Análisis de personalidad</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Plan de acción</span>
+              </label>
+            </div>
+
+            <!-- Column 2 -->
+            <div class="sections-column">
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Resumen ejecutivo</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox" checked>
+                <span class="checkbox-label">Carreras recomendadas</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span class="checkbox-label">Universidades sugeridas</span>
+              </label>
+              
+              <label class="checkbox-item">
+                <input type="checkbox">
+                <span class="checkbox-label">Recursos adicionales</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <a href="vista-previa-reporte.html" class="btn-generate">Generar Vista Previa</a>
+        </div>
+
+      </form>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-title">OrientaVocacional</h4>
+          <p class="footer-text">Tu compañero en el camino hacia la decisión de carrera correcta.</p>
+          <div class="footer-contact">
+            <p><i data-lucide="mail"></i> info@orientavocacional.com</p>
+            <p><i data-lucide="phone"></i> +1 234 567 890</p>
+            <p><i data-lucide="map-pin"></i> Lima, Perú</p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Acceso Rápido</h4>
+          <ul class="footer-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Test Vocacional</a></li>
+            <li><a href="#">Explorar Carreras</a></li>
+            <li><a href="#">Mis Favoritos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#">Materiales Educativos</a></li>
+            <li><a href="#">Chat con Estudiantes</a></li>
+            <li><a href="#">Calculadoras</a></li>
+            <li><a href="#">Universidades</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-title">Mi Cuenta</h4>
+          <ul class="footer-links">
+            <li><a href="#">Mi Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Notificaciones</a></li>
+            <li><a href="#">Reportes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 OrientaVocacional. Todos los derechos reservados.</p>
+        <div class="footer-social">
+          <a href="#"><i data-lucide="facebook"></i></a>
+          <a href="#"><i data-lucide="twitter"></i></a>
+          <a href="#"><i data-lucide="instagram"></i></a>
+          <a href="#"><i data-lucide="linkedin"></i></a>
+        </div>
+        <div class="footer-legal">
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="../inicio.html" class="bottom-nav-item">
+      <i data-lucide="home"></i>
+    </a>
+    <a href="../TestVocacional/test-vocacional-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-check"></i>
+    </a>
+    <a href="../ExplorarCarreras/explorar-carreras-seccion.html" class="bottom-nav-item">
+      <i data-lucide="search"></i>
+    </a>
+    <a href="../Herramientas/herramientas-seccion.html" class="bottom-nav-item">
+      <i data-lucide="clipboard-list"></i>
+    </a>
+    <a href="perfil-seccion.html" class="bottom-nav-item active">
+      <i data-lucide="user"></i>
+    </a>
+  </nav>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>
