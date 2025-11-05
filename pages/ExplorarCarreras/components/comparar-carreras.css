@@ -1,0 +1,415 @@
+/* ============================================
+   COMPARE RESULT HERO
+   ============================================ */
+.compare-result-hero {
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+  padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
+  color: var(--white);
+}
+
+.compare-result-hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.back-link-compare {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: var(--font-size-small);
+  opacity: 0.95;
+  transition: all var(--transition-fast);
+  width: fit-content;
+}
+
+.back-link-compare:hover {
+  opacity: 1;
+  gap: 10px;
+}
+
+.back-link-compare i {
+  width: 16px;
+  height: 16px;
+}
+
+.compare-result-title {
+  font-size: 32px;
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 var(--spacing-xs) 0;
+}
+
+.compare-result-subtitle {
+  font-size: 15px;
+  opacity: 0.95;
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+/* ============================================
+   TAB SYSTEM (CSS PURO)
+   ============================================ */
+
+.compare-tab-input {
+  display: none;
+}
+
+.compare-tabs {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.compare-tabs label,
+.compare-tabs a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius-lg);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.compare-tabs label:hover,
+.compare-tabs a:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#tab-table:checked ~ section .compare-tabs label[for="tab-table"],
+#tab-cards:checked ~ section .compare-tabs label[for="tab-cards"] {
+  background: var(--white);
+  color: var(--primary-600);
+  border-color: var(--white);
+}
+
+.compare-tabs i {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================
+   COMPARE RESULT SECTION
+   ============================================ */
+.compare-result-section {
+  background: var(--white);
+  padding: var(--spacing-xxl) var(--spacing-sm);
+}
+
+/* MOSTRAR/OCULTAR VISTAS */
+#tab-table:checked ~ .compare-result-section .comparison-table {
+  display: block;
+}
+
+#tab-table:checked ~ .compare-result-section .comparison-cards {
+  display: none;
+}
+
+#tab-cards:checked ~ .compare-result-section .comparison-table {
+  display: none;
+}
+
+#tab-cards:checked ~ .compare-result-section .comparison-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+/* ============================================
+   COMPARISON TABLE VIEW
+   ============================================ */
+.comparison-table {
+  width: 100%;
+  margin-bottom: var(--spacing-xl);
+  overflow-x: auto;
+  border-radius: var(--border-radius-xl);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+}
+
+table thead tr {
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+  border-bottom: 2px solid var(--primary-300);
+}
+
+table th,
+table td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+table th {
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-700);
+  font-size: 15px;
+}
+
+table td {
+  font-size: 15px;
+  color: var(--neutral-800);
+}
+
+table th.criterion,
+table td.criterion {
+  background: var(--neutral-50);
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-900);
+  width: 200px;
+}
+
+table tbody tr:hover {
+  background: var(--neutral-50);
+}
+
+/* ============================================
+   COMPARISON CARDS VIEW
+   ============================================ */
+.comparison-cards {
+  margin-bottom: var(--spacing-xl);
+}
+
+.career-comparison-card {
+  background: var(--white);
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--border-radius-xl);
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all var(--transition-smooth);
+}
+
+.career-comparison-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.career-card-image {
+  width: 100%;
+  height: 160px;
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.career-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.career-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-600);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.career-card-content {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.career-card-title {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  color: var(--neutral-900);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.career-card-title i {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-600);
+}
+
+.comparison-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.comparison-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--neutral-100);
+}
+
+.comparison-item:last-child {
+  border-bottom: none;
+}
+
+.comparison-item-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--neutral-600);
+  font-weight: var(--font-weight-medium);
+}
+
+.comparison-item-label i {
+  width: 16px;
+  height: 16px;
+  color: var(--primary-600);
+}
+
+.comparison-item-value {
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-900);
+}
+
+.career-card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--primary-600);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  font-size: 14px;
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.career-card-button:hover {
+  background: var(--primary-700);
+  transform: translateY(-2px);
+}
+
+.career-card-button i {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================
+   COMPARE RESULT ACTIONS
+   ============================================ */
+.compare-result-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+}
+
+.btn-favorite-compare,
+.btn-download-compare {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--border-radius-lg);
+  font-size: 15px;
+  font-weight: var(--font-weight-semibold);
+  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-favorite-compare {
+  background: var(--white);
+  color: var(--primary-600);
+  border-color: var(--primary-600);
+}
+
+.btn-favorite-compare:hover {
+  background: var(--primary-50);
+}
+
+.btn-download-compare {
+  background: var(--primary-600);
+  color: var(--white);
+}
+
+.btn-download-compare:hover {
+  background: var(--primary-700);
+  transform: translateY(-2px);
+}
+
+.btn-favorite-compare i,
+.btn-download-compare i {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .compare-result-title {
+    font-size: 24px;
+  }
+
+  .compare-tabs {
+    gap: 6px;
+  }
+
+  .compare-tabs label,
+  .compare-tabs a {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .compare-tabs span {
+    display: none;
+  }
+
+  table th,
+  table td {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  #tab-cards:checked ~ .compare-result-section .comparison-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-result-actions {
+    flex-direction: column;
+  }
+
+  .btn-favorite-compare,
+  .btn-download-compare {
+    width: 100%;
+  }
+}
