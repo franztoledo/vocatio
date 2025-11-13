@@ -34,6 +34,8 @@ function protectRoutes(user) {
   // Lista de rutas protegidas que requieren autenticación
   const protectedPaths = [
     '/pages/Perfil/',
+    '/pages/Login/profile.html',
+    '/pages/Login/success.html',
     '/pages/ExplorarCarreras/carreras-favoritas.html',
     '/pages/ExplorarCarreras/crear-lista.html',
     '/pages/ExplorarCarreras/gestionar-listas.html',
