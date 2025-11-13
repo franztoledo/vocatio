@@ -254,7 +254,17 @@ export function initRegister() {
         },
         favoriteCareers: [],
         testResults: [],
-        customLists: []
+        customLists: [],
+        privacySettings: {
+          profileVisibility: 'public',
+          showEmail: false,
+          showAge: true,
+          showEducationLevel: true,
+          showTestResults: false,
+          showFavoriteCareers: true,
+          allowMessages: true,
+          showOnlineStatus: true
+        }
       };
 
       // Añadir usuario a la base de datos
