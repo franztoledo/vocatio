@@ -26,7 +26,17 @@ export function initDB() {
         },
         favoriteCareers: [], // IDs de carreras favoritas
         testResults: [], // Historial de resultados de tests
-        customLists: [] // Listas personalizadas de carreras
+        customLists: [], // Listas personalizadas de carreras
+        privacySettings: {
+          profileVisibility: 'public',      // 'public', 'friends', 'private'
+          showEmail: false,                  // Mostrar email en perfil público
+          showAge: true,                     // Mostrar edad en perfil público
+          showEducationLevel: true,          // Mostrar nivel educativo
+          showTestResults: false,            // Mostrar resultados de tests vocacionales
+          showFavoriteCareers: true,         // Mostrar carreras favoritas
+          allowMessages: true,               // Permitir mensajes de otros usuarios
+          showOnlineStatus: true             // Mostrar estado en línea
+        }
       }
     ],
     careers: [
