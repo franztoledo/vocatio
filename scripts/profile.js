@@ -372,7 +372,7 @@ export function initProfileSuccess() {
     margin: 20px 0;
     text-align: left;
   `;
-  //CENTRAR EL TEXTO
+  
   summaryContainer.innerHTML = `
     
     <h3 style="margin-bottom: 12px; font-size: 1.1rem; color: #333; text-align: center;">Resumen de tu perfil:</h3>
