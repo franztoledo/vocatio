@@ -1,57 +1,105 @@
 /* ============================================
+   EXPLORE HERO SECTION
+   ============================================ */
+.explore-hero {
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+  padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-lg);
+  color: var(--white);
+}
+
+.explore-hero-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--white);
+  text-decoration: none;
+  font-size: var(--font-size-small);
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.9;
+  transition: all var(--transition-fast);
+}
+
+.back-link:hover {
+  opacity: 1;
+  gap: 10px;
+}
+
+.back-link i {
+  width: 16px;
+  height: 16px;
+}
+
+.explore-hero-header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.explore-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.explore-icon i {
+  width: 32px;
+  height: 32px;
+}
+
+.explore-title {
+  font-size: 36px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xs);
+}
+
+.explore-subtitle {
+  font-size: var(--font-size-base);
+  opacity: 0.95;
+}
+
+.explore-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.explore-stat {
+  background: rgba(255, 255, 255, 0.15);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.explore-stat-number {
+  font-size: 32px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 4px;
+}
+
+.explore-stat-label {
+  font-size: var(--font-size-small);
+  opacity: 0.95;
+}
+
+/* ============================================
    PAGE LAYOUT
    ============================================ */
 .page-container {
   background: var(--neutral-50);
   padding: var(--spacing-xxl) var(--spacing-sm);
   min-height: calc(100vh - 300px);
-}
-
-.page-header {
-  text-align: center;
-  margin-bottom: var(--spacing-xl);
-}
-
-.page-title {
-  font-size: 36px;
-  font-weight: var(--font-weight-bold);
-  color: var(--primary-700);
-  margin: 0 0 var(--spacing-sm) 0;
-  line-height: 1.2;
-}
-
-.page-subtitle {
-  font-size: var(--font-size-base);
-  color: var(--primary-400);
-  margin: 0;
-}
-
-/* ============================================
-   BACK BUTTON
-   ============================================ */
-.back-button-wrapper {
-  margin-bottom: var(--spacing-lg);
-}
-
-.back-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--primary-600);
-  text-decoration: none;
-  font-size: var(--font-size-text);
-  font-weight: var(--font-weight-semibold);
-  transition: all var(--transition-fast);
-}
-
-.back-button:hover {
-  gap: 10px;
-  color: var(--primary-700);
-}
-
-.back-button i {
-  width: 18px;
-  height: 18px;
 }
 
 /* ============================================

@@ -1,52 +1,96 @@
 /* ============================================
-   COMPARE HERO SECTION
+   EXPLORE HERO SECTION
    ============================================ */
-.compare-hero {
+.explore-hero {
   background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
-  padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
+  padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-xxl);
   color: var(--white);
 }
 
-.compare-hero-content {
+.explore-hero-container {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
 }
 
-.back-link-compare {
+.back-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   color: var(--white);
   text-decoration: none;
   font-size: var(--font-size-small);
-  opacity: 0.95;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.9;
   transition: all var(--transition-fast);
-  width: fit-content;
 }
 
-.back-link-compare:hover {
+.back-link:hover {
   opacity: 1;
   gap: 10px;
 }
 
-.back-link-compare i {
+.back-link i {
   width: 16px;
   height: 16px;
 }
 
-.compare-hero-title {
-  font-size: 32px;
-  font-weight: var(--font-weight-bold);
-  margin: 0 0 var(--spacing-xs) 0;
+.explore-hero-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
 }
 
-.compare-hero-subtitle {
-  font-size: 15px;
+.explore-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.explore-icon i {
+  width: 32px;
+  height: 32px;
+}
+
+.explore-title {
+  font-size: 36px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xs);
+}
+
+.explore-subtitle {
+  font-size: var(--font-size-base);
   opacity: 0.95;
-  margin: 0;
+}
+
+.explore-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.explore-stat {
+  background: rgba(255, 255, 255, 0.15);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-lg);
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.explore-stat-number {
+  font-size: 32px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 4px;
+}
+
+.explore-stat-label {
+  font-size: var(--font-size-small);
+  opacity: 0.95;
 }
 
 /* ============================================

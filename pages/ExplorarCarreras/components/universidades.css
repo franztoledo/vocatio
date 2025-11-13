@@ -262,7 +262,7 @@
   transition: all 0.3s ease;
   display: grid;
   grid-template-columns: 280px 1fr;
-  min-height: 280px;
+  min-height: 200px; /* Adjusted height */
 }
 
 .university-card:hover {
@@ -272,7 +272,7 @@
 
 .uni-card-image {
   width: 100%;
-  height: 100%;
+  height: 150px; /* Adjusted height */
   overflow: hidden;
   background: var(--neutral-100);
 }
@@ -293,7 +293,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 4px;
   overflow-y: auto;
 }
 
@@ -343,7 +343,7 @@
 .uni-details {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  
   flex: 1;
 }
 
@@ -478,7 +478,7 @@
 @media (max-width: 1024px) {
   .university-card {
     grid-template-columns: 220px 1fr;
-    min-height: 220px;
+    min-height: 180px;
   }
 
   .uni-card-content {
@@ -487,6 +487,9 @@
 
   .uni-details {
     gap: 10px;
+  }
+  .uni-card-image {
+    height: 130px;
   }
 }
 

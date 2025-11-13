@@ -37,7 +37,7 @@
 .career-card-badges {
   position: absolute;
   top: var(--spacing-md);
-  right: var(--spacing-md);
+  left: var(--spacing-md);
   display: flex;
   gap: var(--spacing-sm);
   flex-wrap: wrap;
