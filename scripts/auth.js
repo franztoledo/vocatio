@@ -161,9 +161,9 @@ export function initRegister() {
     clearFieldStyles();
 
     // Obtener valores del formulario
-    const name = nameInput?.value.trim();
-    const nickname = nicknameInput?.value.trim();
-    const email = emailInput?.value.trim();
+    const name = nameInput?.value.trim(); // Mantener espacios internos, solo trimear extremos
+    const nickname = nicknameInput?.value.replace(/\s+/g, ''); // Quitar todos los espacios
+    const email = emailInput?.value.replace(/\s+/g, ''); // Quitar todos los espacios
     const password = passwordInput?.value;
     const confirmPassword = confirmPasswordInput?.value;
 
@@ -261,13 +261,16 @@ export function initRegister() {
       db.users.push(newUser);
       saveDB(db);
 
-      // Mostrar mensaje de éxito
-      showSuccess('¡Cuenta creada exitosamente! Redirigiendo al inicio de sesión...');
+      // Establecer el usuario como activo para que pueda completar su perfil
+      setActiveUser(newUser);
 
-      // Redirigir después de 2 segundos
+      // Mostrar mensaje de éxito
+      showSuccess('¡Cuenta creada exitosamente! Redirigiendo al perfil...');
+
+      // Redirigir después de 1.5 segundos
       setTimeout(() => {
         window.location.href = 'profile.html';
-      }, 2000);
+      }, 1500);
 
     } catch (error) {
       console.error('Error al crear la cuenta:', error);
