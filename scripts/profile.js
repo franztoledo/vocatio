@@ -1371,6 +1371,162 @@ function actualizarEstadisticas(usuario) {
 }
 
 // ============================================
+// 5. HISTORIAL DE EVALUACIONES
+// ============================================
+
+/**
+ * Inicializa la página de historial de evaluaciones
+ */
+export function initHistoryPage() {
+  const user = getActiveUser();
+
+  const inProgressContainer = document.querySelector('.in-progress-list');
+  const completedContainer = document.querySelector('.tests-list');
+
+  if (!user) {
+    const mainContent = document.querySelector('.history-content .container');
+    if (mainContent) {
+      mainContent.innerHTML = `
+        <div class="empty-message" style="padding: 2rem; text-align: center;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Acceso Restringido</h3>
+          <p>Debes <a href="../Login/login.html" style="color: var(--primary-600); font-weight: 600;">iniciar sesión</a> para ver tu historial de evaluaciones.</p>
+        </div>
+      `;
+    }
+    return;
+  }
+
+  renderInProgressTests(user, inProgressContainer);
+  renderCompletedTests(user, completedContainer);
+  
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+}
+
+/**
+ * Renderiza las tarjetas de tests en progreso
+ */
+function renderInProgressTests(user, container) {
+  if (!container) return;
+  
+  let inProgressContent = '';
+  let hasInProgress = false;
+
+  // Verificar Test Tradicional
+  const tradicionalProgress = localStorage.getItem('testTradicionalProgress_' + user.id);
+  if (tradicionalProgress) {
+    hasInProgress = true;
+    inProgressContent += `
+      <div class="in-progress-card">
+        <div class="in-progress-info">
+          <div class="in-progress-icon">
+            <i data-lucide="file-text"></i>
+          </div>
+          <div>
+            <h4 class="in-progress-title">Test Vocacional Tradicional</h4>
+            <p class="in-progress-subtitle">Tienes un test sin finalizar.</p>
+          </div>
+        </div>
+        <a href="formulario-test.html" class="btn-continue-test">
+          Continuar Test
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+    `;
+  }
+
+  // Verificar Test Aventura
+  const aventuraProgress = localStorage.getItem('testAventuraProgress_' + user.id);
+  if (aventuraProgress) {
+    hasInProgress = true;
+    inProgressContent += `
+      <div class="in-progress-card">
+        <div class="in-progress-info">
+          <div class="in-progress-icon">
+            <i data-lucide="swords"></i>
+          </div>
+          <div>
+            <h4 class="in-progress-title">Test de Aventura</h4>
+            <p class="in-progress-subtitle">Tienes una aventura sin finalizar.</p>
+          </div>
+        </div>
+        <a href="test-aventura.html" class="btn-continue-test">
+          Continuar Aventura
+          <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+    `;
+  }
+
+  if (hasInProgress) {
+    container.innerHTML = inProgressContent;
+  } else {
+    container.innerHTML = '<p class="empty-message">No hay tests en progreso.</p>';
+  }
+}
+
+/**
+ * Renderiza las tarjetas de tests completados
+ */
+function renderCompletedTests(user, container) {
+  if (!container) return;
+
+  const completedTests = user.testResults || [];
+
+  if (completedTests.length === 0) {
+    container.innerHTML = '<p class="empty-message">No has completado ningún test todavía.</p>';
+    return;
+  }
+
+  // Ordenar por fecha, más reciente primero
+  completedTests.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  let completedContent = '';
+  completedTests.forEach((result, index) => {
+    const isMostRecent = index === 0;
+    const testTitle = result.type === 'tradicional' ? 'Test Vocacional Tradicional' : 'Test de Aventura';
+    const date = new Date(result.date);
+    const formattedDate = `${date.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })} a las ${date.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`;
+    
+    const topArea = result.topArea || 'N/A';
+    const topPercentage = result.results[topArea] || 0;
+
+    completedContent += `
+      <div class="test-card ${isMostRecent ? 'most-recent' : ''}">
+        <div class="test-card-header">
+          <div class="test-info">
+            <h3 class="test-title">${testTitle} #${completedTests.length - index}</h3>
+            <p class="test-date">${formattedDate}</p>
+          </div>
+          <div class="test-compatibility">
+            <span class="compatibility-value">${topPercentage}%</span>
+            <span class="compatibility-label">Compatibilidad con ${topArea}</span>
+          </div>
+        </div>
+        
+        ${isMostRecent ? `
+        <div class="test-badge-row">
+          <span class="test-badge">Más reciente</span>
+        </div>` : ''}
+        
+        <div class="test-actions">
+          <a href="resultados-test.html?resultId=${result.id}" class="btn-see-results">
+            Ver Resultados
+          </a>
+          <button class="btn-download" disabled>
+            Descargar PDF
+          </button>
+        </div>
+      </div>
+    `;
+  });
+
+  container.innerHTML = completedContent;
+}
+
+
+// ============================================
 // AUTO-INICIALIZACIÓN
 // ============================================
 
@@ -1386,5 +1542,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initConfigProfile();
   } else if (rutaActual.includes('perfil-seccion.html')) {
     initProfileSection();
+  } else if (rutaActual.includes('historial-evaluaciones.html')) {
+    initHistoryPage();
   }
 });

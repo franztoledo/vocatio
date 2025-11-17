@@ -91,96 +91,30 @@
   <!-- Main Content -->
   <section class="history-content">
     <div class="container">
-      <div class="history-header-section">
-        <h2 class="history-section-title">Historial de Evaluaciones</h2>
-        <p class="history-section-subtitle">Revisa todos los tests vocacionales que has realizado</p>
+      
+
+      <!-- In-Progress Tests -->
+      <div id="in-progress-container">
+        <div class="history-header-section">
+          <h2 class="history-section-title">Tests en Progreso</h2>
+          <p class="history-section-subtitle">Continúa donde lo dejaste</p>
+        </div>
+        <div class="in-progress-list">
+          <!-- Las tarjetas de tests en progreso se insertarán aquí -->
+          <p class="empty-message">No hay tests en progreso.</p>
+        </div>
       </div>
 
-      <!-- Tests List -->
-      <div class="tests-list">
-        
-        <!-- TEST #3 - MAS RECIENTE -->
-        <div class="test-card most-recent">
-          <div class="test-card-header">
-            <div class="test-info">
-              <h3 class="test-title">Test Vocacional #3</h3>
-              <p class="test-date">15 Oct 2024 a las 14:30 • Duración: 9m 32s</p>
-            </div>
-            <div class="test-compatibility">
-              <span class="compatibility-value">92%</span>
-              <span class="compatibility-label">Compatibilidad máxima</span>
-            </div>
-          </div>
-          
-          <div class="test-badge-row">
-            <span class="test-badge">Más reciente</span>
-          </div>
-          
-          <div class="test-actions">
-            <button class="btn-see-results">
-              Ver Resultados
-            </button>
-            <button class="btn-compare">
-              Comparar
-            </button>
-            <button class="btn-download">
-              Descargar PDF
-            </button>
-          </div>
+      <!-- Completed Tests List -->
+      <div id="completed-container">
+        <div class="history-header-section">
+          <h2 class="history-section-title">Historial de Evaluaciones</h2>
+          <p class="history-section-subtitle">Revisa todos los tests vocacionales que has realizado</p>
         </div>
-
-        <!-- TEST #2 -->
-        <div class="test-card">
-          <div class="test-card-header">
-            <div class="test-info">
-              <h3 class="test-title">Test Vocacional #2</h3>
-              <p class="test-date">28 Sep 2024 a las 16:45 • Duración: 11m 15s</p>
-            </div>
-            <div class="test-compatibility">
-              <span class="compatibility-value">88%</span>
-              <span class="compatibility-label">Compatibilidad máxima</span>
-            </div>
-          </div>
-          
-          <div class="test-actions">
-            <button class="btn-see-results">
-              Ver Resultados
-            </button>
-            <button class="btn-compare">
-              Comparar
-            </button>
-            <button class="btn-download">
-              Descargar PDF
-            </button>
-          </div>
+        <div class="tests-list">
+          <!-- Las tarjetas de tests completados se insertarán aquí -->
+          <p class="empty-message">No has completado ningún test todavía.</p>
         </div>
-
-        <!-- TEST #1 -->
-        <div class="test-card">
-          <div class="test-card-header">
-            <div class="test-info">
-              <h3 class="test-title">Test Vocacional #1</h3>
-              <p class="test-date">10 Sep 2024 a las 10:20 • Duración: 12m 08s</p>
-            </div>
-            <div class="test-compatibility">
-              <span class="compatibility-value">85%</span>
-              <span class="compatibility-label">Compatibilidad máxima</span>
-            </div>
-          </div>
-          
-          <div class="test-actions">
-            <button class="btn-see-results">
-              Ver Resultados
-            </button>
-            <button class="btn-compare">
-              Comparar
-            </button>
-            <button class="btn-download">
-              Descargar PDF
-            </button>
-          </div>
-        </div>
-
       </div>
 
     </div>
@@ -268,5 +202,9 @@
   </script>
 
   <script src="../../scripts/main.js" type="module"></script>
+  <script type="module">
+    import { initHistoryPage } from '../../scripts/profile.js';
+    document.addEventListener('DOMContentLoaded', initHistoryPage);
+  </script>
 </body>
 </html>
