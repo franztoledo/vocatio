@@ -1,12 +1,17 @@
 // scripts/test-vocacional.js
 // Lógica para los tests vocacionales (tradicional y aventura)
 
-import { getDB, saveDB } from './utils.js';
+import { getDB, saveDB, showToast } from './utils.js';
 import { getActiveUser, setActiveUser } from './utils.js';
 
 // ============================================
 // TEST TRADICIONAL
 // ============================================
+
+let currentBlockIndex = 0;
+let questionsPerBlock = 5;
+let totalBlocks = 0;
+let questionsData = [];
 
 /**
  * Inicializa el test vocacional tradicional
@@ -14,92 +19,167 @@ import { getActiveUser, setActiveUser } from './utils.js';
  */
 export function initTradicionalTest() {
   const db = getDB();
-  const questions = db.vocational_tests.tradicional;
+  questionsData = db.vocational_tests.tradicional;
   const testForm = document.getElementById('testForm');
 
   if (!testForm) return;
 
-  // Limpiar el formulario actual (eliminar las preguntas hardcodeadas)
+  // Elementos del DOM
+  const progressBar = document.querySelector('.progress-bar');
+  const progressText = document.querySelector('.progress-text');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+
+  // Limpiar el formulario
   const existingBlocks = testForm.querySelectorAll('.question-block');
   existingBlocks.forEach(block => block.remove());
 
-  // Organizar preguntas en bloques de 5
-  const questionsPerBlock = 5;
+  // Organizar preguntas en bloques
   const blocks = [];
-
-  for (let i = 0; i < questions.length; i += questionsPerBlock) {
-    blocks.push(questions.slice(i, i + questionsPerBlock));
+  for (let i = 0; i < questionsData.length; i += questionsPerBlock) {
+    blocks.push(questionsData.slice(i, i + questionsPerBlock));
   }
+  totalBlocks = blocks.length;
 
   // Renderizar cada bloque
   blocks.forEach((blockQuestions, blockIndex) => {
-    const blockElement = createQuestionBlock(blockQuestions, blockIndex + 1);
+    const blockElement = createQuestionBlock(blockQuestions, blockIndex);
+    // Insertar antes de los botones de acción
     testForm.insertBefore(blockElement, testForm.querySelector('.form-actions'));
   });
 
-  // Manejar envío del formulario
-  const nextButton = testForm.querySelector('.btn-siguiente');
-  if (nextButton) {
-    nextButton.onclick = (e) => {
-      e.preventDefault();
+  // Cargar progreso guardado y determinar el bloque inicial
+  const startingBlock = loadTestProgress();
+  navigateToBlock(startingBlock);
+
+  // Event listeners para navegación
+  btnNext.addEventListener('click', () => {
+    if (currentBlockIndex < totalBlocks - 1) {
+      // Validar el bloque actual antes de continuar
+      if (isBlockValid(currentBlockIndex)) {
+        navigateToBlock(currentBlockIndex + 1);
+      } else {
+        showToast('Por favor, responde todas las preguntas de este bloque.', 'error');
+      }
+    } else {
+      // Último bloque, finalizar test
       handleTradicionalSubmit();
-    };
-  }
+    }
+  });
+
+  btnPrev.addEventListener('click', () => {
+    if (currentBlockIndex > 0) {
+      navigateToBlock(currentBlockIndex - 1);
+    }
+  });
 
   // Manejar guardar progreso
-  const saveButton = testForm.querySelector('.btn-modal-secondary');
+  const saveButton = document.querySelector('.btn-modal-secondary');
   if (saveButton) {
     saveButton.onclick = (e) => {
       e.preventDefault();
       saveTestProgress();
     };
   }
-
-  // Cargar progreso guardado si existe
-  loadTestProgress();
 }
+
+/**
+ * Navega a un bloque de preguntas específico
+ * @param {number} index - El índice del bloque a mostrar
+ */
+function navigateToBlock(index) {
+  currentBlockIndex = index;
+  const testForm = document.getElementById('testForm');
+  const questionBlocks = testForm.querySelectorAll('.question-block');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const progressBar = document.querySelector('.progress-bar');
+  const progressText = document.querySelector('.progress-text');
+
+  // Ocultar todos los bloques
+  questionBlocks.forEach(block => block.classList.remove('active'));
+
+  // Mostrar el bloque actual
+  if (questionBlocks[index]) {
+    questionBlocks[index].classList.add('active');
+  }
+
+  // Actualizar barra de progreso
+  const progressPercentage = ((index + 1) / totalBlocks) * 100;
+  progressBar.style.width = `${progressPercentage}%`;
+  progressText.textContent = `Bloque ${index + 1} de ${totalBlocks}`;
+
+  // Actualizar estado de los botones
+  btnPrev.disabled = index === 0;
+  if (index === totalBlocks - 1) {
+    btnNext.innerHTML = 'Finalizar Test <i data-lucide="check-circle"></i>';
+    lucide.createIcons(); // Actualizar el nuevo ícono
+  } else {
+    btnNext.innerHTML = 'Siguiente <i data-lucide="arrow-right"></i>';
+    lucide.createIcons();
+  }
+}
+
+/**
+ * Valida si todas las preguntas en un bloque específico han sido respondidas
+ * @param {number} blockIndex - El índice del bloque a validar
+ */
+function isBlockValid(blockIndex) {
+  const startQuestionIndex = blockIndex * questionsPerBlock;
+  const endQuestionIndex = startQuestionIndex + questionsPerBlock;
+  const testForm = document.getElementById('testForm');
+
+  for (let i = startQuestionIndex; i < endQuestionIndex && i < questionsData.length; i++) {
+    const questionId = questionsData[i].id;
+    const questionName = `q${questionId}`;
+    const selectedAnswer = testForm.querySelector(`input[name="${questionName}"]:checked`);
+    if (!selectedAnswer) {
+      return false; // Si alguna pregunta no está respondida, el bloque no es válido
+    }
+  }
+  return true; // Todas las preguntas del bloque están respondidas
+}
+
 
 /**
  * Crea un bloque de preguntas para el test tradicional
  */
-function createQuestionBlock(questions, blockNumber) {
+function createQuestionBlock(questions, blockIndex) {
   const block = document.createElement('div');
   block.className = 'question-block';
+  block.dataset.blockIndex = blockIndex;
 
   const blockTitles = {
-    1: 'Tus preferencias naturales',
-    2: 'Tus habilidades',
-    3: 'Tus intereses',
-    4: 'Tu visión de futuro'
+    0: 'Tus preferencias naturales',
+    1: 'Tus habilidades',
+    2: 'Tus intereses',
+    3: 'Tu visión de futuro'
   };
 
   block.innerHTML = `
     <div class="block-header">
-      <h2 class="block-title">Bloque ${blockNumber}: ${blockTitles[blockNumber] || 'Tus respuestas'}</h2>
+      <h2 class="block-title">Bloque ${blockIndex + 1}: ${blockTitles[blockIndex] || 'Tus respuestas'}</h2>
       <p class="block-description">
         Responde con sinceridad. No hay respuestas correctas o incorrectas. Elige la opción que mejor describa tu tendencia natural.
       </p>
     </div>
-
     <div class="questions-table">
       <div class="table-header">
-        <div class="header-option">Opciones</div>
+        <div class="header-option">Pregunta</div>
         <div class="header-response">Sí</div>
         <div class="header-response">No</div>
         <div class="header-response">¿?</div>
       </div>
-
-      ${questions.map((q, index) => createQuestionRow(q, index)).join('')}
+      ${questions.map(q => createQuestionRow(q)).join('')}
     </div>
   `;
-
   return block;
 }
 
 /**
  * Crea una fila de pregunta para el test tradicional
  */
-function createQuestionRow(question, index) {
+function createQuestionRow(question) {
   const questionNumber = question.id;
 
   return `
@@ -114,11 +194,11 @@ function createQuestionRow(question, index) {
           <span class="radio-custom"></span>
         </label>
         <label class="radio-option">
-          <input type="radio" name="q${questionNumber}" value="no" data-area="${question.area}" data-weight="0">
+          <input type="radio" name="q${questionNumber}" value="no" data-area="${question.area}" data-weight="0" required>
           <span class="radio-custom"></span>
         </label>
         <label class="radio-option">
-          <input type="radio" name="q${questionNumber}" value="duda" data-area="${question.area}" data-weight="${question.weight * 0.5}">
+          <input type="radio" name="q${questionNumber}" value="duda" data-area="${question.area}" data-weight="${question.weight * 0.5}" required>
           <span class="radio-custom"></span>
         </label>
       </div>
@@ -134,23 +214,17 @@ function handleTradicionalSubmit() {
   const formData = new FormData(testForm);
 
   // Validar que todas las preguntas estén respondidas
-  const db = getDB();
-  const totalQuestions = db.vocational_tests.tradicional.length;
+  const totalQuestions = questionsData.length;
   let answeredQuestions = 0;
-
   const results = {};
 
   for (let i = 1; i <= totalQuestions; i++) {
     const answer = formData.get(`q${i}`);
     if (answer) {
       answeredQuestions++;
-
-      // Obtener el área y peso del input seleccionado
       const selectedInput = testForm.querySelector(`input[name="q${i}"]:checked`);
       const area = selectedInput.dataset.area;
       const weight = parseFloat(selectedInput.dataset.weight);
-
-      // Acumular puntos por área
       if (!results[area]) {
         results[area] = 0;
       }
@@ -158,56 +232,72 @@ function handleTradicionalSubmit() {
     }
   }
 
-  // Validar que todas las preguntas fueron respondidas
   if (answeredQuestions < totalQuestions) {
-    alert(`Por favor, responde todas las preguntas. Has respondido ${answeredQuestions} de ${totalQuestions}.`);
+    showToast(`Por favor, responde todas las preguntas. Has respondido ${answeredQuestions} de ${totalQuestions}.`, 'error');
+    // Navegar al primer bloque con preguntas sin responder
+    const firstUnansweredBlock = findFirstUnansweredBlock();
+    if (firstUnansweredBlock !== -1) {
+        navigateToBlock(firstUnansweredBlock);
+    }
     return;
   }
 
   // Calcular porcentajes
   const totalPoints = Object.values(results).reduce((sum, val) => sum + val, 0);
   const percentages = {};
-
   for (const area in results) {
-    percentages[area] = Math.round((results[area] / totalPoints) * 100);
+    percentages[area] = totalPoints > 0 ? Math.round((results[area] / totalPoints) * 100) : 0;
   }
 
   // Guardar resultado
   saveTestResult('tradicional', percentages);
 
   // Limpiar progreso guardado
-  localStorage.removeItem('testTradicionalProgress');
+  const user = getActiveUser();
+  if (user) {
+    localStorage.removeItem('testTradicionalProgress_' + user.id);
+  }
 
   // Redirigir a resultados
   window.location.href = 'resultados-test.html';
 }
 
 /**
- * Guarda el progreso del test tradicional
+ * Guarda el progreso del test tradicional para el usuario actual
  */
 function saveTestProgress() {
+  const user = getActiveUser();
+  if (!user) {
+    showToast('Debes iniciar sesión para guardar tu progreso.', 'error');
+    return;
+  }
+
   const testForm = document.getElementById('testForm');
   const formData = new FormData(testForm);
-
   const progress = {};
   for (const [key, value] of formData.entries()) {
     progress[key] = value;
   }
 
-  localStorage.setItem('testTradicionalProgress', JSON.stringify(progress));
-  alert('Progreso guardado exitosamente. Puedes continuar más tarde.');
+  localStorage.setItem('testTradicionalProgress_' + user.id, JSON.stringify(progress));
+  showToast('Progreso guardado exitosamente.', 'success');
 
-  // Cerrar modal
-  document.getElementById('exitModalForm').checked = false;
+  const modalCheckbox = document.getElementById('exitModalForm');
+  if (modalCheckbox) {
+    modalCheckbox.checked = false;
+  }
 }
 
 /**
- * Carga el progreso guardado del test tradicional
+ * Carga el progreso guardado y devuelve el índice del bloque para continuar
+ * @returns {number} El índice del bloque donde continuar
  */
 function loadTestProgress() {
-  const savedProgress = localStorage.getItem('testTradicionalProgress');
+  const user = getActiveUser();
+  if (!user) return 0;
 
-  if (!savedProgress) return;
+  const savedProgress = localStorage.getItem('testTradicionalProgress_' + user.id);
+  if (!savedProgress) return 0;
 
   const progress = JSON.parse(savedProgress);
   const testForm = document.getElementById('testForm');
@@ -219,7 +309,29 @@ function loadTestProgress() {
     }
   }
 
-  alert('Se ha cargado tu progreso anterior. Puedes continuar donde lo dejaste.');
+  showToast('Se ha cargado tu progreso anterior.');
+  
+  // Encontrar el primer bloque con una pregunta sin responder
+  return findFirstUnansweredBlock();
+}
+
+/**
+ * Encuentra el índice del primer bloque que contiene una pregunta sin responder
+ * @returns {number} El índice del bloque, o el último bloque si todo está completo.
+ */
+function findFirstUnansweredBlock() {
+    const testForm = document.getElementById('testForm');
+    for (let i = 0; i < questionsData.length; i++) {
+        const questionId = questionsData[i].id;
+        const questionName = `q${questionId}`;
+        const selectedAnswer = testForm.querySelector(`input[name="${questionName}"]:checked`);
+        if (!selectedAnswer) {
+            // Esta pregunta no está respondida, devuelve el índice de su bloque
+            return Math.floor(i / questionsPerBlock);
+        }
+    }
+    // Si todas las preguntas están respondidas, devuelve el último bloque
+    return totalBlocks > 0 ? totalBlocks - 1 : 0;
 }
 
 // ============================================
@@ -578,7 +690,7 @@ function setupAventuraEventListeners() {
   if (saveButton) {
     saveButton.onclick = (e) => {
       e.preventDefault();
-      saveAventuraProgress();
+      saveAventuraProgress(e);
     };
   }
 }
@@ -708,9 +820,6 @@ function nextCard() {
   } else {
     renderCurrentLevel();
   }
-
-  // Guardar progreso automáticamente
-  saveAventuraProgress();
 }
 
 /**
@@ -830,8 +939,11 @@ function finishAventuraTest() {
   // Guardar resultado
   saveTestResult('aventura', percentages);
 
-  // Limpiar progreso guardado
-  localStorage.removeItem('testAventuraProgress');
+  // Limpiar progreso guardado para el usuario actual
+  const user = getActiveUser();
+  if (user) {
+    localStorage.removeItem('testAventuraProgress_' + user.id);
+  }
 
   // Redirigir a resultados
   window.location.href = 'resultados-test.html';
@@ -840,20 +952,26 @@ function finishAventuraTest() {
 /**
  * Guarda el progreso del test aventura
  */
-function saveAventuraProgress() {
+function saveAventuraProgress(event) {
+    const user = getActiveUser();
+    if (!user) {
+        showToast('Debes iniciar sesión para guardar tu progreso.', 'error');
+        return;
+    }
+
   const progress = {
     currentLevel,
     currentCardIndex,
     results: aventuraResults
   };
 
-  localStorage.setItem('testAventuraProgress', JSON.stringify(progress));
-  console.log('💾 Progreso guardado:', progress);
+  localStorage.setItem('testAventuraProgress_' + user.id, JSON.stringify(progress));
+  console.log('💾 Progreso guardado para usuario ' + user.id, progress);
 
   // Si se llamó desde el botón del modal, mostrar mensaje y cerrar modal
   const saveButton = document.querySelector('.btn-modal-secondary');
   if (saveButton && event && event.target === saveButton) {
-    alert('¡Progreso guardado exitosamente! Puedes continuar más tarde.');
+    showToast('¡Progreso guardado exitosamente!', 'success');
     document.getElementById('exitModal').checked = false;
   }
 }
@@ -862,7 +980,10 @@ function saveAventuraProgress() {
  * Carga el progreso guardado del test aventura
  */
 function loadAventuraProgress() {
-  const savedProgress = localStorage.getItem('testAventuraProgress');
+    const user = getActiveUser();
+    if (!user) return;
+
+  const savedProgress = localStorage.getItem('testAventuraProgress_' + user.id);
 
   if (!savedProgress) return;
 
@@ -879,7 +1000,7 @@ function loadAventuraProgress() {
 
   // Mostrar mensaje de carga
   setTimeout(() => {
-    alert('Se ha cargado tu progreso anterior. ¡Continúa tu aventura de descubrimiento!');
+    showToast('Se ha cargado tu progreso anterior.');
   }, 500);
 }
 

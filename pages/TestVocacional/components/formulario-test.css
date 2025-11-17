@@ -69,6 +69,11 @@
 /* Question Block */
 .question-block {
   padding: var(--spacing-xl);
+  display: none; /* Ocultar bloques por defecto */
+}
+
+.question-block.active {
+  display: block; /* Mostrar bloque activo */
 }
 
 .block-header {
@@ -518,4 +523,92 @@
 
 .btn-modal-secondary:hover {
   background: var(--primary-600);
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  width: 100%;
+  background-color: var(--neutral-200);
+  border-radius: var(--border-radius-round); /* More rounded */
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-xxs);
+  position: relative;
+  text-align: center;
+  height: 30px; /* Increased height */
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-subtle); /* Added shadow */
+}
+
+.progress-bar {
+  height: 100%; /* Fill container height */
+  width: 20%; /* Initial width */
+  background: linear-gradient(90deg, var(--primary-200), var(--primary-100));
+  border-radius: var(--border-radius-round); /* More rounded */
+  transition: width 0.4s ease-in-out;
+  box-shadow: 0 2px 8px rgba(var(--primary-600), 0.3); /* Subtle shadow for the bar itself */
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--font-size-base); /* Slightly larger */
+  font-weight: var(--font-weight-bold); /* Bolder */
+  color: var(--primary-800);
+  line-height: 1; /* Ensure text aligns vertically */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Subtle text shadow */
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.btn-anterior {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  background: var(--white);
+  color: var(--neutral-700);
+  border: 1.5px solid var(--neutral-300);
+  border-radius: var(--border-radius-lg);
+  font-size: 15px;
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-anterior:hover {
+  background: var(--neutral-100);
+  border-color: var(--neutral-400);
+}
+
+.btn-anterior:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--neutral-100);
+}
+
+.btn-anterior i {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 768px) {
+  .navigation-buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .btn-anterior, .btn-siguiente {
+    width: 100%;
+    justify-content: center;
+  }
+  .form-actions {
+    gap: var(--spacing-sm);
+  }
 }
