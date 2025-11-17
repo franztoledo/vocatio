@@ -452,130 +452,109 @@ function setupAventuraEventListeners() {
       const activeCard = document.querySelector('.swipe-card.active');
 
       if (activeCard) {
+        // Animar salida con el botón
+        const direction = action === 'like' ? 1 : -1;
+        activeCard.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+        activeCard.style.transform = `translateX(${direction * 120}%) rotate(${direction * 15}deg)`;
+        activeCard.style.opacity = '0';
+        
         handleCardAction(activeCard, action);
+
+        activeCard.addEventListener('transitionend', () => {
+          nextCard();
+        }, { once: true });
       }
     }
   });
 
-  // ==========================================
-  // MOUSE DRAG & DROP
-  // ==========================================
-
-  document.addEventListener('mousedown', (e) => {
-    const card = e.target.closest('.swipe-card.active');
-
-    // No iniciar drag si se clickeó un botón
+  const handleDragStart = (e, card) => {
     if (!card || e.target.closest('.btn-action')) return;
 
     isDragging = true;
     draggedCard = card;
-    startX = e.clientX;
-    startY = e.clientY;
+    startX = e.touches ? e.touches[0].clientX : e.clientX;
+    startY = e.touches ? e.touches[0].clientY : e.clientY;
 
     card.style.transition = 'none';
     card.style.cursor = 'grabbing';
-  });
+  };
 
-  document.addEventListener('mousemove', (e) => {
+  const handleDragMove = (e) => {
     if (!isDragging || !draggedCard) return;
 
-    currentX = e.clientX - startX;
-    currentY = e.clientY - startY;
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    // Calcular rotación basada en la posición X
-    const rotation = currentX * 0.1; // Ajustar sensibilidad
+    currentX = clientX - startX;
+    currentY = clientY - startY;
 
-    // Aplicar transformación
-    draggedCard.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${rotation}deg)`;
-
-    // Mostrar feedback visual
-    updateDragFeedback(draggedCard, currentX);
-  });
-
-  document.addEventListener('mouseup', () => {
-    if (!isDragging || !draggedCard) return;
-
-    const swipeThreshold = 100; // Distancia mínima para considerar swipe
-
-    if (Math.abs(currentX) > swipeThreshold) {
-      // Swipe detectado
-      if (currentX > 0) {
-        handleCardAction(draggedCard, 'like');
-      } else {
-        handleCardAction(draggedCard, 'dislike');
-      }
-    } else {
-      // Regresar a la posición original
-      draggedCard.style.transition = 'transform 0.3s ease';
-      draggedCard.style.transform = 'translate(0, 0) rotate(0deg)';
-      removeDragFeedback(draggedCard);
-    }
-
-    isDragging = false;
-    draggedCard.style.cursor = 'grab';
-    draggedCard = null;
-    currentX = 0;
-    currentY = 0;
-  });
-
-  // ==========================================
-  // TOUCH DRAG & DROP (MÓVIL)
-  // ==========================================
-
-  document.addEventListener('touchstart', (e) => {
-    const card = e.target.closest('.swipe-card.active');
-
-    // No iniciar drag si se tocó un botón
-    if (!card || e.target.closest('.btn-action')) return;
-
-    isDragging = true;
-    draggedCard = card;
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-
-    card.style.transition = 'none';
-  });
-
-  document.addEventListener('touchmove', (e) => {
-    if (!isDragging || !draggedCard) return;
-
-    currentX = e.touches[0].clientX - startX;
-    currentY = e.touches[0].clientY - startY;
-
-    // Calcular rotación basada en la posición X
     const rotation = currentX * 0.1;
-
-    // Aplicar transformación
     draggedCard.style.transform = `translate(${currentX}px, ${currentY}px) rotate(${rotation}deg)`;
 
-    // Mostrar feedback visual
     updateDragFeedback(draggedCard, currentX);
-  });
+  };
 
-  document.addEventListener('touchend', () => {
+  const handleDragEnd = () => {
     if (!isDragging || !draggedCard) return;
 
     const swipeThreshold = 100;
 
     if (Math.abs(currentX) > swipeThreshold) {
       // Swipe detectado
-      if (currentX > 0) {
-        handleCardAction(draggedCard, 'like');
-      } else {
-        handleCardAction(draggedCard, 'dislike');
-      }
+      const action = currentX > 0 ? 'like' : 'dislike';
+      handleCardAction(draggedCard, action);
+
+      // Animar hacia afuera en la dirección del swipe
+      const flyOutDirection = currentX > 0 ? 1 : -1;
+      const endX = flyOutDirection * (window.innerWidth * 0.8);
+      const endY = currentY * 1.5;
+      const rotation = currentX * 0.1;
+
+      draggedCard.style.transition = 'transform 0.4s ease-out, opacity 0.4s ease-out';
+      draggedCard.style.transform = `translate(${endX}px, ${endY}px) rotate(${rotation}deg)`;
+      draggedCard.style.opacity = '0';
+
+      // Esperar a que la animación termine para pasar a la siguiente
+      draggedCard.addEventListener('transitionend', () => {
+        nextCard();
+      }, { once: true });
+
     } else {
       // Regresar a la posición original
-      draggedCard.style.transition = 'transform 0.3s ease';
+      draggedCard.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
       draggedCard.style.transform = 'translate(0, 0) rotate(0deg)';
       removeDragFeedback(draggedCard);
     }
 
     isDragging = false;
+    if (draggedCard) {
+      draggedCard.style.cursor = 'grab';
+    }
     draggedCard = null;
     currentX = 0;
     currentY = 0;
+  };
+
+  // ==========================================
+  // MOUSE DRAG & DROP
+  // ==========================================
+  document.addEventListener('mousedown', (e) => {
+    const card = e.target.closest('.swipe-card.active');
+    handleDragStart(e, card);
   });
+  document.addEventListener('mousemove', handleDragMove);
+  document.addEventListener('mouseup', handleDragEnd);
+  document.addEventListener('mouseleave', handleDragEnd); // Terminar si el mouse sale de la ventana
+
+  // ==========================================
+  // TOUCH DRAG & DROP (MÓVIL)
+  // ==========================================
+  document.addEventListener('touchstart', (e) => {
+    const card = e.target.closest('.swipe-card.active');
+    handleDragStart(e, card);
+  }, { passive: true });
+  document.addEventListener('touchmove', handleDragMove, { passive: true });
+  document.addEventListener('touchend', handleDragEnd);
 
   // Botón continuar en level complete
   document.addEventListener('click', (e) => {
@@ -608,30 +587,30 @@ function setupAventuraEventListeners() {
  * Actualiza el feedback visual mientras se arrastra la tarjeta
  */
 function updateDragFeedback(card, translateX) {
-  // Crear overlay si no existe
   let likeOverlay = card.querySelector('.drag-feedback-like');
   let nopeOverlay = card.querySelector('.drag-feedback-nope');
 
   if (!likeOverlay) {
     likeOverlay = document.createElement('div');
     likeOverlay.className = 'drag-feedback-like';
-    likeOverlay.innerHTML = '<span>👍 ME GUSTA</span>';
-    card.appendChild(likeOverlay);
+    likeOverlay.innerHTML = '<span>SÍ</span>';
+    card.querySelector('.card-image').appendChild(likeOverlay);
   }
 
   if (!nopeOverlay) {
     nopeOverlay = document.createElement('div');
     nopeOverlay.className = 'drag-feedback-nope';
-    nopeOverlay.innerHTML = '<span>👎 NO</span>';
-    card.appendChild(nopeOverlay);
+    nopeOverlay.innerHTML = '<span>NO</span>';
+    card.querySelector('.card-image').appendChild(nopeOverlay);
   }
 
-  // Mostrar overlay según dirección
-  if (translateX > 30) {
-    likeOverlay.style.opacity = Math.min(translateX / 100, 1);
+  const intensity = Math.min(Math.abs(translateX) / 100, 1);
+
+  if (translateX > 10) {
+    likeOverlay.style.opacity = intensity;
     nopeOverlay.style.opacity = 0;
-  } else if (translateX < -30) {
-    nopeOverlay.style.opacity = Math.min(Math.abs(translateX) / 100, 1);
+  } else if (translateX < -10) {
+    nopeOverlay.style.opacity = intensity;
     likeOverlay.style.opacity = 0;
   } else {
     likeOverlay.style.opacity = 0;
@@ -661,21 +640,14 @@ function handleCardAction(card, action) {
 
   // Actualizar resultados
   if (action === 'like') {
-    aventuraResults[likeArea]++;
+    if (aventuraResults[likeArea] !== undefined) aventuraResults[likeArea]++;
     showFeedback(confirmationLike, 'like');
-    card.classList.add('swipe-right');
   } else {
-    if (dislikeArea && dislikeArea !== 'null' && dislikeArea !== '') {
+    if (dislikeArea && dislikeArea !== 'null' && aventuraResults[dislikeArea] !== undefined) {
       aventuraResults[dislikeArea]++;
     }
     showFeedback(confirmationDislike, 'dislike');
-    card.classList.add('swipe-left');
   }
-
-  // Esperar a que termine la animación
-  setTimeout(() => {
-    nextCard();
-  }, 1500); // 800ms de feedback + 700ms de buffer
 }
 
 /**
