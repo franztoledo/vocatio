@@ -1,14 +1,24 @@
 // scripts/database.js
-// Base de datos simulada para la aplicación Vocatio
+// Base de datos simulada usando localStorage - Inspirado en patrones educativos
 
 /**
  * Inicializa la base de datos en localStorage si no existe
+ *
+ * ¿Cómo funciona?
+ * 1. Verifica si ya existe una DB guardada
+ * 2. Si existe, la devuelve
+ * 3. Si NO existe, crea una nueva con datos de ejemplo
+ * 4. La guarda en localStorage
+ *
  * @returns {Object} La base de datos completa
  */
 export function initDB() {
+  // Si ya existe la base de datos, devolverla
   if (localStorage.getItem('db')) {
     return JSON.parse(localStorage.getItem('db'));
   }
+
+  // Si NO existe, crear una nueva con estructura inicial
 
   const db = {
     users: [
@@ -408,12 +418,17 @@ export function initDB() {
     ]
   };
 
+  // Guardar la base de datos en localStorage
+  // Convertir el objeto a texto con JSON.stringify()
   localStorage.setItem('db', JSON.stringify(db));
   return db;
 }
 
 /**
- * Obtiene toda la base de datos
+ * Obtiene toda la base de datos desde localStorage
+ *
+ * Si no existe, la inicializa automáticamente
+ *
  * @returns {Object} La base de datos completa
  */
 export function getDB() {

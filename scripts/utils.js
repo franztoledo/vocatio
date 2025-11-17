@@ -1,190 +1,150 @@
 // scripts/utils.js
-// Funciones de utilidad reutilizables para toda la aplicación
+// Funciones de utilidad reutilizables - Inspirado en patrones educativos
 
-/**
- * Obtiene la base de datos completa desde localStorage
- * @returns {Object} La base de datos completa
- */
-export function getDB() {
+// ============================================
+// FUNCIONES DE BASE DE DATOS (localStorage)
+// ============================================
+
+// Obtiene toda la base de datos
+export const getDB = () => {
   return JSON.parse(localStorage.getItem('db'));
-}
+};
 
-/**
- * Guarda la base de datos en localStorage
- * @param {Object} db - La base de datos a guardar
- */
-export function saveDB(db) {
+// Guarda la base de datos
+export const saveDB = (db) => {
   localStorage.setItem('db', JSON.stringify(db));
-}
+};
 
-/**
- * Obtiene el usuario actualmente autenticado
- * @returns {Object|null} El usuario activo o null si no hay sesión
- */
-export function getActiveUser() {
+// ============================================
+// FUNCIONES DE SESIÓN (Usuario Activo)
+// ============================================
+
+// Obtiene el usuario que tiene sesión activa
+export const getActiveUser = () => {
   const userStr = localStorage.getItem('activeUser');
   return userStr ? JSON.parse(userStr) : null;
-}
+};
 
-/**
- * Establece el usuario activo en la sesión
- * @param {Object} user - El usuario a establecer como activo
- */
-export function setActiveUser(user) {
+// Guarda el usuario activo (inicia sesión)
+export const setActiveUser = (user) => {
   localStorage.setItem('activeUser', JSON.stringify(user));
-}
+};
 
-/**
- * Cierra la sesión del usuario actual y redirige al inicio
- */
-export function logout() {
-  localStorage.removeItem('activeUser');
-  window.location.href = '/index.html';
-}
-
-/**
- * Busca un usuario por email en la base de datos
- * @param {string} email - El email del usuario a buscar
- * @returns {Object|null} El usuario encontrado o null
- */
-export function findUserByEmail(email) {
+// Actualiza los datos del usuario activo en la DB y en la sesión
+export const updateActiveUser = (updatedUser) => {
   const db = getDB();
-  return db.users.find(user => user.email === email) || null;
-}
+  const userIndex = db.users.findIndex(u => u.id === updatedUser.id);
 
-/**
- * Busca una carrera por ID en la base de datos
- * @param {number} id - El ID de la carrera a buscar
- * @returns {Object|null} La carrera encontrada o null
- */
-export function findCareerById(id) {
-  const db = getDB();
-  return db.careers.find(career => career.id === id) || null;
-}
-
-/**
- * Busca una universidad por ID en la base de datos
- * @param {number} id - El ID de la universidad a buscar
- * @returns {Object|null} La universidad encontrada o null
- */
-export function findUniversityById(id) {
-  const db = getDB();
-  return db.universities.find(uni => uni.id === id) || null;
-}
-
-/**
- * Obtiene todas las carreras de la base de datos
- * @returns {Array} Array de carreras
- */
-export function getAllCareers() {
-  const db = getDB();
-  return db.careers || [];
-}
-
-/**
- * Obtiene todas las universidades de la base de datos
- * @returns {Array} Array de universidades
- */
-export function getAllUniversities() {
-  const db = getDB();
-  return db.universities || [];
-}
-
-/**
- * Filtra carreras por área
- * @param {string} area - El área para filtrar
- * @returns {Array} Array de carreras filtradas
- */
-export function filterCareersByArea(area) {
-  const db = getDB();
-  return db.careers.filter(career => career.area === area);
-}
-
-/**
- * Actualiza los datos del usuario activo en la base de datos
- * @param {Object} updatedUser - Los datos actualizados del usuario
- */
-export function updateActiveUser(updatedUser) {
-  const db = getDB();
-  const index = db.users.findIndex(user => user.id === updatedUser.id);
-
-  if (index !== -1) {
-    db.users[index] = updatedUser;
+  if (userIndex !== -1) {
+    db.users[userIndex] = updatedUser;
     saveDB(db);
     setActiveUser(updatedUser);
   }
-}
+};
 
-/**
- * Valida el formato de un email
- * @param {string} email - El email a validar
- * @returns {boolean} true si el email es válido
- */
-export function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
+// Cierra sesión y redirige al inicio
+export const logout = () => {
+  localStorage.removeItem('activeUser');
+  window.location.href = '/index.html';
+};
 
-/**
- * Valida la fortaleza de una contraseña
- * @param {string} password - La contraseña a validar
- * @returns {Object} Objeto con isValid y mensaje de error si aplica
- */
-export function validatePassword(password) {
+// ============================================
+// FUNCIONES DE BÚSQUEDA EN LA BASE DE DATOS
+// ============================================
+
+// Busca un usuario por email
+export const findUserByEmail = (email) => {
+  const db = getDB();
+  return db.users.find(u => u.email === email) || null;
+};
+
+// Busca una carrera por ID
+export const findCareerById = (id) => {
+  const db = getDB();
+  return db.careers.find(c => c.id === id) || null;
+};
+
+// Busca una universidad por ID
+export const findUniversityById = (id) => {
+  const db = getDB();
+  return db.universities.find(u => u.id === id) || null;
+};
+
+// Obtiene todas las carreras
+export const getAllCareers = () => {
+  const db = getDB();
+  return db.careers || [];
+};
+
+// Obtiene todas las universidades
+export const getAllUniversities = () => {
+  const db = getDB();
+  return db.universities || [];
+};
+
+// Filtra carreras por área específica
+export const filterCareersByArea = (area) => {
+  const db = getDB();
+  return db.careers.filter(c => c.area === area);
+};
+
+// ============================================
+// FUNCIONES DE VALIDACIÓN
+// ============================================
+
+// Valida formato de email (ejemplo: usuario@dominio.com)
+export const validarEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+};
+
+// Valida fortaleza de contraseña
+// Requisitos: mínimo 8 caracteres, 1 mayúscula, 1 número
+export const validarPassword = (password) => {
+  // Menos de 8 caracteres
   if (password.length < 8) {
-    return { isValid: false, message: 'La contraseña debe tener al menos 8 caracteres' };
+    return { valido: false, mensaje: 'La contraseña debe tener al menos 8 caracteres' };
   }
 
+  // Sin mayúscula
   if (!/[A-Z]/.test(password)) {
-    return { isValid: false, message: 'La contraseña debe contener al menos una mayúscula' };
+    return { valido: false, mensaje: 'La contraseña debe contener al menos una mayúscula' };
   }
 
+  // Sin número
   if (!/[0-9]/.test(password)) {
-    return { isValid: false, message: 'La contraseña debe contener al menos un número' };
+    return { valido: false, mensaje: 'La contraseña debe contener al menos un número' };
   }
 
-  return { isValid: true, message: '' };
-}
+  return { valido: true, mensaje: '' };
+};
 
-/**
- * Muestra un mensaje de error en un elemento del DOM
- * @param {string} elementId - El ID del elemento donde mostrar el error
- * @param {string} message - El mensaje de error a mostrar
- */
-export function showError(elementId, message) {
+// ============================================
+// FUNCIONES DE UTILIDAD PARA EL DOM
+// ============================================
+
+// Muestra un mensaje de error en un elemento
+export const mostrarError = (elementId, mensaje) => {
   const element = document.getElementById(elementId);
   if (element) {
-    element.textContent = message;
+    element.textContent = mensaje;
     element.style.display = 'block';
   }
-}
+};
 
-/**
- * Oculta un mensaje de error
- * @param {string} elementId - El ID del elemento del error a ocultar
- */
-export function hideError(elementId) {
+// Oculta un mensaje de error
+export const ocultarError = (elementId) => {
   const element = document.getElementById(elementId);
   if (element) {
     element.textContent = '';
     element.style.display = 'none';
   }
-}
+};
 
-/**
- * Formatea un número como moneda en soles peruanos
- * @param {number} amount - La cantidad a formatear
- * @returns {string} La cantidad formateada
- */
-export function formatCurrency(amount) {
-  return `S/ ${amount.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-}
-
-/**
- * Obtiene el path relativo correcto hacia la raíz según la ubicación del archivo
- * @param {number} levels - Número de niveles hacia arriba (1 = ../, 2 = ../../)
- * @returns {string} El path relativo
- */
-export function getRootPath(levels = 0) {
-  return '../'.repeat(levels);
-}
+// Formatea un número como moneda peruana
+export const formatearMoneda = (monto) => {
+  return `S/ ${monto.toLocaleString('es-PE', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  })}`;
+};
