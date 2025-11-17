@@ -106,7 +106,7 @@ const mostrarToast = (titulo, subtitulo) => {
     toast.className = 'toast-notification';
     toast.style.cssText = `
       position: fixed;
-      top: 80px;
+      top: 120px;
       right: 30px;
       background-color: #28a745;
       color: white;
