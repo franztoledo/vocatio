@@ -625,19 +625,70 @@ export function initFormularioTest() {
     return;
   }
 
-  currentTestState = {
-    testType: 'formulario',
-    currentQuestion: 0,
-    totalQuestions: questions.length,
-    answers: [],
-    areaScores: {},
-    startTime: new Date(),
-    testId: `test_formulario_${Date.now()}`
-  };
+  // Intentar cargar progreso guardado
+  const savedProgress = loadProgress();
+
+  if (savedProgress && savedProgress.testType === 'formulario') {
+    console.log('📥 Restaurando progreso guardado...');
+
+    currentTestState = savedProgress;
+
+    // Preguntar si desea continuar
+    const continueTest = confirm(
+      `¡Encontramos un test en progreso!\n\n` +
+      `Preguntas respondidas: ${savedProgress.currentQuestion || 0}/${savedProgress.totalQuestions}\n\n` +
+      `¿Deseas continuar donde lo dejaste?`
+    );
+
+    if (!continueTest) {
+      clearProgress();
+      currentTestState = {
+        testType: 'formulario',
+        currentQuestion: 0,
+        totalQuestions: questions.length,
+        answers: [],
+        areaScores: {},
+        startTime: new Date(),
+        testId: `test_formulario_${Date.now()}`
+      };
+    }
+  } else {
+    currentTestState = {
+      testType: 'formulario',
+      currentQuestion: 0,
+      totalQuestions: questions.length,
+      answers: [],
+      areaScores: {},
+      startTime: new Date(),
+      testId: `test_formulario_${Date.now()}`
+    };
+  }
 
   loadFormularioQuestions(questions);
 
+  // Restaurar respuestas si hay progreso guardado
+  if (savedProgress && savedProgress.answers && savedProgress.answers.length > 0) {
+    restoreFormularioAnswers(savedProgress.answers);
+  }
+
   console.log(`✅ Formulario Test iniciado: ${questions.length} preguntas`);
+}
+
+/**
+ * Restaura las respuestas guardadas en el formulario
+ */
+function restoreFormularioAnswers(answers) {
+  const form = document.getElementById('testForm');
+  if (!form) return;
+
+  answers.forEach(answer => {
+    const radio = form.querySelector(`input[name="${answer.question}"][value="${answer.value}"]`);
+    if (radio) {
+      radio.checked = true;
+    }
+  });
+
+  console.log(`✅ Restauradas ${answers.length} respuestas`);
 }
 
 /**
@@ -656,6 +707,9 @@ function loadFormularioQuestions(questions) {
     const row = createQuestionRow(question, index);
     questionsTable.appendChild(row);
   });
+
+  // Agregar event listeners para tracking de progreso
+  setupFormularioProgressTracking();
 }
 
 /**
@@ -690,14 +744,134 @@ function createQuestionRow(question, index) {
 }
 
 /**
+ * Configura el tracking de progreso para el formulario
+ */
+function setupFormularioProgressTracking() {
+  const form = document.getElementById('testForm');
+  if (!form) return;
+
+  // Agregar contador de progreso si no existe
+  let progressIndicator = document.querySelector('.form-progress-indicator');
+  if (!progressIndicator) {
+    progressIndicator = document.createElement('div');
+    progressIndicator.className = 'form-progress-indicator';
+    progressIndicator.style.cssText = `
+      position: sticky;
+      top: 60px;
+      background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      z-index: 100;
+    `;
+
+    const blockHeader = document.querySelector('.block-header');
+    if (blockHeader) {
+      blockHeader.insertAdjacentElement('afterend', progressIndicator);
+    }
+  }
+
+  // Event listener para actualizar progreso
+  const updateProgress = () => {
+    const db = getDB();
+    const totalQuestions = db.vocational_tests.tradicional.length;
+    let answeredCount = 0;
+
+    db.vocational_tests.tradicional.forEach((question) => {
+      const name = `q${question.id}`;
+      const radios = form.querySelectorAll(`input[name="${name}"]`);
+      const isAnswered = Array.from(radios).some(radio => radio.checked);
+
+      if (isAnswered) {
+        answeredCount++;
+      }
+    });
+
+    const percentage = Math.round((answeredCount / totalQuestions) * 100);
+
+    progressIndicator.innerHTML = `
+      <div style="display: flex; align-items: center; justify-content: center; gap: 12px;">
+        <span>📊 Progreso: ${answeredCount}/${totalQuestions} preguntas</span>
+        <span style="background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 12px;">
+          ${percentage}%
+        </span>
+      </div>
+    `;
+
+    // Actualizar estado
+    currentTestState.currentQuestion = answeredCount;
+
+    // Cambiar color según progreso
+    if (percentage === 100) {
+      progressIndicator.style.background = 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)';
+    } else if (percentage >= 50) {
+      progressIndicator.style.background = 'linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%)';
+    }
+
+    // Auto-guardar progreso
+    saveProgress();
+  };
+
+  // Agregar listeners a todos los radios
+  const radios = form.querySelectorAll('input[type="radio"]');
+  radios.forEach(radio => {
+    radio.addEventListener('change', updateProgress);
+  });
+
+  // Actualizar progreso inicial
+  updateProgress();
+}
+
+/**
  * Procesa las respuestas del formulario
  */
 export function processFormularioAnswers() {
   const form = document.getElementById('testForm');
-  if (!form) return;
+  if (!form) {
+    console.error('❌ No se encontró el formulario');
+    return false;
+  }
+
+  // Validar que todas las preguntas estén respondidas
+  const db = getDB();
+  const questions = db.vocational_tests.tradicional;
+
+  let allAnswered = true;
+  const unansweredQuestions = [];
+
+  questions.forEach((question) => {
+    const name = `q${question.id}`;
+    const radios = form.querySelectorAll(`input[name="${name}"]`);
+    const isAnswered = Array.from(radios).some(radio => radio.checked);
+
+    if (!isAnswered) {
+      allAnswered = false;
+      unansweredQuestions.push(question.id);
+    }
+  });
+
+  if (!allAnswered) {
+    alert(`Por favor, responde todas las preguntas antes de continuar.\nFaltan ${unansweredQuestions.length} preguntas por responder.`);
+
+    // Hacer scroll a la primera pregunta sin responder
+    const firstUnanswered = form.querySelector(`input[name="q${unansweredQuestions[0]}"]`);
+    if (firstUnanswered) {
+      firstUnanswered.closest('.question-row').scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+
+    return false;
+  }
 
   const formData = new FormData(form);
   const areaScores = {};
+  const answers = [];
 
   // Procesar cada respuesta
   for (const [name, value] of formData.entries()) {
@@ -707,16 +881,38 @@ export function processFormularioAnswers() {
     const area = radio.dataset.area;
     const weight = parseFloat(radio.dataset.weight);
 
+    // Guardar respuesta
+    answers.push({
+      question: name,
+      value: value,
+      area: area,
+      weight: weight
+    });
+
+    // Acumular scores por área
     if (!areaScores[area]) {
       areaScores[area] = 0;
     }
     areaScores[area] += weight;
   }
 
+  // Actualizar estado
   currentTestState.areaScores = areaScores;
+  currentTestState.answers = answers;
+  currentTestState.answeredQuestions = answers.length;
+
+  console.log('✅ Formulario procesado:', {
+    totalQuestions: questions.length,
+    answered: answers.length,
+    scores: areaScores
+  });
+
+  // Guardar resultados
   saveTestResults();
 
+  // Redirigir a resultados
   window.location.href = 'resultados-test.html';
+  return true;
 }
 
 // ============================================
@@ -727,8 +923,36 @@ export function processFormularioAnswers() {
  * Guarda el progreso del test
  */
 export function saveProgress() {
+  // Si estamos en formulario, capturar respuestas actuales
+  if (currentTestState.testType === 'formulario') {
+    const form = document.getElementById('testForm');
+    if (form) {
+      const formData = new FormData(form);
+      const answers = [];
+
+      for (const [name, value] of formData.entries()) {
+        const radio = form.querySelector(`input[name="${name}"][value="${value}"]`);
+        if (radio) {
+          answers.push({
+            question: name,
+            value: value,
+            area: radio.dataset.area,
+            weight: parseFloat(radio.dataset.weight)
+          });
+        }
+      }
+
+      currentTestState.answers = answers;
+    }
+  }
+
   localStorage.setItem('testProgress', JSON.stringify(currentTestState));
-  console.log('💾 Progreso guardado');
+  console.log('💾 Progreso guardado:', {
+    testType: currentTestState.testType,
+    currentQuestion: currentTestState.currentQuestion,
+    totalQuestions: currentTestState.totalQuestions,
+    answersCount: currentTestState.answers?.length || 0
+  });
 }
 
 /**
@@ -769,6 +993,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (path.includes('test-aventura.html')) {
     initTestAventura();
+    setupModalSaveButton();
   } else if (path.includes('formulario-test.html')) {
     initFormularioTest();
 
@@ -777,18 +1002,45 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnSiguiente) {
       btnSiguiente.addEventListener('click', (e) => {
         e.preventDefault();
-
-        const form = document.getElementById('testForm');
-        if (form.checkValidity()) {
-          processFormularioAnswers();
-        } else {
-          alert('Por favor, responde todas las preguntas antes de continuar.');
-        }
+        processFormularioAnswers();
       });
     }
+
+    setupModalSaveButton();
   } else if (path.includes('test-vocacional-tradicional.html')) {
     initTestTradicional();
   }
 });
+
+/**
+ * Configura el botón de guardar progreso en el modal
+ */
+function setupModalSaveButton() {
+  const saveButtons = document.querySelectorAll('.btn-modal-secondary');
+
+  saveButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      saveProgress();
+
+      // Mostrar mensaje de confirmación
+      const originalText = btn.textContent;
+      btn.textContent = '✓ Progreso guardado';
+      btn.style.background = '#22c55e';
+
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+
+        // Cerrar modal
+        const checkbox = document.querySelector('.modal-checkbox');
+        if (checkbox) {
+          checkbox.checked = false;
+        }
+      }, 1500);
+    });
+  });
+}
 
 console.log('✅ test-vocacional.js cargado correctamente');
