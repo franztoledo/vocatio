@@ -92,111 +92,21 @@
       <!-- Progress Section -->
       <div class="progress-section">
         <div class="level-badge">
-          <span style="font-size: 20px;">🎨</span>
-          <span>Nivel 3: Tu Creatividad</span>
+          <span style="font-size: 20px;">🔍</span>
+          <span>Nivel 1: Explorador Curioso</span>
         </div>
-        
+
         <div class="progress-bar-container">
           <div class="progress-bar">
-            <div class="progress-fill" style="width: 52%;"></div>
+            <div class="progress-fill" style="width: 0%;"></div>
           </div>
-          <span class="progress-text">12/23</span>
+          <span class="progress-text">0/12</span>
         </div>
       </div>
 
-      <!-- Cards Stack Container -->
+      <!-- Cards Stack Container (se llenará dinámicamente) -->
       <div class="cards-stack">
-        
-        <!-- Card 1 - Active -->
-        <div class="swipe-card active">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop" alt="Naturaleza">
-          </div>
-          
-          <div class="card-content">
-            <h2 class="card-title">¿Te ves aquí?</h2>
-            <p class="card-description">Naturaleza y actividades al aire libre</p>
-            
-            <div class="card-actions">
-              <button class="btn-action btn-no">
-                <i data-lucide="thumbs-down"></i>
-                <span>No</span>
-              </button>
-              
-              <button class="btn-action btn-si" onclick="window.location.href='resultados-test.html'">
-                <i data-lucide="thumbs-up"></i>
-                <span>Sí</span>
-              </button>
-            </div>
-            
-            <button class="btn-swipe">
-              <span>👆</span>
-              <span>Desliza</span>
-              <span>👇</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Card 2 - Background -->
-        <div class="swipe-card background">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=600&fit=crop" alt="Presentación">
-          </div>
-          
-          <div class="card-content">
-            <h2 class="card-title">¿Esto va contigo?</h2>
-            <p class="card-description">Hablar en público y convencer a otros</p>
-            
-            <div class="card-actions">
-              <button class="btn-action btn-no">
-                <i data-lucide="thumbs-down"></i>
-                <span>No</span>
-              </button>
-              
-              <button class="btn-action btn-si">
-                <i data-lucide="thumbs-up"></i>
-                <span>Sí</span>
-              </button>
-            </div>
-            
-            <button class="btn-swipe">
-              <span>👆</span>
-              <span>Desliza</span>
-              <span>👇</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Card 3 - Background -->
-        <div class="swipe-card background">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=800&h=600&fit=crop" alt="Diseño">
-          </div>
-          
-          <div class="card-content">
-            <h2 class="card-title">¿Esto te llama?</h2>
-            <p class="card-description">Diseño gráfico y creatividad visual</p>
-            
-            <div class="card-actions">
-              <button class="btn-action btn-no">
-                <i data-lucide="thumbs-down"></i>
-                <span>No</span>
-              </button>
-              
-              <button class="btn-action btn-si" >
-                <i data-lucide="thumbs-up"></i>
-                <span>Sí</span>
-              </button>
-            </div>
-            
-            <button class="btn-swipe">
-              <span>👆</span>
-              <span>Desliza</span>
-              <span>👇</span>
-            </button>
-          </div>
-        </div>
-
+        <!-- Las cards se cargarán dinámicamente con JavaScript -->
       </div>
 
       <!-- Feedback Overlay (hidden by default) -->
@@ -345,5 +255,6 @@
   </script>
 
   <script src="../../scripts/main.js" type="module"></script>
+  <script src="../../scripts/test-vocacional.js" type="module"></script>
 </body>
 </html>

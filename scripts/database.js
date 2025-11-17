@@ -263,53 +263,171 @@ export function initDB() {
       aventura: [
         {
           id: 1,
-          text: 'Estás en una isla desierta. ¿Qué haces primero?',
-          options: [
-            { text: 'Construir un refugio con tecnología improvisada', area: 'Tecnología' },
-            { text: 'Buscar plantas medicinales y evaluar mi salud', area: 'Salud' },
-            { text: 'Diseñar un plan de supervivencia creativo', area: 'Arte y Diseño' },
-            { text: 'Organizar recursos y establecer prioridades', area: 'Negocios' }
-          ]
+          question: '¿Te ves trabajando con computadoras y tecnología?',
+          leftOption: {
+            text: 'Prefiero trabajar con personas directamente',
+            area: 'Salud',
+            image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Me encanta la tecnología y programación',
+            area: 'Tecnología',
+            image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop'
+          }
         },
         {
           id: 2,
-          text: 'Encuentras un objeto misterioso. ¿Qué haces?',
-          options: [
-            { text: 'Analizarlo científicamente y desarmarlo', area: 'Tecnología' },
-            { text: 'Verificar si es seguro para la salud', area: 'Salud' },
-            { text: 'Imaginar historias sobre su origen', area: 'Arte y Diseño' },
-            { text: 'Evaluar su valor y utilidad práctica', area: 'Negocios' }
-          ]
+          question: '¿Qué actividad disfrutas más?',
+          leftOption: {
+            text: 'Resolver problemas lógicos y matemáticos',
+            area: 'Tecnología',
+            image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Diseñar y crear cosas visualmente atractivas',
+            area: 'Arte y Diseño',
+            image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=800&h=600&fit=crop'
+          }
         },
         {
           id: 3,
-          text: 'Te ofrecen liderar un proyecto importante. ¿Cuál eliges?',
-          options: [
-            { text: 'Desarrollar una aplicación innovadora', area: 'Tecnología' },
-            { text: 'Organizar una campaña de salud comunitaria', area: 'Salud' },
-            { text: 'Crear una instalación artística urbana', area: 'Arte y Diseño' },
-            { text: 'Lanzar un nuevo emprendimiento', area: 'Negocios' }
-          ]
+          question: '¿Cómo te ves en 10 años?',
+          leftOption: {
+            text: 'Dirigiendo mi propia empresa',
+            area: 'Negocios',
+            image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Ayudando a mejorar la salud de las personas',
+            area: 'Salud',
+            image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&h=600&fit=crop'
+          }
         },
         {
           id: 4,
-          text: '¿Qué superpoder te gustaría tener?',
-          options: [
-            { text: 'Entender y controlar la tecnología con la mente', area: 'Tecnología' },
-            { text: 'Curar cualquier enfermedad con el tacto', area: 'Salud' },
-            { text: 'Materializar cualquier cosa que imagines', area: 'Arte y Diseño' },
-            { text: 'Predecir tendencias del mercado', area: 'Negocios' }
-          ]
+          question: '¿Qué tipo de proyectos te emocionan más?',
+          leftOption: {
+            text: 'Proyectos creativos y artísticos',
+            area: 'Arte y Diseño',
+            image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Proyectos de negocios e innovación',
+            area: 'Negocios',
+            image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop'
+          }
         },
         {
           id: 5,
-          text: 'En tu tiempo libre prefieres...',
-          options: [
-            { text: 'Programar o aprender nuevas tecnologías', area: 'Tecnología' },
-            { text: 'Hacer voluntariado o ayudar a otros', area: 'Salud' },
-            { text: 'Crear arte, música o contenido', area: 'Arte y Diseño' },
-            { text: 'Leer sobre negocios o invertir', area: 'Negocios' }
-          ]
+          question: '¿Qué ambiente de trabajo prefieres?',
+          leftOption: {
+            text: 'Un consultorio o clínica ayudando pacientes',
+            area: 'Salud',
+            image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Una oficina moderna con tecnología',
+            area: 'Tecnología',
+            image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop'
+          }
+        },
+        {
+          id: 6,
+          question: '¿Cómo resuelves problemas?',
+          leftOption: {
+            text: 'De forma creativa y original',
+            area: 'Arte y Diseño',
+            image: 'https://images.unsplash.com/photo-1506729623306-b5a934d88b53?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Con análisis y lógica',
+            area: 'Tecnología',
+            image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=600&fit=crop'
+          }
+        },
+        {
+          id: 7,
+          question: '¿Qué te motiva más?',
+          leftOption: {
+            text: 'Generar ingresos y emprendimientos',
+            area: 'Negocios',
+            image: 'https://images.unsplash.com/photo-1559526324-593bc073d938?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Ayudar a otros y mejorar vidas',
+            area: 'Salud',
+            image: 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=800&h=600&fit=crop'
+          }
+        },
+        {
+          id: 8,
+          question: '¿Qué habilidad te describe mejor?',
+          leftOption: {
+            text: 'Soy muy creativo y artístico',
+            area: 'Arte y Diseño',
+            image: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Soy estratégico y orientado a resultados',
+            area: 'Negocios',
+            image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=600&fit=crop'
+          }
+        },
+        {
+          id: 9,
+          question: '¿Dónde te ves más cómodo?',
+          leftOption: {
+            text: 'En un laboratorio o haciendo investigación',
+            area: 'Tecnología',
+            image: 'https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'En un estudio de diseño o taller creativo',
+            area: 'Arte y Diseño',
+            image: 'https://images.unsplash.com/photo-1600132806608-231446b2e7af?w=800&h=600&fit=crop'
+          }
+        },
+        {
+          id: 10,
+          question: '¿Qué actividad disfrutas en tu tiempo libre?',
+          leftOption: {
+            text: 'Leer sobre economía y finanzas',
+            area: 'Negocios',
+            image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Hacer voluntariado o ayudar a otros',
+            area: 'Salud',
+            image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop'
+          }
+        },
+        {
+          id: 11,
+          question: 'En un proyecto grupal, ¿cuál es tu rol?',
+          leftOption: {
+            text: 'El que diseña y hace que se vea bien',
+            area: 'Arte y Diseño',
+            image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'El que programa o maneja la parte técnica',
+            area: 'Tecnología',
+            image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop'
+          }
+        },
+        {
+          id: 12,
+          question: '¿Qué te gustaría lograr profesionalmente?',
+          leftOption: {
+            text: 'Curar enfermedades o ayudar personas',
+            area: 'Salud',
+            image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop'
+          },
+          rightOption: {
+            text: 'Crear mi propia startup exitosa',
+            area: 'Negocios',
+            image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop'
+          }
         }
       ]
     },
