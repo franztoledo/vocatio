@@ -1005,42 +1005,150 @@ function loadAventuraProgress() {
 }
 
 // ============================================
-// FUNCIONES COMPARTIDAS
+// PÁGINA DE RESULTADOS
 // ============================================
 
 /**
- * Guarda el resultado de un test en el perfil del usuario
+ * Inicializa la página de resultados del test.
+ * Carga los datos del resultado desde URL o localStorage y los renderiza.
  */
-function saveTestResult(testType, percentages) {
+export function initResultsPage() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const resultId = urlParams.get('resultId');
   const user = getActiveUser();
+  let resultData = null;
 
-  if (!user) {
-    console.warn('No hay usuario activo, guardando resultados en localStorage temporal');
-    localStorage.setItem('pendingTestResult', JSON.stringify({ testType, percentages, date: new Date().toISOString() }));
+  if (resultId && user) {
+    // Cargar un resultado específico del historial del usuario
+    const numericResultId = parseInt(resultId, 10);
+    resultData = user.testResults?.find(r => r.id === numericResultId);
+  } else {
+    // Cargar el último resultado guardado en localStorage
+    const latestResultStr = localStorage.getItem('latestTestResult');
+    if (latestResultStr) {
+      resultData = JSON.parse(latestResultStr);
+    }
+  }
+
+  const mainContainer = document.querySelector('.results-content .container');
+  if (!resultData) {
+    mainContainer.innerHTML = `
+      <div class="empty-message" style="padding: 2rem; text-align: center;">
+        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">No se encontraron resultados</h3>
+        <p>No pudimos cargar los resultados del test. Por favor, <a href="test-vocacional-seccion.html" style="color: var(--primary-600); font-weight: 600;">intenta realizar un test</a> o selecciona uno de tu <a href="historial-evaluaciones.html" style="color: var(--primary-600); font-weight: 600;">historial</a>.</p>
+      </div>
+    `;
     return;
   }
 
-  // Crear objeto de resultado
-  const result = {
-    id: Date.now(),
-    type: testType,
-    date: new Date().toISOString(),
-    results: percentages,
-    topArea: Object.keys(percentages).reduce((a, b) => percentages[a] > percentages[b] ? a : b)
+  const db = getDB();
+  renderHeroCards(resultData.results, db);
+  renderStats(resultData.results);
+
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+}
+
+/**
+ * Renderiza las tarjetas de héroe basadas en los resultados.
+ */
+function renderHeroCards(results, db) {
+  const container = document.getElementById('heroes-grid-container');
+  if (!container) return;
+
+  const sortedAreas = Object.entries(results)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 3);
+
+  const heroProfiles = db.hero_profiles;
+  let content = '';
+  const rankClasses = ['primary', 'secondary', 'tertiary'];
+
+  sortedAreas.forEach(([area, percentage], index) => {
+    const profile = heroProfiles[area];
+    if (!profile) return;
+
+    content += `
+      <div class="hero-card ${rankClasses[index]}">
+        <div class="hero-rank">#${index + 1}</div>
+        <div class="hero-image-container">
+          <img src="${profile.image}" alt="${profile.name}" class="hero-image">
+        </div>
+        <div class="hero-compatibility-section">
+          <div class="hero-compatibility">${percentage}%</div>
+          <div class="hero-label">COMPATIBILIDAD</div>
+        </div>
+        <div class="hero-info">
+          <h3 class="hero-name">${profile.name}</h3>
+          <p class="hero-category">${area}</p>
+          <div class="hero-skills">
+            ${profile.related_careers.map(career => `
+              <div class="skill-item">
+                <span class="skill-icon">${career.icon}</span>
+                <span class="skill-text">${career.name}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        <a href="../ExplorarCarreras/detalle-carrera.html?area=${encodeURIComponent(area)}" class="btn-details">
+          Ver Detalles <i data-lucide="arrow-right"></i>
+        </a>
+      </div>
+    `;
+  });
+
+  container.innerHTML = content;
+}
+
+/**
+ * Renderiza las barras de estadísticas.
+ */
+function renderStats(results) {
+  const container = document.getElementById('stats-card-container');
+  if (!container) return;
+
+  const sortedAreas = Object.entries(results).sort(([, a], [, b]) => b - a);
+  const areaDetails = {
+    'Tecnología': { icon: '💻', class: 'primary' },
+    'Arte y Diseño': { icon: '🎨', class: 'secondary' },
+    'Negocios': { icon: '👑', class: 'tertiary' },
+    'Ciencias Sociales': { icon: '💎', class: 'social' },
+    'Salud': { icon: '🔬', class: 'research' }
   };
 
-  // Actualizar usuario en la base de datos
-  const db = getDB();
-  const userIndex = db.users.findIndex(u => u.id === user.id);
+  let content = '';
+  sortedAreas.forEach(([area, percentage]) => {
+    const details = areaDetails[area] || { icon: '❓', class: '' };
+    content += `
+      <div class="stat-row">
+        <div class="stat-label">
+          <span class="stat-icon">${details.icon}</span>
+          <span class="stat-name">${area}</span>
+        </div>
+        <div class="stat-bar-container">
+          <div class="stat-bar ${details.class}" style="width: ${percentage}%"></div>
+        </div>
+        <span class="stat-value">${percentage}%</span>
+      </div>
+    `;
+  });
 
-  if (userIndex !== -1) {
-    db.users[userIndex].testResults.push(result);
-    saveDB(db);
-
-    // Actualizar usuario activo
-    setActiveUser(db.users[userIndex]);
-  }
-
-  // También guardar en localStorage temporal para la página de resultados
-  localStorage.setItem('latestTestResult', JSON.stringify(result));
+  container.innerHTML = content;
 }
+
+
+// ============================================
+// AUTO-INICIALIZACIÓN
+// ============================================
+document.addEventListener('DOMContentLoaded', () => {
+    const path = window.location.pathname;
+
+    if (path.includes('formulario-test.html')) {
+        initTradicionalTest();
+    } else if (path.includes('test-aventura.html')) {
+        initAventuraTest();
+    } else if (path.includes('resultados-test.html')) {
+        initResultsPage();
+    }
+});
