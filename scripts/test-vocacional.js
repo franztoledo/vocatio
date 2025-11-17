@@ -2,12 +2,25 @@
 // Lógica completa para Tests Vocacionales
 // Incluye: Test Aventura (Swipe Cards), Test Tradicional y Formulario Test
 
-import { getDB, saveDB } from './database.js';
-import { getActiveUser, updateActiveUser } from './utils.js';
+console.log('📂 Cargando test-vocacional.js...');
+
+import { getDB, initDB } from './database.js';
+import { getActiveUser, updateActiveUser, saveDB } from './utils.js';
+
+console.log('✅ Imports completados');
 
 // ============================================
 // CONFIGURACIÓN Y ESTADO GLOBAL
 // ============================================
+
+// Asegurar que la base de datos esté inicializada
+if (!localStorage.getItem('db')) {
+  console.log('🔧 Inicializando base de datos...');
+  initDB();
+  console.log('✅ Base de datos inicializada');
+} else {
+  console.log('✅ Base de datos ya existe');
+}
 
 // Estado del test actual
 let currentTestState = {
@@ -31,7 +44,15 @@ export function initTestAventura() {
   console.log('🚀 Iniciando Test Aventura...');
 
   const db = getDB();
+  console.log('📦 Base de datos obtenida:', db);
+
+  if (!db || !db.vocational_tests) {
+    console.error('❌ Base de datos no tiene vocational_tests');
+    return;
+  }
+
   const questions = db.vocational_tests.aventura;
+  console.log('📋 Preguntas aventura:', questions);
 
   if (!questions || questions.length === 0) {
     console.error('❌ No se encontraron preguntas para el test aventura');
@@ -49,6 +70,8 @@ export function initTestAventura() {
     testId: `test_aventura_${Date.now()}`
   };
 
+  console.log('📊 Estado inicial:', currentTestState);
+
   // Cargar preguntas
   loadSwipeCards(questions);
 
@@ -65,20 +88,33 @@ export function initTestAventura() {
  * Carga las swipe cards dinámicamente
  */
 function loadSwipeCards(questions) {
+  console.log('🃏 Cargando swipe cards...', questions.length);
+
   const cardsContainer = document.querySelector('.cards-stack');
-  if (!cardsContainer) return;
+
+  if (!cardsContainer) {
+    console.error('❌ No se encontró el contenedor .cards-stack');
+    return;
+  }
+
+  console.log('✅ Contenedor encontrado:', cardsContainer);
 
   // Limpiar cards existentes
   cardsContainer.innerHTML = '';
 
   // Crear solo las primeras 3 cards (actual + 2 de fondo)
   const cardsToShow = Math.min(3, questions.length);
+  console.log(`📝 Creando ${cardsToShow} cards...`);
 
   for (let i = 0; i < cardsToShow; i++) {
     const question = questions[i];
+    console.log(`🔨 Creando card ${i}:`, question);
     const card = createSwipeCard(question, i);
     cardsContainer.appendChild(card);
+    console.log(`✅ Card ${i} agregada al DOM`);
   }
+
+  console.log('✅ Cards cargadas exitosamente');
 }
 
 /**
@@ -618,7 +654,15 @@ export function initFormularioTest() {
   console.log('🚀 Iniciando Formulario Test...');
 
   const db = getDB();
+  console.log('📦 Base de datos obtenida:', db);
+
+  if (!db || !db.vocational_tests) {
+    console.error('❌ Base de datos no tiene vocational_tests');
+    return;
+  }
+
   const questions = db.vocational_tests.tradicional;
+  console.log('📋 Preguntas tradicional:', questions);
 
   if (!questions || questions.length === 0) {
     console.error('❌ No se encontraron preguntas');
@@ -695,18 +739,31 @@ function restoreFormularioAnswers(answers) {
  * Carga las preguntas del formulario dinámicamente
  */
 function loadFormularioQuestions(questions) {
+  console.log('📝 Cargando preguntas del formulario...', questions.length);
+
   const questionsTable = document.querySelector('.questions-table');
-  if (!questionsTable) return;
+
+  if (!questionsTable) {
+    console.error('❌ No se encontró el contenedor .questions-table');
+    return;
+  }
+
+  console.log('✅ Contenedor de preguntas encontrado:', questionsTable);
 
   // Limpiar preguntas existentes (mantener header)
   const questionRows = questionsTable.querySelectorAll('.question-row');
+  console.log(`🧹 Limpiando ${questionRows.length} preguntas existentes`);
   questionRows.forEach(row => row.remove());
 
   // Crear preguntas dinámicamente
+  console.log(`📝 Creando ${questions.length} preguntas...`);
   questions.forEach((question, index) => {
     const row = createQuestionRow(question, index);
     questionsTable.appendChild(row);
+    console.log(`✅ Pregunta ${index + 1} agregada`);
   });
+
+  console.log('✅ Preguntas cargadas exitosamente');
 
   // Agregar event listeners para tracking de progreso
   setupFormularioProgressTracking();
@@ -989,12 +1046,16 @@ export function getCurrentTestState() {
 
 // Detectar qué página estamos y auto-inicializar
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('🚀 DOMContentLoaded disparado');
   const path = window.location.pathname;
+  console.log('📍 Ruta actual:', path);
 
   if (path.includes('test-aventura.html')) {
+    console.log('🎯 Detectado: test-aventura.html');
     initTestAventura();
     setupModalSaveButton();
   } else if (path.includes('formulario-test.html')) {
+    console.log('🎯 Detectado: formulario-test.html');
     initFormularioTest();
 
     // Event listener para el botón siguiente
