@@ -1,7 +1,7 @@
 // scripts/test-vocacional.js
 // Lógica para los tests vocacionales (tradicional y aventura)
 
-import { getDB, saveDB } from './utils.js';
+import { getDB, saveDB, showToast } from './utils.js';
 import { getActiveUser, setActiveUser } from './utils.js';
 
 // ============================================
@@ -160,7 +160,7 @@ function handleTradicionalSubmit() {
 
   // Validar que todas las preguntas fueron respondidas
   if (answeredQuestions < totalQuestions) {
-    alert(`Por favor, responde todas las preguntas. Has respondido ${answeredQuestions} de ${totalQuestions}.`);
+    showToast(`Por favor, responde todas las preguntas. Has respondido ${answeredQuestions} de ${totalQuestions}.`, 'error');
     return;
   }
 
@@ -175,17 +175,26 @@ function handleTradicionalSubmit() {
   // Guardar resultado
   saveTestResult('tradicional', percentages);
 
-  // Limpiar progreso guardado
-  localStorage.removeItem('testTradicionalProgress');
+  // Limpiar progreso guardado para el usuario actual
+  const user = getActiveUser();
+  if (user) {
+    localStorage.removeItem('testTradicionalProgress_' + user.id);
+  }
 
   // Redirigir a resultados
   window.location.href = 'resultados-test.html';
 }
 
 /**
- * Guarda el progreso del test tradicional
+ * Guarda el progreso del test tradicional para el usuario actual
  */
 function saveTestProgress() {
+  const user = getActiveUser();
+  if (!user) {
+    showToast('Debes iniciar sesión para guardar tu progreso.', 'error');
+    return;
+  }
+
   const testForm = document.getElementById('testForm');
   const formData = new FormData(testForm);
 
@@ -194,19 +203,24 @@ function saveTestProgress() {
     progress[key] = value;
   }
 
-  localStorage.setItem('testTradicionalProgress', JSON.stringify(progress));
-  alert('Progreso guardado exitosamente. Puedes continuar más tarde.');
+  localStorage.setItem('testTradicionalProgress_' + user.id, JSON.stringify(progress));
+  showToast('Progreso guardado exitosamente.', 'success');
 
   // Cerrar modal
-  document.getElementById('exitModalForm').checked = false;
+  const modalCheckbox = document.getElementById('exitModalForm');
+  if (modalCheckbox) {
+      modalCheckbox.checked = false;
+  }
 }
 
 /**
- * Carga el progreso guardado del test tradicional
+ * Carga el progreso guardado del test tradicional para el usuario actual
  */
 function loadTestProgress() {
-  const savedProgress = localStorage.getItem('testTradicionalProgress');
+  const user = getActiveUser();
+  if (!user) return;
 
+  const savedProgress = localStorage.getItem('testTradicionalProgress_' + user.id);
   if (!savedProgress) return;
 
   const progress = JSON.parse(savedProgress);
@@ -219,7 +233,7 @@ function loadTestProgress() {
     }
   }
 
-  alert('Se ha cargado tu progreso anterior. Puedes continuar donde lo dejaste.');
+  showToast('Se ha cargado tu progreso anterior.');
 }
 
 // ============================================
@@ -578,7 +592,7 @@ function setupAventuraEventListeners() {
   if (saveButton) {
     saveButton.onclick = (e) => {
       e.preventDefault();
-      saveAventuraProgress();
+      saveAventuraProgress(e);
     };
   }
 }
@@ -708,9 +722,6 @@ function nextCard() {
   } else {
     renderCurrentLevel();
   }
-
-  // Guardar progreso automáticamente
-  saveAventuraProgress();
 }
 
 /**
@@ -830,8 +841,11 @@ function finishAventuraTest() {
   // Guardar resultado
   saveTestResult('aventura', percentages);
 
-  // Limpiar progreso guardado
-  localStorage.removeItem('testAventuraProgress');
+  // Limpiar progreso guardado para el usuario actual
+  const user = getActiveUser();
+  if (user) {
+    localStorage.removeItem('testAventuraProgress_' + user.id);
+  }
 
   // Redirigir a resultados
   window.location.href = 'resultados-test.html';
@@ -840,20 +854,26 @@ function finishAventuraTest() {
 /**
  * Guarda el progreso del test aventura
  */
-function saveAventuraProgress() {
+function saveAventuraProgress(event) {
+    const user = getActiveUser();
+    if (!user) {
+        showToast('Debes iniciar sesión para guardar tu progreso.', 'error');
+        return;
+    }
+
   const progress = {
     currentLevel,
     currentCardIndex,
     results: aventuraResults
   };
 
-  localStorage.setItem('testAventuraProgress', JSON.stringify(progress));
-  console.log('💾 Progreso guardado:', progress);
+  localStorage.setItem('testAventuraProgress_' + user.id, JSON.stringify(progress));
+  console.log('💾 Progreso guardado para usuario ' + user.id, progress);
 
   // Si se llamó desde el botón del modal, mostrar mensaje y cerrar modal
   const saveButton = document.querySelector('.btn-modal-secondary');
   if (saveButton && event && event.target === saveButton) {
-    alert('¡Progreso guardado exitosamente! Puedes continuar más tarde.');
+    showToast('¡Progreso guardado exitosamente!', 'success');
     document.getElementById('exitModal').checked = false;
   }
 }
@@ -862,7 +882,10 @@ function saveAventuraProgress() {
  * Carga el progreso guardado del test aventura
  */
 function loadAventuraProgress() {
-  const savedProgress = localStorage.getItem('testAventuraProgress');
+    const user = getActiveUser();
+    if (!user) return;
+
+  const savedProgress = localStorage.getItem('testAventuraProgress_' + user.id);
 
   if (!savedProgress) return;
 
@@ -879,7 +902,7 @@ function loadAventuraProgress() {
 
   // Mostrar mensaje de carga
   setTimeout(() => {
-    alert('Se ha cargado tu progreso anterior. ¡Continúa tu aventura de descubrimiento!');
+    showToast('Se ha cargado tu progreso anterior.');
   }, 500);
 }
 

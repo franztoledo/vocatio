@@ -148,3 +148,56 @@ export const formatearMoneda = (monto) => {
     maximumFractionDigits: 2
   })}`;
 };
+
+/**
+ * Muestra una notificación toast en la pantalla.
+ * @param {string} message - El mensaje a mostrar.
+ * @param {string} [type='info'] - El tipo de toast ('success', 'error', 'info').
+ * @param {number} [duration=3000] - La duración en milisegundos.
+ */
+export function showToast(message, type = 'info', duration = 3000) {
+  let toastContainer = document.getElementById('toast-container');
+
+  // Si el contenedor no existe, crearlo
+  if (!toastContainer) {
+    toastContainer = document.createElement('div');
+    toastContainer.id = 'toast-container';
+    document.body.appendChild(toastContainer);
+  }
+
+  // Crear el elemento toast
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  
+  const iconName = {
+    success: 'check-circle',
+    error: 'x-circle',
+    info: 'info'
+  }[type];
+
+  toast.innerHTML = `
+    <i data-lucide="${iconName}"></i>
+    <span>${message}</span>
+  `;
+
+  // Añadir al contenedor
+  toastContainer.appendChild(toast);
+
+  // Actualizar iconos de lucide
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+
+  // Eliminar el toast después de la duración especificada
+  setTimeout(() => {
+    toast.classList.add('hiding');
+    // Esperar a que la animación de salida termine para remover el elemento
+    toast.addEventListener('animationend', () => {
+      toast.remove();
+      // Si el contenedor está vacío, también se puede remover
+      if (toastContainer.children.length === 0) {
+        toastContainer.remove();
+      }
+    });
+  }, duration);
+}

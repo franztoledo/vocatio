@@ -2,7 +2,7 @@
 // Lógica global que se ejecuta en TODAS las páginas
 
 import { initDB } from './database.js';
-import { getActiveUser, logout } from './utils.js';
+import { getActiveUser, logout, showToast } from './utils.js';
 
 // ============================================
 // INICIALIZACIÓN DE LA APLICACIÓN
@@ -70,10 +70,12 @@ function protegerRutas(usuarioActivo) {
 
   // Si es ruta protegida y NO hay usuario, redirigir
   if (esRutaProtegida && !usuarioActivo) {
-    alert('Debes iniciar sesión para acceder a esta página.');
+    showToast('Debes iniciar sesión para acceder a esta página.', 'error');
     // Guardar página de origen para volver después del login
     const urlRetorno = encodeURIComponent(rutaActual);
-    window.location.href = `/pages/Login/login.html?return=${urlRetorno}`;
+    setTimeout(() => {
+        window.location.href = `/pages/Login/login.html?return=${urlRetorno}`;
+    }, 2000);
   }
 }
 

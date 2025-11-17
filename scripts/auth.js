@@ -2,7 +2,7 @@
 // Gestión de autenticación: registro, login y recuperación de contraseña
 // Inspirado en patrones educativos
 
-import { getDB, saveDB, setActiveUser, findUserByEmail } from './utils.js';
+import { getDB, saveDB, setActiveUser, findUserByEmail, showToast } from './utils.js';
 
 // ============================================
 // FUNCIONES AUXILIARES REUTILIZABLES
@@ -288,7 +288,7 @@ export function initRegister() {
 
     } catch (error) {
       console.error('Error al registrar:', error);
-      alert('❌ Ocurrió un error al crear tu cuenta. Intenta nuevamente.');
+      showToast('Ocurrió un error al crear tu cuenta.', 'error');
       submitButton.disabled = false;
       submitButton.textContent = 'Confirmar';
     }
@@ -404,7 +404,7 @@ export function initLogin() {
 
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
-      alert('❌ Ocurrió un error. Intenta nuevamente.');
+      showToast('Ocurrió un error al iniciar sesión.', 'error');
       submitButton.disabled = false;
       submitButton.textContent = 'Confirmar';
     }
@@ -491,7 +491,7 @@ export function initResetPassword() {
 
     } catch (error) {
       console.error('Error:', error);
-      alert('❌ Ocurrió un error. Intenta nuevamente.');
+      showToast('Ocurrió un error al procesar tu solicitud.', 'error');
       submitButton.disabled = false;
       submitButton.textContent = 'Enviar';
     }
