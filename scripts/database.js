@@ -2,25 +2,46 @@
 // Base de datos simulada usando localStorage - Inspirado en patrones educativos
 
 /**
+ * Versión actual de la base de datos
+ * Incrementar este número cada vez que se actualice la estructura
+ */
+const DB_VERSION = 2;
+
+/**
  * Inicializa la base de datos en localStorage si no existe
  *
  * ¿Cómo funciona?
  * 1. Verifica si ya existe una DB guardada
- * 2. Si existe, la devuelve
- * 3. Si NO existe, crea una nueva con datos de ejemplo
- * 4. La guarda en localStorage
+ * 2. Verifica la versión de la BD
+ * 3. Si la versión es antigua o no existe, crea una nueva
+ * 4. Si NO existe, crea una nueva con datos de ejemplo
+ * 5. La guarda en localStorage
  *
  * @returns {Object} La base de datos completa
  */
 export function initDB() {
-  // Si ya existe la base de datos, devolverla
-  if (localStorage.getItem('db')) {
-    return JSON.parse(localStorage.getItem('db'));
+  // Verificar si existe la BD y su versión
+  const existingDB = localStorage.getItem('db');
+
+  if (existingDB) {
+    const db = JSON.parse(existingDB);
+
+    // Si la versión coincide, devolver la BD existente
+    if (db.version === DB_VERSION) {
+      console.log('✅ Base de datos cargada (versión ' + DB_VERSION + ')');
+      return db;
+    } else {
+      console.log('🔄 Actualizando base de datos de versión ' + (db.version || 1) + ' a ' + DB_VERSION);
+      // Versión antigua, crear nueva BD
+      localStorage.removeItem('db');
+    }
   }
 
-  // Si NO existe, crear una nueva con estructura inicial
+  // Crear nueva base de datos con estructura actualizada
+  console.log('🆕 Creando nueva base de datos (versión ' + DB_VERSION + ')');
 
   const db = {
+    version: DB_VERSION,
     users: [
       {
         id: 1,
@@ -258,60 +279,352 @@ export function initDB() {
           text: 'Me interesa estudiar las leyes y la justicia',
           area: 'Ciencias Sociales',
           weight: 1
+        },
+        {
+          id: 11,
+          text: 'Me gusta experimentar y descubrir cómo funcionan las cosas',
+          area: 'Tecnología',
+          weight: 0.9
+        },
+        {
+          id: 12,
+          text: 'Me siento bien cuando ayudo a resolver conflictos entre personas',
+          area: 'Ciencias Sociales',
+          weight: 0.9
+        },
+        {
+          id: 13,
+          text: 'Prefiero actividades que requieren creatividad e innovación',
+          area: 'Arte y Diseño',
+          weight: 0.9
+        },
+        {
+          id: 14,
+          text: 'Me interesa organizar eventos o proyectos',
+          area: 'Negocios',
+          weight: 0.9
+        },
+        {
+          id: 15,
+          text: 'Me gustaría trabajar en investigación médica o científica',
+          area: 'Salud',
+          weight: 0.9
+        },
+        {
+          id: 16,
+          text: 'Disfruto aprendiendo nuevos lenguajes de programación',
+          area: 'Tecnología',
+          weight: 1
+        },
+        {
+          id: 17,
+          text: 'Me atrae la idea de cuidar y proteger a los demás',
+          area: 'Salud',
+          weight: 0.8
+        },
+        {
+          id: 18,
+          text: 'Me gusta expresarme a través del arte o la música',
+          area: 'Arte y Diseño',
+          weight: 1
+        },
+        {
+          id: 19,
+          text: 'Me interesa emprender mi propio negocio',
+          area: 'Negocios',
+          weight: 1
+        },
+        {
+          id: 20,
+          text: 'Me gusta estudiar el comportamiento de las sociedades',
+          area: 'Ciencias Sociales',
+          weight: 0.8
         }
       ],
-      aventura: [
-        {
-          id: 1,
-          text: 'Estás en una isla desierta. ¿Qué haces primero?',
-          options: [
-            { text: 'Construir un refugio con tecnología improvisada', area: 'Tecnología' },
-            { text: 'Buscar plantas medicinales y evaluar mi salud', area: 'Salud' },
-            { text: 'Diseñar un plan de supervivencia creativo', area: 'Arte y Diseño' },
-            { text: 'Organizar recursos y establecer prioridades', area: 'Negocios' }
-          ]
-        },
-        {
-          id: 2,
-          text: 'Encuentras un objeto misterioso. ¿Qué haces?',
-          options: [
-            { text: 'Analizarlo científicamente y desarmarlo', area: 'Tecnología' },
-            { text: 'Verificar si es seguro para la salud', area: 'Salud' },
-            { text: 'Imaginar historias sobre su origen', area: 'Arte y Diseño' },
-            { text: 'Evaluar su valor y utilidad práctica', area: 'Negocios' }
-          ]
-        },
-        {
-          id: 3,
-          text: 'Te ofrecen liderar un proyecto importante. ¿Cuál eliges?',
-          options: [
-            { text: 'Desarrollar una aplicación innovadora', area: 'Tecnología' },
-            { text: 'Organizar una campaña de salud comunitaria', area: 'Salud' },
-            { text: 'Crear una instalación artística urbana', area: 'Arte y Diseño' },
-            { text: 'Lanzar un nuevo emprendimiento', area: 'Negocios' }
-          ]
-        },
-        {
-          id: 4,
-          text: '¿Qué superpoder te gustaría tener?',
-          options: [
-            { text: 'Entender y controlar la tecnología con la mente', area: 'Tecnología' },
-            { text: 'Curar cualquier enfermedad con el tacto', area: 'Salud' },
-            { text: 'Materializar cualquier cosa que imagines', area: 'Arte y Diseño' },
-            { text: 'Predecir tendencias del mercado', area: 'Negocios' }
-          ]
-        },
-        {
-          id: 5,
-          text: 'En tu tiempo libre prefieres...',
-          options: [
-            { text: 'Programar o aprender nuevas tecnologías', area: 'Tecnología' },
-            { text: 'Hacer voluntariado o ayudar a otros', area: 'Salud' },
-            { text: 'Crear arte, música o contenido', area: 'Arte y Diseño' },
-            { text: 'Leer sobre negocios o invertir', area: 'Negocios' }
-          ]
-        }
-      ]
+      aventura: {
+        levels: [
+          {
+            id: 1,
+            title: 'Primeros Pasos',
+            icon: '🔍',
+            badge: 'Explorador Curioso',
+            description: '¡Has empezado a descubrir tus intereses únicos!',
+            cards: [
+              {
+                id: 1,
+                title: '¿Te ves aquí?',
+                description: 'Trabajando con computadoras y tecnología',
+                imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop',
+                likeArea: 'Tecnología',
+                dislikeArea: null,
+                confirmationLike: '¡Anotado! La tecnología te llama 💻',
+                confirmationDislike: '¡Entendido! Busquemos otras opciones 👍'
+              },
+              {
+                id: 2,
+                title: '¿Esto va contigo?',
+                description: 'Ayudar a personas con su salud y bienestar',
+                imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop',
+                likeArea: 'Salud',
+                dislikeArea: null,
+                confirmationLike: '¡Genial! Ayudar a otros te motiva 🏥',
+                confirmationDislike: '¡Perfecto! Sigamos explorando 👍'
+              },
+              {
+                id: 3,
+                title: '¿Te imaginas aquí?',
+                description: 'Creando diseños y arte visual',
+                imageUrl: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
+                likeArea: 'Arte y Diseño',
+                dislikeArea: null,
+                confirmationLike: '¡Increíble! La creatividad es lo tuyo 🎨',
+                confirmationDislike: '¡Ok! Hay más por descubrir 👍'
+              },
+              {
+                id: 4,
+                title: '¿Esto te emociona?',
+                description: 'Liderar equipos y tomar decisiones',
+                imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
+                likeArea: 'Negocios',
+                dislikeArea: null,
+                confirmationLike: '¡Anotado! El liderazgo es tu fuerte 💼',
+                confirmationDislike: '¡Entendido! Continuemos 👍'
+              },
+              {
+                id: 5,
+                title: '¿Te identificas?',
+                description: 'Comprender el comportamiento humano',
+                imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=600&fit=crop',
+                likeArea: 'Ciencias Sociales',
+                dislikeArea: null,
+                confirmationLike: '¡Excelente! Las personas te interesan 🧠',
+                confirmationDislike: '¡Perfecto! Sigamos adelante 👍'
+              }
+            ],
+            funFact: '¡Momento de Inspiración! 💡\n¿Sabías que Steve Jobs estudió caligrafía en la universidad? ¡Eso influyó en el diseño de las fuentes de Mac!'
+          },
+          {
+            id: 2,
+            title: 'Tu Estilo de Trabajo',
+            icon: '⚡',
+            badge: 'Descubridor de Talentos',
+            description: '¡Estás identificando cómo te gusta trabajar!',
+            cards: [
+              {
+                id: 6,
+                title: '¿Prefieres esto?',
+                description: 'Trabajar solo en proyectos complejos',
+                imageUrl: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop',
+                likeArea: 'Tecnología',
+                dislikeArea: 'Negocios',
+                confirmationLike: '¡Anotado! Te gusta la concentración 🎯',
+                confirmationDislike: '¡Ok! Prefieres el trabajo en equipo 👥'
+              },
+              {
+                id: 7,
+                title: '¿Esto te llama?',
+                description: 'Resolver problemas de manera práctica',
+                imageUrl: 'https://images.unsplash.com/photo-1581092918484-8313e1f7e8d6?w=800&h=600&fit=crop',
+                likeArea: 'Tecnología',
+                dislikeArea: null,
+                confirmationLike: '¡Genial! Eres orientado a soluciones 🔧',
+                confirmationDislike: '¡Entendido! Sigamos descubriendo 👍'
+              },
+              {
+                id: 8,
+                title: '¿Te ves haciendo esto?',
+                description: 'Cuidar y escuchar a las personas',
+                imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&h=600&fit=crop',
+                likeArea: 'Salud',
+                dislikeArea: null,
+                confirmationLike: '¡Perfecto! La empatía es tu don 💚',
+                confirmationDislike: '¡Ok! Hay más opciones para ti 👍'
+              },
+              {
+                id: 9,
+                title: '¿Esto va contigo?',
+                description: 'Crear presentaciones y convencer personas',
+                imageUrl: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=600&fit=crop',
+                likeArea: 'Negocios',
+                dislikeArea: null,
+                confirmationLike: '¡Excelente! La comunicación es clave 🎤',
+                confirmationDislike: '¡Entendido! Continuemos explorando 👍'
+              },
+              {
+                id: 10,
+                title: '¿Te imaginas aquí?',
+                description: 'Analizar datos y encontrar patrones',
+                imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+                likeArea: 'Tecnología',
+                dislikeArea: null,
+                confirmationLike: '¡Increíble! Los datos hablan contigo 📊',
+                confirmationDislike: '¡Perfecto! Sigamos adelante 👍'
+              }
+            ],
+            funFact: '¡Dato Curioso! 🌟\nMuchos cirujanos practican con videojuegos para mejorar su coordinación mano-ojo. ¡Los gamers también pueden ser doctores!'
+          },
+          {
+            id: 3,
+            title: 'Tu Creatividad',
+            icon: '🎨',
+            badge: 'Visionario Creativo',
+            description: '¡Estás explorando tu lado creativo y artístico!',
+            cards: [
+              {
+                id: 11,
+                title: '¿Esto te inspira?',
+                description: 'Diseñar espacios y edificios',
+                imageUrl: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&h=600&fit=crop',
+                likeArea: 'Arte y Diseño',
+                dislikeArea: null,
+                confirmationLike: '¡Anotado! La arquitectura te llama 🏛️',
+                confirmationDislike: '¡Ok! Busquemos tu pasión 👍'
+              },
+              {
+                id: 12,
+                title: '¿Te ves aquí?',
+                description: 'Creando contenido digital y multimedia',
+                imageUrl: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop',
+                likeArea: 'Arte y Diseño',
+                dislikeArea: null,
+                confirmationLike: '¡Genial! El mundo digital es tuyo 🎬',
+                confirmationDislike: '¡Entendido! Hay más por explorar 👍'
+              },
+              {
+                id: 13,
+                title: '¿Esto va contigo?',
+                description: 'Innovar y crear cosas nuevas',
+                imageUrl: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop',
+                likeArea: 'Tecnología',
+                dislikeArea: null,
+                confirmationLike: '¡Excelente! La innovación te motiva 🚀',
+                confirmationDislike: '¡Perfecto! Sigamos descubriendo 👍'
+              },
+              {
+                id: 14,
+                title: '¿Te identificas?',
+                description: 'Escribir historias y contenido',
+                imageUrl: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=800&h=600&fit=crop',
+                likeArea: 'Arte y Diseño',
+                dislikeArea: null,
+                confirmationLike: '¡Increíble! Las palabras son tu arte ✍️',
+                confirmationDislike: '¡Ok! Continuemos explorando 👍'
+              },
+              {
+                id: 15,
+                title: '¿Esto te emociona?',
+                description: 'Experimentar y descubrir cosas nuevas',
+                imageUrl: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&h=600&fit=crop',
+                likeArea: 'Salud',
+                dislikeArea: null,
+                confirmationLike: '¡Genial! La ciencia te fascina 🔬',
+                confirmationDislike: '¡Entendido! Hay más opciones 👍'
+              }
+            ],
+            funFact: '¡Sabías que...? 🎨\nLos diseñadores gráficos también trabajan en videojuegos, películas y aplicaciones que usas todos los días!'
+          },
+          {
+            id: 4,
+            title: 'Tu Impacto',
+            icon: '💡',
+            badge: 'Agente de Cambio',
+            description: '¡Descubriendo cómo quieres impactar el mundo!',
+            cards: [
+              {
+                id: 16,
+                title: '¿Te imaginas?',
+                description: 'Ayudar a comunidades vulnerables',
+                imageUrl: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=800&h=600&fit=crop',
+                likeArea: 'Ciencias Sociales',
+                dislikeArea: null,
+                confirmationLike: '¡Anotado! El servicio social te mueve 🤝',
+                confirmationDislike: '¡Ok! Hay más formas de ayudar 👍'
+              },
+              {
+                id: 17,
+                title: '¿Esto va contigo?',
+                description: 'Crear soluciones para el medio ambiente',
+                imageUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop',
+                likeArea: 'Tecnología',
+                dislikeArea: null,
+                confirmationLike: '¡Genial! Cuidar el planeta importa 🌱',
+                confirmationDislike: '¡Entendido! Sigamos buscando 👍'
+              },
+              {
+                id: 18,
+                title: '¿Te ves aquí?',
+                description: 'Emprender y generar empleo',
+                imageUrl: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop',
+                likeArea: 'Negocios',
+                dislikeArea: null,
+                confirmationLike: '¡Increíble! El emprendimiento te llama 🚀',
+                confirmationDislike: '¡Perfecto! Hay más caminos 👍'
+              },
+              {
+                id: 19,
+                title: '¿Esto te inspira?',
+                description: 'Defender los derechos de las personas',
+                imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&h=600&fit=crop',
+                likeArea: 'Ciencias Sociales',
+                dislikeArea: null,
+                confirmationLike: '¡Excelente! La justicia te motiva ⚖️',
+                confirmationDislike: '¡Ok! Sigamos explorando 👍'
+              },
+              {
+                id: 20,
+                title: '¿Te identificas?',
+                description: 'Investigar y generar nuevo conocimiento',
+                imageUrl: 'https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=800&h=600&fit=crop',
+                likeArea: 'Salud',
+                dislikeArea: null,
+                confirmationLike: '¡Genial! La investigación es tu pasión 🔬',
+                confirmationDislike: '¡Entendido! Continuemos 👍'
+              }
+            ],
+            funFact: '¡Increíble! 🌟\n¿Sabías que muchos emprendedores exitosos estudiaron carreras muy diferentes antes de crear sus empresas?'
+          },
+          {
+            id: 5,
+            title: 'Tu Futuro',
+            icon: '🌟',
+            badge: 'Visionario del Futuro',
+            description: '¡Casi listo! Estás definiendo tu camino ideal',
+            cards: [
+              {
+                id: 21,
+                title: '¿Te imaginas en 10 años?',
+                description: 'Trabajando con inteligencia artificial',
+                imageUrl: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
+                likeArea: 'Tecnología',
+                dislikeArea: null,
+                confirmationLike: '¡Increíble! El futuro tech es tuyo 🤖',
+                confirmationDislike: '¡Ok! Hay muchas opciones 👍'
+              },
+              {
+                id: 22,
+                title: '¿Esto te emociona?',
+                description: 'Viajar y trabajar en diferentes países',
+                imageUrl: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop',
+                likeArea: 'Negocios',
+                dislikeArea: null,
+                confirmationLike: '¡Genial! El mundo te espera ✈️',
+                confirmationDislike: '¡Perfecto! Sigamos adelante 👍'
+              },
+              {
+                id: 23,
+                title: '¿Te ves haciendo esto?',
+                description: 'Trabajar en tu propia clínica o consultorio',
+                imageUrl: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=600&fit=crop',
+                likeArea: 'Salud',
+                dislikeArea: null,
+                confirmationLike: '¡Anotado! Tu independencia profesional 🏥',
+                confirmationDislike: '¡Entendido! Hay más posibilidades 👍'
+              }
+            ],
+            funFact: '¡Lo lograste! 🎉\n¡Has completado tu viaje de autodescubrimiento! Ahora veamos qué camino es el mejor para ti.'
+          }
+        ]
+      }
     },
     projects: [
       {

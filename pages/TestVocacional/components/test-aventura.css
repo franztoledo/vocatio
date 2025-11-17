@@ -375,18 +375,11 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.75);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
   transition: opacity 0.3s ease;
-}
-
-.feedback-overlay.show {
-  opacity: 1;
-  pointer-events: all;
 }
 
 .feedback-card {
