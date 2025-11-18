@@ -5,7 +5,7 @@
  * Versión actual de la base de datos
  * Incrementar este número cada vez que se actualice la estructura
  */
-const DB_VERSION = 8;
+const DB_VERSION = 10;
 
 /**
  * Inicializa la base de datos en localStorage si no existe
@@ -54,14 +54,27 @@ export function initDB() {
         email: 'test@test.com',
         password: 'Password123',
         profile: {
-          age: null,
-          level: '',
-          interests: [],
-          gender: '',
-          city: ''
+          age: 22,
+          level: 'Universitario',
+          interests: ['Tecnología', 'Innovación'],
+          gender: 'Masculino',
+          city: 'Lima'
         },
-        favoriteCareers: [], // IDs de carreras favoritas
-        testResults: [], // Historial de resultados de tests
+        favoriteCareers: [1, 4], // IDs de carreras favoritas
+        savedResources: [2, 3], // IDs de recursos guardados
+        testResults: [
+          {
+            date: '2024-10-26T10:00:00Z',
+            type: 'tradicional',
+            results: [
+              { area: 'Tecnología', score: 92 },
+              { area: 'Salud', score: 75 },
+              { area: 'Arte y Diseño', score: 72 },
+              { area: 'Negocios', score: 68 },
+              { area: 'Ciencias Sociales', score: 55 }
+            ]
+          }
+        ], // Historial de resultados de tests
         customLists: [], // Listas personalizadas de carreras
         privacySettings: {
           profileVisibility: 'public',      // 'public', 'friends', 'private'
