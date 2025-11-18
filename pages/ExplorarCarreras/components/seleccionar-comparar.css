@@ -296,3 +296,29 @@
     width: 100%;
   }
 }
+
+/* Error state for selection box */
+.selected-careers-box.error {
+  background: var(--red-50);
+  border-color: var(--red-300);
+}
+
+.selected-careers-message {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  color: var(--red-600);
+  display: none; /* Hidden by default */
+}
+
+.selected-careers-box.error .selected-careers-message {
+  display: block; /* Shown when error class is present */
+}
+
+.selected-careers-box.error .career-tag {
+  background: var(--red-200);
+  color: var(--red-700);
+}
+.selected-careers-box.error .tag-remove {
+  color: var(--red-700);
+}
