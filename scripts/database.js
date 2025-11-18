@@ -170,10 +170,11 @@ export function initDB() {
             area: 'Tecnología',
             duration: '5 años',
             modality: 'Presencial',
-            difficulty: 'Alto',
-            demand: 'Muy Alta',
+            dificultad: 'Alto',
+            demanda_laboral: 'Muy Alta',
+            universidades_count: 12,
+            empleabilidad: '95%',
             compatibility: 92,
-            universitiesCount: 12,
             initial_salary: 4500,
             avg_salary: 80000,
             description: 'La Ingeniería de Software es una disciplina que combina principios de ciencias de la computación, matemáticas y gestión de proyectos para diseñar, desarrollar y mantener sistemas de software de alta calidad.',
@@ -211,6 +212,7 @@ export function initDB() {
                     { title: 'Seguridad Informática', type: 'Obligatorio', credits: 4 }
                 ]}
             ],
+            field: 'Desarrollo de software, gestión de proyectos, arquitectura de sistemas.',
             labor_field: {
                 work_areas: [
                     'Empresas de tecnología y startups',
@@ -248,10 +250,11 @@ export function initDB() {
             area: 'Salud',
             duration: '7 años',
             modality: 'Presencial',
-            difficulty: 'Muy Alto',
-            demand: 'Alta',
+            dificultad: 'Muy Alto',
+            demanda_laboral: 'Alta',
+            universidades_count: 8,
+            empleabilidad: '98%',
             compatibility: 88,
-            universitiesCount: 8,
             initial_salary: 5000,
             avg_salary: 90000,
             description: 'La Medicina es la ciencia dedicada al estudio de la vida, la salud, las enfermedades y la muerte del ser humano. Implica el arte de diagnosticar, tratar y prevenir enfermedades.',
@@ -281,6 +284,7 @@ export function initDB() {
                     { title: 'Histología', type: 'Obligatorio', credits: 4 }
                 ]}
             ],
+            field: 'Hospitales, clínicas, investigación, salud pública.',
             labor_field: {
                 work_areas: [
                     'Hospitales y clínicas (públicas y privadas)',
@@ -314,10 +318,11 @@ export function initDB() {
             area: 'Arte y Diseño',
             duration: '5 años',
             modality: 'Presencial',
-            difficulty: 'Alto',
-            demand: 'Media',
+            dificultad: 'Alto',
+            demanda_laboral: 'Media',
+            universidades_count: 10,
+            empleabilidad: '85%',
             compatibility: 85,
-            universitiesCount: 10,
             initial_salary: 3800,
             avg_salary: 70000,
             description: 'La Arquitectura combina arte, ciencia y tecnología para diseñar y planificar espacios habitables. Los arquitectos crean edificios y espacios que son funcionales, estéticos y sostenibles.',
@@ -336,7 +341,15 @@ export function initDB() {
                 'Gestión de proyectos inmobiliarios'
             ],
             curriculum: null, // No information available
-            labor_field: null, // No information available
+            field: 'Diseño arquitectónico, urbanismo, paisajismo, diseño de interiores.',
+            labor_field: {
+                work_areas: ['Estudios de arquitectura', 'Constructoras', 'Inmobiliarias', 'Sector público (urbanismo)'],
+                positions: [
+                    { name: 'Arquitecto Junior', salary: '$2,200 - $3,200' },
+                    { name: 'Arquitecto de Proyectos', salary: '$3,500 - $5,500' }
+                ],
+                growth: { projection: 'Crecimiento ligado al sector construcción.', employability: '85%', insertion_time: '9 meses', work_in_area: '78%' }
+            },
             testimonials: null, // No information available
             keywords: ['diseño', 'creatividad', 'arte', 'construcción', 'espacios', 'sostenibilidad'],
             imageUrl: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop'
@@ -347,10 +360,11 @@ export function initDB() {
             area: 'Negocios',
             duration: '4 años',
             modality: 'Híbrida',
-            difficulty: 'Medio',
-            demand: 'Alta',
+            dificultad: 'Medio',
+            demanda_laboral: 'Alta',
+            universidades_count: 15,
+            empleabilidad: '90%',
             compatibility: 90,
-            universitiesCount: 15,
             initial_salary: 3500,
             avg_salary: 75000,
             description: 'La Administración de Empresas prepara profesionales para dirigir, gestionar y optimizar los recursos de una organización. Abarca áreas como finanzas, marketing, recursos humanos y operaciones.',
@@ -375,6 +389,7 @@ export function initDB() {
                     { title: 'Introducción a la Administración', type: 'Obligatorio', credits: 3 }
                 ]}
             ],
+            field: 'Gerencia, finanzas, marketing, recursos humanos.',
             labor_field: {
                 work_areas: ['Banca y finanzas', 'Consultoría', 'Retail', 'Consumo masivo'],
                 positions: [
@@ -395,10 +410,11 @@ export function initDB() {
             area: 'Ciencias Sociales',
             duration: '5 años',
             modality: 'Híbrida',
-            difficulty: 'Medio',
-            demand: 'Media',
+            dificultad: 'Medio',
+            demanda_laboral: 'Media',
+            universidades_count: 9,
+            empleabilidad: '85%',
             compatibility: 82,
-            universitiesCount: 9,
             initial_salary: 3000,
             avg_salary: 65000,
             description: 'La Psicología es el estudio científico del comportamiento humano y los procesos mentales. Los psicólogos ayudan a las personas a comprender sus pensamientos, emociones y conductas.',
@@ -422,6 +438,7 @@ export function initDB() {
                     { title: 'Bases Biológicas del Comportamiento', type: 'Obligatorio', credits: 4 }
                 ]}
             ],
+            field: 'Psicología clínica, recursos humanos, educación, investigación.',
             labor_field: {
                 work_areas: ['Clínicas y hospitales', 'Recursos humanos', 'Colegios y universidades', 'Consultoría privada'],
                 positions: [
@@ -442,10 +459,11 @@ export function initDB() {
             area: 'Ciencias Sociales',
             duration: '6 años',
             modality: 'Presencial',
-            difficulty: 'Alto',
-            demand: 'Alta',
+            dificultad: 'Alto',
+            demanda_laboral: 'Alta',
+            universidades_count: 11,
+            empleabilidad: '88%',
             compatibility: 89,
-            universitiesCount: 11,
             initial_salary: 4000,
             avg_salary: 85000,
             description: 'El Derecho es el estudio de las normas jurídicas que regulan la sociedad. Los abogados representan, asesoran y defienden los derechos de personas y organizaciones.',
@@ -469,6 +487,7 @@ export function initDB() {
                     { title: 'Derecho Romano', type: 'Obligatorio', credits: 4 }
                 ]}
             ],
+            field: 'Estudios de abogados, área legal de empresas, sector público.',
             labor_field: {
                 work_areas: ['Estudios de abogados', 'Empresas (área legal)', 'Sector público (jueces, fiscales)', 'Notarías'],
                 positions: [
@@ -489,10 +508,11 @@ export function initDB() {
             area: 'Tecnología',
             duration: '3 años',
             modality: 'Virtual',
-            difficulty: 'Medio',
-            demand: 'Muy Alta',
+            dificultad: 'Medio',
+            demanda_laboral: 'Muy Alta',
+            universidades_count: 7,
+            empleabilidad: '96%',
             compatibility: 90,
-            universitiesCount: 7,
             initial_salary: 3200,
             avg_salary: 72000,
             description: 'Programación de aplicaciones móviles y web.',
@@ -516,6 +536,7 @@ export function initDB() {
                     { title: 'Diseño de Interfaces', type: 'Obligatorio', credits: 4 }
                 ]}
             ],
+            field: 'Desarrollo móvil, desarrollo web, UI/UX.',
             labor_field: {
                 work_areas: ['Startups de tecnología', 'Agencias digitales', 'Empresas de software', 'Freelance'],
                 positions: [
@@ -528,7 +549,7 @@ export function initDB() {
                 { name: 'Mateo Díaz', info: 'Desarrollador iOS', text: '"Es increíble poder crear una app que miles de personas usan. El aprendizaje es constante y muy divertido."', rating: 5, avatar: 'MD' }
             ],
             keywords: ['tecnología', 'apps', 'móvil', 'web', 'programación', 'virtual'],
-            imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop'
+            imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=200&fit=crop'
           }
     ],
     universities: [
