@@ -203,3 +203,136 @@ export function showToast(message, type = 'info', duration = 3000) {
     });
   }, duration);
 }
+
+// ============================================
+// FUNCIONES DE GESTIÓN DE FAVORITOS
+// ============================================
+
+/**
+ * Checks if a career is marked as favorite by the current user.
+ * @param {number} careerId - The ID of the career to check.
+ * @returns {boolean} - True if the career is a favorite, false otherwise.
+ */
+export function isFavorite(careerId) {
+  const db = getDB();
+  const currentUser = db.users[0];
+  if (!currentUser) return false;
+  return currentUser.favoriteCareers.includes(careerId);
+}
+
+/**
+ * Toggles the favorite status of a career for the current user.
+ * @param {number} careerId - The ID of the career to toggle.
+ * @returns {boolean} - The new favorite status (true if it is now a favorite, false otherwise).
+ */
+export function toggleFavorite(careerId) {
+  const db = getDB();
+  const currentUser = db.users[0]; 
+
+  if (!currentUser) {
+    console.error('No current user found to toggle favorite status.');
+    // It might be better to handle this UI feedback in the calling function
+    return false;
+  }
+
+  const index = currentUser.favoriteCareers.indexOf(careerId);
+  let isNowFavorite;
+
+  if (index > -1) {
+    currentUser.favoriteCareers.splice(index, 1);
+    isNowFavorite = false;
+  } else {
+    currentUser.favoriteCareers.push(careerId);
+    isNowFavorite = true;
+  }
+  
+  saveDB(db);
+  return isNowFavorite;
+}
+
+/**
+ * Gets the list of favorite career IDs for the current user.
+ * @returns {number[]} - An array of favorite career IDs.
+ */
+export function getFavoriteCareerIds() {
+  const db = getDB();
+  const currentUser = db.users[0];
+  return currentUser ? currentUser.favoriteCareers : [];
+}
+
+/**
+ * Gets the full career objects for the current user's favorite careers.
+ * @returns {Object[]} - An array of favorite career objects.
+ */
+export function getFavoriteCareers() {
+  const db = getDB();
+  const currentUser = db.users[0];
+  if (!currentUser || !currentUser.favoriteCareers) {
+    return [];
+  }
+  return db.careers.filter(career => currentUser.favoriteCareers.includes(career.id));
+}
+
+// ============================================
+// FUNCIONES DE GESTIÓN DE LISTAS
+// ============================================
+
+/**
+ * Gets all custom lists for the current user.
+ * @returns {Object[]} - An array of custom list objects.
+ */
+export function getCustomLists() {
+  const db = getDB();
+  const currentUser = db.users[0];
+  return currentUser ? currentUser.customLists : [];
+}
+
+/**
+ * Creates a new custom list for the user.
+ * @param {string} name - The name of the list.
+ * @param {string} description - The description of the list.
+ * @param {number[]} careerIds - An array of career IDs to include in the list.
+ */
+export function createCustomList(name, description, careerIds) {
+  const db = getDB();
+  const currentUser = db.users[0];
+
+  if (!currentUser) {
+    console.error('No current user found to create a list.');
+    return;
+  }
+
+  const newList = {
+    id: Date.now(), // Simple unique ID
+    name,
+    description,
+    careerIds,
+    createdAt: new Date().toISOString(),
+  };
+
+  currentUser.customLists.push(newList);
+  saveDB(db);
+}
+
+/**
+ * Deletes a custom list for the user.
+ * @param {number} listId - The ID of the list to delete.
+ */
+export function deleteCustomList(listId) {
+  const db = getDB();
+  const currentUser = db.users[0];
+
+  if (!currentUser) {
+    console.error('No current user found to delete a list.');
+    return;
+  }
+
+  const listIndex = currentUser.customLists.findIndex(list => list.id === listId);
+
+  if (listIndex > -1) {
+    currentUser.customLists.splice(listIndex, 1);
+    saveDB(db);
+  } else {
+    console.error(`List with id ${listId} not found.`);
+  }
+}

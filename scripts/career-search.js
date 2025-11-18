@@ -1,6 +1,7 @@
 // scripts/career-search.js
 
 import { getDB } from './database.js';
+import { isFavorite, toggleFavorite } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize database and get career data
@@ -60,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const careersHTML = careers.map(career => `
+    const careersHTML = careers.map(career => {
+      const isFav = isFavorite(career.id);
+      return `
       <div class="career-card">
         <div class="career-card-image">
           <img src="${career.imageUrl}" alt="${career.title}">
@@ -68,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="career-card-badges">
             <span class="career-badge compatibility">${career.compatibility}% Compatible</span>
           </div>
-          <button class="career-favorite-btn" title="Agregar a favoritos">
+          <button class="career-favorite-btn ${isFav ? 'active' : ''}" data-career-id="${career.id}" title="Agregar a favoritos">
             <i data-lucide="heart"></i>
           </button>
         </div>
@@ -99,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       </div>
-    `).join('');
+    `}).join('');
 
     // Append the new cards after the header
     careerResultsContainer.insertAdjacentHTML('beforeend', careersHTML);
@@ -169,7 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     filterCareers();
   }
 
-  // Add event listeners
+  // --- Event Listeners ---
+
+  // Filters
   searchInput.addEventListener('input', filterCareers);
   areaInput.addEventListener('input', filterCareers);
   durationSelect.addEventListener('change', filterCareers);
@@ -179,6 +184,18 @@ document.addEventListener('DOMContentLoaded', () => {
   clearFiltersButton.addEventListener('click', (e) => {
     e.preventDefault();
     clearFilters();
+  });
+
+  // Event delegation for favorite buttons
+  careerResultsContainer.addEventListener('click', (e) => {
+    const favoriteBtn = e.target.closest('.career-favorite-btn');
+    if (favoriteBtn) {
+      const careerId = parseInt(favoriteBtn.dataset.careerId, 10);
+      if (careerId) {
+        const isNowFavorite = toggleFavorite(careerId);
+        favoriteBtn.classList.toggle('active', isNowFavorite);
+      }
+    }
   });
 
   // Initial render of all careers
