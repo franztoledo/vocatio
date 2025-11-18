@@ -1025,46 +1025,50 @@ function loadAventuraProgress() {
 function saveTestResult(testType, percentages) {
   const user = getActiveUser();
 
-  // Si no hay usuario, guardar en un lugar temporal para usuarios no registrados
-  if (!user) {
-    console.warn('No hay usuario activo, guardando resultados en localStorage temporal');
-    localStorage.setItem('latestTestResult', JSON.stringify({ 
-      id: Date.now(),
-      type: testType,
-      date: new Date().toISOString(),
-      results: percentages,
-      topArea: Object.keys(percentages).reduce((a, b) => percentages[a] > percentages[b] ? a : b, 'N/A')
-    }));
-    return;
-  }
+  // Convert the percentages object to an array of objects
+  const resultsArray = Object.entries(percentages).map(([area, score]) => ({ area, score }));
 
-  // Crear objeto de resultado
+  // Create result object with the correct data structure
   const result = {
     id: Date.now(),
     type: testType,
     date: new Date().toISOString(),
-    results: percentages,
+    results: resultsArray, // Use the new array format
     topArea: Object.keys(percentages).reduce((a, b) => percentages[a] > percentages[b] ? a : b, 'N/A')
   };
 
-  // Actualizar usuario en la base de datos
+  // If no user, save temporarily and exit
+  if (!user) {
+    console.warn('No hay usuario activo, guardando resultados en localStorage temporal');
+    localStorage.setItem('latestTestResult', JSON.stringify(result));
+    return;
+  }
+
+  // Update user in the database
   const db = getDB();
   const userIndex = db.users.findIndex(u => u.id === user.id);
 
   if (userIndex !== -1) {
-    // Asegurarse de que el array testResults exista
-    if (!db.users[userIndex].testResults) {
-      db.users[userIndex].testResults = [];
-    }
+    const userToUpdate = db.users[userIndex];
     
-    db.users[userIndex].testResults.push(result);
-    saveDB(db);
+    if (!userToUpdate.testResults) {
+      userToUpdate.testResults = [];
+    }
+    userToUpdate.testResults.push(result);
 
-    // Actualizar el usuario activo en la sesión actual
-    setActiveUser(db.users[userIndex]);
+    if (!userToUpdate.activityLog) {
+      userToUpdate.activityLog = [];
+    }
+    userToUpdate.activityLog.push({
+      type: 'test_completed',
+      timestamp: new Date().toISOString(),
+      details: { testType: testType }
+    });
+    
+    saveDB(db);
+    setActiveUser(userToUpdate);
   }
 
-  // Guardar en localStorage temporal para la página de resultados inmediata
   localStorage.setItem('latestTestResult', JSON.stringify(result));
 }
 
@@ -1150,14 +1154,12 @@ function renderHeroCards(results, db) {
   const container = document.getElementById('heroes-grid-container');
   if (!container) return;
 
-  const sortedAreas = Object.entries(results)
-    .sort(([, a], [, b]) => b - a)
-    .slice(0, 3);
+  const sortedAreas = [...results].sort((a, b) => b.score - a.score).slice(0, 3);
 
   const heroProfiles = db.hero_profiles;
   let content = '';
 
-  sortedAreas.forEach(([area, percentage], index) => {
+  sortedAreas.forEach(({ area, score }, index) => {
     const profile = heroProfiles[area];
     if (!profile) return;
 
@@ -1168,7 +1170,7 @@ function renderHeroCards(results, db) {
           <img src="${profile.image}" alt="${profile.name}" class="hero-image">
         </div>
         <div class="hero-compatibility-section">
-          <div class="hero-compatibility">${percentage}%</div>
+          <div class="hero-compatibility">${score}%</div>
           <div class="hero-label">COMPATIBILIDAD</div>
         </div>
         <div class="hero-info">
@@ -1183,7 +1185,7 @@ function renderHeroCards(results, db) {
             `).join('')}
           </div>
         </div>
-        <a href="../ExplorarCarreras/detalle-carrera.html?area=${encodeURIComponent(area)}" class="btn-details">
+        <a href="../ExplorarCarreras/explorar-carreras-seccion.html?area=${encodeURIComponent(area)}" class="btn-details">
           Ver Detalles <i data-lucide="arrow-right"></i>
         </a>
       </div>
@@ -1200,11 +1202,11 @@ function renderStats(results, db) {
   const container = document.getElementById('stats-card-container');
   if (!container) return;
 
-  const sortedAreas = Object.entries(results).sort(([, a], [, b]) => b - a);
+  const sortedAreas = [...results].sort((a, b) => b.score - a.score);
   const heroProfiles = db.hero_profiles;
 
   let content = '';
-  sortedAreas.forEach(([area, percentage]) => {
+  sortedAreas.forEach(({ area, score }) => {
     const profile = heroProfiles[area];
     if (!profile) return;
 
@@ -1215,9 +1217,9 @@ function renderStats(results, db) {
           <span class="stat-name">${area}</span>
         </div>
         <div class="stat-bar-container">
-          <div class="stat-bar ${profile.color_class}" style="width: ${percentage}%"></div>
+          <div class="stat-bar ${profile.color_class}" style="width: ${score}%"></div>
         </div>
-        <span class="stat-value">${percentage}%</span>
+        <span class="stat-value">${score}%</span>
       </div>
     `;
   });
@@ -1247,7 +1249,8 @@ function renderMasteryBadges(results, db) {
 
   for (const area in masteryBadges) {
     const badge = masteryBadges[area];
-    const userScore = results[area] || 0;
+    const userResult = results.find(r => r.area === area);
+    const userScore = userResult ? userResult.score : 0;
     const isUnlocked = userScore >= 75;
 
     content += `
@@ -1281,12 +1284,12 @@ function renderInventory(results, db) {
     return;
   }
 
-  const sortedAreas = Object.entries(results).sort(([, a], [, b]) => b - a);
+  const sortedAreas = [...results].sort((a, b) => b.score - a.score);
 
   let content = '';
   // Tomar los 2 items del área principal y 1 del área secundaria
-  const topArea = sortedAreas[0] ? sortedAreas[0][0] : null;
-  const secondArea = sortedAreas[1] ? sortedAreas[1][0] : null;
+  const topArea = sortedAreas[0] ? sortedAreas[0].area : null;
+  const secondArea = sortedAreas[1] ? sortedAreas[1].area : null;
 
   console.log('🎒 Inventario - Área principal:', topArea, 'Área secundaria:', secondArea);
 
@@ -1345,15 +1348,15 @@ function renderMissions(results, db) {
   }
 
   // Ordenar de menor a mayor para encontrar las áreas más débiles
-  const sortedAreas = Object.entries(results).sort(([, a], [, b]) => a - b);
+  const sortedAreas = [...results].sort((a, b) => a.score - b.score);
 
   let content = '';
   // Tomar las 3 áreas más débiles
   const weakAreas = sortedAreas.slice(0, 3);
 
-  console.log('🎯 Misiones - Áreas más débiles:', weakAreas.map(([area, score]) => `${area}: ${score}%`));
+  console.log('🎯 Misiones - Áreas más débiles:', weakAreas.map(r => `${r.area}: ${r.score}%`));
 
-  weakAreas.forEach(([area]) => {
+  weakAreas.forEach(({ area }) => {
     const mission = missions[area];
     if (mission) {
       content += `
