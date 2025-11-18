@@ -117,10 +117,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-lg);
+  /* Ensure header always takes first row and spans all columns */
+  grid-template-rows: auto 1fr; /* Header row, then content row */
 }
 
 .results-header {
   grid-column: 1 / -1;
+  grid-row: 1; /* Ensure header is always in the first row */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -169,6 +172,7 @@
   overflow: hidden;
   transition: var(--transition-smooth);
   height: 100%;
+  grid-column: auto / span 1; /* Ensure cards flow correctly */
 }
 
 .career-results .career-card:hover {
@@ -220,6 +224,82 @@
 }
 
 /* ============================================
+   NO RESULTS MESSAGE
+   ============================================ */
+.no-results-message {
+    grid-column: 1 / -1; /* Span all columns */
+    grid-row: 2; /* Place in the second row, after the header */
+    background-color: transparent; /* Transparent background for the full-width container */
+    display: flex; /* Use flexbox to center the inner card */
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align to the start vertically */
+    padding: var(--spacing-xl) 0; /* Add some vertical padding */
+}
+
+.no-results-card {
+    background-color: var(--yellow-100); /* Yellow background */
+    border: 1px solid var(--yellow-500); /* Yellow border */
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--yellow-800); /* Darker yellow text */
+    max-width: 600px; /* Limit width on desktop */
+    width: 100%; /* Ensure it takes full width up to max-width */
+}
+
+.no-results-icon {
+    width: 56px;
+    height: 56px;
+    background-color: var(--yellow-300); /* Lighter yellow icon background */
+    color: var(--yellow-700); /* Darker yellow icon */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-results-icon i {
+    width: 28px;
+    height: 28px;
+}
+
+.no-results-title {
+    font-size: 22px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--yellow-900); /* Even darker yellow title */
+    margin: 0;
+}
+
+.no-results-text {
+    font-size: var(--font-size-base);
+    color: var(--yellow-800);
+    max-width: 450px;
+    margin: 0;
+}
+
+.no-results-btn {
+    margin-top: var(--spacing-sm);
+    background-color: var(--yellow-600); /* Yellow button */
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.no-results-btn:hover {
+    background-color: var(--yellow-700);
+}
+
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
@@ -261,5 +341,9 @@
 
   .career-results {
     grid-template-columns: 1fr;
+  }
+
+  .career-results .career-card-image {
+    height: 180px; /* Adjust height for mobile */
   }
 }

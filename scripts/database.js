@@ -5,7 +5,7 @@
  * Versión actual de la base de datos
  * Incrementar este número cada vez que se actualice la estructura
  */
-const DB_VERSION = 4;
+const DB_VERSION = 5;
 
 /**
  * Inicializa la base de datos en localStorage si no existe
@@ -164,84 +164,125 @@ export function initDB() {
       'Ciencias Sociales': { name: 'Participar en un Debate', reward: '+400 XP', icon: '📣' }
     },
     careers: [
-      {
-        id: 1,
-        title: 'Ingeniería de Software',
-        area: 'Tecnología',
-        duration: '5 años',
-        modality: 'Universitaria',
-        description: 'La Ingeniería de Software es una disciplina que se enfoca en el diseño, desarrollo, mantenimiento y gestión de sistemas de software. Combina principios de ingeniería con conocimientos de programación para crear soluciones tecnológicas innovadoras.',
-        profile: 'Ideal para personas con pensamiento lógico, creatividad para resolver problemas, capacidad de trabajo en equipo y pasión por la tecnología. Se requiere habilidad matemática y disposición para el aprendizaje continuo.',
-        field: 'Los graduados pueden trabajar como desarrolladores de software, arquitectos de sistemas, ingenieros DevOps, consultores tecnológicos, gerentes de proyectos IT, especialistas en ciberseguridad, entre otros roles en empresas tech, startups, consultoras o como freelancers.',
-        avg_salary: 80000,
-        keywords: ['tecnología', 'programación', 'creatividad', 'innovación', 'lógica', 'matemáticas'],
-        imageUrl: '../../assets/heroes/hero1.webp'
-      },
-      {
-        id: 2,
-        title: 'Medicina',
-        area: 'Salud',
-        duration: '7 años',
-        modality: 'Universitaria',
-        description: 'La Medicina es la ciencia dedicada al estudio de la vida, la salud, las enfermedades y la muerte del ser humano. Implica el arte de diagnosticar, tratar y prevenir enfermedades, así como el mantenimiento y recuperación de la salud.',
-        profile: 'Personas con vocación de servicio, empatía, resistencia física y emocional, capacidad de toma de decisiones bajo presión, habilidades de comunicación y compromiso ético. Requiere dedicación total y disposición para estudiar constantemente.',
-        field: 'Los médicos pueden especializarse en diversas áreas como cirugía, pediatría, cardiología, neurología, medicina interna, entre otras. Pueden trabajar en hospitales, clínicas, consultorios privados, investigación médica, docencia universitaria o en organizaciones de salud pública.',
-        avg_salary: 90000,
-        keywords: ['salud', 'ayudar personas', 'ciencia', 'biología', 'empatía', 'servicio'],
-        imageUrl: '../../assets/heroes/hero2.webp'
-      },
-      {
-        id: 3,
-        title: 'Arquitectura',
-        area: 'Arte y Diseño',
-        duration: '5 años',
-        modality: 'Universitaria',
-        description: 'La Arquitectura combina arte, ciencia y tecnología para diseñar y planificar espacios habitables. Los arquitectos crean edificios y espacios que son funcionales, estéticos y sostenibles.',
-        profile: 'Ideal para personas creativas con visión espacial, habilidades de dibujo y diseño, sensibilidad estética, capacidad de análisis estructural y pasión por mejorar el entorno construido. Requiere conocimientos técnicos y artísticos.',
-        field: 'Pueden trabajar en estudios de arquitectura, construcción, urbanismo, diseño de interiores, restauración patrimonial, consultoría, gestión de proyectos inmobiliarios o emprender su propio estudio.',
-        avg_salary: 70000,
-        keywords: ['diseño', 'creatividad', 'arte', 'construcción', 'espacios', 'sostenibilidad'],
-        imageUrl: '../../assets/heroes/hero3.webp'
-      },
-      {
-        id: 4,
-        title: 'Administración de Empresas',
-        area: 'Negocios',
-        duration: '4 años',
-        modality: 'Universitaria',
-        description: 'La Administración de Empresas prepara profesionales para dirigir, gestionar y optimizar los recursos de una organización. Abarca áreas como finanzas, marketing, recursos humanos y operaciones.',
-        profile: 'Personas con liderazgo, habilidades de comunicación, pensamiento estratégico, capacidad analítica, orientación a resultados y adaptabilidad. Se valora la iniciativa y las habilidades interpersonales.',
-        field: 'Los graduados pueden ser gerentes generales, analistas financieros, consultores empresariales, gerentes de marketing, directores de recursos humanos, emprendedores o ejecutivos en diversas industrias.',
-        avg_salary: 75000,
-        keywords: ['negocios', 'liderazgo', 'gestión', 'finanzas', 'estrategia', 'emprendimiento'],
-        imageUrl: '../../assets/heroes/hero1.webp'
-      },
-      {
-        id: 5,
-        title: 'Psicología',
-        area: 'Ciencias Sociales',
-        duration: '5 años',
-        modality: 'Universitaria',
-        description: 'La Psicología es el estudio científico del comportamiento humano y los procesos mentales. Los psicólogos ayudan a las personas a comprender sus pensamientos, emociones y conductas.',
-        profile: 'Personas empáticas, con excelentes habilidades de escucha, objetividad, paciencia, interés genuino en ayudar a otros y capacidad de análisis del comportamiento humano. Requiere estabilidad emocional y ética profesional.',
-        field: 'Pueden trabajar en clínicas, hospitales, escuelas, empresas (recursos humanos), consultorios privados, investigación, docencia, organizaciones comunitarias o especializarse en áreas como psicología clínica, educativa, organizacional o deportiva.',
-        avg_salary: 65000,
-        keywords: ['comportamiento', 'empatía', 'ayuda', 'salud mental', 'ciencia', 'personas'],
-        imageUrl: '../../assets/heroes/hero2.webp'
-      },
-      {
-        id: 6,
-        title: 'Derecho',
-        area: 'Ciencias Sociales',
-        duration: '6 años',
-        modality: 'Universitaria',
-        description: 'El Derecho es el estudio de las normas jurídicas que regulan la sociedad. Los abogados representan, asesoran y defienden los derechos de personas y organizaciones dentro del marco legal.',
-        profile: 'Personas con capacidad analítica, excelente expresión oral y escrita, argumentación lógica, ética sólida, memoria para detalles y leyes, y habilidad para la negociación. Requiere lectura constante y actualización legal.',
-        field: 'Los abogados pueden ejercer en estudios jurídicos, asesoría legal corporativa, litigio, notarías, fiscalía, defensoría pública, carrera judicial, docencia universitaria o especializarse en áreas como derecho penal, civil, laboral, corporativo o internacional.',
-        avg_salary: 85000,
-        keywords: ['justicia', 'leyes', 'argumentación', 'defensa', 'análisis', 'ética'],
-        imageUrl: '../../assets/heroes/hero3.webp'
-      }
+        {
+            id: 1,
+            title: 'Ingeniería de Software',
+            area: 'Tecnología',
+            duration: '5 años',
+            modality: 'Presencial',
+            difficulty: 'Alto',
+            demand: 'Muy Alta',
+            compatibility: 92,
+            universitiesCount: 12,
+            description: 'Desarrollo de aplicaciones y sistemas de software.',
+            profile: 'Ideal para personas con pensamiento lógico, creatividad para resolver problemas, capacidad de trabajo en equipo y pasión por la tecnología. Se requiere habilidad matemática y disposición para el aprendizaje continuo.',
+            field: 'Los graduados pueden trabajar como desarrolladores de software, arquitectos de sistemas, ingenieros DevOps, consultores tecnológicos, gerentes de proyectos IT, especialistas en ciberseguridad, entre otros roles en empresas tech, startups, consultoras o como freelancers.',
+            avg_salary: 80000,
+            keywords: ['tecnología', 'programación', 'creatividad', 'innovación', 'lógica', 'matemáticas'],
+            imageUrl: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop'
+          },
+          {
+            id: 2,
+            title: 'Medicina',
+            area: 'Salud',
+            duration: '7 años',
+            modality: 'Presencial',
+            difficulty: 'Muy Alto',
+            demand: 'Alta',
+            compatibility: 88,
+            universitiesCount: 8,
+            description: 'Diagnóstico, tratamiento y prevención de enfermedades.',
+            profile: 'Personas con vocación de servicio, empatía, resistencia física y emocional, capacidad de toma de decisiones bajo presión, habilidades de comunicación y compromiso ético. Requiere dedicación total y disposición para estudiar constantemente.',
+            field: 'Los médicos pueden especializarse en diversas áreas como cirugía, pediatría, cardiología, neurología, medicina interna, entre otras. Pueden trabajar en hospitales, clínicas, consultorios privados, investigación médica, docencia universitaria o en organizaciones de salud pública.',
+            avg_salary: 90000,
+            keywords: ['salud', 'ayudar personas', 'ciencia', 'biología', 'empatía', 'servicio'],
+            imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=200&fit=crop'
+          },
+          {
+            id: 3,
+            title: 'Arquitectura',
+            area: 'Arte y Diseño',
+            duration: '5 años',
+            modality: 'Presencial',
+            difficulty: 'Alto',
+            demand: 'Media',
+            compatibility: 85,
+            universitiesCount: 10,
+            description: 'Diseño y construcción de edificios y espacios.',
+            profile: 'Ideal para personas creativas con visión espacial, habilidades de dibujo y diseño, sensibilidad estética, capacidad de análisis estructural y pasión por mejorar el entorno construido. Requiere conocimientos técnicos y artísticos.',
+            field: 'Pueden trabajar en estudios de arquitectura, construcción, urbanismo, diseño de interiores, restauración patrimonial, consultoría, gestión de proyectos inmobiliarios o emprender su propio estudio.',
+            avg_salary: 70000,
+            keywords: ['diseño', 'creatividad', 'arte', 'construcción', 'espacios', 'sostenibilidad'],
+            imageUrl: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop'
+          },
+          {
+            id: 4,
+            title: 'Administración de Empresas',
+            area: 'Negocios',
+            duration: '4 años',
+            modality: 'Híbrida',
+            difficulty: 'Medio',
+            demand: 'Alta',
+            compatibility: 90,
+            universitiesCount: 15,
+            description: 'Gestión y optimización de recursos en organizaciones.',
+            profile: 'Personas con liderazgo, habilidades de comunicación, pensamiento estratégico, capacidad analítica, orientación a resultados y adaptabilidad. Se valora la iniciativa y las habilidades interpersonales.',
+            field: 'Los graduados pueden ser gerentes generales, analistas financieros, consultores empresariales, gerentes de marketing, directores de recursos humanos, emprendedores o ejecutivos en diversas industrias.',
+            avg_salary: 75000,
+            keywords: ['negocios', 'liderazgo', 'gestión', 'finanzas', 'estrategia', 'emprendimiento'],
+            imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop'
+          },
+          {
+            id: 5,
+            title: 'Psicología',
+            area: 'Ciencias Sociales',
+            duration: '5 años',
+            modality: 'Híbrida',
+            difficulty: 'Medio',
+            demand: 'Media',
+            compatibility: 82,
+            universitiesCount: 9,
+            description: 'Estudio del comportamiento y los procesos mentales.',
+            profile: 'Personas empáticas, con excelentes habilidades de escucha, objetividad, paciencia, interés genuino en ayudar a otros y capacidad de análisis del comportamiento humano. Requiere estabilidad emocional y ética profesional.',
+            field: 'Pueden trabajar en clínicas, hospitales, escuelas, empresas (recursos humanos), consultorios privados, investigación, docencia, organizaciones comunitarias o especializarse en áreas como psicología clínica, educativa, organizacional o deportiva.',
+            avg_salary: 65000,
+            keywords: ['comportamiento', 'empatía', 'ayuda', 'salud mental', 'ciencia', 'personas'],
+            imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=200&fit=crop'
+          },
+          {
+            id: 6,
+            title: 'Derecho',
+            area: 'Ciencias Sociales',
+            duration: '6 años',
+            modality: 'Presencial',
+            difficulty: 'Alto',
+            demand: 'Alta',
+            compatibility: 89,
+            universitiesCount: 11,
+            description: 'Estudio y aplicación de las leyes y normativas.',
+            profile: 'Personas con capacidad analítica, excelente expresión oral y escrita, argumentación lógica, ética sólida, memoria para detalles y leyes, y habilidad para la negociación. Requiere lectura constante y actualización legal.',
+            field: 'Los abogados pueden ejercer en estudios jurídicos, asesoría legal corporativa, litigio, notarías, fiscalía, defensoría pública, carrera judicial, docencia universitaria o especializarse en áreas como derecho penal, civil, laboral, corporativo o internacional.',
+            avg_salary: 85000,
+            keywords: ['justicia', 'leyes', 'argumentación', 'defensa', 'análisis', 'ética'],
+            imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=200&fit=crop'
+          },
+          {
+            id: 7,
+            title: 'Desarrollo de Aplicaciones',
+            area: 'Tecnología',
+            duration: '3 años',
+            modality: 'Virtual',
+            difficulty: 'Medio',
+            demand: 'Muy Alta',
+            compatibility: 90,
+            universitiesCount: 7,
+            description: 'Programación de aplicaciones móviles y web.',
+            profile: 'Ideal para personas creativas, con buena lógica de programación y ganas de crear soluciones digitales. Es un campo muy dinámico que requiere autoaprendizaje constante.',
+            field: 'Los graduados pueden trabajar como desarrolladores de apps móviles (iOS/Android), desarrolladores web front-end o back-end, o en roles de UX/UI. El trabajo remoto es muy común en esta área.',
+            avg_salary: 72000,
+            keywords: ['tecnología', 'apps', 'móvil', 'web', 'programación', 'virtual'],
+            imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop'
+          }
     ],
     universities: [
       {
