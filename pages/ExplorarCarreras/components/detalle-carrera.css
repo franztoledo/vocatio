@@ -4,7 +4,7 @@
 .career-hero {
   background: linear-gradient(135deg, rgba(23, 37, 42, 0.85) 0%, rgba(23, 37, 42, 0.92) 100%), 
               url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=300&fit=crop') center/cover;
-  padding: var(--spacing-md) var(--spacing-sm) var(--spacing-lg);
+  padding: var(--spacing-xxl) var(--spacing-sm) var(--spacing-xxl);
   color: var(--white);
   min-height: 200px;
   display: flex;
@@ -97,6 +97,7 @@
   width: 44px;
   height: 44px;
   border-radius: 8px;
+  color: var(--white);
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -148,7 +149,7 @@
   gap: var(--spacing-sm);
   padding: var(--spacing-lg);
   background: var(--white);
-  border-right: 1px solid var(--neutral-200);
+  
   text-align: center;
 }
 
@@ -225,15 +226,20 @@
 .career-tabs-section {
   background: var(--white);
   padding: var(--spacing-xxl) var(--spacing-sm);
+
 }
 
 .career-tabs {
+  
   display: flex;
   gap: 0;
   max-width: 1200px;
   margin: 0 auto var(--spacing-xl);
   border-bottom: 2px solid var(--neutral-200);
   overflow-x: auto;
+  justify-content: center;
+  /*eliminar el scroolbar*/
+  scrollbar-width: none; /* Firefox */
 }
 
 .career-tab {
@@ -746,7 +752,7 @@
 
   .career-info-card {
     border-right: none;
-    border-bottom: 1px solid var(--neutral-200);
+    
   }
 
   .career-info-card:nth-child(2n) {
@@ -775,6 +781,14 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  .career-hero-actions{
+    /*posicionar a la dereacha*/
+    align-self: flex-end;
+  }
+  .career-info-grid{
+    /*que no sea solo una fila*/
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   .career-hero-title {
     font-size: 22px;
@@ -789,14 +803,17 @@
   }
 
   .career-info-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 1fr;
   }
 
-  .career-info-card {
-    border-bottom: 1px solid var(--neutral-200);
+  
+
+  .career-info-card:nth-child(2n) {
+    border-right: none;
   }
 
-  .career-info-card:last-child {
+  .career-info-card:nth-last-child(-n+2) {
     border-bottom: none;
   }
 
@@ -807,4 +824,62 @@
   .testimonial-card {
     flex-direction: column;
   }
+}
+
+/* ============================================
+   NO RESULTS MESSAGE
+   ============================================ */
+.no-results-message {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+
+.no-results-card {
+    background-color: var(--yellow-100);
+    border: 1px solid var(--yellow-500);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--yellow-800);
+    max-width: 600px;
+    width: 100%;
+}
+
+.no-results-icon {
+    width: 56px;
+    height: 56px;
+    background-color: var(--yellow-300);
+    color: var(--yellow-700);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-results-icon i {
+    width: 28px;
+    height: 28px;
+}
+
+.no-results-title {
+    font-size: 22px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--yellow-900);
+    margin: 0;
+}
+
+.no-results-text {
+    font-size: var(--font-size-base);
+    color: var(--yellow-800);
+    max-width: 450px;
+    margin: 0;
 }

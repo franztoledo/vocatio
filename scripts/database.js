@@ -5,7 +5,7 @@
  * Versión actual de la base de datos
  * Incrementar este número cada vez que se actualice la estructura
  */
-const DB_VERSION = 5;
+const DB_VERSION = 8;
 
 /**
  * Inicializa la base de datos en localStorage si no existe
@@ -174,10 +174,71 @@ export function initDB() {
             demand: 'Muy Alta',
             compatibility: 92,
             universitiesCount: 12,
-            description: 'Desarrollo de aplicaciones y sistemas de software.',
-            profile: 'Ideal para personas con pensamiento lógico, creatividad para resolver problemas, capacidad de trabajo en equipo y pasión por la tecnología. Se requiere habilidad matemática y disposición para el aprendizaje continuo.',
-            field: 'Los graduados pueden trabajar como desarrolladores de software, arquitectos de sistemas, ingenieros DevOps, consultores tecnológicos, gerentes de proyectos IT, especialistas en ciberseguridad, entre otros roles en empresas tech, startups, consultoras o como freelancers.',
+            initial_salary: 4500,
             avg_salary: 80000,
+            description: 'La Ingeniería de Software es una disciplina que combina principios de ciencias de la computación, matemáticas y gestión de proyectos para diseñar, desarrollar y mantener sistemas de software de alta calidad.',
+            student_profile: [
+                'Pensamiento lógico y analítico desarrollado',
+                'Creatividad para resolver problemas complejos',
+                'Capacidad de trabajo en equipo',
+                'Pasión por la tecnología y la innovación',
+                'Habilidades de comunicación efectiva'
+            ],
+            competencies: [
+                'Programación en múltiples lenguajes',
+                'Diseño de arquitecturas de software',
+                'Gestión de bases de datos',
+                'Metodologías ágiles de desarrollo',
+                'Seguridad informática y testing'
+            ],
+            curriculum: [
+                { year: 1, courses: [
+                    { title: 'Programación I', type: 'Obligatorio', credits: 5 },
+                    { title: 'Matemáticas para Computación I', type: 'Obligatorio', credits: 4 },
+                    { title: 'Fundamentos de Algoritmos', type: 'Obligatorio', credits: 5 },
+                    { title: 'Inglés I', type: 'Obligatorio', credits: 3 }
+                ]},
+                { year: 2, courses: [
+                    { title: 'Programación II', type: 'Obligatorio', credits: 5 },
+                    { title: 'Estructuras de Datos', type: 'Obligatorio', credits: 5 },
+                    { title: 'Matemáticas para Computación II', type: 'Obligatorio', credits: 4 },
+                    { title: 'Inglés II', type: 'Electivo', credits: 3 }
+                ]},
+                { year: 3, courses: [
+                    { title: 'Ingeniería de Software', type: 'Obligatorio', credits: 5 },
+                    { title: 'Bases de Datos', type: 'Obligatorio', credits: 5 },
+                    { title: 'Desarrollo Web', type: 'Obligatorio', credits: 5 },
+                    { title: 'Seguridad Informática', type: 'Obligatorio', credits: 4 }
+                ]}
+            ],
+            labor_field: {
+                work_areas: [
+                    'Empresas de tecnología y startups',
+                    'Consultoras de software',
+                    'Bancos y sector financiero',
+                    'Retail y e-commerce',
+                    'Freelance y emprendimiento',
+                    'Empresas multinacionales'
+                ],
+                positions: [
+                    { name: 'Junior Developer', salary: '$2,500 - $3,500' },
+                    { name: 'Full Stack Developer', salary: '$4,000 - $6,000' },
+                    { name: 'Senior Developer', salary: '$6,500 - $9,000' },
+                    { name: 'Tech Lead', salary: '$8,000 - $12,000' },
+                    { name: 'Software Architect', salary: '$10,000 - $15,000' }
+                ],
+                growth: {
+                    projection: 'La demanda de ingenieros de software ha crecido 35% en los últimos 3 años y se proyecta un crecimiento sostenido del 25% anual hasta 2030.',
+                    employability: '95%',
+                    insertion_time: '6 meses',
+                    work_in_area: '85%'
+                }
+            },
+            testimonials: [
+                { name: 'Diego Ramírez', info: 'Estudiante de 7mo ciclo • UTEC', text: '"La carrera es exigente pero muy gratificante. Los proyectos que desarrollamos son super interesantes y aplicables al mundo real."', rating: 5, avatar: 'DR' },
+                { name: 'Ana Torres', info: 'Egresada 2022 • UPC', text: '"Conseguí trabajo 2 meses antes de graduarme. Las prácticas pre-profesionales son clave para ganar experiencia."', rating: 5, avatar: 'AT' },
+                { name: 'Carlos Mendoza', info: 'Estudiante de 5to ciclo • PUCP', text: '"Lo mejor es la comunidad de estudiantes. Siempre hay alguien dispuesto a ayudarte con proyectos o dudas."', rating: 4, avatar: 'CM' }
+            ],
             keywords: ['tecnología', 'programación', 'creatividad', 'innovación', 'lógica', 'matemáticas'],
             imageUrl: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop'
           },
@@ -191,10 +252,59 @@ export function initDB() {
             demand: 'Alta',
             compatibility: 88,
             universitiesCount: 8,
-            description: 'Diagnóstico, tratamiento y prevención de enfermedades.',
-            profile: 'Personas con vocación de servicio, empatía, resistencia física y emocional, capacidad de toma de decisiones bajo presión, habilidades de comunicación y compromiso ético. Requiere dedicación total y disposición para estudiar constantemente.',
-            field: 'Los médicos pueden especializarse en diversas áreas como cirugía, pediatría, cardiología, neurología, medicina interna, entre otras. Pueden trabajar en hospitales, clínicas, consultorios privados, investigación médica, docencia universitaria o en organizaciones de salud pública.',
+            initial_salary: 5000,
             avg_salary: 90000,
+            description: 'La Medicina es la ciencia dedicada al estudio de la vida, la salud, las enfermedades y la muerte del ser humano. Implica el arte de diagnosticar, tratar y prevenir enfermedades.',
+            student_profile: [
+                'Vocación de servicio y empatía',
+                'Resistencia física y emocional',
+                'Capacidad de toma de decisiones bajo presión',
+                'Habilidades de comunicación',
+                'Compromiso ético y dedicación'
+            ],
+            competencies: [
+                'Diagnóstico clínico',
+                'Tratamiento de enfermedades',
+                'Cirugía y procedimientos médicos',
+                'Investigación médica',
+                'Gestión de salud pública'
+            ],
+            curriculum: [
+                { year: 1, courses: [
+                    { title: 'Anatomía Humana', type: 'Obligatorio', credits: 6 },
+                    { title: 'Biología Celular y Molecular', type: 'Obligatorio', credits: 5 },
+                    { title: 'Química General', type: 'Obligatorio', credits: 4 }
+                ]},
+                { year: 2, courses: [
+                    { title: 'Fisiología', type: 'Obligatorio', credits: 6 },
+                    { title: 'Bioquímica', type: 'Obligatorio', credits: 5 },
+                    { title: 'Histología', type: 'Obligatorio', credits: 4 }
+                ]}
+            ],
+            labor_field: {
+                work_areas: [
+                    'Hospitales y clínicas (públicas y privadas)',
+                    'Consultorios privados',
+                    'Investigación médica y farmacéutica',
+                    'Docencia universitaria',
+                    'Organizaciones de salud pública (MINSA, OMS)'
+                ],
+                positions: [
+                    { name: 'Médico Residente', salary: '$3,000 - $4,500' },
+                    { name: 'Médico General', salary: '$5,000 - $7,000' },
+                    { name: 'Médico Especialista', salary: '$8,000 - $15,000+' },
+                    { name: 'Director Médico', salary: '$12,000 - $20,000' }
+                ],
+                growth: {
+                    projection: 'La necesidad de profesionales de la salud es constante y se espera un crecimiento estable, especialmente en áreas de especialización y geriatría.',
+                    employability: '98%',
+                    insertion_time: '3 meses',
+                    work_in_area: '95%'
+                }
+            },
+            testimonials: [
+                { name: 'Lucía Fernández', info: 'Residente de Pediatría', text: '"Cada día es un desafío, pero saber que ayudas a los niños a sanar no tiene precio. Es una carrera de vocación."', rating: 5, avatar: 'LF' }
+            ],
             keywords: ['salud', 'ayudar personas', 'ciencia', 'biología', 'empatía', 'servicio'],
             imageUrl: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=200&fit=crop'
           },
@@ -208,10 +318,26 @@ export function initDB() {
             demand: 'Media',
             compatibility: 85,
             universitiesCount: 10,
-            description: 'Diseño y construcción de edificios y espacios.',
-            profile: 'Ideal para personas creativas con visión espacial, habilidades de dibujo y diseño, sensibilidad estética, capacidad de análisis estructural y pasión por mejorar el entorno construido. Requiere conocimientos técnicos y artísticos.',
-            field: 'Pueden trabajar en estudios de arquitectura, construcción, urbanismo, diseño de interiores, restauración patrimonial, consultoría, gestión de proyectos inmobiliarios o emprender su propio estudio.',
+            initial_salary: 3800,
             avg_salary: 70000,
+            description: 'La Arquitectura combina arte, ciencia y tecnología para diseñar y planificar espacios habitables. Los arquitectos crean edificios y espacios que son funcionales, estéticos y sostenibles.',
+            student_profile: [
+                'Creatividad y visión espacial',
+                'Habilidades de dibujo y diseño',
+                'Sensibilidad estética',
+                'Capacidad de análisis estructural',
+                'Pasión por el entorno construido'
+            ],
+            competencies: [
+                'Diseño arquitectónico',
+                'Construcción y urbanismo',
+                'Diseño de interiores',
+                'Restauración patrimonial',
+                'Gestión de proyectos inmobiliarios'
+            ],
+            curriculum: null, // No information available
+            labor_field: null, // No information available
+            testimonials: null, // No information available
             keywords: ['diseño', 'creatividad', 'arte', 'construcción', 'espacios', 'sostenibilidad'],
             imageUrl: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=200&fit=crop'
           },
@@ -225,10 +351,41 @@ export function initDB() {
             demand: 'Alta',
             compatibility: 90,
             universitiesCount: 15,
-            description: 'Gestión y optimización de recursos en organizaciones.',
-            profile: 'Personas con liderazgo, habilidades de comunicación, pensamiento estratégico, capacidad analítica, orientación a resultados y adaptabilidad. Se valora la iniciativa y las habilidades interpersonales.',
-            field: 'Los graduados pueden ser gerentes generales, analistas financieros, consultores empresariales, gerentes de marketing, directores de recursos humanos, emprendedores o ejecutivos en diversas industrias.',
+            initial_salary: 3500,
             avg_salary: 75000,
+            description: 'La Administración de Empresas prepara profesionales para dirigir, gestionar y optimizar los recursos de una organización. Abarca áreas como finanzas, marketing, recursos humanos y operaciones.',
+            student_profile: [
+                'Liderazgo y habilidades de comunicación',
+                'Pensamiento estratégico',
+                'Capacidad analítica',
+                'Orientación a resultados y adaptabilidad',
+                'Iniciativa y habilidades interpersonales'
+            ],
+            competencies: [
+                'Gerencia general',
+                'Análisis financiero',
+                'Consultoría empresarial',
+                'Gestión de marketing',
+                'Dirección de recursos humanos'
+            ],
+            curriculum: [
+                { year: 1, courses: [
+                    { title: 'Contabilidad General', type: 'Obligatorio', credits: 4 },
+                    { title: 'Matemática para los Negocios', type: 'Obligatorio', credits: 4 },
+                    { title: 'Introducción a la Administración', type: 'Obligatorio', credits: 3 }
+                ]}
+            ],
+            labor_field: {
+                work_areas: ['Banca y finanzas', 'Consultoría', 'Retail', 'Consumo masivo'],
+                positions: [
+                    { name: 'Analista de Marketing', salary: '$2,800 - $4,000' },
+                    { name: 'Jefe de Producto', salary: '$5,000 - $7,500' }
+                ],
+                growth: { projection: 'Crecimiento estable del 10% anual.', employability: '90%', insertion_time: '8 meses', work_in_area: '80%' }
+            },
+            testimonials: [
+                { name: 'Sofía Vargas', info: 'Gerente de Marketing', text: '"La carrera te da una visión 360 de los negocios, lo que es fundamental para cualquier puesto de liderazgo."', rating: 4, avatar: 'SV' }
+            ],
             keywords: ['negocios', 'liderazgo', 'gestión', 'finanzas', 'estrategia', 'emprendimiento'],
             imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop'
           },
@@ -242,10 +399,40 @@ export function initDB() {
             demand: 'Media',
             compatibility: 82,
             universitiesCount: 9,
-            description: 'Estudio del comportamiento y los procesos mentales.',
-            profile: 'Personas empáticas, con excelentes habilidades de escucha, objetividad, paciencia, interés genuino en ayudar a otros y capacidad de análisis del comportamiento humano. Requiere estabilidad emocional y ética profesional.',
-            field: 'Pueden trabajar en clínicas, hospitales, escuelas, empresas (recursos humanos), consultorios privados, investigación, docencia, organizaciones comunitarias o especializarse en áreas como psicología clínica, educativa, organizacional o deportiva.',
+            initial_salary: 3000,
             avg_salary: 65000,
+            description: 'La Psicología es el estudio científico del comportamiento humano y los procesos mentales. Los psicólogos ayudan a las personas a comprender sus pensamientos, emociones y conductas.',
+            student_profile: [
+                'Empatía y habilidades de escucha',
+                'Objetividad y paciencia',
+                'Interés en ayudar a otros',
+                'Capacidad de análisis del comportamiento',
+                'Estabilidad emocional y ética'
+            ],
+            competencies: [
+                'Psicología clínica',
+                'Psicología educativa',
+                'Psicología organizacional',
+                'Investigación y docencia',
+                'Consultoría privada'
+            ],
+            curriculum: [
+                { year: 1, courses: [
+                    { title: 'Introducción a la Psicología', type: 'Obligatorio', credits: 3 },
+                    { title: 'Bases Biológicas del Comportamiento', type: 'Obligatorio', credits: 4 }
+                ]}
+            ],
+            labor_field: {
+                work_areas: ['Clínicas y hospitales', 'Recursos humanos', 'Colegios y universidades', 'Consultoría privada'],
+                positions: [
+                    { name: 'Psicólogo Clínico', salary: '$3,500 - $5,000' },
+                    { name: 'Analista de RRHH', salary: '$3,000 - $4,500' }
+                ],
+                growth: { projection: 'Demanda creciente en salud mental y bienestar organizacional.', employability: '85%', insertion_time: '9 meses', work_in_area: '75%' }
+            },
+            testimonials: [
+                { name: 'Javier Luna', info: 'Psicólogo Organizacional', text: '"Poder mejorar el clima laboral de una empresa y el bienestar de los empleados es muy satisfactorio."', rating: 5, avatar: 'JL' }
+            ],
             keywords: ['comportamiento', 'empatía', 'ayuda', 'salud mental', 'ciencia', 'personas'],
             imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=200&fit=crop'
           },
@@ -259,10 +446,40 @@ export function initDB() {
             demand: 'Alta',
             compatibility: 89,
             universitiesCount: 11,
-            description: 'Estudio y aplicación de las leyes y normativas.',
-            profile: 'Personas con capacidad analítica, excelente expresión oral y escrita, argumentación lógica, ética sólida, memoria para detalles y leyes, y habilidad para la negociación. Requiere lectura constante y actualización legal.',
-            field: 'Los abogados pueden ejercer en estudios jurídicos, asesoría legal corporativa, litigio, notarías, fiscalía, defensoría pública, carrera judicial, docencia universitaria o especializarse en áreas como derecho penal, civil, laboral, corporativo o internacional.',
+            initial_salary: 4000,
             avg_salary: 85000,
+            description: 'El Derecho es el estudio de las normas jurídicas que regulan la sociedad. Los abogados representan, asesoran y defienden los derechos de personas y organizaciones.',
+            student_profile: [
+                'Capacidad analítica',
+                'Excelente expresión oral y escrita',
+                'Argumentación lógica y ética sólida',
+                'Memoria para detalles y leyes',
+                'Habilidad para la negociación'
+            ],
+            competencies: [
+                'Asesoría legal corporativa',
+                'Litigio y notarías',
+                'Fiscalía y defensoría pública',
+                'Carrera judicial y docencia',
+                'Derecho penal, civil, laboral, etc.'
+            ],
+            curriculum: [
+                { year: 1, courses: [
+                    { title: 'Introducción al Derecho', type: 'Obligatorio', credits: 3 },
+                    { title: 'Derecho Romano', type: 'Obligatorio', credits: 4 }
+                ]}
+            ],
+            labor_field: {
+                work_areas: ['Estudios de abogados', 'Empresas (área legal)', 'Sector público (jueces, fiscales)', 'Notarías'],
+                positions: [
+                    { name: 'Abogado Junior', salary: '$3,800 - $5,000' },
+                    { name: 'Abogado Corporativo', salary: '$6,000 - $9,000' }
+                ],
+                growth: { projection: 'Campo competitivo pero con altas recompensas para especialistas.', employability: '88%', insertion_time: '7 meses', work_in_area: '82%' }
+            },
+            testimonials: [
+                { name: 'Isabella Rojas', info: 'Abogada Corporativa', text: '"La carrera es demandante, pero defender los intereses de tu cliente y ganar un caso es una sensación inigualable."', rating: 4, avatar: 'IR' }
+            ],
             keywords: ['justicia', 'leyes', 'argumentación', 'defensa', 'análisis', 'ética'],
             imageUrl: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=200&fit=crop'
           },
@@ -276,10 +493,40 @@ export function initDB() {
             demand: 'Muy Alta',
             compatibility: 90,
             universitiesCount: 7,
-            description: 'Programación de aplicaciones móviles y web.',
-            profile: 'Ideal para personas creativas, con buena lógica de programación y ganas de crear soluciones digitales. Es un campo muy dinámico que requiere autoaprendizaje constante.',
-            field: 'Los graduados pueden trabajar como desarrolladores de apps móviles (iOS/Android), desarrolladores web front-end o back-end, o en roles de UX/UI. El trabajo remoto es muy común en esta área.',
+            initial_salary: 3200,
             avg_salary: 72000,
+            description: 'Programación de aplicaciones móviles y web.',
+            student_profile: [
+                'Creatividad y lógica de programación',
+                'Ganas de crear soluciones digitales',
+                'Autoaprendizaje constante',
+                'Atención al detalle',
+                'Resolución de problemas'
+            ],
+            competencies: [
+                'Desarrollo de apps móviles (iOS/Android)',
+                'Desarrollo web front-end y back-end',
+                'Diseño de experiencia de usuario (UX/UI)',
+                'Manejo de bases de datos',
+                'Trabajo remoto y en equipo'
+            ],
+            curriculum: [
+                { year: 1, courses: [
+                    { title: 'Fundamentos de Programación Web', type: 'Obligatorio', credits: 5 },
+                    { title: 'Diseño de Interfaces', type: 'Obligatorio', credits: 4 }
+                ]}
+            ],
+            labor_field: {
+                work_areas: ['Startups de tecnología', 'Agencias digitales', 'Empresas de software', 'Freelance'],
+                positions: [
+                    { name: 'Desarrollador Front-end', salary: '$3,000 - $4,500' },
+                    { name: 'Desarrollador de Apps Móviles', salary: '$3,500 - $5,500' }
+                ],
+                growth: { projection: 'Crecimiento explosivo, especialmente en desarrollo móvil y web3.', employability: '96%', insertion_time: '4 meses', work_in_area: '90%' }
+            },
+            testimonials: [
+                { name: 'Mateo Díaz', info: 'Desarrollador iOS', text: '"Es increíble poder crear una app que miles de personas usan. El aprendizaje es constante y muy divertido."', rating: 5, avatar: 'MD' }
+            ],
             keywords: ['tecnología', 'apps', 'móvil', 'web', 'programación', 'virtual'],
             imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop'
           }
