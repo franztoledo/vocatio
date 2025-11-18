@@ -4,9 +4,9 @@
 import { getDB, saveDB, showToast } from './utils.js';
 import { getActiveUser, setActiveUser } from './utils.js';
 
-// ============================================
+// ============================================ 
 // TEST TRADICIONAL
-// ============================================
+// ============================================ 
 
 let currentBlockIndex = 0;
 let questionsPerBlock = 5;
@@ -212,6 +212,7 @@ function createQuestionRow(question) {
 function handleTradicionalSubmit() {
   const testForm = document.getElementById('testForm');
   const formData = new FormData(testForm);
+  const db = getDB();
 
   // Validar que todas las preguntas estén respondidas
   const totalQuestions = questionsData.length;
@@ -244,9 +245,19 @@ function handleTradicionalSubmit() {
 
   // Calcular porcentajes
   const totalPoints = Object.values(results).reduce((sum, val) => sum + val, 0);
+  
+  // **FIX:** Inicializar los porcentajes con todas las áreas posibles para asegurar que existan
   const percentages = {};
+  const allAreas = Object.keys(db.hero_profiles);
+  allAreas.forEach(area => {
+    percentages[area] = 0;
+  });
+
+  // Llenar con los resultados calculados
   for (const area in results) {
-    percentages[area] = totalPoints > 0 ? Math.round((results[area] / totalPoints) * 100) : 0;
+    if (percentages.hasOwnProperty(area)) {
+      percentages[area] = totalPoints > 0 ? Math.round((results[area] / totalPoints) * 100) : 0;
+    }
   }
 
   // Guardar resultado
@@ -302,7 +313,7 @@ function loadTestProgress() {
   const progress = JSON.parse(savedProgress);
   const testForm = document.getElementById('testForm');
 
-  for (const [questionName, value] of Object.entries(progress)) {
+  for (let [questionName, value] of Object.entries(progress)) {
     const input = testForm.querySelector(`input[name="${questionName}"][value="${value}"]`);
     if (input) {
       input.checked = true;
@@ -334,9 +345,9 @@ function findFirstUnansweredBlock() {
     return totalBlocks > 0 ? totalBlocks - 1 : 0;
 }
 
-// ============================================
+// ============================================ 
 // TEST AVENTURA
-// ============================================
+// ============================================ 
 
 let currentLevel = 0;
 let currentCardIndex = 0;
@@ -647,9 +658,9 @@ function setupAventuraEventListeners() {
     currentY = 0;
   };
 
-  // ==========================================
+  // ========================================== 
   // MOUSE DRAG & DROP
-  // ==========================================
+  // ========================================== 
   document.addEventListener('mousedown', (e) => {
     const card = e.target.closest('.swipe-card.active');
     handleDragStart(e, card);
@@ -658,9 +669,9 @@ function setupAventuraEventListeners() {
   document.addEventListener('mouseup', handleDragEnd);
   document.addEventListener('mouseleave', handleDragEnd); // Terminar si el mouse sale de la ventana
 
-  // ==========================================
+  // ========================================== 
   // TOUCH DRAG & DROP (MÓVIL)
-  // ==========================================
+  // ========================================== 
   document.addEventListener('touchstart', (e) => {
     const card = e.target.closest('.swipe-card.active');
     handleDragStart(e, card);
@@ -1004,15 +1015,71 @@ function loadAventuraProgress() {
   }, 500);
 }
 
-// ============================================
+// ============================================ 
+// FUNCIONES COMPARTIDAS
+// ============================================ 
+
+/**
+ * Guarda el resultado de un test en el perfil del usuario y en localStorage temporal
+ */
+function saveTestResult(testType, percentages) {
+  const user = getActiveUser();
+
+  // Si no hay usuario, guardar en un lugar temporal para usuarios no registrados
+  if (!user) {
+    console.warn('No hay usuario activo, guardando resultados en localStorage temporal');
+    localStorage.setItem('latestTestResult', JSON.stringify({ 
+      id: Date.now(),
+      type: testType,
+      date: new Date().toISOString(),
+      results: percentages,
+      topArea: Object.keys(percentages).reduce((a, b) => percentages[a] > percentages[b] ? a : b, 'N/A')
+    }));
+    return;
+  }
+
+  // Crear objeto de resultado
+  const result = {
+    id: Date.now(),
+    type: testType,
+    date: new Date().toISOString(),
+    results: percentages,
+    topArea: Object.keys(percentages).reduce((a, b) => percentages[a] > percentages[b] ? a : b, 'N/A')
+  };
+
+  // Actualizar usuario en la base de datos
+  const db = getDB();
+  const userIndex = db.users.findIndex(u => u.id === user.id);
+
+  if (userIndex !== -1) {
+    // Asegurarse de que el array testResults exista
+    if (!db.users[userIndex].testResults) {
+      db.users[userIndex].testResults = [];
+    }
+    
+    db.users[userIndex].testResults.push(result);
+    saveDB(db);
+
+    // Actualizar el usuario activo en la sesión actual
+    setActiveUser(db.users[userIndex]);
+  }
+
+  // Guardar en localStorage temporal para la página de resultados inmediata
+  localStorage.setItem('latestTestResult', JSON.stringify(result));
+}
+
+
+// ============================================ 
 // PÁGINA DE RESULTADOS
-// ============================================
+// ============================================ 
 
 /**
  * Inicializa la página de resultados del test.
  * Carga los datos del resultado desde URL o localStorage y los renderiza.
  */
 export function initResultsPage() {
+  console.log('🚀 Inicializando página de resultados...');
+
   const urlParams = new URLSearchParams(window.location.search);
   const resultId = urlParams.get('resultId');
   const user = getActiveUser();
@@ -1022,16 +1089,19 @@ export function initResultsPage() {
     // Cargar un resultado específico del historial del usuario
     const numericResultId = parseInt(resultId, 10);
     resultData = user.testResults?.find(r => r.id === numericResultId);
+    console.log('📋 Cargando resultado del historial:', numericResultId);
   } else {
     // Cargar el último resultado guardado en localStorage
     const latestResultStr = localStorage.getItem('latestTestResult');
     if (latestResultStr) {
       resultData = JSON.parse(latestResultStr);
+      console.log('📋 Cargando último resultado guardado');
     }
   }
 
   const mainContainer = document.querySelector('.results-content .container');
-  if (!resultData) {
+  if (!resultData || !resultData.results) {
+    console.error('❌ No se encontraron datos de resultados');
     mainContainer.innerHTML = `
       <div class="empty-message" style="padding: 2rem; text-align: center;">
         <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">No se encontraron resultados</h3>
@@ -1041,13 +1111,36 @@ export function initResultsPage() {
     return;
   }
 
+  console.log('📊 Datos de resultados cargados:', resultData);
+  console.log('📊 Porcentajes por área:', resultData.results);
+
   const db = getDB();
+
+  console.log('🗄️ Base de datos cargada');
+  console.log('🗄️ mastery_badges disponibles:', db.mastery_badges ? 'Sí' : 'No');
+  console.log('🗄️ inventory_items disponibles:', db.inventory_items ? 'Sí' : 'No');
+  console.log('🗄️ missions disponibles:', db.missions ? 'Sí' : 'No');
+
+  console.log('🎭 Renderizando tarjetas de héroes...');
   renderHeroCards(resultData.results, db);
-  renderStats(resultData.results);
+
+  console.log('📊 Renderizando estadísticas...');
+  renderStats(resultData.results, db);
+
+  console.log('🏅 Renderizando insignias de maestría...');
+  renderMasteryBadges(resultData.results, db);
+
+  console.log('🎒 Renderizando inventario...');
+  renderInventory(resultData.results, db);
+
+  console.log('🎯 Renderizando misiones...');
+  renderMissions(resultData.results, db);
 
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
+
+  console.log('✅ Página de resultados inicializada correctamente');
 }
 
 /**
@@ -1063,14 +1156,13 @@ function renderHeroCards(results, db) {
 
   const heroProfiles = db.hero_profiles;
   let content = '';
-  const rankClasses = ['primary', 'secondary', 'tertiary'];
 
   sortedAreas.forEach(([area, percentage], index) => {
     const profile = heroProfiles[area];
     if (!profile) return;
 
     content += `
-      <div class="hero-card ${rankClasses[index]}">
+      <div class="hero-card ${profile.color_class}">
         <div class="hero-rank">#${index + 1}</div>
         <div class="hero-image-container">
           <img src="${profile.image}" alt="${profile.name}" class="hero-image">
@@ -1104,30 +1196,26 @@ function renderHeroCards(results, db) {
 /**
  * Renderiza las barras de estadísticas.
  */
-function renderStats(results) {
+function renderStats(results, db) {
   const container = document.getElementById('stats-card-container');
   if (!container) return;
 
   const sortedAreas = Object.entries(results).sort(([, a], [, b]) => b - a);
-  const areaDetails = {
-    'Tecnología': { icon: '💻', class: 'primary' },
-    'Arte y Diseño': { icon: '🎨', class: 'secondary' },
-    'Negocios': { icon: '👑', class: 'tertiary' },
-    'Ciencias Sociales': { icon: '💎', class: 'social' },
-    'Salud': { icon: '🔬', class: 'research' }
-  };
+  const heroProfiles = db.hero_profiles;
 
   let content = '';
   sortedAreas.forEach(([area, percentage]) => {
-    const details = areaDetails[area] || { icon: '❓', class: '' };
+    const profile = heroProfiles[area];
+    if (!profile) return;
+
     content += `
       <div class="stat-row">
         <div class="stat-label">
-          <span class="stat-icon">${details.icon}</span>
+          <span class="stat-icon">${profile.related_careers[0].icon || '❓'}</span>
           <span class="stat-name">${area}</span>
         </div>
         <div class="stat-bar-container">
-          <div class="stat-bar ${details.class}" style="width: ${percentage}%"></div>
+          <div class="stat-bar ${profile.color_class}" style="width: ${percentage}%"></div>
         </div>
         <span class="stat-value">${percentage}%</span>
       </div>
@@ -1137,10 +1225,167 @@ function renderStats(results) {
   container.innerHTML = content;
 }
 
+/**
+ * Renderiza las insignias de maestría.
+ */
+function renderMasteryBadges(results, db) {
+  const container = document.getElementById('badges-grid-container');
+  if (!container) {
+    console.error('Container badges-grid-container no encontrado');
+    return;
+  }
 
-// ============================================
+  const masteryBadges = db.mastery_badges;
+
+  if (!masteryBadges || Object.keys(masteryBadges).length === 0) {
+    container.innerHTML = '<p style="text-align: center; padding: 2rem;">No hay insignias disponibles.</p>';
+    console.warn('No se encontraron mastery_badges en la base de datos');
+    return;
+  }
+
+  let content = '';
+
+  for (const area in masteryBadges) {
+    const badge = masteryBadges[area];
+    const userScore = results[area] || 0;
+    const isUnlocked = userScore >= 75;
+
+    content += `
+      <div class="badge-item ${isUnlocked ? 'unlocked' : 'locked'}">
+        <div class="badge-icon">${badge.icon}</div>
+        <div class="badge-name">${badge.name}</div>
+        <span class="badge-status">${isUnlocked ? 'Obtenida' : 'Bloqueada'}</span>
+      </div>
+    `;
+  }
+
+  container.innerHTML = content;
+  console.log('✅ Insignias de maestría renderizadas:', Object.keys(masteryBadges).length);
+}
+
+/**
+ * Renderiza el inventario del usuario.
+ */
+function renderInventory(results, db) {
+  const container = document.getElementById('inventory-list-container');
+  if (!container) {
+    console.error('Container inventory-list-container no encontrado');
+    return;
+  }
+
+  const inventoryItems = db.inventory_items;
+
+  if (!inventoryItems || Object.keys(inventoryItems).length === 0) {
+    container.innerHTML = '<p style="text-align: center; padding: 1rem;">No hay items disponibles.</p>';
+    console.warn('No se encontraron inventory_items en la base de datos');
+    return;
+  }
+
+  const sortedAreas = Object.entries(results).sort(([, a], [, b]) => b - a);
+
+  let content = '';
+  // Tomar los 2 items del área principal y 1 del área secundaria
+  const topArea = sortedAreas[0] ? sortedAreas[0][0] : null;
+  const secondArea = sortedAreas[1] ? sortedAreas[1][0] : null;
+
+  console.log('🎒 Inventario - Área principal:', topArea, 'Área secundaria:', secondArea);
+
+  if (topArea && inventoryItems[topArea]) {
+    inventoryItems[topArea].slice(0, 2).forEach(item => {
+      content += `
+        <div class="inventory-item">
+          <div class="item-icon">${item.icon}</div>
+          <div class="item-details">
+            <div class="item-name">${item.name}</div>
+            <div class="item-level">${item.level}</div>
+          </div>
+        </div>
+      `;
+    });
+  }
+  if (secondArea && inventoryItems[secondArea]) {
+    inventoryItems[secondArea].slice(0, 1).forEach(item => {
+      content += `
+        <div class="inventory-item">
+          <div class="item-icon">${item.icon}</div>
+          <div class="item-details">
+            <div class="item-name">${item.name}</div>
+            <div class="item-level">${item.level}</div>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  if (content === '') {
+    container.innerHTML = '<p style="text-align: center; padding: 1rem;">Completa un test para llenar tu inventario.</p>';
+    console.warn('No se generó contenido para el inventario');
+  } else {
+    container.innerHTML = content;
+    console.log('✅ Inventario renderizado con éxito');
+  }
+}
+
+/**
+ * Renderiza las misiones recomendadas.
+ */
+function renderMissions(results, db) {
+  const container = document.getElementById('missions-list-container');
+  if (!container) {
+    console.error('Container missions-list-container no encontrado');
+    return;
+  }
+
+  const missions = db.missions;
+
+  if (!missions || Object.keys(missions).length === 0) {
+    container.innerHTML = '<p style="text-align: center; padding: 1rem;">No hay misiones disponibles.</p>';
+    console.warn('No se encontraron missions en la base de datos');
+    return;
+  }
+
+  // Ordenar de menor a mayor para encontrar las áreas más débiles
+  const sortedAreas = Object.entries(results).sort(([, a], [, b]) => a - b);
+
+  let content = '';
+  // Tomar las 3 áreas más débiles
+  const weakAreas = sortedAreas.slice(0, 3);
+
+  console.log('🎯 Misiones - Áreas más débiles:', weakAreas.map(([area, score]) => `${area}: ${score}%`));
+
+  weakAreas.forEach(([area]) => {
+    const mission = missions[area];
+    if (mission) {
+      content += `
+        <div class="mission-item">
+          <div class="mission-icon">${mission.icon}</div>
+          <div class="mission-details">
+            <h4 class="mission-name">${mission.name}</h4>
+            <div class="mission-reward">
+              <span class="reward-badge">Media</span>
+              <span class="reward-xp">${mission.reward}</span>
+            </div>
+          </div>
+          <button class="btn-accept">Aceptar</button>
+        </div>
+      `;
+    }
+  });
+
+  if (content === '') {
+    container.innerHTML = '<p style="text-align: center; padding: 1rem;">¡Parece que eres bueno en todo! No hay misiones por ahora.</p>';
+    console.warn('No se generó contenido para las misiones');
+  } else {
+    container.innerHTML = content;
+    console.log('✅ Misiones renderizadas:', weakAreas.length);
+  }
+}
+
+
+
+// ============================================ 
 // AUTO-INICIALIZACIÓN
-// ============================================
+// ============================================ 
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
 

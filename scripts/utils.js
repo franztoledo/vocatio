@@ -1,13 +1,15 @@
 // scripts/utils.js
 // Funciones de utilidad reutilizables - Inspirado en patrones educativos
 
+import { initDB } from './database.js';
+
 // ============================================
 // FUNCIONES DE BASE DE DATOS (localStorage)
 // ============================================
 
 // Obtiene toda la base de datos
 export const getDB = () => {
-  return JSON.parse(localStorage.getItem('db'));
+  return JSON.parse(localStorage.getItem('db')) || initDB();
 };
 
 // Guarda la base de datos

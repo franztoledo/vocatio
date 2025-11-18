@@ -5,7 +5,7 @@
  * Versión actual de la base de datos
  * Incrementar este número cada vez que se actualice la estructura
  */
-const DB_VERSION = 2;
+const DB_VERSION = 4;
 
 /**
  * Inicializa la base de datos en localStorage si no existe
@@ -24,22 +24,27 @@ export function initDB() {
   const existingDB = localStorage.getItem('db');
 
   if (existingDB) {
-    const db = JSON.parse(existingDB);
-
-    // Si la versión coincide, devolver la BD existente
-    if (db.version === DB_VERSION) {
-      console.log('✅ Base de datos cargada (versión ' + DB_VERSION + ')');
-      return db;
-    } else {
-      console.log('🔄 Actualizando base de datos de versión ' + (db.version || 1) + ' a ' + DB_VERSION);
-      // Versión antigua, crear nueva BD
+    try {
+      const db = JSON.parse(existingDB);
+      // Si la versión coincide, devolver la BD existente
+      if (db.version === DB_VERSION) {
+        console.log('✅ Base de datos cargada (versión ' + DB_VERSION + ')');
+        return db;
+      }
+    } catch (e) {
+      console.error('Error al parsear la base de datos, creando una nueva.', e);
       localStorage.removeItem('db');
     }
   }
 
-  // Crear nueva base de datos con estructura actualizada
-  console.log('🆕 Creando nueva base de datos (versión ' + DB_VERSION + ')');
+  // Si la versión es antigua o no existe, crear nueva BD
+  console.log('🔄 Actualizando/Creando base de datos a versión ' + DB_VERSION);
+  console.log('⚠️ IMPORTANTE: Si estás viendo este mensaje, tu base de datos se está reinicializando.');
+  console.log('⚠️ Esto significa que se perderán los datos antiguos y se crearán nuevos datos de ejemplo.');
+  localStorage.removeItem('db');
 
+
+  // Crear nueva base de datos con estructura actualizada
   const db = {
     version: DB_VERSION,
     users: [
@@ -70,6 +75,94 @@ export function initDB() {
         }
       }
     ],
+    hero_profiles: {
+      'Tecnología': {
+        name: 'El Mago Tecnológico',
+        image: '../../assets/heroes/hero1.webp',
+        color_class: 'primary',
+        related_careers: [
+          { name: 'Ing. de Software', icon: '💻' },
+          { name: 'Data Science', icon: '📊' },
+          { name: 'Ciberseguridad', icon: '🔐' }
+        ]
+      },
+      'Arte y Diseño': {
+        name: 'El Artista Visionario',
+        image: '../../assets/heroes/hero2.webp',
+        color_class: 'secondary',
+        related_careers: [
+          { name: 'Diseño UX/UI', icon: '🎨' },
+          { name: 'Diseño Gráfico', icon: '✏️' },
+          { name: 'Arquitectura', icon: '🏛️' }
+        ]
+      },
+      'Negocios': {
+        name: 'El Líder Estratega',
+        image: '../../assets/heroes/hero3.webp',
+        color_class: 'tertiary',
+        related_careers: [
+          { name: 'Administración', icon: '📈' },
+          { name: 'Marketing', icon: '🎯' },
+          { name: 'Economía', icon: '💰' }
+        ]
+      },
+      'Salud': {
+        name: 'El Sanador Compasivo',
+        image: '../../assets/heroes/hero2.webp',
+        color_class: 'primary',
+        related_careers: [
+          { name: 'Medicina', icon: '⚕️' },
+          { name: 'Enfermería', icon: '🩺' },
+          { name: 'Fisioterapia', icon: '💪' }
+        ]
+      },
+      'Ciencias Sociales': {
+        name: 'El Defensor de la Humanidad',
+        image: '../../assets/heroes/hero3.webp',
+        color_class: 'tertiary',
+        related_careers: [
+          { name: 'Psicología', icon: '🧠' },
+          { name: 'Derecho', icon: '⚖️' },
+          { name: 'Sociología', icon: '👥' }
+        ]
+      }
+    },
+    mastery_badges: {
+      'Tecnología': { name: 'Pensamiento Lógico', icon: '🧠' },
+      'Salud': { name: 'Vocación de Servicio', icon: '❤️' },
+      'Arte y Diseño': { name: 'Creatividad Infinita', icon: '✨' },
+      'Negocios': { name: 'Liderazgo Nato', icon: '👑' },
+      'Ciencias Sociales': { name: 'Empatía Superior', icon: '💬' }
+    },
+    inventory_items: {
+      'Tecnología': [
+        { name: 'Capacidad Analítica', level: 'Nivel Máximo', icon: '🎯' },
+        { name: 'Pensamiento Lógico', level: 'Alto Nivel', icon: '🧩' }
+      ],
+      'Arte y Diseño': [
+        { name: 'Visión Estética', level: 'Nivel Máximo', icon: '👁️' },
+        { name: 'Innovación Disruptiva', level: 'Alto Nivel', icon: '💡' }
+      ],
+      'Negocios': [
+        { name: 'Visión Estratégica', level: 'Nivel Máximo', icon: '🗺️' },
+        { name: 'Habilidad de Negociación', level: 'Alto Nivel', icon: '🤝' }
+      ],
+      'Salud': [
+        { name: 'Precisión Quirúrgica', level: 'Nivel Máximo', icon: '🔪' },
+        { name: 'Cuidado del Paciente', level: 'Alto Nivel', icon: '💓' }
+      ],
+      'Ciencias Sociales': [
+        { name: 'Escucha Activa', level: 'Nivel Máximo', icon: '👂' },
+        { name: 'Análisis Social', level: 'Alto Nivel', icon: '🌍' }
+      ]
+    },
+    missions: {
+      'Tecnología': { name: 'Desarrollar un Proyecto de Código', reward: '+500 XP', icon: '💻' },
+      'Arte y Diseño': { name: 'Crear un Portafolio de Diseño', reward: '+500 XP', icon: '🎨' },
+      'Negocios': { name: 'Elaborar un Plan de Negocios', reward: '+600 XP', icon: '💼' },
+      'Salud': { name: 'Voluntariado en un Centro de Salud', reward: '+750 XP', icon: '🏥' },
+      'Ciencias Sociales': { name: 'Participar en un Debate', reward: '+400 XP', icon: '📣' }
+    },
     careers: [
       {
         id: 1,
@@ -614,7 +707,7 @@ export function initDB() {
                 id: 23,
                 title: '¿Te ves haciendo esto?',
                 description: 'Trabajar en tu propia clínica o consultorio',
-                imageUrl: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=600&fit=crop',
+                imageUrl: 'https://images.unsplash.com/photo-1519494026892-80bbd26fd0d?w=800&h=600&fit=crop',
                 likeArea: 'Salud',
                 dislikeArea: null,
                 confirmationLike: '¡Anotado! Tu independencia profesional 🏥',
