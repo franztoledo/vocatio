@@ -56,7 +56,13 @@ function initializePage(userId) {
 function getUserInterests(user) {
     if (!user || !user.testResults || user.testResults.length === 0) return [];
     const latestTest = user.testResults[user.testResults.length - 1];
-    return latestTest.results || [];
+    
+    // Safeguard: Ensure the results property is an array before returning
+    if (latestTest && Array.isArray(latestTest.results)) {
+        return latestTest.results;
+    }
+    
+    return [];
 }
 
 function toggleBookmark(resourceId, userId) {
@@ -72,6 +78,20 @@ function toggleBookmark(resourceId, userId) {
     } else {
         user.savedResources.push(resourceId);
         isNowSaved = true;
+
+        // Add to activity log
+        if (!user.activityLog) {
+            user.activityLog = [];
+        }
+        const resource = db.resources.find(r => r.id === resourceId);
+        user.activityLog.push({
+            type: 'resource_saved',
+            timestamp: new Date().toISOString(),
+            details: {
+                resourceId: resourceId,
+                resourceTitle: resource ? resource.title : 'Desconocido'
+            }
+        });
     }
     saveDB(db);
     currentUserCache = user; // Update cache

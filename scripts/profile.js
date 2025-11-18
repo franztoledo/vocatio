@@ -2,7 +2,7 @@
 // Gestión del perfil de usuario - Inspirado en patrones educativos
 // Incluye: completar perfil básico, configuración completa, privacidad
 
-import { getDB, saveDB, setActiveUser, getActiveUser, updateActiveUser } from './utils.js';
+import { getDB, saveDB, setActiveUser, getActiveUser, updateActiveUser, calculateProfileCompletion } from './utils.js';
 
 // ============================================
 // FUNCIONES AUXILIARES REUTILIZABLES
@@ -639,6 +639,16 @@ function configurarGuardadoPersonal() {
     if (fechaNacimiento) {
       usuario.profile.age = calcularEdad(fechaNacimiento);
     }
+
+    // Add to activity log
+    if (!usuario.activityLog) {
+      usuario.activityLog = [];
+    }
+    usuario.activityLog.push({
+      type: 'profile_updated',
+      timestamp: new Date().toISOString(),
+      details: { field: 'Información Personal' }
+    });
 
     // Guardar
     updateActiveUser(usuario);
@@ -1296,7 +1306,7 @@ export function initProfileSection() {
   }
 
   // Porcentaje de perfil completado
-  const porcentaje = calcularCompletitudPerfil(usuario);
+  const porcentaje = calculateProfileCompletion(usuario);
   const profileStatValue = document.querySelector('.profile-stat-value');
   if (profileStatValue) {
     profileStatValue.textContent = `${porcentaje}%`;
@@ -1304,47 +1314,6 @@ export function initProfileSection() {
 
   // Estadísticas
   actualizarEstadisticas(usuario);
-}
-
-/**
- * Calcula el porcentaje de completitud del perfil
- * Basado en los campos completados vs totales
- */
-function calcularCompletitudPerfil(usuario) {
-  let completado = 0;
-  const total = 100;
-
-  // Campos obligatorios básicos (20%)
-  if (usuario.name) completado += 10;
-  if (usuario.email) completado += 10;
-
-  // Perfil básico (20%)
-  if (usuario.profile?.lastName) completado += 5;
-  if (usuario.profile?.birthDate) completado += 5;
-  if (usuario.profile?.level) completado += 10;
-
-  // Información personal adicional (15%)
-  if (usuario.profile?.phone) completado += 5;
-  if (usuario.profile?.gender) completado += 5;
-  if (usuario.profile?.city) completado += 5;
-
-  // Biografía (5%)
-  if (usuario.profile?.bio) completado += 5;
-
-  // Información educativa (20%)
-  if (usuario.profile?.institution) completado += 5;
-  if (usuario.profile?.currentGrade) completado += 3;
-  if (usuario.profile?.gpa) completado += 3;
-  if (usuario.profile?.graduationYear) completado += 3;
-  if (usuario.profile?.interests?.length > 0) completado += 6;
-
-  // Preferencias vocacionales (20%)
-  if (usuario.profile?.studyModality) completado += 5;
-  if (usuario.profile?.studyDuration) completado += 5;
-  if (usuario.profile?.workEnvironment) completado += 5;
-  if (usuario.profile?.desiredSkills?.length > 0) completado += 5;
-
-  return Math.round((completado / total) * 100);
 }
 
 /**

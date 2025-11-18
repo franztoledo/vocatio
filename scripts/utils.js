@@ -227,26 +227,49 @@ export function isFavorite(careerId) {
  */
 export function toggleFavorite(careerId) {
   const db = getDB();
-  const currentUser = db.users[0]; 
+  const activeUser = getActiveUser();
 
-  if (!currentUser) {
-    console.error('No current user found to toggle favorite status.');
-    // It might be better to handle this UI feedback in the calling function
+  if (!activeUser) {
+    console.error('No active user found to toggle favorite status.');
+    showToast('Debes iniciar sesión para guardar favoritos.', 'error');
     return false;
   }
-
-  const index = currentUser.favoriteCareers.indexOf(careerId);
+  
+  const userIndex = db.users.findIndex(u => u.id === activeUser.id);
+  if (userIndex === -1) {
+    console.error('Active user not found in DB.');
+    return false;
+  }
+  
+  const userToUpdate = db.users[userIndex];
+  const index = userToUpdate.favoriteCareers.indexOf(careerId);
   let isNowFavorite;
 
   if (index > -1) {
-    currentUser.favoriteCareers.splice(index, 1);
+    userToUpdate.favoriteCareers.splice(index, 1);
     isNowFavorite = false;
   } else {
-    currentUser.favoriteCareers.push(careerId);
+    userToUpdate.favoriteCareers.push(careerId);
     isNowFavorite = true;
+    
+    // Add to activity log
+    if (!userToUpdate.activityLog) {
+      userToUpdate.activityLog = [];
+    }
+    const career = findCareerById(careerId);
+    userToUpdate.activityLog.push({
+      type: 'career_favorited',
+      timestamp: new Date().toISOString(),
+      details: { 
+        careerId: careerId,
+        careerName: career ? career.title : 'Desconocida'
+      }
+    });
   }
   
   saveDB(db);
+  // Also update the user in the current session
+  setActiveUser(userToUpdate);
   return isNowFavorite;
 }
 
@@ -335,4 +358,46 @@ export function deleteCustomList(listId) {
   } else {
     console.error(`List with id ${listId} not found.`);
   }
+}
+
+/**
+ * Calculates the completion percentage of a user's profile.
+ * @param {object} user - The user object.
+ * @returns {number} - The completion percentage (0-100).
+ */
+export function calculateProfileCompletion(user) {
+  let completado = 0;
+  const total = 100;
+
+  // Campos obligatorios básicos (20%)
+  if (user.name) completado += 10;
+  if (user.email) completado += 10;
+
+  // Perfil básico (20%)
+  if (user.profile?.lastName) completado += 5;
+  if (user.profile?.birthDate) completado += 5;
+  if (user.profile?.level) completado += 10;
+
+  // Información personal adicional (15%)
+  if (user.profile?.phone) completado += 5;
+  if (user.profile?.gender) completado += 5;
+  if (user.profile?.city) completado += 5;
+
+  // Biografía (5%)
+  if (user.profile?.bio) completado += 5;
+
+  // Información educativa (20%)
+  if (user.profile?.institution) completado += 5;
+  if (user.profile?.currentGrade) completado += 3;
+  if (user.profile?.gpa) completado += 3;
+  if (user.profile?.graduationYear) completado += 3;
+  if (user.profile?.interests?.length > 0) completado += 6;
+
+  // Preferencias vocacionales (20%)
+  if (user.profile?.studyModality) completado += 5;
+  if (user.profile?.studyDuration) completado += 5;
+  if (user.profile?.workEnvironment) completado += 5;
+  if (user.profile?.desiredSkills?.length > 0) completado += 5;
+
+  return Math.round((completado / total) * 100);
 }

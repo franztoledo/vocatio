@@ -5,7 +5,7 @@
  * Versión actual de la base de datos
  * Incrementar este número cada vez que se actualice la estructura
  */
-const DB_VERSION = 10;
+const DB_VERSION = 11;
 
 /**
  * Inicializa la base de datos en localStorage si no existe
@@ -75,6 +75,12 @@ export function initDB() {
             ]
           }
         ], // Historial de resultados de tests
+        activityLog: [
+          { type: 'test_completed', timestamp: '2024-11-17T10:30:00Z', details: { testType: 'tradicional' } },
+          { type: 'career_favorited', timestamp: '2024-11-17T11:00:00Z', details: { careerId: 1, careerName: 'Ingeniería de Software' } },
+          { type: 'resource_saved', timestamp: '2024-11-17T11:15:00Z', details: { resourceId: 2, resourceTitle: 'Un día en la vida de un médico' } },
+          { type: 'profile_updated', timestamp: '2024-11-17T12:00:00Z', details: { field: 'interests' } }
+        ],
         customLists: [], // Listas personalizadas de carreras
         privacySettings: {
           profileVisibility: 'public',      // 'public', 'friends', 'private'
