@@ -117,121 +117,7 @@
 
       <!-- Results Grid usando Career Card Component -->
       <div class="careers-results-grid">
-        <!-- Career Card 1 -->
-        <div class="career-card">
-          <div class="career-card-image">
-            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop" alt="Ingeniería de Software">
-          </div>
-          <div class="career-card-body">
-            <div class="career-card-header">
-              <h3 class="career-card-title">Ingeniería de Software</h3>
-              <span class="career-match-badge">1 coincidencia</span>
-            </div>
-
-            <div class="career-card-category">
-              <span class="category-badge">Tecnología</span>
-            </div>
-
-            <div class="career-card-keywords">
-              <p class="keywords-label">Palabras relacionadas:</p>
-              <div class="keywords-container">
-                <span class="keyword-tag">programación</span>
-                <span class="keyword-tag">tecnología</span>
-                <span class="keyword-tag">computadoras</span>
-                <span class="keyword-tag">lógica</span>
-              </div>
-            </div>
-
-            <a href="#" class="career-card-button">Ver Detalles <i data-lucide="arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Career Card 2 -->
-        <div class="career-card">
-          <div class="career-card-image">
-            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=300&fit=crop" alt="Diseño Gráfico">
-          </div>
-          <div class="career-card-body">
-            <div class="career-card-header">
-              <h3 class="career-card-title">Diseño Gráfico</h3>
-              <span class="career-match-badge">1 coincidencia</span>
-            </div>
-
-            <div class="career-card-category">
-              <span class="category-badge">Arte y Diseño</span>
-            </div>
-
-            <div class="career-card-keywords">
-              <p class="keywords-label">Palabras relacionadas:</p>
-              <div class="keywords-container">
-                <span class="keyword-tag">creatividad</span>
-                <span class="keyword-tag">arte</span>
-                <span class="keyword-tag">visual</span>
-                <span class="keyword-tag">dibujo</span>
-              </div>
-            </div>
-
-            <a href="#" class="career-card-button">Ver Detalles <i data-lucide="arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Career Card 3 -->
-        <div class="career-card">
-          <div class="career-card-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Marketing Digital">
-          </div>
-          <div class="career-card-body">
-            <div class="career-card-header">
-              <h3 class="career-card-title">Marketing Digital</h3>
-              <span class="career-match-badge">1 coincidencia</span>
-            </div>
-
-            <div class="career-card-category">
-              <span class="category-badge">Negocios</span>
-            </div>
-
-            <div class="career-card-keywords">
-              <p class="keywords-label">Palabras relacionadas:</p>
-              <div class="keywords-container">
-                <span class="keyword-tag">creatividad</span>
-                <span class="keyword-tag">comunicación</span>
-                <span class="keyword-tag">redes sociales</span>
-                <span class="keyword-tag">tecnología</span>
-              </div>
-            </div>
-
-            <a href="#" class="career-card-button">Ver Detalles <i data-lucide="arrow-right"></i></a>
-          </div>
-        </div>
-
-        <!-- Career Card 4 -->
-        <div class="career-card">
-          <div class="career-card-image">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="Arquitectura">
-          </div>
-          <div class="career-card-body">
-            <div class="career-card-header">
-              <h3 class="career-card-title">Arquitectura</h3>
-              <span class="career-match-badge">1 coincidencia</span>
-            </div>
-
-            <div class="career-card-category">
-              <span class="category-badge">Arte y Diseño</span>
-            </div>
-
-            <div class="career-card-keywords">
-              <p class="keywords-label">Palabras relacionadas:</p>
-              <div class="keywords-container">
-                <span class="keyword-tag">diseño</span>
-                <span class="keyword-tag">creatividad</span>
-                <span class="keyword-tag">matemáticas</span>
-                <span class="keyword-tag">espacios</span>
-              </div>
-            </div>
-
-            <a href="#" class="career-card-button">Ver Detalles <i data-lucide="arrow-right"></i></a>
-          </div>
-        </div>
+        <!-- Search results will be dynamically inserted here -->
       </div>
     </div>
   </section>
@@ -315,14 +201,9 @@
 
   <script>
     lucide.createIcons();
-    
-    document.getElementById('searchForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const keyword = document.getElementById('searchKeyword').value;
-      console.log('Buscando:', keyword);
-    });
   </script>
 
   <script src="../../scripts/main.js" type="module"></script>
+  <script src="../../scripts/career-keyword-search.js" type="module"></script>
 </body>
 </html>
