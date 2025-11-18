@@ -1,6 +1,7 @@
 // scripts/career-detail.js
 
 import { getDB } from './database.js';
+import { isFavorite, toggleFavorite } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const db = getDB();
@@ -205,6 +206,21 @@ function renderCareerDetails(career) {
     } else {
       renderNoInfoAvailable(testimonialsTab);
     }
+  }
+
+  // Favorite Button Logic
+  const favoriteBtn = document.querySelector('.career-action-btn.favorite');
+  if (favoriteBtn) {
+    // Set initial state
+    if (isFavorite(career.id)) {
+      favoriteBtn.classList.add('active');
+    }
+
+    // Add click listener
+    favoriteBtn.addEventListener('click', () => {
+      const isNowFavorite = toggleFavorite(career.id);
+      favoriteBtn.classList.toggle('active', isNowFavorite);
+    });
   }
 
   lucide.createIcons();

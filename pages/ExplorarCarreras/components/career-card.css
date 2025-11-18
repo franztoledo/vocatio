@@ -184,12 +184,22 @@
   transform: scale(1.1);
 }
 
-.career-favorite-btn i {
+.career-favorite-btn svg {
   width: 20px;
   height: 20px;
-  color: var(--warning-color);
+  color: var(--neutral-400); /* Inactive color */
+  transition: all var(--transition-fast);
 }
 
-.career-favorite-btn.active i {
-  fill: currentColor;
+.career-favorite-btn:hover svg {
+    color: var(--yellow-500);
+}
+
+.career-favorite-btn.active {
+  background: var(--yellow-400);
+
+}
+.career-favorite-btn.active svg {
+  color: var(--white);
+  fill: var(--yellow-400);
 }

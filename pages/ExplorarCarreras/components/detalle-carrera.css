@@ -113,10 +113,22 @@
   transform: translateY(-2px);
 }
 
-.career-action-btn i {
+.career-action-btn svg {
   width: 20px;
   height: 20px;
   color: var(--white);
+  transition: all var(--transition-fast);
+}
+
+.career-action-btn.favorite.active {
+  background: var(--yellow-400);
+  border-color: var(--white);
+}
+
+.career-action-btn.favorite.active svg {
+  fill: var(--yellow-400);
+  color: var(--white);
+  transform: scale(1.1);
 }
 
 /* ============================================
@@ -239,7 +251,7 @@
   overflow-x: auto;
   justify-content: center;
   /*eliminar el scroolbar*/
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none; 
 }
 
 .career-tab {

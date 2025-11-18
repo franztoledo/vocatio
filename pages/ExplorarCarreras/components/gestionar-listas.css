@@ -197,6 +197,81 @@
 }
 
 /* ============================================
+   NO LISTS MESSAGE
+   ============================================ */
+.no-lists-message {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: var(--spacing-xl) 0;
+}
+
+.no-lists-card {
+    background-color: var(--yellow-100);
+    border: 1px solid var(--yellow-500);
+    border-radius: var(--border-radius-xl);
+    padding: var(--spacing-xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    color: var(--yellow-800);
+    max-width: 600px;
+    width: 100%;
+}
+
+.no-lists-icon {
+    width: 56px;
+    height: 56px;
+    background-color: var(--yellow-300);
+    color: var(--yellow-700);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-lists-icon i {
+    width: 28px;
+    height: 28px;
+}
+
+.no-lists-title {
+    font-size: 22px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--yellow-900);
+    margin: 0;
+}
+
+.no-lists-text {
+    font-size: var(--font-size-base);
+    color: var(--yellow-800);
+    max-width: 450px;
+    margin: 0;
+}
+
+.no-lists-btn {
+    margin-top: var(--spacing-sm);
+    background-color: var(--yellow-600);
+    color: var(--white);
+    border: none;
+    padding: 12px 24px;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.no-lists-btn:hover {
+    background-color: var(--yellow-700);
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
