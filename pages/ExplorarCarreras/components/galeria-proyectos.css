@@ -519,3 +519,78 @@
     font-size: 15px;
   }
 }
+
+
+/* ============================================
+   NO RESULTS MESSAGE
+   ============================================ */
+.no-results-message {
+  grid-column: 1 / -1; /* Span all columns */
+  background-color: transparent; /* Transparent background for the full-width container */
+  display: flex; /* Use flexbox to center the inner card */
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align to the start vertically */
+  padding: var(--spacing-xl) 0; /* Add some vertical padding */
+}
+
+.no-results-card {
+  background-color: var(--blue-100); /* Blue background */
+  border: 1px solid var(--blue-500); /* Blue border */
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  color: var(--blue-800); /* Darker blue text */
+  max-width: 600px; /* Limit width on desktop */
+  width: 100%; /* Ensure it takes full width up to max-width */
+}
+
+.no-results-icon {
+  width: 56px;
+  height: 56px;
+  background-color: var(--blue-300); /* Lighter blue icon background */
+  color: var(--blue-700); /* Darker blue icon */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-results-icon i {
+  width: 28px;
+  height: 28px;
+}
+
+.no-results-title {
+  font-size: 22px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--blue-900); /* Even darker blue title */
+  margin: 0;
+}
+
+.no-results-text {
+  font-size: var(--font-size-base);
+  color: var(--blue-800);
+  max-width: 450px;
+  margin: 0;
+}
+
+.no-results-btn {
+  margin-top: var(--spacing-sm);
+  background-color: var(--blue-600); /* Blue button */
+  color: var(--white);
+  border: none;
+  padding: 12px 24px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.no-results-btn:hover {
+  background-color: var(--blue-700);
+}

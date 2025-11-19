@@ -5,7 +5,7 @@
  * Versión actual de la base de datos
  * Incrementar este número cada vez que se actualice la estructura
  */
-const DB_VERSION = 11;
+const DB_VERSION = 12;
 
 /**
  * Inicializa la base de datos en localStorage si no existe
@@ -1053,45 +1053,105 @@ export function initDB() {
         careerId: 1,
         title: 'App de Red Social Universitaria',
         level: '3er año',
-        imageUrl: '../../assets/heroes/hero1.webp',
-        description: 'Desarrollo de una red social exclusiva para estudiantes universitarios con funciones de networking académico.',
-        technologies: ['React', 'Node.js', 'MongoDB']
+        imageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=250&fit=crop',
+        description: 'Desarrollo de una red social exclusiva para estudiantes universitarios con funciones de networking académico, foros por curso y calendario de eventos.',
+        technologies: ['React', 'Node.js', 'MongoDB', 'Socket.IO'],
+        author: {
+            name: 'Ana Cristina L.',
+            university: 'Universidad Nacional',
+            specialization: 'Desarrollo Web Full-Stack',
+            avatar: 'AC'
+        },
+        rating: 4.8,
+        views: 1252,
+        devTime: '3 meses',
+        finalGrade: '18/20',
+        demoUrl: '#',
+        githubUrl: '#'
       },
       {
         id: 2,
         careerId: 1,
         title: 'Sistema de Gestión Hospitalaria',
         level: '4to año',
-        imageUrl: '../../assets/heroes/hero2.webp',
-        description: 'Plataforma web para gestionar citas médicas, historias clínicas y administración hospitalaria.',
-        technologies: ['Angular', 'Spring Boot', 'PostgreSQL']
+        imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop',
+        description: 'Plataforma web para gestionar citas médicas, historias clínicas y administración de recursos hospitalarios en tiempo real.',
+        technologies: ['Angular', 'Spring Boot', 'PostgreSQL', 'AWS'],
+        author: {
+            name: 'Carlos M.',
+            university: 'UTEC',
+            specialization: 'Arquitectura de Software',
+            avatar: 'CM'
+        },
+        rating: 4.6,
+        views: 980,
+        devTime: '6 meses',
+        finalGrade: '19/20',
+        demoUrl: '#',
+        githubUrl: '#'
       },
       {
         id: 3,
         careerId: 2,
         title: 'Investigación sobre Enfermedades Tropicales',
         level: '5to año',
-        imageUrl: '../../assets/heroes/hero3.webp',
-        description: 'Estudio clínico sobre prevención y tratamiento de enfermedades tropicales en zonas rurales.',
-        technologies: []
+        imageUrl: 'https://images.unsplash.com/photo-1579165466949-55364b197c49?w=400&h=250&fit=crop',
+        description: 'Estudio clínico sobre la prevención y tratamiento de enfermedades tropicales en zonas rurales, utilizando análisis de datos para identificar patrones.',
+        technologies: ['Python', 'Pandas', 'Scikit-learn', 'R'],
+        author: {
+            name: 'Lucía Fernández',
+            university: 'UPCH',
+            specialization: 'Epidemiología',
+            avatar: 'LF'
+        },
+        rating: 4.9,
+        views: 2100,
+        devTime: '1 año',
+        finalGrade: 'Tesis Aprobada con Honores',
+        demoUrl: '#',
+        githubUrl: '#'
       },
       {
         id: 4,
         careerId: 3,
         title: 'Diseño de Centro Cultural Comunitario',
         level: '4to año',
-        imageUrl: '../../assets/heroes/hero1.webp',
-        description: 'Proyecto arquitectónico de un centro cultural sostenible para una comunidad local.',
-        technologies: ['AutoCAD', 'Revit', 'SketchUp']
+        imageUrl: 'https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&h=250&fit=crop',
+        description: 'Proyecto arquitectónico de un centro cultural sostenible y multifuncional para una comunidad local, enfocado en materiales de bajo impacto.',
+        technologies: ['AutoCAD', 'Revit', 'SketchUp', 'Lumion'],
+        author: {
+            name: 'Marco Aurelio',
+            university: 'PUCP',
+            specialization: 'Urbanismo Sostenible',
+            avatar: 'MA'
+        },
+        rating: 4.7,
+        views: 1500,
+        devTime: '4 meses',
+        finalGrade: '17/20',
+        demoUrl: '#',
+        githubUrl: '#'
       },
       {
         id: 5,
         careerId: 4,
-        title: 'Plan de Negocios para Startup Tech',
+        title: 'Plan de Negocios para Startup Ed-Tech',
         level: '3er año',
-        imageUrl: '../../assets/heroes/hero2.webp',
-        description: 'Desarrollo completo de plan de negocios para startup de tecnología educativa.',
-        technologies: []
+        imageUrl: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=250&fit=crop',
+        description: 'Desarrollo completo de un plan de negocios para una startup de tecnología educativa, incluyendo análisis de mercado, proyecciones financieras y estrategia de marketing.',
+        technologies: ['Excel', 'PowerPoint', 'SWOT Analysis'],
+        author: {
+            name: 'Sofía Vargas',
+            university: 'Universidad de Lima',
+            specialization: 'Emprendimiento',
+            avatar: 'SV'
+        },
+        rating: 4.5,
+        views: 850,
+        devTime: '2 meses',
+        finalGrade: '18/20',
+        demoUrl: '#',
+        githubUrl: '#'
       }
     ],
     resources: [
