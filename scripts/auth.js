@@ -260,6 +260,7 @@ export function initRegister() {
           city: ''
         },
         favoriteCareers: [],
+        savedResources: [], // <-- Añadido para consistencia
         testResults: [],
         customLists: [],
         privacySettings: {

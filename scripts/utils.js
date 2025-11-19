@@ -214,10 +214,14 @@ export function showToast(message, type = 'info', duration = 3000) {
  * @returns {boolean} - True if the career is a favorite, false otherwise.
  */
 export function isFavorite(careerId) {
+  const activeUser = getActiveUser();
+  if (!activeUser) return false;
+
   const db = getDB();
-  const currentUser = db.users[0];
-  if (!currentUser) return false;
-  return currentUser.favoriteCareers.includes(careerId);
+  // We need to get the latest user data from the DB, not just the session
+  const userInDb = db.users.find(u => u.id === activeUser.id);
+  
+  return userInDb ? userInDb.favoriteCareers.includes(careerId) : false;
 }
 
 /**
@@ -278,9 +282,14 @@ export function toggleFavorite(careerId) {
  * @returns {number[]} - An array of favorite career IDs.
  */
 export function getFavoriteCareerIds() {
+  const activeUser = getActiveUser();
+  if (!activeUser) {
+    return [];
+  }
+  // It's better to get the latest data from the DB
   const db = getDB();
-  const currentUser = db.users[0];
-  return currentUser ? currentUser.favoriteCareers : [];
+  const userInDb = db.users.find(u => u.id === activeUser.id);
+  return userInDb ? userInDb.favoriteCareers : [];
 }
 
 /**
@@ -288,12 +297,17 @@ export function getFavoriteCareerIds() {
  * @returns {Object[]} - An array of favorite career objects.
  */
 export function getFavoriteCareers() {
-  const db = getDB();
-  const currentUser = db.users[0];
-  if (!currentUser || !currentUser.favoriteCareers) {
+  const activeUser = getActiveUser();
+  if (!activeUser || !activeUser.favoriteCareers || activeUser.favoriteCareers.length === 0) {
     return [];
   }
-  return db.careers.filter(career => currentUser.favoriteCareers.includes(career.id));
+  
+  const db = getDB();
+  // Find the user in the database to get the most up-to-date favorite list
+  const userInDb = db.users.find(u => u.id === activeUser.id);
+  if (!userInDb) return [];
+
+  return db.careers.filter(career => userInDb.favoriteCareers.includes(career.id));
 }
 
 // ============================================
@@ -305,9 +319,15 @@ export function getFavoriteCareers() {
  * @returns {Object[]} - An array of custom list objects.
  */
 export function getCustomLists() {
+  const activeUser = getActiveUser();
+  if (!activeUser) {
+    return [];
+  }
+  
   const db = getDB();
-  const currentUser = db.users[0];
-  return currentUser ? currentUser.customLists : [];
+  const userInDb = db.users.find(u => u.id === activeUser.id);
+  
+  return userInDb ? userInDb.customLists : [];
 }
 
 /**
@@ -317,13 +337,21 @@ export function getCustomLists() {
  * @param {number[]} careerIds - An array of career IDs to include in the list.
  */
 export function createCustomList(name, description, careerIds) {
-  const db = getDB();
-  const currentUser = db.users[0];
-
-  if (!currentUser) {
-    console.error('No current user found to create a list.');
+  const activeUser = getActiveUser();
+  if (!activeUser) {
+    showToast('Debes iniciar sesión para crear una lista.', 'error');
+    console.error('No active user found to create a list.');
     return;
   }
+
+  const db = getDB();
+  const userIndex = db.users.findIndex(u => u.id === activeUser.id);
+  if (userIndex === -1) {
+    console.error('Active user not found in DB.');
+    return;
+  }
+  
+  const userToUpdate = db.users[userIndex];
 
   const newList = {
     id: Date.now(), // Simple unique ID
@@ -333,8 +361,13 @@ export function createCustomList(name, description, careerIds) {
     createdAt: new Date().toISOString(),
   };
 
-  currentUser.customLists.push(newList);
+  if (!userToUpdate.customLists) {
+    userToUpdate.customLists = [];
+  }
+
+  userToUpdate.customLists.push(newList);
   saveDB(db);
+  setActiveUser(userToUpdate); // Update session user
 }
 
 /**
@@ -342,19 +375,33 @@ export function createCustomList(name, description, careerIds) {
  * @param {number} listId - The ID of the list to delete.
  */
 export function deleteCustomList(listId) {
-  const db = getDB();
-  const currentUser = db.users[0];
-
-  if (!currentUser) {
-    console.error('No current user found to delete a list.');
+  const activeUser = getActiveUser();
+  if (!activeUser) {
+    showToast('Debes iniciar sesión para eliminar una lista.', 'error');
+    console.error('No active user found to delete a list.');
     return;
   }
 
-  const listIndex = currentUser.customLists.findIndex(list => list.id === listId);
+  const db = getDB();
+  const userIndex = db.users.findIndex(u => u.id === activeUser.id);
+  if (userIndex === -1) {
+    console.error('Active user not found in DB.');
+    return;
+  }
+  
+  const userToUpdate = db.users[userIndex];
+  
+  if (!userToUpdate.customLists) {
+    console.error(`User has no custom lists to delete from.`);
+    return;
+  }
+
+  const listIndex = userToUpdate.customLists.findIndex(list => list.id === listId);
 
   if (listIndex > -1) {
-    currentUser.customLists.splice(listIndex, 1);
+    userToUpdate.customLists.splice(listIndex, 1);
     saveDB(db);
+    setActiveUser(userToUpdate); // Update session user
   } else {
     console.error(`List with id ${listId} not found.`);
   }
