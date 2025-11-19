@@ -67,11 +67,13 @@
 }
 
 .tools-stats-row {
-  display: grid;
+  display: flex;
   grid-template-columns: 1fr;
   gap: var(--spacing-md);
   max-width: 900px;
   margin: 0 auto;
+  justify-content: center;
+  
 }
 
 .tools-stat-item {

@@ -3,12 +3,12 @@
 
 export const db_calculators = {
   universities: [
-    { id: 1, name: 'Universidad Nacional de Ingeniería (UNI)', costPerCredit: 100 },
-    { id: 2, name: 'Universidad de Lima', costPerCredit: 450 },
-    { id: 3, name: 'Universidad Peruana Cayetano Heredia (UPCH)', costPerCredit: 550 },
-    { id: 4, name: 'Pontificia Universidad Católica del Perú (PUCP)', costPerCredit: 500 },
-    { id: 5, name: 'Universidad Nacional Mayor de San Marcos (UNMSM)', costPerCredit: 80 },
-    { id: 6, name: 'Universidad Peruana de Ciencias Aplicadas (UPC)', costPerCredit: 480 },
+    { id: 1, name: 'Universidad Nacional de Ingeniería (UNI)', costPerCredit: 100, postgradoCreditMultiplier: 1.8 },
+    { id: 2, name: 'Universidad de Lima', costPerCredit: 450, postgradoCreditMultiplier: 1.5 },
+    { id: 3, name: 'Universidad Peruana Cayetano Heredia (UPCH)', costPerCredit: 550, postgradoCreditMultiplier: 1.6 },
+    { id: 4, name: 'Pontificia Universidad Católica del Perú (PUCP)', costPerCredit: 500, postgradoCreditMultiplier: 1.5 },
+    { id: 5, name: 'Universidad Nacional Mayor de San Marcos (UNMSM)', costPerCredit: 80, postgradoCreditMultiplier: 2.0 },
+    { id: 6, name: 'Universidad Peruana de Ciencias Aplicadas (UPC)', costPerCredit: 480, postgradoCreditMultiplier: 1.4 },
   ],
   careers: [
     {
