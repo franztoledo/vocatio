@@ -56,13 +56,17 @@
     <!-- Breadcrumb -->
     <div class="breadcrumb">
       <div class="breadcrumb-container">
-        <a href="../../index.html" class="breadcrumb-link">
+        <a href="../../../index.html" class="breadcrumb-link">
           <i data-lucide="home"></i>
           <span>Inicio</span>
         </a>
         <span class="breadcrumb-separator">/</span>
-        <a href="herramientas-seccion.html" class="breadcrumb-link">
-          <span>Configurar Simulación de Costos</span>
+        <a href="../herramientas-seccion.html" class="breadcrumb-link">
+          <span>Herramientas</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#" class="breadcrumb-link">
+            <span>Configurar Simulación de Costos</span>
         </a>
       </div>
     </div>
@@ -91,34 +95,22 @@
 
       <!-- Configuration Form -->
       <div class="config-form-wrapper">
-        <form class="config-form">
+        <form id="cost-simulation-form" class="config-form">
           <!-- Left Column -->
           <div class="form-column">
             <!-- Carrera de interés -->
             <div class="form-group">
-              <label for="carrera" class="form-label">Carrera de interés</label>
-              <select id="carrera" class="form-select">
+              <label for="career-select" class="form-label">Carrera de interés</label>
+              <select id="career-select" class="form-select">
                 <option value="">-- Selecciona una carrera --</option>
-                <option value="ingenieria-software" selected>Ingeniería de Software</option>
-                <option value="ingenieria-industrial">Ingeniería Industrial</option>
-                <option value="marketing-digital">Marketing Digital</option>
-                <option value="psicologia">Psicología</option>
-                <option value="contabilidad">Contabilidad</option>
-                <option value="comunicaciones">Comunicaciones</option>
-                <option value="administracion">Administración de Empresas</option>
-                <option value="ingenieria-civil">Ingeniería Civil</option>
-                <option value="derecho">Derecho</option>
               </select>
             </div>
 
             <!-- Modalidad de estudio -->
             <div class="form-group">
-              <label for="modalidad" class="form-label">Modalidad de estudio</label>
-              <select id="modalidad" class="form-select">
-                <option value="">-- Selecciona modalidad --</option>
-                <option value="presencial" selected>Presencial</option>
-                <option value="virtual">Virtual</option>
-                <option value="hibrida">Híbrida</option>
+              <label for="modality-select" class="form-label">Modalidad de estudio</label>
+              <select id="modality-select" class="form-select">
+                <!-- Options populated by JS -->
               </select>
             </div>
           </div>
@@ -127,27 +119,19 @@
           <div class="form-column">
             <!-- Universidad preferida -->
             <div class="form-group">
-              <label for="universidad" class="form-label">Universidad preferida</label>
-              <select id="universidad" class="form-select">
+              <label for="university-select" class="form-label">Universidad preferida</label>
+              <select id="university-select" class="form-select">
                 <option value="">-- Selecciona universidad --</option>
-                <option value="upc" selected>UPC</option>
-                <option value="pucp">PUCP</option>
-                <option value="unmsm">UNMSM</option>
-                <option value="uni">UNI</option>
-                <option value="usil">USIL</option>
-                <option value="esan">ESAN</option>
               </select>
             </div>
 
             <!-- ¿Planeas hacer postgrado? -->
             <div class="form-group">
-              <label for="postgrado" class="form-label">¿Planeas hacer postgrado?</label>
-              <select id="postgrado" class="form-select">
-                <option value="">-- Selecciona opción --</option>
-                <option value="no" selected>Solo pregrado</option>
-                <option value="si-especialización">Sí, Especialización (1 año)</option>
-                <option value="si-maestria">Sí, Maestría (2 años)</option>
-                <option value="si-doctorado">Sí, Doctorado (3 años)</option>
+              <label for="postgrad-select" class="form-label">¿Planeas hacer postgrado?</label>
+              <select id="postgrad-select" class="form-select">
+                <option value="0" selected>Solo pregrado</option>
+                <option value="1">Sí, Especialización</option>
+                <option value="2">Sí, Maestría</option>
               </select>
             </div>
           </div>
@@ -155,31 +139,31 @@
 
         <!-- Gastos Adicionales Section -->
         <div class="expenses-section">
-          <h2 class="section-title">Gastos Adicionales</h2>
+          <h2 class="section-title">Gastos Adicionales (Estimados Mensuales)</h2>
           
           <div class="expenses-grid">
             <!-- Transporte mensual -->
             <div class="form-group">
-              <label for="transporte" class="form-label">Transporte mensual</label>
-              <input type="number" id="transporte" class="form-input" placeholder="150" value="150">
+              <label for="transport-cost" class="form-label">Transporte</label>
+              <input type="number" id="transport-cost" class="form-input" placeholder="0" value="150" min="0">
             </div>
 
             <!-- Alimentación mensual -->
             <div class="form-group">
-              <label for="alimentacion" class="form-label">Alimentación mensual</label>
-              <input type="number" id="alimentacion" class="form-input" placeholder="200" value="200">
+              <label for="food-cost" class="form-label">Alimentación</label>
+              <input type="number" id="food-cost" class="form-input" placeholder="0" value="200" min="0">
             </div>
 
             <!-- Materiales y libros (anual) -->
             <div class="form-group">
-              <label for="materiales" class="form-label">Materiales y libros (anual)</label>
-              <input type="number" id="materiales" class="form-input" placeholder="800" value="800">
+              <label for="materials-cost" class="form-label">Materiales y Libros (Anual)</label>
+              <input type="number" id="materials-cost" class="form-input" placeholder="0" value="800" min="0">
             </div>
 
             <!-- Otros gastos mensuales -->
             <div class="form-group">
-              <label for="otros" class="form-label">Otros gastos mensuales</label>
-              <input type="number" id="otros" class="form-input" placeholder="100" value="100">
+              <label for="other-costs" class="form-label">Otros gastos</label>
+              <input type="number" id="other-costs" class="form-input" placeholder="0" value="100" min="0">
             </div>
           </div>
         </div>
@@ -191,16 +175,15 @@
             <span>Información Importante</span>
           </h3>
           <ul class="info-list">
-            <li>Los costos pueden variar según la universidad y modalidad</li>
-            <li>Considera gastos adicionales como laptop, software especializado</li>
-            <li>Explora opciones de becas y financiamiento disponibles</li>
-            <li>Algunos programas incluyen materiales digitales</li>
+            <li>Los costos de matrícula son estimados y pueden variar.</li>
+            <li>Los gastos adicionales son proyecciones.</li>
+            <li>No se incluyen costos únicos como laptops o equipo especializado.</li>
           </ul>
         </div>
 
         <!-- Action Button -->
         <div class="form-actions">
-          <button type="button" class="btn-primary" onclick="window.location.href='costos-educativos-resultado.html'">
+          <button type="button" id="calculate-costs-btn" class="btn-primary">
             <i data-lucide="calculator"></i>
             Calcular Costos Totales
           </button>
@@ -289,7 +272,7 @@
   <script>
     lucide.createIcons();
   </script>
-
-  <script src="../../../scripts/main.js" type="module"></script>
+  <script src="../../../scripts/database-calculators.js" type="module"></script>
+  <script src="../../../scripts/cost-simulator.js" type="module"></script>
 </body>
 </html>

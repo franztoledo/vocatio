@@ -96,17 +96,17 @@
 
           <div class="info-section">
             <label class="section-label">Carrera actual</label>
-            <input type="text" class="info-input" value="Administración de Empresas" readonly>
+            <input type="text" id="analisis-carrera-actual" class="info-input" readonly>
           </div>
 
           <div class="info-section">
             <label class="section-label">Carrera de destino</label>
-            <input type="text" class="info-input" value="Ingeniería de Software" readonly>
+            <input type="text" id="analisis-carrera-destino" class="info-input" readonly>
           </div>
 
           <div class="info-section">
-            <label class="section-label">Semestre completados</label>
-            <input type="text" class="info-input" value="4 ciclos" readonly>
+            <label class="section-label">Semestres completados</label>
+            <input type="text" id="analisis-ciclo-actual" class="info-input" readonly>
           </div>
         </div>
 
@@ -114,46 +114,38 @@
         <div class="analysis-column results-column">
           <h2 class="column-title highlight">Análisis de Convalidación</h2>
 
-          <!-- Convalidable Subjects -->
-          <div class="result-box">
-            <h3 class="result-title">Materias Convalidables (8)</h3>
-            <ul class="subjects-list">
-              <li>Matemática I y II</li>
-              <li>Física I</li>
-              <li>Química General</li>
-            </ul>
-          </div>
-
-          <!-- Additional Subjects -->
-          <div class="result-box">
-            <h3 class="result-title">Materias Adicionales (12)</h3>
-            <ul class="subjects-list">
-              <li>Programación I, II, III</li>
-              <li>Base de Datos</li>
-              <li>Algoritmos y Estructuras</li>
-            </ul>
-          </div>
-
-          <!-- Time & Cost Summary -->
-          <div class="summary-box">
-            <div class="summary-row">
-              <span class="summary-label">Tiempo ahorrado:</span>
-              <span class="summary-value">1.5 años</span>
+          <div id="analysis-results-container">
+            <!-- Los resultados se insertarán aquí dinámicamente -->
+            <div class="result-box">
+              <h3 class="result-title">Materias Convalidables (<span id="convalidables-count">0</span>)</h3>
+              <ul id="convalidables-list" class="subjects-list">
+                <li>Calculando...</li>
+              </ul>
             </div>
-            <div class="summary-row">
-              <span class="summary-label">Tiempo adicional:</span>
-              <span class="summary-value">2 años</span>
+  
+            <div class="result-box">
+              <h3 class="result-title">Materias Adicionales (<span id="adicionales-count">0</span>)</h3>
+              <ul id="adicionales-list" class="subjects-list">
+                <li>Calculando...</li>
+              </ul>
             </div>
-            <div class="summary-row highlight">
-              <span class="summary-label">Tiempo total restante:</span>
-              <span class="summary-value">3.5 años</span>
+  
+            <div class="summary-box">
+              <div class="summary-row">
+                <span class="summary-label">Nuevo ciclo de inicio (aproximado):</span>
+                <span id="nuevo-ciclo" class="summary-value">--</span>
+              </div>
+              <div class="summary-row highlight">
+                <span class="summary-label">Tiempo total restante (aproximado):</span>
+                <span id="tiempo-restante" class="summary-value">--</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <div class="form-actions centered">
-        <button type="button" class="btn-secondary">Modificar búsqueda</button>
+        <button type="button" class="btn-secondary" onclick="window.location.href='informacion-academica-actual.html'">Modificar búsqueda</button>
         <button type="button" class="btn-primary" onclick="window.location.href='plan-transicion.html'">
           <i data-lucide="arrow-right"></i>
           Ver Plan de Transición
@@ -244,5 +236,7 @@
   </script>
 
   <script src="../../../scripts/main.js" type="module"></script>
+  <script src="../../../scripts/database-calculators.js"></script>
+  <script src="../../../scripts/career-change-calculator.js" type="module"></script>
 </body>
 </html>

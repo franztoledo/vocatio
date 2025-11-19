@@ -98,61 +98,17 @@
     <div class="container">
       <!-- Selected Careers -->
       <div class="selected-careers-box">
-        <h2 class="selected-title">Carreras seleccionadas (<span id="count">2</span>/4)</h2>
+        <h2 class="selected-title">Carreras seleccionadas (<span id="count">0</span>/4)</h2>
         
         <div class="selected-tags" id="selectedTags">
-          <span class="career-tag">
-            Ingeniería de Software
-            <button class="tag-remove" data-remove="1">×</button>
-          </span>
+          <!-- Tags will be dynamically inserted here -->
         </div>
+        <div class="selected-careers-message" id="selectionMessage"></div>
       </div>
 
       <!-- Careers Grid -->
       <div class="careers-grid">
-        <!-- Career 1 - Selected -->
-        <label class="career-select-card selected">
-          <input type="checkbox" class="career-select-checkbox" checked data-id="1">
-          <div class="career-select-check">
-            <i data-lucide="check"></i>
-          </div>
-          <h3 class="career-select-title">Ingeniería de Software</h3>
-          <p class="career-select-category">Tecnología</p>
-          <p class="career-select-meta">5 años • <strong>Alta</strong></p>
-        </label>
-
-        <!-- Career 2 - Selected -->
-        <label class="career-select-card selected">
-          <input type="checkbox" class="career-select-checkbox" checked data-id="2">
-          <div class="career-select-check">
-            <i data-lucide="check"></i>
-          </div>
-          <h3 class="career-select-title">Medicina</h3>
-          <p class="career-select-category">Salud</p>
-          <p class="career-select-meta">5 años • <strong>Alta</strong></p>
-        </label>
-
-        <!-- Career 3 -->
-        <label class="career-select-card">
-          <input type="checkbox" class="career-select-checkbox" data-id="3">
-          <div class="career-select-check">
-            <i data-lucide="check"></i>
-          </div>
-          <h3 class="career-select-title">Diseño Gráfico</h3>
-          <p class="career-select-category">Arte y Diseño</p>
-          <p class="career-select-meta">4 años • <strong>Media</strong></p>
-        </label>
-
-        <!-- Career 4 -->
-        <label class="career-select-card">
-          <input type="checkbox" class="career-select-checkbox" data-id="4">
-          <div class="career-select-check">
-            <i data-lucide="check"></i>
-          </div>
-          <h3 class="career-select-title">Diseño Gráfico</h3>
-          <p class="career-select-category">Arte y Diseño</p>
-          <p class="career-select-meta">4 años • <strong>Media</strong></p>
-        </label>
+        <!-- Career cards will be dynamically inserted here -->
       </div>
 
       <!-- Actions -->
@@ -245,5 +201,6 @@
   </script>
 
   <script src="../../scripts/main.js" type="module"></script>
+  <script src="../../scripts/career-comparison.js" type="module"></script>
 </body>
 </html>

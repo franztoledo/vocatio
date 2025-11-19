@@ -277,8 +277,127 @@ body {
   padding-bottom: 70px;
 }
 
+/* ============================================
+   TOAST NOTIFICATION SYSTEM
+   ============================================ */
+#toast-container {
+  position: fixed;
+  top: 120px;
+  right: 30px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast {
+  padding: 12px 18px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: toast-fade-in 0.3s ease;
+}
+
+.toast.hiding {
+  animation: toast-fade-out 0.3s ease forwards;
+}
+
+.toast i {
+  width: 20px;
+  height: 20px;
+}
+
+.toast.success {
+  background: var(--success-color);
+}
+
+.toast.error {
+  background: var(--error-color);
+}
+
+.toast.info {
+  background: var(--info-color);
+}
+
+@keyframes toast-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-fade-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+
 @media (min-width: 768px) {
   body {
     padding-bottom: 0;
   }
 }
+
+/* Mobile responsiveness for toasts */
+@media (max-width: 767px) {
+  #toast-container {
+    top: 80px; /* Adjust top for mobile */
+    right: 20px; /* Adjust right for mobile */
+    left: 20px; /* Allow toasts to span width */
+    width: auto; /* Allow toasts to take available width */
+    align-items: center; /* Center toasts horizontally */
+  }
+
+  .toast {
+    max-width: 90%; /* Limit toast width on small screens */
+    font-size: 13px; /* Smaller font size for mobile */
+    padding: 10px 15px; /* Adjust padding for mobile */
+    text-align: center;
+  }
+
+  .toast i {
+    width: 18px;
+    height: 18px;
+  }
+
+  @keyframes toast-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(-100%); /* Animate from top for mobile */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes toast-fade-out {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-100%); /* Animate to top for mobile */
+    }
+  }
+}
+
+/* ============================================
+   HERO CARD COLORS
+   ============================================ */

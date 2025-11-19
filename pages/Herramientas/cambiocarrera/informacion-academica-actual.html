@@ -95,31 +95,49 @@
             <!-- Carrera actual -->
             <div class="form-group">
               <label for="carrera-actual" class="form-label">Carrera actual</label>
-              <input type="email" id="carrera-actual" class="form-input" placeholder="Ingresa tu carrera">
+              <select id="carrera-actual" class="form-select" required>
+                <option value="">-- Selecciona tu carrera --</option>
+              </select>
             </div>
 
             <!-- Universidad Actual -->
             <div class="form-group">
               <label for="universidad-actual" class="form-label">Universidad Actual</label>
-              <input type="email" id="universidad-actual" class="form-input" placeholder="Ingresa tu universidad">
+              <select id="universidad-actual" class="form-select" required>
+                <option value="">-- Selecciona tu universidad --</option>
+              </select>
             </div>
 
             <!-- Ciclo/Semestre actual -->
             <div class="form-group">
               <label for="ciclo-actual" class="form-label">Ciclo/Semestre actual</label>
-              <input type="email" id="ciclo-actual" class="form-input" placeholder="Ej: 4to ciclo">
+              <select id="ciclo-actual" class="form-select" required>
+                <option value="">-- Selecciona tu ciclo --</option>
+                <option value="1">1er ciclo</option>
+                <option value="2">2do ciclo</option>
+                <option value="3">3er ciclo</option>
+                <option value="4">4to ciclo</option>
+                <option value="5">5to ciclo</option>
+                <option value="6">6to ciclo</option>
+                <option value="7">7mo ciclo</option>
+                <option value="8">8vo ciclo</option>
+                <option value="9">9no ciclo</option>
+                <option value="10">10mo ciclo</option>
+                <option value="11">11vo ciclo</option>
+                <option value="12">12vo ciclo</option>
+              </select>
             </div>
 
             <!-- Promedio actual -->
             <div class="form-group">
-              <label for="promedio-actual" class="form-label">Promedio actual</label>
-              <input type="email" id="promedio-actual" class="form-input" placeholder="Ej: 16.5">
+              <label for="promedio-actual" class="form-label">Promedio actual (opcional)</label>
+              <input type="number" id="promedio-actual" class="form-input" placeholder="Ej: 16.5" min="0" max="20" step="0.1">
             </div>
           </div>
 
           <!-- Motivo del cambio -->
           <div class="form-group full-width">
-            <label for="motivo-cambio" class="form-label">¿Por qué quieres cambiar de carrera?</label>
+            <label for="motivo-cambio" class="form-label">¿Por qué quieres cambiar de carrera? (opcional)</label>
             <textarea id="motivo-cambio" class="form-textarea" placeholder="Me di cuenta que mi verdadera pasión esta en la tecnología después de tomar algunos cursos electivos de programación" rows="4"></textarea>
           </div>
 
@@ -127,22 +145,21 @@
           <div class="documents-box">
             <div class="documents-header">
               <i data-lucide="file-check"></i>
-              <span>Documentos que necesitarás</span>
+              <span>Documentos que podrías necesitar</span>
             </div>
             <ul class="documents-list">
               <li>Récord académico actualizado</li>
               <li>Sílabos de las materias cursadas</li>
               <li>Certificado de notas oficial</li>
-              <li>Carta de motivos para el cambio</li>
             </ul>
           </div>
 
           <div class="form-actions">
             <button type="button" class="btn-secondary">Cancelar</button>
-            <a type="submit" class="btn-primary" href="seleccionar-carrera-destino.html">
+            <button type="submit" id="continuar-btn" class="btn-primary">
               <span>Continuar al siguiente paso</span>
               <i data-lucide="arrow-right"></i>
-            </a>
+            </button>
           </div>
         </form>
       </div>
@@ -231,5 +248,7 @@
   </script>
 
   <script src="../../../scripts/main.js" type="module"></script>
+  <script src="../../../scripts/database-calculators.js"></script>
+  <script src="../../../scripts/career-change-calculator.js" type="module"></script>
 </body>
 </html>

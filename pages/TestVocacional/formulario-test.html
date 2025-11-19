@@ -87,137 +87,15 @@
   <main class="formulario-main">
     <div class="formulario-container">
       
+      <!-- Progress Bar -->
+      <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+        <span class="progress-text">Bloque 1 de 5</span>
+      </div>
+
       <form class="test-form" id="testForm">
         
-        <!-- Bloque de preguntas -->
-        <div class="question-block">
-          <div class="block-header">
-            <h2 class="block-title">Bloque 1: Tus preferencias naturales</h2>
-            <p class="block-description">
-              Responde con sinceridad. No hay respuestas correctas o incorrectas. Elige la opción que mejor describa tu tendencia natural.
-            </p>
-          </div>
-
-          <div class="questions-table">
-            <div class="table-header">
-              <div class="header-option">Opciones</div>
-              <div class="header-response">Sí</div>
-              <div class="header-response">No</div>
-              <div class="header-response">¿?</div>
-            </div>
-
-            <!-- Pregunta 1 -->
-            <div class="question-row">
-              <div class="question-text">
-                <span class="question-number">1.</span>
-                <span>¿Disfrutas resolver problemas matemáticos o científicos?</span>
-              </div>
-              <div class="question-options">
-                <label class="radio-option">
-                  <input type="radio" name="q1" value="si" required>
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q1" value="no">
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q1" value="duda">
-                  <span class="radio-custom"></span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Pregunta 2 -->
-            <div class="question-row">
-              <div class="question-text">
-                <span class="question-number">2.</span>
-                <span>¿Te gusta tomar el liderazgo en proyectos grupales?</span>
-              </div>
-              <div class="question-options">
-                <label class="radio-option">
-                  <input type="radio" name="q2" value="si" required>
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q2" value="no">
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q2" value="duda">
-                  <span class="radio-custom"></span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Pregunta 3 -->
-            <div class="question-row">
-              <div class="question-text">
-                <span class="question-number">3.</span>
-                <span>¿Disfrutas crear cosas originales (dibujar, escribir, diseñar)?</span>
-              </div>
-              <div class="question-options">
-                <label class="radio-option">
-                  <input type="radio" name="q3" value="si" required>
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q3" value="no">
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q3" value="duda">
-                  <span class="radio-custom"></span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Pregunta 4 -->
-            <div class="question-row">
-              <div class="question-text">
-                <span class="question-number">4.</span>
-                <span>¿Te motiva ayudar a otros con sus problemas personales?</span>
-              </div>
-              <div class="question-options">
-                <label class="radio-option">
-                  <input type="radio" name="q4" value="si" required>
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q4" value="no">
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q4" value="duda">
-                  <span class="radio-custom"></span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Pregunta 5 -->
-            <div class="question-row">
-              <div class="question-text">
-                <span class="question-number">5.</span>
-                <span>¿Prefieres actividades manuales o construir cosas?</span>
-              </div>
-              <div class="question-options">
-                <label class="radio-option">
-                  <input type="radio" name="q5" value="si" required>
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q5" value="no">
-                  <span class="radio-custom"></span>
-                </label>
-                <label class="radio-option">
-                  <input type="radio" name="q5" value="duda">
-                  <span class="radio-custom"></span>
-                </label>
-              </div>
-            </div>
-
-          </div>
-        </div>
+        <!-- Los bloques de preguntas se insertarán aquí dinámicamente -->
 
         <!-- Form Actions -->
         <div class="form-actions">
@@ -225,10 +103,16 @@
             Salir
           </label>
 
-          <button type="button" class="btn-siguiente" onclick="window.location.href='resultados-test.html'">
-            Siguiente
-            <i data-lucide="arrow-right"></i>
-          </button>
+          <div class="navigation-buttons">
+            <button type="button" class="btn-anterior" id="btn-prev" disabled>
+              <i data-lucide="arrow-left"></i>
+              Anterior
+            </button>
+            <button type="button" class="btn-siguiente" id="btn-next">
+              Siguiente
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
         </div>
 
       </form>
@@ -330,5 +214,6 @@
   </script>
 
   <script src="../../scripts/main.js" type="module"></script>
+  <script src="../../scripts/test-vocacional.js" type="module"></script>
 </body>
 </html>
