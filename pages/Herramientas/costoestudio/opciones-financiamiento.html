@@ -56,13 +56,17 @@
     <!-- Breadcrumb -->
     <div class="breadcrumb">
       <div class="breadcrumb-container">
-        <a href="../../index.html" class="breadcrumb-link">
+        <a href="../../../index.html" class="breadcrumb-link">
           <i data-lucide="home"></i>
           <span>Inicio</span>
         </a>
         <span class="breadcrumb-separator">/</span>
-        <a href="herramientas-seccion.html" class="breadcrumb-link">
-          <span>Opciones de Financiamiento</span>
+        <a href="../herramientas-seccion.html" class="breadcrumb-link">
+          <span>Herramientas</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#" class="breadcrumb-link">
+            <span>Opciones de Financiamiento</span>
         </a>
       </div>
     </div>
@@ -93,8 +97,8 @@
       <div class="cost-banner">
         <i data-lucide="alert-circle"></i>
         <div>
-          <p class="cost-banner-amount">💰 Costo total estimado: <strong>$65,000</strong></p>
-          <p class="cost-banner-desc">Para Ingeniería de Software en UPC (5 años)</p>
+          <p class="cost-banner-amount">💰 Costo total estimado: <strong id="total-cost-banner">--</strong></p>
+          <p id="cost-banner-description" class="cost-banner-desc">--</p>
         </div>
       </div>
 
@@ -110,34 +114,7 @@
             <p class="scholarship-discount">
               <span class="percentage">30%</span>
             </p>
-            <p class="scholarship-savings">Ahorro: <strong>$19,500</strong></p>
-          </div>
-
-          <div class="scholarship-card">
-            <h3 class="scholarship-name">Beca Talento Deportivo</h3>
-            <p class="scholarship-requirement">Representar universidad</p>
-            <p class="scholarship-discount">
-              <span class="percentage">25%</span>
-            </p>
-            <p class="scholarship-savings">Ahorro: <strong>$16,250</strong></p>
-          </div>
-
-          <div class="scholarship-card">
-            <h3 class="scholarship-name">Beca Socioeconómica</h3>
-            <p class="scholarship-requirement">Evaluación familiar</p>
-            <p class="scholarship-discount">
-              <span class="percentage">50%</span>
-            </p>
-            <p class="scholarship-savings">Ahorro: <strong>$32,500</strong></p>
-          </div>
-
-          <div class="scholarship-card">
-            <h3 class="scholarship-name">Beca Programación</h3>
-            <p class="scholarship-requirement">Examen técnico</p>
-            <p class="scholarship-discount">
-              <span class="percentage">20%</span>
-            </p>
-            <p class="scholarship-savings">Ahorro: <strong>$13,000</strong></p>
+            <p class="scholarship-savings">Ahorro: <strong>S/ 19,500</strong></p>
           </div>
         </div>
 
@@ -156,95 +133,8 @@
                 <span class="info-label">Plazo:</span>
                 <span class="info-value">10 años</span>
               </p>
-              <p>
-                <span class="info-label">Cuota mensual:</span>
-                <span class="info-value">$890</span>
-              </p>
             </div>
           </div>
-
-          <div class="credit-card">
-            <h3 class="credit-name">BBVA Educativo</h3>
-            <div class="credit-info">
-              <p>
-                <span class="info-label">Tasa:</span>
-                <span class="info-value">9.2% anual</span>
-              </p>
-              <p>
-                <span class="info-label">Plazo:</span>
-                <span class="info-value">8 años</span>
-              </p>
-              <p>
-                <span class="info-label">Cuota mensual:</span>
-                <span class="info-value">$980</span>
-              </p>
-            </div>
-          </div>
-
-          <div class="credit-card">
-            <h3 class="credit-name">Scotiabank Futuro</h3>
-            <div class="credit-info">
-              <p>
-                <span class="info-label">Tasa:</span>
-                <span class="info-value">8.8% anual</span>
-              </p>
-              <p>
-                <span class="info-label">Plazo:</span>
-                <span class="info-value">10 años</span>
-              </p>
-              <p>
-                <span class="info-label">Cuota mensual:</span>
-                <span class="info-value">$915</span>
-              </p>
-            </div>
-          </div>
-
-          <div class="credit-card">
-            <h3 class="credit-name">Interbank Estudiante</h3>
-            <div class="credit-info">
-              <p>
-                <span class="info-label">Tasa:</span>
-                <span class="info-value">9.0% anual</span>
-              </p>
-              <p>
-                <span class="info-label">Plazo:</span>
-                <span class="info-value">9 años</span>
-              </p>
-              <p>
-                <span class="info-label">Cuota mensual:</span>
-                <span class="info-value">$945</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mixed Plan Section -->
-      <div class="mixed-plan-section">
-        <h2 class="section-title">Plan de Financiamiento Mixto</h2>
-
-        <div class="mixed-plan-cards">
-          <div class="mixed-card">
-            <p class="mixed-amount">$19,500</p>
-            <p class="mixed-desc">Beca (30%)</p>
-          </div>
-          <div class="mixed-card">
-            <p class="mixed-amount">$30,000</p>
-            <p class="mixed-desc">Crédito educativo</p>
-          </div>
-          <div class="mixed-card">
-            <p class="mixed-amount">$15,500</p>
-            <p class="mixed-desc">Aporte familiar</p>
-          </div>
-        </div>
-
-        <div class="mixed-plan-details">
-          <p><strong>Cuota mensual estimada:</strong> $650</p>
-          <ul class="mixed-list">
-            <li>Crédito BCP: $450/mes por 10 años</li>
-            <li>Aporte familiar: $200/mes durante los estudios</li>
-            <li>Total ahorro por beca: $19,500</li>
-          </ul>
         </div>
       </div>
 
@@ -254,10 +144,6 @@
           <i data-lucide="shuffle"></i>
           Simular Otros Escenarios
         </a>
-        <button type="button" class="btn-primary">
-          <i data-lucide="phone"></i>
-          Solicitar Asesoría Financiera
-        </button>
       </div>
     </div>
   </section>
@@ -342,7 +228,7 @@
   <script>
     lucide.createIcons();
   </script>
-
-  <script src="../../../scripts/main.js" type="module"></script>
+  <script src="../../../scripts/database-calculators.js" type="module"></script>
+  <script src="../../../scripts/cost-simulator.js" type="module"></script>
 </body>
 </html>

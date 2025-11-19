@@ -56,13 +56,17 @@
     <!-- Breadcrumb -->
     <div class="breadcrumb">
       <div class="breadcrumb-container">
-        <a href="../../index.html" class="breadcrumb-link">
+        <a href="../../../index.html" class="breadcrumb-link">
           <i data-lucide="home"></i>
           <span>Inicio</span>
         </a>
         <span class="breadcrumb-separator">/</span>
-        <a href="herramientas-seccion.html" class="breadcrumb-link">
-          <span>Calculadora de Costos Educativos</span>
+        <a href="../herramientas-seccion.html" class="breadcrumb-link">
+          <span>Herramientas</span>
+        </a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="#" class="breadcrumb-link">
+            <span>Resultados de Simulación de Costos</span>
         </a>
       </div>
     </div>
@@ -96,18 +100,20 @@
           <h2 class="column-title">Parámetros de Cálculo</h2>
 
           <div class="param-item">
-            <label class="param-label">Universidad</label>
-            <p class="param-value">Universidad Privada ($800/mes)</p>
+            <label class="param-label">Carrera</label>
+            <p id="param-career" class="param-value">--</p>
           </div>
-
+          <div class="param-item">
+            <label class="param-label">Universidad</label>
+            <p id="param-university" class="param-value">--</p>
+          </div>
           <div class="param-item">
             <label class="param-label">Duración de estudios</label>
-            <p class="param-value">5 años</p>
+            <p id="param-duration" class="param-value">--</p>
           </div>
-
           <div class="param-item">
             <label class="param-label">Gastos adicionales mensuales</label>
-            <p class="param-value">200</p>
+            <p id="param-extra-costs" class="param-value">--</p>
           </div>
         </div>
 
@@ -116,34 +122,34 @@
           <h2 class="column-title highlight">Desglose de Costos</h2>
 
           <div class="cost-row">
-            <span class="cost-label">Matricula total:</span>
-            <span class="cost-value">S/ 48,000</span>
+            <span class="cost-label">Costo Académico (Pregrado):</span>
+            <span id="cost-pregrado" class="cost-value">--</span>
           </div>
-
           <div class="cost-row">
-            <span class="cost-label">Materiales y libros:</span>
-            <span class="cost-value">S/ 3,000</span>
+            <span class="cost-label">Costo Académico (Postgrado):</span>
+            <span id="cost-postgrado" class="cost-value">--</span>
           </div>
-
           <div class="cost-row">
             <span class="cost-label">Transporte:</span>
-            <span class="cost-value">S/ 6,000</span>
+            <span id="cost-transport" class="cost-value">--</span>
           </div>
-
           <div class="cost-row">
             <span class="cost-label">Alimentación:</span>
-            <span class="cost-value">S/ 6,000</span>
+            <span id="cost-food" class="cost-value">--</span>
           </div>
-
+           <div class="cost-row">
+            <span class="cost-label">Materiales y Libros:</span>
+            <span id="cost-materials" class="cost-value">--</span>
+          </div>
           <div class="cost-row">
             <span class="cost-label">Otros gastos:</span>
-            <span class="cost-value">S/ 2,000</span>
+            <span id="cost-others" class="cost-value">--</span>
           </div>
 
           <!-- Total Cost -->
           <div class="total-cost-box">
             <span class="total-label">Costo total estimado:</span>
-            <span class="total-value">S/ 65,000</span>
+            <span id="total-cost" class="total-value">--</span>
           </div>
         </div>
       </div>
@@ -242,7 +248,7 @@
   <script>
     lucide.createIcons();
   </script>
-
-  <script src="../../../scripts/main.js" type="module"></script>
+  <script src="../../../scripts/database-calculators.js" type="module"></script>
+  <script src="../../../scripts/cost-simulator.js" type="module"></script>
 </body>
 </html>
