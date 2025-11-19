@@ -89,11 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="career-meta-item">
               <i data-lucide="trending-up"></i>
-              <span>Demanda ${career.demand}</span>
+              <span>Demanda ${career.demanda_laboral}</span>
             </div>
             <div class="career-meta-item">
               <i data-lucide="building"></i>
-              <span>${career.universitiesCount} universidades</span>
+              <span>${career.universidades_count} universidades</span>
             </div>
           </div>
           <div class="career-card-actions">
@@ -147,13 +147,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Filter by difficulty
     const difficultyValue = difficultySelect.value;
     if (difficultyValue !== 'Cualquier nivel') {
-        filteredCareers = filteredCareers.filter(career => career.difficulty === difficultyValue);
+        filteredCareers = filteredCareers.filter(career => career.dificultad === difficultyValue);
     }
 
     // Filter by demand
     const demandValue = demandSelect.value;
     if (demandValue !== 'Cualquier demanda') {
-        filteredCareers = filteredCareers.filter(career => career.demand === demandValue);
+        filteredCareers = filteredCareers.filter(career => career.demanda_laboral === demandValue);
     }
 
     renderCareers(filteredCareers);
