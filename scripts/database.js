@@ -5,7 +5,7 @@
  * Versión actual de la base de datos
  * Incrementar este número cada vez que se actualice la estructura
  */
-const DB_VERSION = 12;
+const DB_VERSION = 13;
 
 /**
  * Inicializa la base de datos en localStorage si no existe
@@ -579,9 +579,20 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Alto',
         type: 'Pública',
-        careers: [1], // Ofrece Ingeniería de Software
+        careers: [1],
         description: 'Universidad pública líder en ingeniería y tecnología en el Perú.',
-        website: 'https://www.uni.edu.pe'
+        website: 'https://www.uni.edu.pe',
+        rating: 4.8,
+        accreditation: 'SUNEDU',
+        employability: '95%',
+        foundationYear: 1876,
+        studentCount: '15,000+',
+        facultyCount: '1,000+',
+        internationalAccreditations: ['ABET'],
+        modalities: ['Presencial'],
+        campuses: [{ name: 'Campus Principal', address: 'Av. Túpac Amaru 210, Rímac, Lima' }],
+        admissionDates: { inscription: '15 Dic 2024', exam: '15 Feb 2025', results: '25 Feb 2025' },
+        contact: { phone: '(+51 1) 481-1070', email: 'admision@uni.edu.pe' }
       },
       {
         id: 2,
@@ -590,9 +601,20 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Alto',
         type: 'Privada',
-        careers: [1, 4, 6], // Ofrece Ingeniería de Software, Administración y Derecho
-        description: 'Universidad privada reconocida por su excelencia académica.',
-        website: 'https://www.ulima.edu.pe'
+        careers: [1, 4, 6],
+        description: 'Universidad privada reconocida por su excelencia académica en negocios y comunicaciones.',
+        website: 'https://www.ulima.edu.pe',
+        rating: 4.7,
+        accreditation: 'SUNEDU',
+        employability: '94%',
+        foundationYear: 1962,
+        studentCount: '20,000+',
+        facultyCount: '1,200+',
+        internationalAccreditations: ['AACSB', 'ABET'],
+        modalities: ['Presencial', 'Semipresencial'],
+        campuses: [{ name: 'Campus Monterrico', address: 'Av. Javier Prado Este 4600, Santiago de Surco, Lima' }],
+        admissionDates: { inscription: '01 Nov 2024', exam: '10 Dic 2024', results: '15 Dic 2024' },
+        contact: { phone: '(+51 1) 437-6767', email: 'informes@ulima.edu.pe' }
       },
       {
         id: 3,
@@ -601,9 +623,20 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Alto',
         type: 'Privada',
-        careers: [2, 5], // Ofrece Medicina y Psicología
-        description: 'Universidad especializada en ciencias de la salud.',
-        website: 'https://www.upch.edu.pe'
+        careers: [2, 5],
+        description: 'Universidad especializada y líder en ciencias de la salud en el Perú.',
+        website: 'https://www.upch.edu.pe',
+        rating: 4.9,
+        accreditation: 'SUNEDU',
+        employability: '98%',
+        foundationYear: 1961,
+        studentCount: '8,000+',
+        facultyCount: '900+',
+        internationalAccreditations: ['ASIC', 'WFME'],
+        modalities: ['Presencial'],
+        campuses: [{ name: 'Campus Central', address: 'Av. Honorio Delgado 430, San Martín de Porres, Lima' }],
+        admissionDates: { inscription: '10 Nov 2024', exam: '05 Dic 2024', results: '12 Dic 2024' },
+        contact: { phone: '(+51 1) 319-0000', email: 'admision@upch.pe' }
       },
       {
         id: 4,
@@ -612,9 +645,20 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Muy Alto',
         type: 'Privada',
-        careers: [1, 2, 3, 4, 5, 6], // Ofrece todas las carreras
-        description: 'La universidad más prestigiosa del Perú, con amplia oferta académica.',
-        website: 'https://www.pucp.edu.pe'
+        careers: [1, 2, 3, 4, 5, 6],
+        description: 'La universidad más prestigiosa del Perú, con amplia oferta académica y de investigación.',
+        website: 'https://www.pucp.edu.pe',
+        rating: 4.9,
+        accreditation: 'SUNEDU',
+        employability: '96%',
+        foundationYear: 1917,
+        studentCount: '28,000+',
+        facultyCount: '2,500+',
+        internationalAccreditations: ['ABET', 'AACSB', 'CACS'],
+        modalities: ['Presencial', 'Semipresencial', 'Virtual'],
+        campuses: [{ name: 'Campus Pando', address: 'Av. Universitaria 1801, San Miguel, Lima' }],
+        admissionDates: { inscription: '20 Oct 2024', exam: '25 Nov 2024', results: '02 Dic 2024' },
+        contact: { phone: '(+51 1) 626-2000', email: 'informes@pucp.edu.pe' }
       },
       {
         id: 5,
@@ -623,9 +667,20 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Alto',
         type: 'Pública',
-        careers: [2, 3, 4, 5, 6], // Ofrece varias carreras
-        description: 'La universidad más antigua de América, con tradición y prestigio.',
-        website: 'https://www.unmsm.edu.pe'
+        careers: [2, 3, 4, 5, 6],
+        description: 'La universidad más antigua de América, con una rica tradición académica y prestigio nacional.',
+        website: 'https://www.unmsm.edu.pe',
+        rating: 4.7,
+        accreditation: 'SUNEDU',
+        employability: '90%',
+        foundationYear: 1551,
+        studentCount: '40,000+',
+        facultyCount: '3,000+',
+        internationalAccreditations: [],
+        modalities: ['Presencial'],
+        campuses: [{ name: 'Ciudad Universitaria', address: 'Av. Venezuela s/n, Cercado de Lima, Lima' }],
+        admissionDates: { inscription: '01 Dic 2024', exam: '01 Mar 2025', results: '15 Mar 2025' },
+        contact: { phone: '(+51 1) 619-7000', email: 'admision.oca@unmsm.edu.pe' }
       },
       {
         id: 6,
@@ -634,9 +689,20 @@ export function initDB() {
         location: 'Piura / Lima',
         prestige: 'Alto',
         type: 'Privada',
-        careers: [1, 4, 6], // Ofrece Ingeniería, Administración y Derecho
-        description: 'Universidad privada con campus en Piura y Lima.',
-        website: 'https://www.udep.edu.pe'
+        careers: [1, 4, 6],
+        description: 'Universidad privada con un enfoque en la formación humanística y profesional, con campus en Piura y Lima.',
+        website: 'https://www.udep.edu.pe',
+        rating: 4.6,
+        accreditation: 'SUNEDU',
+        employability: '93%',
+        foundationYear: 1969,
+        studentCount: '10,000+',
+        facultyCount: '800+',
+        internationalAccreditations: ['ABET'],
+        modalities: ['Presencial'],
+        campuses: [{ name: 'Campus Piura', address: 'Av. Ramón Mugica 131, Piura' }, { name: 'Campus Lima', address: 'Calle Mártir José Olaya 162, Miraflores, Lima' }],
+        admissionDates: { inscription: '15 Oct 2024', exam: '20 Nov 2024', results: '28 Nov 2024' },
+        contact: { phone: '(+51 73) 28-4500', email: 'info@udep.edu.pe' }
       }
     ],
     vocational_tests: {
