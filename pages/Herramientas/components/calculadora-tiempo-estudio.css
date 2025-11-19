@@ -536,3 +536,10 @@
     font-size: 12px;
   }
 }
+
+/*idresults-content*/
+
+#results-content .result-item,.timeline-box,.total-time-box {
+  margin-bottom: var(--spacing-sm);
+  
+}
