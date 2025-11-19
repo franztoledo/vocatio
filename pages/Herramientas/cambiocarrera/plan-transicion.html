@@ -88,7 +88,7 @@
 
   <section class="page-container">
     <div class="container">
-
+        <div id="plan-content">
       <!-- Summary Box -->
       <div class="summary-card">
         <div class="summary-item">
@@ -100,18 +100,18 @@
           </div>
         </div>
 
-        <div class="summary-item">
-          <div class="summary-item-label">8 materias</div>
-          <div class="summary-item-name">Convalidables</div>
+        <div id="summary-convalidables" class="summary-item">
+          <div class="summary-item-label">--</div>
+          <div class="summary-item-name">Materias Convalidables</div>
         </div>
 
-        <div class="summary-item">
-          <div class="summary-item-label">2.5 años</div>
+        <div id="summary-tiempo" class="summary-item">
+          <div class="summary-item-label">--</div>
           <div class="summary-item-name">Tiempo restante</div>
         </div>
 
-        <div class="summary-item">
-          <div class="summary-item-label">$12,500</div>
+        <div id="summary-costo" class="summary-item">
+          <div class="summary-item-label">--</div>
           <div class="summary-item-name">Costo estimado</div>
         </div>
       </div>
@@ -162,7 +162,7 @@
           </div>
         </div>
       </div>
-
+    </div>
       <!-- Recommendations -->
       <div class="recommendations-box">
         <h2 class="recommendations-title">Recomendaciones Importantes</h2>
@@ -176,14 +176,11 @@
 
       <!-- Actions -->
       <div class="plan-actions">
-        <button class="btn-secondary" onclick="window.print()">
+        <button id="download-btn" class="btn-secondary">
           <i data-lucide="download"></i>
           Descargar Plan PDF
         </button>
-        <button class="btn-primary">
-          <i data-lucide="phone"></i>
-          Contactar Asesor
-        </button>
+        
       </div>
     </div>
   </section>
@@ -269,6 +266,11 @@
     lucide.createIcons();
   </script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="../../../scripts/main.js" type="module"></script>
+  <script src="../../../scripts/database-calculators.js"></script>
+  <script src="../../../scripts/career-change-calculator.js" type="module"></script>
+  <script src="../../../scripts/pdf-generator.js"></script>
 </body>
 </html>
