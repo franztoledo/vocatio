@@ -448,7 +448,7 @@
   max-width: 900px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: var(--spacing-md);
 }
 
