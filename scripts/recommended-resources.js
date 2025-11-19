@@ -1,4 +1,4 @@
-import { getDB, getActiveUser, saveDB } from './utils.js';
+import { getDB, getActiveUser, saveDB, setActiveUser } from './utils.js';
 
 let recommendedResourcesCache = [];
 let currentUserCache = null;
@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function initializePage(userId) {
     const db = getDB();
     currentUserCache = db.users.find(u => u.id === userId);
+    
+    // FIX: Defensively ensure savedResources array exists to prevent crashes
+    if (!currentUserCache.savedResources) {
+        currentUserCache.savedResources = [];
+    }
+
     const allResources = db.resources;
     
     const userInterests = getUserInterests(currentUserCache);
@@ -49,7 +55,7 @@ function initializePage(userId) {
     renderResources(recommendedResourcesCache, currentUserCache);
     renderSavedResources(currentUserCache);
     
-    setupEventListeners(currentUserCache);
+    setupEventListeners();
 }
 
 // --- Data & State Management ---
@@ -69,6 +75,11 @@ function toggleBookmark(resourceId, userId) {
     const db = getDB();
     const user = db.users.find(u => u.id === userId);
     if (!user) return;
+
+    // FIX: Defensively ensure savedResources array exists
+    if (!user.savedResources) {
+        user.savedResources = [];
+    }
 
     let isNowSaved;
     const resourceIndex = user.savedResources.indexOf(resourceId);
@@ -94,6 +105,7 @@ function toggleBookmark(resourceId, userId) {
         });
     }
     saveDB(db);
+    setActiveUser(user); // FIX: Keep session user in sync
     currentUserCache = user; // Update cache
     return isNowSaved;
 }
@@ -275,34 +287,46 @@ function updateDynamicUI(userId, resourceId, isNowSaved) {
 
 
 // --- Event Listeners ---
-function setupEventListeners(user) {
-    // Use a static object to prevent re-cloning nodes if not necessary
+function setupEventListeners() {
+    // Use a static property on the function to prevent re-adding listeners
     if (setupEventListeners.initialized) {
         return;
     }
 
-    // Category filter logic is now handled purely by CSS.
-    // The JavaScript no longer needs to manually handle display styles.
-
     const resourcesGrid = document.querySelector('.resources-grid');
-    resourcesGrid.addEventListener('click', (e) => {
-        const bookmarkBtn = e.target.closest('.btn-bookmark');
-        if (bookmarkBtn) {
-            const resourceId = parseInt(bookmarkBtn.dataset.id, 10);
-            const isNowSaved = toggleBookmark(resourceId, user.id);
-            updateDynamicUI(user.id, resourceId, isNowSaved);
-        }
-    });
+    if (resourcesGrid) {
+        resourcesGrid.addEventListener('click', (e) => {
+            const bookmarkBtn = e.target.closest('.btn-bookmark');
+            if (bookmarkBtn) {
+                const activeUser = getActiveUser();
+                if (!activeUser) {
+                    showToast('Debes iniciar sesión para guardar recursos.', 'error');
+                    return;
+                }
+                const resourceId = parseInt(bookmarkBtn.dataset.id, 10);
+                const isNowSaved = toggleBookmark(resourceId, activeUser.id);
+                updateDynamicUI(activeUser.id, resourceId, isNowSaved);
+            }
+        });
+    }
 
     const savedGrid = document.querySelector('.saved-grid');
-    savedGrid.addEventListener('click', (e) => {
-        const removeBtn = e.target.closest('.btn-remove-saved');
-        if (removeBtn) {
-            const resourceId = parseInt(removeBtn.dataset.id, 10);
-            const isNowSaved = toggleBookmark(resourceId, user.id);
-            updateDynamicUI(user.id, resourceId, isNowSaved);
-        }
-    });
+    if (savedGrid) {
+        savedGrid.addEventListener('click', (e) => {
+            const removeBtn = e.target.closest('.btn-remove-saved');
+            if (removeBtn) {
+                const activeUser = getActiveUser();
+                if (!activeUser) {
+                    showToast('Debes iniciar sesión para guardar recursos.', 'error');
+                    return;
+                }
+                const resourceId = parseInt(removeBtn.dataset.id, 10);
+                // toggleBookmark will return `false` here as the item is being removed
+                const isNowSaved = toggleBookmark(resourceId, activeUser.id);
+                updateDynamicUI(activeUser.id, resourceId, isNowSaved);
+            }
+        });
+    }
 
     setupEventListeners.initialized = true;
 }
