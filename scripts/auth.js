@@ -253,6 +253,7 @@ export function initRegister() {
         email: email,
         password: password,
         profile: {
+          photo: '', // Añadido para la foto de perfil
           age: null,
           level: '',
           interests: [],
