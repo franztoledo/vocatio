@@ -95,8 +95,8 @@
    STATS SECTION
    ============================================ */
 .stats-section {
-  background: var(--neutral-50);
-  padding: var(--spacing-xxl) var(--spacing-sm);
+  background: var(--white);
+  padding: var(--spacing-xxl) var(--spacing-sm) 0;
 }
 
 .stats-grid-test {
