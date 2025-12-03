@@ -1,5 +1,14 @@
 import { db_calculators } from './database-calculators.js';
 
+// Define a map for career images within this script, directly using db_calculators career IDs
+const careerImageMap = {
+    1: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=200&fit=crop', // Ingeniería de Software
+    2: 'https://uni.edu.gt/wp-content/uploads/sites/19/2024/04/Administracion-de-Empresas-Concepto-y-Funciones3.jpg', // Administración de Empresas
+    3: 'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?w=400&h=200&fit=crop', // Marketing Digital
+    4: 'https://th.bing.com/th/id/R.05d3abe74ed3bcb45e9c2b87f9ffdbef?rik=E%2bTT3ccbIDKW%2fw&riu=http%3a%2f%2fwww.tuproyectodevida.pe%2fwp-content%2fuploads%2f2021%2f10%2fingenieria-industrial-que-es-campo-laboral-1200x628.jpg&ehk=UfqZfBJNFEdkLRdVkyobjZVi2hA9xzKnVS3UXn4YDOI%3d&risl=&pid=ImgRaw&r=0', // Ingeniería Industrial
+    5: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=200&fit=crop' // Psicología
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const pagePath = window.location.pathname;
 
@@ -81,11 +90,12 @@ function initSelectDestinationPage() {
 
         destinationCareers.forEach(career => {
             const compatibility = calculateCompatibility(currentCareer, career);
+            const imageUrl = careerImageMap[career.id] || 'https://via.placeholder.com/400x250/cccccc/ffffff?text=Imagen+no+disponible'; // Fallback image
             const card = document.createElement('div');
             card.className = 'career-card';
             card.innerHTML = `
                 <div class="career-image">
-                    <img src="https://via.placeholder.com/400x250/22c55e/ffffff?text=${career.name.replace(/\s/g, '+')}" alt="${career.name}">
+                    <img src="${imageUrl}" alt="${career.name}">
                 </div>
                 <div class="career-content">
                     <h3 class="career-name">${career.name}</h3>
@@ -117,6 +127,7 @@ function initSelectDestinationPage() {
         }
     });
 }
+
 
 function calculateCompatibility(currentCareer, destinationCareer) {
     let score = 50;
