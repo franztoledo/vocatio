@@ -12,11 +12,32 @@ document.addEventListener('DOMContentLoaded', () => {
 function populateReport() {
     const user = getActiveUser();
     const favoriteCareers = getFavoriteCareers();
+    const config = JSON.parse(localStorage.getItem('reportConfig'));
 
     if (!user) {
         document.getElementById('report-user-name').textContent = "Usuario no encontrado";
         document.getElementById('report-summary').textContent = "Inicia sesión para ver tu reporte.";
         return;
+    }
+
+    // --- Apply Configuration if exists ---
+    if (config) {
+        if (config.title) {
+            document.querySelector('.report-preview-title').textContent = config.title;
+        }
+        
+        // Visibility Logic
+        const toggleSection = (id, isVisible) => {
+            const el = document.getElementById(id);
+            if (el) el.style.display = isVisible ? 'block' : 'none';
+        };
+
+        if (config.sections) {
+            toggleSection('section-header', config.sections['Portada personalizada']);
+            toggleSection('section-test-results', config.sections['Resultados del test']);
+            toggleSection('section-resumen', config.sections['Resumen ejecutivo']);
+            toggleSection('section-favorite-careers', config.sections['Carreras recomendadas']);
+        }
     }
 
     // Populate header
@@ -35,7 +56,13 @@ function populateReport() {
                                      <span class="career-match-preview">${result.score}% compatibilidad</span>`;
             testResultsContainer.appendChild(resultItem);
         });
-        document.getElementById('report-summary').textContent = `Basado en tu análisis vocacional, muestras una alta compatibilidad con el área de ${latestTest.results[0].area} (${latestTest.results[0].score}%).`;
+        
+        // Use custom message if available, otherwise default summary
+        if (config && config.message && config.message.trim() !== "") {
+             document.getElementById('report-summary').textContent = config.message;
+        } else {
+             document.getElementById('report-summary').textContent = `Basado en tu análisis vocacional, muestras una alta compatibilidad con el área de ${latestTest.results[0].area} (${latestTest.results[0].score}%).`;
+        }
 
     } else {
         testResultsContainer.innerHTML = '<p>No has completado ningún test vocacional.</p>';
@@ -63,11 +90,16 @@ function generatePDF() {
     const element = document.getElementById('reporte-a-exportar');
     
     const opt = {
-      margin:       0.5,
+      margin:       [10, 10, 10, 10],
       filename:     'Mi-Reporte-Vocacional.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      html2canvas:  { 
+        scale: 2, 
+        useCORS: true,
+        scrollY: 0
+      },
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak:    { mode: ['css', 'legacy'] }
     };
 
     if(downloadButton) downloadButton.style.display = 'none';
