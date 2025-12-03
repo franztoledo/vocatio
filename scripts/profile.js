@@ -465,6 +465,7 @@ export function initConfigProfile() {
   configurarGuardadoPreferencias();
 
   // Configurar interacciones especiales
+  configurarFotoPerfil(usuario);
   configurarLogros();
   configurarHabilidades();
 }
@@ -473,11 +474,15 @@ export function initConfigProfile() {
  * Carga información personal del usuario en el formulario
  */
 function cargarInformacionPersonal(usuario) {
-  // Avatar con iniciales
-  const currentPhoto = document.querySelector('.current-photo');
-  if (currentPhoto && usuario.name) {
-    const iniciales = usuario.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
-    currentPhoto.textContent = iniciales;
+  // Cargar avatar (foto o iniciales)
+  const photoDisplay = document.getElementById('profile-photo-display');
+  if (photoDisplay) {
+    if (usuario.profile?.photo) {
+      photoDisplay.innerHTML = `<img src="${usuario.profile.photo}" alt="Foto de perfil">`;
+    } else {
+      const iniciales = usuario.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+      photoDisplay.innerHTML = `<span>${iniciales}</span>`;
+    }
   }
 
   // Campos del formulario
@@ -501,22 +506,93 @@ function cargarInformacionPersonal(usuario) {
 }
 
 /**
- * Carga información educativa del usuario
+ * Configura la lógica para subir y eliminar la foto de perfil
+ */
+function configurarFotoPerfil(usuario) {
+  const photoInput = document.getElementById('profile-photo-input');
+  const photoDisplay = document.getElementById('profile-photo-display');
+  const removeButton = document.getElementById('profile-photo-remove');
+
+  if (!photoInput || !photoDisplay || !removeButton) return;
+
+  // Evento para cuando se selecciona un archivo
+  photoInput.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // Validar tipo y tamaño
+    if (!file.type.startsWith('image/')) {
+      mostrarToast('Archivo no válido', 'Por favor, selecciona una imagen.');
+      return;
+    }
+    if (file.size > 2 * 1024 * 1024) { // 2MB
+      mostrarToast('Imagen muy grande', 'El tamaño máximo es 2MB.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const base64Image = e.target.result;
+      
+      // Actualizar UI
+      photoDisplay.innerHTML = `<img src="${base64Image}" alt="Foto de perfil">`;
+      
+      // Actualizar usuario
+      const usuarioActual = getActiveUser();
+      usuarioActual.profile.photo = base64Image;
+      updateActiveUser(usuarioActual);
+      
+      mostrarToast('Foto actualizada', 'Tu nueva foto de perfil ha sido guardada.');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Evento para eliminar la foto
+  removeButton.addEventListener('click', () => {
+    const usuarioActual = getActiveUser();
+    if (!usuarioActual.profile.photo) {
+        mostrarToast('Sin cambios', 'No tienes una foto de perfil para eliminar.');
+        return;
+    }
+
+    // Actualizar UI
+    const iniciales = usuarioActual.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+    photoDisplay.innerHTML = `<span>${iniciales}</span>`;
+    
+    // Actualizar usuario
+    usuarioActual.profile.photo = '';
+    updateActiveUser(usuarioActual);
+    
+    mostrarToast('Foto eliminada', 'Se ha quitado tu foto de perfil.');
+  });
+}
+
+
+/**
+ * Carga información educativa del usuario y configura la lógica de los selects dependientes.
  */
 function cargarInformacionEducativa(usuario) {
-  // Mapeo de niveles educativos
+  const nivelEducativoSelect = document.getElementById('nivel-educativo');
+  const gradoActualSelect = document.getElementById('grado-actual');
+
+  // Mapeo de niveles educativos para la carga inicial
   const levelMap = {
+    'Secundaria': 'secundaria',
     'Educación Secundaria': 'secundaria',
     'Educación Técnica': 'tecnico',
+    'Universitario': 'universitario',
     'Educación Universitaria (En curso)': 'universitario',
     'Educación Universitaria (Completa)': 'universitario',
+    'Postgrado': 'postgrado',
     'Posgrado/Maestría': 'postgrado',
     'Doctorado': 'postgrado'
   };
 
+  const savedLevel = levelMap[usuario.profile?.level] || 'secundaria';
+  
+  // Cargar campos del formulario
   const campos = {
-    'nivel-educativo': levelMap[usuario.profile?.level] || '',
-    'grado-actual': usuario.profile?.currentGrade || '',
+    'nivel-educativo': savedLevel,
     institucion: usuario.profile?.institution || '',
     promedio: usuario.profile?.gpa || '',
     'ano-graduacion': usuario.profile?.graduationYear || new Date().getFullYear()
@@ -525,6 +601,47 @@ function cargarInformacionEducativa(usuario) {
   Object.entries(campos).forEach(([id, valor]) => {
     const input = document.getElementById(id);
     if (input) input.value = valor;
+  });
+
+  // Lógica para actualizar las opciones de "grado-actual"
+  const actualizarOpcionesGrado = (nivel) => {
+    gradoActualSelect.innerHTML = '<option value="">Seleccionar</option>'; // Limpiar y poner opción por defecto
+    let opciones = [];
+
+    switch (nivel) {
+      case 'secundaria':
+        opciones = ['1er año', '2do año', '3er año', '4to año', '5to año'];
+        break;
+      case 'tecnico':
+        opciones = ['Ciclo I', 'Ciclo II', 'Ciclo III', 'Ciclo IV', 'Ciclo V', 'Ciclo VI'];
+        break;
+      case 'universitario':
+        for (let i = 1; i <= 12; i++) {
+          opciones.push(`Ciclo ${i}`);
+        }
+        break;
+      case 'postgrado':
+        opciones = ['Primer año', 'Segundo año', 'Egresado'];
+        break;
+    }
+    
+    opciones.forEach(op => {
+      const optionEl = document.createElement('option');
+      optionEl.value = op;
+      optionEl.textContent = op;
+      gradoActualSelect.appendChild(optionEl);
+    });
+  };
+
+  // Cargar opciones iniciales y seleccionar valor guardado
+  actualizarOpcionesGrado(savedLevel);
+  if (usuario.profile?.currentGrade) {
+    gradoActualSelect.value = usuario.profile.currentGrade;
+  }
+
+  // Listener para cambios en el nivel educativo
+  nivelEducativoSelect.addEventListener('change', () => {
+    actualizarOpcionesGrado(nivelEducativoSelect.value);
   });
 
   // Cargar intereses
@@ -549,6 +666,7 @@ function cargarInformacionEducativa(usuario) {
     }
   }
 }
+
 
 /**
  * Carga preferencias vocacionales del usuario

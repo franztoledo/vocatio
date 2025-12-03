@@ -142,14 +142,16 @@
           <div class="form-section">
             <h3 class="section-title">Foto de Perfil</h3>
             <div class="profile-photo-upload">
-              <div class="current-photo">MG</div>
+              <div class="current-photo" id="profile-photo-display">
+                <!-- Avatar will be loaded here by profile.js -->
+              </div>
               <div class="photo-actions">
                 <label class="btn-upload">
                   <i data-lucide="camera"></i>
                   Cambiar foto
-                  <input type="file" accept="image/*" hidden>
+                  <input type="file" id="profile-photo-input" accept="image/*" hidden>
                 </label>
-                <button type="button" class="btn-remove">
+                <button type="button" id="profile-photo-remove" class="btn-remove">
                   <i data-lucide="trash-2"></i>
                   Eliminar
                 </button>
