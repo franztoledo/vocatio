@@ -1140,6 +1140,48 @@ export function initResultsPage() {
   console.log('🎯 Renderizando misiones...');
   renderMissions(resultData.results, db);
 
+  // --- PDF Download Logic ---
+  const downloadBtn = document.querySelector('.btn-secondary-action');
+  if (downloadBtn) {
+      downloadBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          // Check if html2pdf is loaded
+          if (typeof html2pdf === 'undefined') {
+              console.error('html2pdf library not found');
+              alert('Error: La librería de PDF no está cargada.');
+              return;
+          }
+
+          const element = document.querySelector('.results-content .container');
+          const buttons = document.querySelector('.action-buttons');
+          
+          // Hide buttons for PDF
+          if (buttons) buttons.style.display = 'none';
+
+          const opt = {
+              margin: [10, 10, 10, 10],
+              filename: 'Mis-Resultados-Vocatio.pdf',
+              image: { type: 'jpeg', quality: 0.98 },
+              html2canvas: { 
+                  scale: 2, 
+                  useCORS: true,
+                  scrollY: 0
+              },
+              jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+              pagebreak: { mode: ['css', 'legacy'] }
+          };
+
+          html2pdf().from(element).set(opt).save().then(() => {
+              // Show buttons again
+               if (buttons) buttons.style.display = 'flex';
+          }).catch(err => {
+              console.error("PDF generation error:", err);
+              if (buttons) buttons.style.display = 'flex';
+          });
+      });
+  }
+
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }

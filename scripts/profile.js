@@ -1486,6 +1486,41 @@ export function initHistoryPage() {
   renderInProgressTests(user, inProgressContainer);
   renderCompletedTests(user, completedContainer);
   
+  // Event Listener for Download Buttons
+  if (completedContainer) {
+      completedContainer.addEventListener('click', (e) => {
+          const btn = e.target.closest('.btn-download');
+          if (btn) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              const card = btn.closest('.test-card');
+              const resultId = btn.dataset.id;
+              
+              if (typeof html2pdf === 'undefined') {
+                  alert('La librería de PDF no está cargada.');
+                  return;
+              }
+
+              const actionsDiv = card.querySelector('.test-actions');
+              if(actionsDiv) actionsDiv.style.display = 'none';
+
+              const opt = {
+                  margin: 0.5,
+                  filename: `Resultado-Test-${resultId}.pdf`,
+                  image: { type: 'jpeg', quality: 0.98 },
+                  html2canvas: { scale: 2, useCORS: true },
+                  jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+                  pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+              };
+
+              html2pdf().from(card).set(opt).save().then(() => {
+                  if(actionsDiv) actionsDiv.style.display = 'flex';
+              });
+          }
+      });
+  }
+  
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
@@ -1577,7 +1612,13 @@ function renderCompletedTests(user, container) {
     const formattedDate = `${date.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })} a las ${date.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}`;
     
     const topArea = result.topArea || 'N/A';
-    const topPercentage = result.results[topArea] || 0;
+    let topPercentage = 0;
+    if (Array.isArray(result.results)) {
+        const found = result.results.find(r => r.area === topArea);
+        topPercentage = found ? found.score : 0;
+    } else {
+        topPercentage = result.results[topArea] || 0;
+    }
 
     completedContent += `
       <div class="test-card ${isMostRecent ? 'most-recent' : ''}">
@@ -1601,9 +1642,7 @@ function renderCompletedTests(user, container) {
           <a href="resultados-test.html?resultId=${result.id}" class="btn-see-results">
             Ver Resultados
           </a>
-          <button class="btn-download" disabled>
-            Descargar PDF
-          </button>
+          
         </div>
       </div>
     `;
