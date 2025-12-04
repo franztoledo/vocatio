@@ -3,7 +3,7 @@
 import { getDB } from './utils.js';
 
 const universityImageMap = {
-    1: 'https://media.canva.com/v2/image-resize/format:PNG/height:158/quality:100/uri:ifs%3A%2F%2FM%2Ff25e86d4-2741-4364-8e5b-f62252cff5cd/watermark:F/width:392?csig=AAAAAAAAAAAAAAAAAAAAACt-1iFzTTM-qRR42BHyXNpUPo3rhgeWrINA5CduMFKL&exp=1764749755&osig=AAAAAAAAAAAAAAAAAAAAAA5H7aziB8j1168KAJFo4LxwAxkWcUImCjNd5XHDR_5N&signer=media-rpc&x-canva-quality=screen',
+    1: 'https://i.ibb.co/WWpXBJyz/width-392.webp',
     2: 'https://www.grupolarabida.org/wp-content/uploads/2020/11/UNI-lima.png',
     3: 'https://dondeestudiar.pe/wp-content/uploads/2023/01/universidad-peruana-cayetano-heredia.jpg',
     4: 'https://www.canadaperu.org/sites/default/files/store/socio/logo_web/2025-07/imagotipo%20PUCP%20azul.png',
