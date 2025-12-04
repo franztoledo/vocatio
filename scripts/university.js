@@ -2,6 +2,15 @@
 
 import { getDB } from './utils.js';
 
+const universityImageMap = {
+    1: 'https://media.canva.com/v2/image-resize/format:PNG/height:158/quality:100/uri:ifs%3A%2F%2FM%2Ff25e86d4-2741-4364-8e5b-f62252cff5cd/watermark:F/width:392?csig=AAAAAAAAAAAAAAAAAAAAACt-1iFzTTM-qRR42BHyXNpUPo3rhgeWrINA5CduMFKL&exp=1764749755&osig=AAAAAAAAAAAAAAAAAAAAAA5H7aziB8j1168KAJFo4LxwAxkWcUImCjNd5XHDR_5N&signer=media-rpc&x-canva-quality=screen',
+    2: 'https://www.grupolarabida.org/wp-content/uploads/2020/11/UNI-lima.png',
+    3: 'https://dondeestudiar.pe/wp-content/uploads/2023/01/universidad-peruana-cayetano-heredia.jpg',
+    4: 'https://www.canadaperu.org/sites/default/files/store/socio/logo_web/2025-07/imagotipo%20PUCP%20azul.png',
+    5: 'https://4.bp.blogspot.com/-zZruROwDW7Y/VzTsqAQ5QBI/AAAAAAAAQkg/r7TEk5B6-5krJL4_c_l8JHFwjKA0R64OQCLcB/s1600/unmsm-logo.jpg',
+    6: 'https://estudiaperu.pe/wp-content/uploads/2019/07/logoudepazul.png'
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
 
@@ -78,10 +87,11 @@ function createUniversityCard(uni) {
     card.className = 'university-card';
 
     const typeClass = uni.type === 'Pública' ? 'nacional' : 'privada';
+    const imageUrl = universityImageMap[uni.id] || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=250&fit=crop';
 
     card.innerHTML = `
         <div class="uni-card-image">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=250&fit=crop" alt="${uni.name}">
+            <img src="${imageUrl}" alt="${uni.name}">
         </div>
         <div class="uni-card-content">
             <div class="uni-card-header">
@@ -107,7 +117,7 @@ function createUniversityCard(uni) {
                 <div class="detail-row">
                     <span class="detail-label"><i data-lucide="dollar-sign"></i>Costo mensual</span>
                     <span class="detail-value">${uni.cost}</span>
-                </div>
+                }
                 <div class="detail-row">
                     <span class="detail-label"><i data-lucide="star"></i>Rating</span>
                     <span class="detail-value">${uni.rating}/5</span>

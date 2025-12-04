@@ -98,7 +98,7 @@
    ============================================ */
 .compatibility-section {
   background: var(--neutral-50);
-  padding: var(--spacing-xxl) var(--spacing-sm);
+  padding: var(--spacing-xxl) var(--spacing-sm) 0;
 }
 
 .compatibility-wrapper {
@@ -213,6 +213,16 @@
   width: 24px;
   height: 24px;
   color: var(--primary-600);
+}
+
+.compatibility-card-link {
+  text-decoration: none; /* Elimina el subrayado por defecto de los enlaces */
+  color: inherit; /* Hereda el color del texto del padre */
+}
+
+.compatibility-card-link:hover .compatibility-card {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(51, 148, 179, 0.2);
 }
 
 /* ============================================

@@ -8,16 +8,8 @@
 const DB_VERSION = 13;
 
 /**
- * Inicializa la base de datos en localStorage si no existe
  *
- * ¿Cómo funciona?
- * 1. Verifica si ya existe una DB guardada
- * 2. Verifica la versión de la BD
- * 3. Si la versión es antigua o no existe, crea una nueva
- * 4. Si NO existe, crea una nueva con datos de ejemplo
- * 5. La guarda en localStorage
- *
- * @returns {Object} La base de datos completa
+ * @returns {Object}
  */
 export function initDB() {
   // Verificar si existe la BD y su versión
@@ -579,6 +571,7 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Alto',
         type: 'Pública',
+        imageUrl: 'https://images.unsplash.com/photo-1628232719589-39f8492054a8?w=400&h=250&fit=crop',
         careers: [1],
         description: 'Universidad pública líder en ingeniería y tecnología en el Perú.',
         website: 'https://www.uni.edu.pe',
@@ -601,6 +594,7 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Alto',
         type: 'Privada',
+        imageUrl: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=250&fit=crop',
         careers: [1, 4, 6],
         description: 'Universidad privada reconocida por su excelencia académica en negocios y comunicaciones.',
         website: 'https://www.ulima.edu.pe',
@@ -623,6 +617,7 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Alto',
         type: 'Privada',
+        imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=250&fit=crop',
         careers: [2, 5],
         description: 'Universidad especializada y líder en ciencias de la salud en el Perú.',
         website: 'https://www.upch.edu.pe',
@@ -645,6 +640,7 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Muy Alto',
         type: 'Privada',
+        imageUrl: 'https://images.unsplash.com/photo-1491841550275-5b462bf48549?w=400&h=250&fit=crop',
         careers: [1, 2, 3, 4, 5, 6],
         description: 'La universidad más prestigiosa del Perú, con amplia oferta académica y de investigación.',
         website: 'https://www.pucp.edu.pe',
@@ -667,6 +663,7 @@ export function initDB() {
         location: 'Lima',
         prestige: 'Alto',
         type: 'Pública',
+        imageUrl: 'https://images.unsplash.com/photo-1562774053-701939374585?w=400&h=250&fit=crop',
         careers: [2, 3, 4, 5, 6],
         description: 'La universidad más antigua de América, con una rica tradición académica y prestigio nacional.',
         website: 'https://www.unmsm.edu.pe',
@@ -689,6 +686,7 @@ export function initDB() {
         location: 'Piura / Lima',
         prestige: 'Alto',
         type: 'Privada',
+        imageUrl: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=250&fit=crop',
         careers: [1, 4, 6],
         description: 'Universidad privada con un enfoque en la formación humanística y profesional, con campus en Piura y Lima.',
         website: 'https://www.udep.edu.pe',
@@ -911,7 +909,7 @@ export function initDB() {
                 id: 7,
                 title: '¿Esto te llama?',
                 description: 'Resolver problemas de manera práctica',
-                imageUrl: 'https://images.unsplash.com/photo-1581092918484-8313e1f7e8d6?w=800&h=600&fit=crop',
+                imageUrl: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&h=600&fit=crop',
                 likeArea: 'Tecnología',
                 dislikeArea: null,
                 confirmationLike: '¡Genial! Eres orientado a soluciones 🔧',
@@ -1101,7 +1099,7 @@ export function initDB() {
                 id: 23,
                 title: '¿Te ves haciendo esto?',
                 description: 'Trabajar en tu propia clínica o consultorio',
-                imageUrl: 'https://images.unsplash.com/photo-1519494026892-80bbd26fd0d?w=800&h=600&fit=crop',
+                imageUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800&h=600&fit=crop',
                 likeArea: 'Salud',
                 dislikeArea: null,
                 confirmationLike: '¡Anotado! Tu independencia profesional 🏥',

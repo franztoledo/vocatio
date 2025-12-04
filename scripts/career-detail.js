@@ -60,14 +60,14 @@ function renderCareerDetails(career) {
       <div class="career-info-card">
         <div class="career-info-icon demand"><i data-lucide="trending-up"></i></div>
         <div class="career-info-content">
-          <div class="career-info-value">${career.demand}</div>
+          <div class="career-info-value">${career.demanda_laboral}</div>
           <div class="career-info-label">Demanda</div>
         </div>
       </div>
       <div class="career-info-card">
         <div class="career-info-icon universities"><i data-lucide="map-pin"></i></div>
         <div class="career-info-content">
-          <div class="career-info-value">${career.universitiesCount}</div>
+          <div class="career-info-value">${career.universidades_count}</div>
           <div class="career-info-label">Universidades</div>
         </div>
       </div>
