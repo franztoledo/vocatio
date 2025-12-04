@@ -1,0 +1,17 @@
+fix/estadísticas-secciones-principales:
+Implementación de lógica dinámica en secciones principales: Se desarrollaron scripts en JavaScript para manipular el DOM en las páginas de 'Explorar Carreras' y 'Test Vocacional', permitiendo la visualización dinámica de elementos informativos y estadísticas de uso.
+
+fix/correccion-imagenes:
+Corrección de rutas y renderizado de imágenes: Se actualizaron las referencias de rutas en la base de datos simulada (database.js) y se ajustaron las reglas CSS para resolver problemas de carga y visualización en las tarjetas de universidades.
+
+fix/botones-dashboar:
+Reparación de interactividad en el Dashboard: Se limpió el código HTML eliminando referencias a archivos obsoletos (opcion-descarga.html) y se corrigieron los eventos de los botones del panel personal para asegurar una navegación fluida hacia las herramientas.
+
+fix/corrección-configuracion-perfil:
+Refactorización de la gestión de perfil: Se reescribió la lógica en profile.js para manejar eventos de carga y envío (submit), asegurando que la validación de datos y el guardado de la configuración del usuario funcionen correctamente.
+
+fix/reportes-pdf:
+Corrección del flujo de reportes: Se ajustó la lógica de generación de PDFs y la vista previa de resultados, implementando nuevas configuraciones en los scripts para garantizar que los documentos descargables mantengan el formato y los datos correctos.
+
+fix/correcion-navbar:
+Estandarización de la navegación global: Se actualizaron masivamente las rutas relativas (href) en todos los archivos HTML del proyecto para corregir enlaces rotos y asegurar que la barra de navegación funcione consistentemente desde cualquier subdirectorio.
